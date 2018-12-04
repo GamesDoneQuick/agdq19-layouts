@@ -71,7 +71,10 @@ export default class GDQRuninfoElement extends Polymer.Element {
 		}
 
 		return name.split('\\n')
-			.map(lineText => `<div class="name-line">${lineText}</div>`)
+			.map((lineText, index) => {
+				const tag = index === 0 ? 'div' : 'small';
+				return `<${tag} class="name-line">${lineText}</${tag}>`;
+			})
 			.join('\n');
 	}
 }
