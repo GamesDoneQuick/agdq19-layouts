@@ -1,6 +1,6 @@
 # agdq19-layouts [![Build status](https://ci.appveyor.com/api/projects/status/bugqpw073m9278tf/branch/master?svg=true)](https://ci.appveyor.com/project/supportclass/agdq19-layouts/branch/master)
 
-> The on-stream graphics used during Summer Games Done Quick 2018.
+> The on-stream graphics used during Awesome Games Done Quick 2019.
 
 This is a [NodeCG](http://github.com/nodecg/nodecg) v1 bundle. You will need to have NodeCG v1 installed to run it.
 
