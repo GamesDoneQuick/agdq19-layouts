@@ -18,10 +18,11 @@ const MILESTONES = [
 	{name: 'AGDQ 2014', total: 1031665.5},
 	{name: 'AGDQ 2015', total: 1576085},
 	{name: 'AGDQ 2016', total: 1216309.02},
-	{name: 'AGDQ 2016', total: 1294139.5},
+	{name: 'SGDQ 2016', total: 1294139.5},
 	{name: 'AGDQ 2017', total: 2222790.52},
-	{name: 'AGDQ 2017', total: 1792342.37},
-	{name: 'AGDQ 2018', total: 2295190.66}
+	{name: 'SGDQ 2017', total: 1792342.37},
+	{name: 'AGDQ 2018', total: 2295190.66},
+	{name: 'SGDQ 2018', total: 2168913.51}
 ].sort((a, b) => {
 	return a.total - b.total;
 }).map((milestone, index, array) => {
