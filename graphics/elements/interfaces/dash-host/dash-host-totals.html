@@ -1,0 +1,26 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="dash-host-styles.html">
+
+<dom-module id="dash-host-totals">
+	<template>
+		<style include="dash-host-styles">
+			:host {
+				font-size: 48px;
+				font-weight: 700;
+				background-color: #4F4F4F !important;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+			}
+
+			#cashTotal {
+				color: white;
+				font-size: 62px;
+				font-weight: 700;
+			}
+		</style>
+
+		<div id="cashTotal">[[cashTotal]]</div>
+	</template>
+
+	<script src="dash-host-totals.js" type="module"></script>
+</dom-module>

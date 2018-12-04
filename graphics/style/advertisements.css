@@ -1,0 +1,18 @@
+#imageAdContainer {
+	z-index: 11;
+	background-color: black;
+	transform: translateX(-1280px);
+}
+
+#imageAdContainer img {
+	position: absolute;
+	left: 640px;
+	top: 360px;
+	max-width: 1280px;
+	height: 720px;
+	transform: translate(-50%, -50%);
+}
+
+#videoPlayer {
+	z-index: 11;
+}

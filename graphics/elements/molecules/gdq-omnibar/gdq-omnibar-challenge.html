@@ -1,0 +1,126 @@
+<link rel="import" href="../../atoms/atom-arrow-block/atom-arrow-block.html">
+<link rel="import" href="../../atoms/atom-chevron/atom-chevron.html">
+<link rel="import" href="../../atoms/atom-gradient-text/atom-gradient-text.html">
+<link rel="import" href="../../atoms/atom-inner-glow-text/atom-inner-glow-text.html">
+
+<dom-module id="gdq-omnibar-challenge">
+	<template>
+		<style>
+			:host {
+				height: 100%;
+				padding-right: 18px;
+				box-sizing: border-box;
+				will-change: opacity;
+				@apply --layout-horizontal;
+			}
+
+			#total {
+				position: absolute;
+				width: 0;
+				top: 10.5px;
+				z-index: 2;
+				will-change: opacity;
+			}
+
+			#tailChevron {
+				position: relative;
+				top: 5px;
+				height: calc(100% - 10px);
+				z-index: 2;
+				margin-right: -18px;
+				will-change: transform;
+				--atom-chevron-background: linear-gradient(to bottom, #052B33 0%, #040F10 100%);
+			}
+
+			#body {
+				position: relative;
+				padding: 5px 0;
+				box-sizing: border-box;
+				height: 100%;
+				min-width: 1px;
+				will-change: clip-path;
+				@apply --layout-horizontal;
+				@apply --layout-flex;
+			}
+
+			#progressFill {
+				position: absolute;
+				top: 5px;
+				left: 0;
+				z-index: -1;
+				height: 45px;
+				--atom-arrow-block-stroke-color: #87FD6A;
+				--atom-arrow-block-fill-color: #8BFF6E;
+				--atom-arrow-block-fill-opacity: 0.05;
+				--atom-arrow-block-glow-opacity: 0.4;
+			}
+
+			#progressBlock {
+				--atom-arrow-block-fill-color: transparent;
+				@apply --layout-flex;
+			}
+
+			#separatorChevron {
+				margin: 0 -18px;
+				@apply --layout-flex-none;
+			}
+
+			#goalBlock {
+				--atom-arrow-block-fill-color: rgba(139, 255, 110, 0.4);
+				@apply --layout-flex-none;
+			}
+
+			#total,
+			#goal {
+				font-style: normal;
+				line-height: normal;
+				font-size: 24px;
+			}
+
+			#total {
+				font-weight: 500;
+				--atom-gradient-text-shadow: 0 0 4px #2AC503;
+				--atom-gradient-text-gradient: linear-gradient(to bottom, #FFFFFF 0%, #CDCDCD 100%);
+			}
+
+			#goal {
+				font-weight: 700;
+				color: #05262E;
+				will-change: opacity;
+				--atom-inner-glow-text-glow-color: #2AC503;
+			}
+
+			atom-arrow-block {
+				height: 100%;
+				width: auto;
+				min-width: 1px;
+				--atom-arrow-block-stroke-color: #87FD6A;
+				--atom-arrow-block-glow-color: #2AC503;
+				@apply --layout-flex;
+			}
+
+			atom-chevron {
+				width: 24px;
+				--atom-chevron-fill-color: #8BFF6E;
+				--atom-chevron-stroke-color: #8BFF6E;
+				--atom-chevron-chevron: {
+					filter: drop-shadow(0 0 12px #2AC503);
+				};
+			}
+		</style>
+
+		<atom-chevron id="tailChevron" no-auto-render></atom-chevron>
+
+		<div id="body">
+			<atom-arrow-block id="progressFill"></atom-arrow-block>
+			<atom-arrow-block id="progressBlock"></atom-arrow-block>
+			<atom-chevron id="separatorChevron" no-auto-render></atom-chevron>
+			<atom-arrow-block id="goalBlock" inner-glow>
+				<atom-inner-glow-text id="goal" text="[[bid.goal]]"></atom-inner-glow-text>
+			</atom-arrow-block>
+			<atom-gradient-text id="total" text="[[bid.total]]"></atom-gradient-text>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-challenge.js" type="module"></script>
+</dom-module>

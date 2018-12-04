@@ -1,0 +1,14 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"$ref": "types/timeStruct.json",
+	"required": [
+		"days",
+		"hours",
+		"minutes",
+		"seconds",
+		"milliseconds",
+		"formatted",
+		"raw",
+		"timestamp"
+	]
+}

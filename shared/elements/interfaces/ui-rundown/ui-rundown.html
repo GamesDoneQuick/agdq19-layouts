@@ -1,0 +1,138 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../../../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/utils/debounce.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../style/gdq-ui-theme.html">
+<link rel="import" href="../ui-panel-label/ui-panel-label.html">
+<link rel="import" href="ui-rundown-item.html">
+
+<dom-module id="ui-rundown">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				position: relative;
+				@apply --layout-vertical;
+			}
+
+			#currentItems,
+			#remainderItems {
+				padding: 0 12px;
+				overflow-y: scroll;
+				margin-right: 10px;
+			}
+
+			#currentItems {
+				margin-top: 8px;
+			}
+
+			#remainderItems {
+				min-height: 4em;
+				margin-bottom: 8px;
+				@apply --layout-flex;
+			}
+
+			#divider {
+				margin: 8px 12px;
+				height: 1px;
+				background: black;
+				box-sizing: border-box;
+			}
+
+			#scrollToFuture {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				height: 30px;
+				margin: 0 12px 12px;
+				padding: 0;
+			}
+
+			#scrollToFuture iron-icon {
+				margin-right: 6px;
+			}
+
+			#tooltip {
+				position: absolute;
+				top: 0;
+				left: 12px;
+				transition: opacity 200ms ease-in-out;
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			#tooltip-content {
+				font-size: 14px;
+				color: white;
+				background: rgba(0, 0, 0, 0.8);
+				border-radius: 5px;
+				padding: 6px;
+			}
+
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			::-webkit-scrollbar-track {
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				border-radius: 5px;
+				background: #757575;
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+			}
+
+			::-webkit-scrollbar-thumb:window-inactive {
+				background: #b9b9b9;;
+			}
+		</style>
+
+		<ui-panel-label id="label">Rundown</ui-panel-label>
+
+		<div id="currentItems">
+			<template is="dom-repeat" items="[[currentItems]]" mutable-data>
+				<ui-rundown-item
+					item="[[item]]"
+					current
+					on-mouseover="_showTooltip"
+					on-mouseout="_hideTooltip">
+				</ui-rundown-item>
+			</template>
+		</div>
+
+		<div id="divider"></div>
+
+		<iron-list id="remainderItems" items="[[remainderItems]]" mutable-data>
+			<template>
+				<div class="itemWrapper">
+					<ui-rundown-item
+						item="[[item]]"
+						on-mouseover="_showTooltip"
+						on-mouseout="_hideTooltip">
+					</ui-rundown-item>
+				</div>
+			</template>
+		</iron-list>
+
+		<paper-button
+			id="scrollToFuture"
+			class="indigo"
+			hidden="[[!allowScrollback]]"
+			on-tap="scrollToFuture"
+			raised>
+			<iron-icon icon="editor:vertical-align-top"></iron-icon>
+			Scroll To Future
+		</paper-button>
+
+		<div id="tooltip">
+			<div id="tooltip-content"></div>
+		</div>
+	</template>
+
+	<script src="ui-rundown.js" type="module"></script>
+</dom-module>

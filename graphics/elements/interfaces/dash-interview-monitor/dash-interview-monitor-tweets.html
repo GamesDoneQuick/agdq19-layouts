@@ -1,0 +1,43 @@
+<link rel="import" href="../../../mixins/MapSortMixin.html">
+<link rel="import" href="dash-interview-monitor-tweet.html">
+
+<dom-module id="dash-interview-monitor-tweets">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+			}
+
+			#noQuestions {
+				font-size: 92px;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="noQuestions" hidden="[[!noQuestionTweets]]">
+			No Remaining Questions
+		</div>
+
+		<template
+			id="repeat"
+			is="dom-repeat"
+			items="[[questionTweets]]"
+			as="tweet"
+			sort="[[_createMapSort('id_str')]]"
+			mutable-data>
+			<dash-interview-monitor-tweet
+				tweet="[[tweet]]">
+			</dash-interview-monitor-tweet>
+		</template>
+	</template>
+
+	<script src="dash-interview-monitor-tweets.js" type="module"></script>
+</dom-module>

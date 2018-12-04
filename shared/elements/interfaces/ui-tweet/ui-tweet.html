@@ -1,0 +1,115 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../ui-timeago/ui-timeago.html">
+<link rel="import" href="../../../style/gdq-text-styles.html">
+
+<dom-module id="ui-tweet">
+	<template>
+		<style include="gdq-text-styles">
+			:host {
+				position: relative;
+				padding-left: calc(var(--ui-tweet-avatar-size) + 16px);
+				padding-right: 10px;
+				min-height: 50px;
+				min-width: 1px;
+				--ui-tweet-avatar-size: 48px;
+				--ui-tweet-font-size: 16px;
+				@apply --layout-vertical;
+			}
+
+			#avatar {
+				position: absolute;
+				top: 3px;
+				left: 8px;
+				width: var(--ui-tweet-avatar-size);
+				height: var(--ui-tweet-avatar-size);
+				border-radius: 10%;
+			}
+
+			#profileLink {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				min-width: 1px;
+				@apply --layout-flex;
+			}
+
+			#profileLink:hover {
+				text-decoration: none;
+			}
+
+			#profileLink:hover #name {
+				color: #2b7bb9;
+				text-decoration: underline;
+			}
+
+			#name {
+				color: black;
+				font-weight: bold;
+				font-size: var(--ui-tweet-font-size);
+			}
+
+			#screenName,
+			#timeAgo {
+				color: #888;
+				font-size: calc(var(--ui-tweet-font-size) - 2px);
+			}
+
+			#tweetLink {
+				padding-left: 5px;
+				@apply --layout-flex-none;
+			}
+
+			#tweetLink:hover #timeAgo {
+				color: #2b7bb9;
+				text-decoration: underline;
+			}
+
+			#body {
+				word-wrap: break-word;
+				word-break: break-word;
+				font-size: var(--ui-tweet-font-size);
+			}
+
+			a {
+				text-transform: none;
+				text-decoration: none;
+			}
+
+			header {
+				white-space: nowrap;
+				@apply --layout-horizontal;
+			}
+
+			:host([no-avatar]) {
+				padding-left: 8px;
+			}
+
+			:host([no-avatar]) #avatar {
+				display: none;
+			}
+		</style>
+
+		<header>
+			<a id="profileLink" href="[[profileUrl]]" target="_blank">
+				<iron-image
+					id="avatar"
+					src="[[tweet.user.profile_image_url_https]]"
+					sizing="contain"
+					fade>
+				</iron-image>
+				<span id="name">[[tweet.user.name]]</span>
+				<span id="screenName">@[[tweet.user.screen_name]]</span>
+			</a>
+
+			<a id="tweetLink" href="[[tweetUrl]]" target="_blank">
+				<ui-timeago id="timeAgo" datetime="[[tweet.created_at]]"></ui-timeago>
+			</a>
+		</header>
+
+		<div id="body"></div>
+	</template>
+
+	<script src="ui-tweet.js" type="module"></script>
+</dom-module>

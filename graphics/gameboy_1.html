@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gameboy, 1 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			#lineone {
+				width: 661px;
+				height: 845px;
+				top: 0;
+				left: 0;
+				border-right: 1px solid #00ffff;
+			}
+
+			#linetwo {
+				width: 661px;
+				height: 70px;
+				top: 110px;
+				left: 0;
+				border-bottom: 1px solid #00ffff;
+				background-color: #051113;
+			}
+
+			.line {
+				position: absolute;
+			}
+
+			gdq-runner-nameplate {
+				top: 453px;
+				left: 20px;
+				z-index: 11;
+				width: 621px;
+			}
+
+			gdq-runinfo {
+				left: 0;
+				top: 0;
+				width: 661px;
+				height: 167px;
+				--gdq-runinfo-name-padding: 4px 16px 8px 16px;
+				--gdq-runinfo-misc-height: 45px;
+			}
+
+			gdq-timer {
+				left: 20px;
+				top: 505px;
+				height: 57px;
+				width: 621px;
+				font-size: 56px;
+				--gdq-timer-voffset: -2px;
+			}
+
+			gdq-tweet, gdq-sponsors {
+				bottom: 10px;
+				left: 10px;
+				width: 641px;
+				height: 262px;
+			}
+
+			gdq-tweet {
+				--gdq-tweet-body: {
+					font-size: 20px;
+				};
+			}
+
+			atom-tronlines {
+				position: absolute;
+				width: 661px;
+				height: 370px;
+				bottom: 0;
+				left: 0;
+				border-top: 1px solid #00ffff;
+			}
+
+			atom-gridlines {
+				position: absolute;
+				width: 661px;
+				height: 110px;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<atom-gridlines></atom-gridlines>
+		<atom-tronlines width="661" height="370"></atom-tronlines>
+		<div id="lineone" class="line"></div>
+		<div id="linetwo" class="line"></div>
+		<gdq-runinfo max-name-size="36"></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+		<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

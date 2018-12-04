@@ -1,0 +1,71 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../shared/elements/interfaces/ui-tweet/ui-tweet.html">
+
+<dom-module id="tweet-item">
+	<template>
+		<style>
+			:host {
+				@apply --layout-horizontal;
+			}
+
+			:host(:not(:first-of-type)) {
+				margin-top: 5px;
+			}
+
+			:host(:not(:last-of-type)) {
+				border-bottom: 1px solid #3c3c3c;
+				padding-bottom: 10px;
+			}
+
+			#tweet {
+				@apply --layout-flex;
+			}
+
+			#controls {
+				align-self: center;
+				@apply --layout-flex-none;
+				@apply --layout-vertical;
+			}
+
+			#accept {
+				color: #5BA664;
+			}
+
+			#accept:hover {
+				background: var(--paper-green-50);
+				border-radius: 50%;
+			}
+
+			#reject {
+				color: #C9513E;
+			}
+
+			#reject:hover {
+				background: var(--paper-red-50);
+				border-radius: 50%;
+			}
+		</style>
+
+		<ui-tweet id="tweet" tweet="[[value]]"></ui-tweet>
+
+		<div id="controls">
+			<paper-icon-button
+				id="accept"
+				on-tap="accept"
+				icon="check"
+				title="Accept and show">
+			</paper-icon-button>
+			<paper-icon-button
+				id="reject"
+				on-tap="reject"
+				icon="clear"
+				title="Reject and discard">
+			</paper-icon-button>
+		</div>
+	</template>
+
+	<script src="tweet-item.js" type="module"></script>
+</dom-module>

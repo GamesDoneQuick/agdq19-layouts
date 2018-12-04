@@ -1,0 +1,113 @@
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
+<link rel="import" href="../../../../shared/style/gdq-text-styles.html">
+
+<dom-module id="dash-host-currentrun">
+	<template>
+		<style include="gdq-text-styles">
+			:host {
+				box-sizing: border-box;
+				@apply --layout-vertical;
+			}
+
+			#stopwatch {
+				height: 85px;
+				margin-top: 23px;
+				text-align: center;
+				background-color: #FFE2E4;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#stopwatch-time {
+				font-size: 72px;
+				font-weight: 700;
+				margin: 0 auto;
+			}
+
+			#currentRunName {
+				font-size: 38px;
+				font-weight: 600;
+				line-height: 43px;
+				text-align: center;
+				margin-top: 12px;
+				margin-bottom: auto;
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#runners {
+				height: 160px;
+				padding: 0 60px;
+				margin-bottom: 15px;
+				@apply --layout-vertical;
+				@apply --layout-center-justified;
+				@apply --layout-center-aligned;
+			}
+
+			.stopwatch-status {
+				color: #D45B5B;
+				font-size: 18px;
+				font-weight: 600;
+				width: 160px;
+			}
+
+			.runner {
+				white-space: nowrap;
+				font-size: 32px;
+				font-weight: 500;
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+			}
+
+			.runner:not(:last-child) {
+				margin-bottom: 2px;
+			}
+
+			.runner-status {
+				margin-left: auto;
+				text-align: right;
+			}
+
+			:host([checklist-complete]) #stopwatch {
+				background-color: #CFFFD0;
+			}
+
+			:host([checklist-complete]) .stopwatch-status {
+				color: #5BA664;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="stopwatch">
+			<div class="stopwatch-status">[[_calcStatusText(checklistComplete)]]</div>
+			<div id="stopwatch-time" class="tabular-nums">[[stopwatchTime]]</div>
+			<div class="stopwatch-status">[[_calcStatusText(checklistComplete)]]</div>
+		</div>
+
+		<div id="currentRunName"></div>
+
+		<div id="runners">
+			<template is="dom-repeat" items="[[_unionRunnersAndResults(runners, stopwatchResults)]]" mutable-data>
+				<div class="runner">
+					<sc-fitted-text
+						class="runner-name"
+						text="[[item.runner.name]]"
+						title="[[item.runner.name]]"
+						align="left"
+						max-width="372">
+					</sc-fitted-text>
+
+					<div class="runner-status tabular-nums">
+						[[_calcRunnerStatus(item.result)]]
+					</div>
+				</div>
+			</template>
+		</div>
+	</template>
+
+	<script src="dash-host-currentrun.js" type="module"></script>
+</dom-module>

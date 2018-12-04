@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Test Break</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+	<link rel="import" href="../shared/fonts/source-code-pro/import.html">
+	<link rel="import" href="../shared/imports/gsap.html">
+	<link rel="import" href="elements/molecules/gdq-break/gdq-break-bids.html">
+	<link rel="import" href="elements/molecules/gdq-break/gdq-break-prizes.html">
+	<custom-style>
+		<style include="iron-positioning">
+			body {
+				opacity: 1;
+			}
+		</style>
+	</custom-style>
+</head>
+<body class="fullbleed">
+	<test-app></test-app>
+
+	<dom-module id="test-app">
+		<template>
+			<style include="iron-flex iron-flex-alignment">
+				:host {
+					@apply --layout-horizontal;
+				}
+
+				.section {
+					margin: 8px;
+					@apply --layout-vertical;
+				}
+
+				.section-controls {
+					@apply --layout-horizontal;
+				}
+
+				.section-controls vaadin-combo-box {
+					@apply --layout-flex;
+				}
+
+				.section-controls paper-icon-button {
+					margin: 0 0.5em;
+					align-self: flex-end;
+					@apply --layout-flex-none;
+				}
+
+				gdq-break-bids,
+				gdq-break-prizes {
+					background: black;
+					padding: 14px;
+				}
+			</style>
+
+			<div class="section">
+				<gdq-break-bids id="bids" no-auto-loop></gdq-break-bids>
+
+				<div class="section-controls">
+					<vaadin-combo-box
+						label="All Bids"
+						items="[[bids]]"
+						item-label-path="public"
+						item-value-path="id"
+						on-selected-item-changed="_selectedBidChanged"
+						selected-item="{{selectedBid}}">
+					</vaadin-combo-box>
+					<paper-icon-button
+						disabled="[[!selectedBid]]"
+						icon="refresh"
+						title="Replay selected bid"
+						on-tap="replaySelectedBid">
+					</paper-icon-button>
+				</div>
+			</div>
+
+			<div class="section">
+				<gdq-break-prizes id="prizes" no-auto-loop></gdq-break-prizes>
+
+				<div class="section-controls">
+					<vaadin-combo-box
+						label="All Prizes"
+						items="[[prizes]]"
+						item-label-path="name"
+						item-value-path="id"
+						on-selected-item-changed="_selectedPrizeChanged"
+						selected-item="{{selectedPrize}}">
+					</vaadin-combo-box>
+					<paper-icon-button
+						disabled="[[!selectedPrize]]"
+						icon="refresh"
+						title="Replay selected prize"
+						on-tap="replaySelectedPrize">
+					</paper-icon-button>
+				</div>
+			</div>
+		</template>
+
+		<script>
+			const allBids = nodecg.Replicant('allBids');
+			const allPrizes = nodecg.Replicant('allPrizes');
+
+			class GdqBreakTestApp extends Polymer.Element {
+				static get is() {
+					return 'test-app';
+				}
+
+				static get properties() {
+					return {
+						bids: Array,
+						prizes: Array,
+						selectedBid: {
+							type: Object,
+							value: null
+						},
+						selectedPrize: {
+							type: Object,
+							value: null
+						}
+					};
+				}
+
+				ready() {
+					super.ready();
+
+					allBids.on('change', newVal => {
+						this.bids = newVal.slice(0);
+					});
+
+					allPrizes.on('change', newVal => {
+						this.prizes = newVal.slice(0);
+					});
+				}
+
+				showBid(bid) {
+					if (!bid) {
+						return;
+					}
+
+					const bidsArr = [bid];
+					this.$.bids._showItem(bid, 0, bidsArr);
+				}
+
+				showPrize(prize) {
+					if (!prize) {
+						return;
+					}
+
+					const prizesArr = [prize];
+					this.$.prizes._showItem(prize, 0, prizesArr);
+				}
+
+				replaySelectedBid() {
+					this.showBid(this.selectedBid);
+				}
+
+				replaySelectedPrize() {
+					this.showPrize(this.selectedPrize);
+				}
+
+				_selectedBidChanged(e) {
+					const bid = e.detail.value;
+					this._showBidDebouncer = Polymer.Debouncer.debounce(
+						this._showBidDebouncer,
+						Polymer.Async.timeOut.after(50),
+						() => {
+							this.showBid(bid);
+						}
+					);
+				}
+
+				_selectedPrizeChanged(e) {
+					const prize = e.detail.value;
+					this._showPrizeDebouncer = Polymer.Debouncer.debounce(
+						this._showPrizeDebouncer,
+						Polymer.Async.timeOut.after(50),
+						() => {
+							this.showPrize(prize);
+						}
+					);
+				}
+			}
+
+			customElements.define(GdqBreakTestApp.is, GdqBreakTestApp);
+		</script>
+	</dom-module>
+</body>
+</html>

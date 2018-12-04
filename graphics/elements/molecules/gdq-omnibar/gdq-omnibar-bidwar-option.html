@@ -1,0 +1,134 @@
+<link rel="import" href="../../atoms/atom-arrow-block/atom-arrow-block.html">
+<link rel="import" href="../../atoms/atom-chevron/atom-chevron.html">
+<link rel="import" href="../../atoms/atom-gradient-text/atom-gradient-text.html">
+<link rel="import" href="../../atoms/atom-inner-glow-text/atom-inner-glow-text.html">
+
+<dom-module id="gdq-omnibar-bidwar-option">
+	<template>
+		<style>
+			:host {
+				height: 100%;
+				box-sizing: border-box;
+				will-change: opacity;
+				@apply --layout-horizontal;
+			}
+
+			#tailChevron {
+				position: relative;
+				top: 5px;
+				width: 24px;
+				height: calc(100% - 10px);
+				z-index: 2;
+				margin-right: -18px;
+				will-change: transform;
+				--atom-chevron-fill-color: #64fdff;
+				--atom-chevron-stroke-color: #4fffe6;
+				--atom-chevron-background: linear-gradient(to bottom, #052B33 0%, #040F10 100%);
+				--atom-chevron-chevron: {
+					filter: drop-shadow(0 0 12px #00c5ba);
+				};
+			}
+
+			#body {
+				padding: 5px 0;
+				box-sizing: border-box;
+				height: 100%;
+				will-change: clip-path;
+				@apply --layout-horizontal;
+			}
+
+			#totalBlock {
+				margin-left: -18px;
+				--atom-arrow-block-fill-color: rgba(102, 252, 255, 0.4);
+				--atom-arrow-block-glow-color: #00bdc5;
+			}
+
+			#label,
+			#total {
+				font-style: normal;
+				line-height: normal;
+				font-size: 24px;
+			}
+
+			#label {
+				font-weight: 500;
+				--atom-gradient-text-shadow: 0 0 4px #00c0c5;
+				--atom-gradient-text-gradient: linear-gradient(to bottom, #FFFFFF 0%, #CDCDCD 100%);
+			}
+
+			#total {
+				font-weight: 700;
+				color: #05262e;
+				will-change: opacity;
+				--atom-inner-glow-text-glow-color: #01c2c5;
+			}
+
+			atom-arrow-block {
+				height: 100%;
+				--atom-arrow-block-stroke-color: #5affec;
+				--atom-arrow-block-fill-color: transparent;
+			}
+
+			/* Winning styles. */
+			:host([winning]) #total {
+				--atom-inner-glow-text-glow-color: #2AC503;
+			}
+
+			:host([winning]) #tailChevron {
+				--atom-chevron-fill-color: #8BFF6E;
+				--atom-chevron-stroke-color: #8BFF6E;
+				--atom-chevron-chevron: {
+					filter: drop-shadow(0 0 12px #2AC503);
+				};
+			}
+
+			:host([winning]) #totalBlock {
+				--atom-arrow-block-fill-color: rgba(139, 255, 110, 0.4);
+				--atom-arrow-block-glow-color: #2AC503;
+			}
+
+			:host([winning]) #label {
+				--atom-gradient-text-shadow: 0 0 4px #2AC503;
+			}
+
+			:host([winning]) atom-arrow-block {
+				--atom-arrow-block-stroke-color: #87FD6A;
+			}
+
+			/* Placeholder styles. ("Be the first to bid!") */
+			:host([placeholder]) #tailChevron {
+				--atom-chevron-fill-color: #82EFFF;
+				--atom-chevron-stroke-color: #82EFFF;
+				--atom-chevron-chevron: {
+					filter: drop-shadow(0 0 12px #82EFFF);
+				};
+			}
+
+			:host([placeholder]) #label {
+				--atom-gradient-text-shadow: 0 0 4px #82EFFF;
+				--atom-gradient-text-gradient: linear-gradient(to bottom, #FFFFFF 0%, #82EFFF 100%);
+			}
+
+			:host([placeholder]) atom-arrow-block {
+				--atom-arrow-block-stroke-color: #82EFFF;
+			}
+
+			:host([placeholder]) #totalBlock {
+				display: none;
+			}
+		</style>
+
+		<atom-chevron id="tailChevron" no-auto-render></atom-chevron>
+
+		<div id="body">
+			<atom-arrow-block id="labelBlock">
+				<atom-gradient-text id="label" text="[[formatOptionDescription(bid)]]"></atom-gradient-text>
+			</atom-arrow-block>
+			<atom-arrow-block id="totalBlock" inner-glow>
+				<atom-inner-glow-text id="total" text="[[bid.total]]"></atom-inner-glow-text>
+			</atom-arrow-block>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-bidwar-option.js" type="module"></script>
+</dom-module>

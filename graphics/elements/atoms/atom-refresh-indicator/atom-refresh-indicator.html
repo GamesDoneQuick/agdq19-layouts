@@ -1,0 +1,96 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="atom-refresh-indicator">
+	<template>
+		<style>
+			:host {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#meter {
+				position: relative;
+				height: 8px;
+				background: #DEDEDE;
+				margin-top: 16px;
+				margin-bottom: 10px;
+				overflow: hidden;
+				border-radius: 10px;
+				@apply --layout-flex;
+			}
+
+			#meter-fill,
+			#meter-indeterminate {
+				position: absolute;
+				top: 0;
+				height: 100%;
+			}
+
+			#meter-fill {
+				left: 0;
+				width: 100%;
+				transform: scaleX(0);
+				transform-origin: left;
+				will-change: transform;
+				background: #5BA664;
+				border-radius: 10px;
+			}
+
+			#meter-indeterminate {
+				/* 86px is the width of img/progress_load.png */
+				left: -86px;
+				width: calc(100% + 86px);
+				background: url("img/progress_load.png") repeat-x;
+				background-size: 86px 100%;
+				animation: scrollRight 0.6s linear infinite;
+			}
+
+			#label {
+				color: black;
+				font-weight: 600;
+				margin-left: 13px;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+			}
+
+			#label-label {
+				font-size: 10px;
+				margin-bottom: -4px;
+			}
+
+			#label-time {
+				font-size: 24px;
+			}
+
+			@keyframes scrollRight {
+				0% {
+					transform: translateX(0px);
+				}
+				100% {
+					transform: translateX(86px);
+				}
+			}
+
+			:host(:not([indeterminate])) #meter-indeterminate {
+				display: none;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="meter">
+			<div id="meter-fill"></div>
+			<div id="meter-indeterminate"></div>
+		</div>
+
+		<div id="label">
+			<div id="label-label">Data Refresh</div>
+			<div id="label-time">[[timeUntilRefresh]]</div>
+		</div>
+	</template>
+
+	<script src="atom-refresh-indicator.js" type="module"></script>
+</dom-module>

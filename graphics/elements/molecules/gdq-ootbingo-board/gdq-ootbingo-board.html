@@ -1,0 +1,69 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../atoms/atom-ootbingo-board/atom-ootbingo-board.html">
+
+<dom-module id="gdq-ootbingo-board">
+	<template>
+		<style>
+			:host {
+				@apply --layout-horizontal;
+				background-color: black;
+			}
+
+			#content {
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				@apply --layout-self-stretch;
+				border: 1px solid #00FFFF;
+				overflow: hidden;
+				position: relative;
+			}
+
+			#board {
+				@apply --layout-flex;
+				@apply --layout-self-stretch;
+				border: none;
+			}
+
+			#cover {
+				@apply --layout-center-center;
+				@apply --layout-vertical;
+				background: #1D0013;
+				box-shadow: inset 0 0 25px rgba(95, 95, 95, 0.75);
+				color: white;
+				font-family: 'Source Code Pro', monospace;
+				font-size: 26px;
+				height: 100%;
+				left: 0;
+				letter-spacing: 0.04em;
+				position: absolute;
+				text-align: center;
+				top: 0;
+				width: 100%;
+			}
+
+			:host([embiggened]) {
+				padding: 28px 32px;
+			}
+
+			:host(:not([embiggened])) {
+				padding: 5px 6px;
+				font-size: 12px;
+				--atom-ootbingo-board-cell-line-clamp: 6;
+			}
+
+			:host(:not([embiggened])) #board {
+				font-size: 13px;
+				grid-gap: 1px;
+				--atom-ootbingo-board-cell-line-clamp: 3;
+				--atom-ootbingo-board-cell-padding: 4px;
+			}
+		</style>
+
+		<div id="content">
+			<atom-ootbingo-board id="board"></atom-ootbingo-board>
+			<div id="cover">BOARD HIDDEN</div>
+		</div>
+	</template>
+
+	<script src="gdq-ootbingo-board.js" type="module"></script>
+</dom-module>

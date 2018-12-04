@@ -1,0 +1,159 @@
+<link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../molecules/gdq-omnibar/gdq-omnibar-icons.html">
+
+<dom-module id="dash-interview-monitor-prize">
+	<template>
+		<style>
+			:host {
+				min-height: 174px;
+				font-weight: bold;
+				background-color: white;
+				margin-bottom: 10px;
+				@apply --shadow-elevation-2dp;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-flex-none;
+			}
+
+			#image {
+				width: 174px;
+				@apply --layout-flex-none;
+				@apply --layout-self-stretch;
+			}
+
+			#center {
+				color: black;
+				margin-left: 10px;
+				padding-top: 10px;
+				padding-bottom: 24px;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			#name {
+				font-size: 73px;
+				word-break: break-word;
+				word-wrap: break-word;
+			}
+
+			#opening,
+			#closing {
+				font-size: 42px;
+			}
+
+			#opening iron-icon,
+			#closing iron-icon {
+				width: 42px;
+				height: 42px;
+			}
+
+			#opening {
+				color: #0E721B;
+			}
+
+			#closing {
+				color: #FF4F4F;
+			}
+
+			#right {
+				max-width: 350px;
+				margin: 0 26px;
+				@apply --layout-vertical;
+				@apply --layout-end;
+			}
+
+
+			#provider {
+				font-size: 30px;
+				word-break: break-word;
+				word-wrap: break-word;
+				text-align: right;
+			}
+
+			#bidInfo {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-self-end;
+			}
+
+			#minBid {
+				font-size: 73px;
+				color: black;
+				line-height: 1;
+			}
+
+			#bidType {
+				position: relative;
+				margin-right: 16px;
+				top: 4px;
+				width: 42px;
+				height: 42px;
+				border-radius: 5px;
+				background-color: #0082AB;
+				font-size: 24px;
+				text-transform: uppercase;
+				color: white;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#strip {
+				width: 19px;
+				background-color: black;
+				@apply --layout-self-stretch;
+			}
+
+			:host([bid-type="total"]) #minBid {
+				color: #0E721B;
+			}
+
+			:host([bid-type="total"]) #bidType {
+				background-color: #FF951A;
+			}
+
+			:host([bid-type="total"]) #strip {
+				background-color: #0E721B;
+			}
+
+			:host([closed]) {
+				background-color: #FF9C9C;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<iron-image id="image" sizing="cover" src="[[prize.image]]"></iron-image>
+
+		<div id="center">
+			<div id="name">[[prize.description]]</div>
+			<div id="opening" hidden="[[closed]]">
+				<iron-icon icon="unfold-more"></iron-icon>
+				[[_calcOpening(prize, currentRun)]]
+			</div>
+			<div id="closing">
+				<iron-icon icon="unfold-less"></iron-icon>
+				[[_calcClosing(prize, currentRun)]]
+			</div>
+		</div>
+
+		<div id="right">
+			<div id="provider">
+				[[prize.provided]]
+				<iron-icon id="provider-icon" icon="omnibar:prizes"></iron-icon>
+			</div>
+			<div id="bidInfo">
+				<div id="bidType">[[_calcBidTypeChar(bidType)]]</div>
+				<div id="minBid">[[prize.minimumbid]]</div>
+			</div>
+		</div>
+
+		<div id="strip"></div>
+	</template>
+
+	<script src="dash-interview-monitor-prize.js" type="module"></script>
+</dom-module>

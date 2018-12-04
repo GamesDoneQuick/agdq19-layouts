@@ -1,0 +1,42 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"definitions": {
+		"runnerAudioObject": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sd": {
+					"$ref": "#/definitions/channelObject"
+				},
+				"hd": {
+					"$ref": "#/definitions/channelObject"
+				}
+			},
+			"required": ["sd", "hd"]
+		},
+		"channelObject": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"muted": {
+					"type": "boolean",
+					"default": true
+				},
+				"fadedBelowThreshold": {
+					"type": "boolean",
+					"default": true
+				}
+			},
+			"required": ["muted", "fadedBelowThreshold"]
+		}
+	},
+
+	"type": "array",
+	"additionalItems": false,
+	"items": {
+		"$ref": "#/definitions/runnerAudioObject"
+	},
+	"minItems": 4,
+	"maxItems": 4
+}

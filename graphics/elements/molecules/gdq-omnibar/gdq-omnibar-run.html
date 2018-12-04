@@ -1,0 +1,24 @@
+<link rel="import" href="gdq-omnibar-list-item.html">
+
+<dom-module id="gdq-omnibar-run">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+
+			:host([first]) {
+				--gdq-omnibar-list-item-border-color: #C5BD03;
+				--gdq-omnibar-list-item-border-cap-color: #F2EA31;
+			}
+		</style>
+
+		<gdq-omnibar-list-item
+			id="listItem"
+			first-line="[[formatName(run.name)]]"
+			second-line="[[concatenateRunners(run)]]">
+		</gdq-omnibar-list-item>
+	</template>
+
+	<script src="gdq-omnibar-run.js" type="module"></script>
+</dom-module>

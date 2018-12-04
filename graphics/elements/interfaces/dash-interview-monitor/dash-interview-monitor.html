@@ -1,0 +1,155 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/utils/render-status.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/style/gdq-text-styles.html">
+<link rel="import" href="../../atoms/atom-tweening-number/atom-tweening-number.html">
+<link rel="import" href="dash-interview-monitor-prizes.html">
+<link rel="import" href="dash-interview-monitor-tweets.html">
+
+<dom-module id="dash-interview-monitor">
+	<template>
+		<style include="gdq-text-styles">
+			:host {
+				color: black;
+				width: 1920px;
+				height: 1080px;
+				font-family: montserrat, 'sans-serif';
+				overflow: hidden;
+				@apply --layout-horizontal;
+			}
+
+			#infoColumn {
+				width: 568px;
+				padding: 14px 16px;
+				@apply --layout-vertical;
+				@apply --shadow-elevation-2dp;
+			}
+
+			#total,
+			#throwIncoming {
+				width: 100%;
+				height: 192px;
+				text-align: center;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#total {
+				background-color: #137400;
+				color: white;
+				font-size: 95px;
+				font-weight: 700;
+			}
+
+			#throwIncoming {
+				color: #ffffff;
+				font-family: Montserrat;
+				font-size: 63px;
+				font-weight: 700;
+				line-height: 67px;
+				text-transform: uppercase;
+				background-color: #cb2929;
+			}
+
+			:host([throw-incoming]) #infoColumn {
+				background-color: #ecaeae;
+			}
+
+			#upNext {
+				margin-top: 9px;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#upNext-label {
+				font-size: 41px;
+				font-weight: 700;
+				line-height: 60px;
+				padding: 0 16px;
+			}
+
+			.upNext-label-wing {
+				height: 3px;
+				background-color: black;
+				@apply --layout-flex;
+			}
+
+			#nextRunName {
+				font-weight: 700;
+				font-size: 64px;
+				line-height: 60px;
+				text-transform: uppercase;
+				margin-bottom: 0.5em;
+			}
+
+			#nextRunners {
+				font-weight: 700;
+				font-size: 44px;
+				line-height: 41px;
+			}
+
+			#timeElapsed {
+				margin-top: auto;
+				align-self: center;
+				font-size: 128px;
+				font-weight: 700;
+			}
+
+			#checklistStatus {
+				width: 100%;
+				font-size: 52px;
+				font-weight: 500;
+				text-transform: uppercase;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+			}
+
+			#rightColumn {
+				background-color: #dedede;
+				@apply --layout-flex;
+				@apply --layout-vertical;
+			}
+
+			#rightColumn > * {
+				padding: 12px 14px;
+				@apply --layout-flex;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="infoColumn">
+			<div id="total" class="tabular-nums" hidden="[[throwIncoming]]">
+				$<atom-tweening-number id="total-amount"></atom-tweening-number>
+			</div>
+
+			<div id="throwIncoming" hidden="[[!throwIncoming]]">
+				THROWING TO<br/>YOU SHORTLY
+			</div>
+
+			<div id="upNext">
+				<div class="upNext-label-wing"></div>
+				<div id="upNext-label">UP NEXT</div>
+				<div class="upNext-label-wing"></div>
+			</div>
+
+			<div id="nextRunName">[[upNextRunName]]</div>
+			<div id="nextRunners"></div>
+
+			<div id="timeElapsed" class="tabular-nums">[[timeElapsed]]</div>
+			<div id="checklistStatus"></div>
+		</div>
+
+		<iron-pages id="rightColumn" selected="[[_calcSelectedPage(prizeMode)]]">
+			<dash-interview-monitor-tweets></dash-interview-monitor-tweets>
+			<dash-interview-monitor-prizes></dash-interview-monitor-prizes>
+		</iron-pages>
+	</template>
+
+	<script src="dash-interview-monitor.js" type="module"></script>
+</dom-module>

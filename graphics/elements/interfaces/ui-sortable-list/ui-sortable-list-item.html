@@ -1,0 +1,67 @@
+<link rel="import" href="../../../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="ui-sortable-list-item">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				@apply --layout-center;
+				@apply --layout-horizontal;
+				background: white;
+				box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+				box-sizing: border-box;
+				flex-shrink: 0;
+				margin: 3px 0;
+				padding: 8px;
+			}
+
+			:host:first-child {
+				margin-top: 0;
+			}
+
+			:host:last-child {
+				margin-bottom: 0;
+			}
+
+			#sortButtons {
+				@apply --layout-vertical;
+			}
+
+			#sortButtons paper-button {
+				height: 23px;
+				margin: 0;
+				min-width: 0;
+				padding: 0;
+				width: 34px;
+			}
+
+			#upButton {
+				margin-bottom: 3px !important;
+			}
+		</style>
+
+		<div id="sortButtons">
+			<paper-button
+				id="upButton"
+				class="indigo"
+				disabled="[[_calcUpDisabled(index)]]"
+				on-tap="_moveItemUpPressed"
+				tabindex="-1"
+				raised>
+				<iron-icon icon="hardware:keyboard-arrow-up"></iron-icon>
+			</paper-button>
+
+			<paper-button
+				id="downButton"
+				class="indigo"
+				disabled="[[_calcDownDisabled(index, items)]]"
+				on-tap="_moveItemDownPressed"
+				tabindex="-1"
+				raised>
+				<iron-icon icon="hardware:keyboard-arrow-down"></iron-icon>
+			</paper-button>
+		</div>
+	</template>
+
+	<script src="ui-sortable-list-item.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="NodeCG v1" type="NodeJSConfigurationType" application-parameters="--bundlesEnabled=agdq19-layouts" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/../..">
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
+      <profiling v8-profiler-path="C:\Users\vanca\AppData\Roaming\npm\node_modules\v8-profiler" />
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,0 +1,122 @@
+<link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="gdq-timekeeper-coop">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				width: 100%;
+				@apply --layout-vertical;
+			}
+
+			#label {
+				font-weight: bold;
+				font-size: 36px;
+				color: #FF6D6B;
+				height: 61px;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+			}
+
+			#info {
+				min-height: 100px;
+				background-color: #dedede;
+				padding: 0 20px;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-justified;
+			}
+
+			#info-name {
+				word-break: break-word;
+				white-space: initial;
+				font-size: 24px;
+				font-weight: 500;
+			}
+
+			#info-status {
+				font-size: 36px;
+				color: #adadad;
+				font-weight: 700;
+				flex-shrink: 0;
+				width: 160px;
+				text-align: right;
+			}
+
+			#info-status.finished {
+				color: #43ac6a;
+			}
+
+			#buttons {
+				margin-top: 25px;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#buttons paper-button {
+				width: 163px;
+				height: 71px;
+			}
+
+			paper-button {
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+				--paper-button: {
+					color: white;
+					padding: 0;
+					font-size: 16px;
+					font-weight: bold;
+					background-color: var(--bg-color);				}
+			}
+		</style>
+
+		<div id="label">CO-OP RUN </div>
+
+		<div id="info">
+			<div id="info-name">[[calcConcatenatedRunners(runners)]]</div>
+			<div id="info-status" class$="[[calcRunnerStatusClass(results)]]">
+				[[calcRunnerStatus(results)]]
+			</div>
+		</div>
+
+		<div id="buttons">
+			<paper-button
+				raised
+				class="green"
+				on-tap="finish"
+				hidden="[[calcFinishHidden(results)]]">
+				<iron-icon src="[[importPath]]/img/flag-checkered.svg"></iron-icon>
+				&nbsp;Finish
+			</paper-button>
+
+			<paper-button
+				raised
+				class="yellow"
+				on-tap="resume"
+				hidden="[[calcResumeHidden(results)]]">
+				<iron-icon icon="undo"></iron-icon>
+				&nbsp;Resume
+			</paper-button>
+
+			<paper-button
+				raised
+				class="gray"
+				on-tap="forfeit"
+				hidden="[[calcForfeitHidden(results)]]">
+				<iron-icon icon="cancel"></iron-icon>
+				&nbsp;Forfeit
+			</paper-button>
+
+			<paper-button
+				raised
+				class="purple"
+				on-tap="editTime"
+				disabled="[[calcEditDisabled(results)]]">
+				<iron-icon icon="editor:mode-edit"></iron-icon>
+				&nbsp;Edit
+			</paper-button>
+		</div>
+	</template>
+
+	<script src="gdq-timekeeper-coop.js" type="module"></script>
+</dom-module>

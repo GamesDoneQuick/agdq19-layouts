@@ -1,0 +1,84 @@
+<link rel="import" href="../dash-host/dash-host-styles.html">
+<link rel="import" href="dash-incidents-creator.html">
+<link rel="import" href="dash-incidents-list.html">
+
+<dom-module id="dash-incidents">
+	<template>
+		<style include="dash-host-styles">
+			:host {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				padding: 32px;
+			}
+
+			#guidelines {
+				@apply --layout-flex-none;
+				font-size: 20px;
+				margin-top: 19px;
+				padding: 16px 32px;
+				padding-left: 4px;
+			}
+
+			#guidelines-title {
+				font-weight: 500;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			#left {
+				@apply --layout-vertical;
+			}
+
+			.column {
+				height: 100%;
+				width: 616px;
+			}
+
+			.column {
+				margin: 0 6px;
+			}
+
+			.column:first-child {
+				margin-left: 0;
+			}
+
+			.column:last-child {
+				margin-right: 0;
+			}
+
+			li {
+				margin: 14px 0;
+			}
+
+			li:first-of-type {
+				margin-top: 0;
+			}
+
+			li:last-of-type {
+				margin-bottom: 0;
+			}
+
+			dash-incidents-creator {
+				@apply --layout-flex;
+			}
+		</style>
+
+		<div id="left" class="column">
+			<dash-incidents-creator class="material"></dash-incidents-creator>
+
+			<div id="guidelines" class="material">
+				<div id="guidelines-title">Guidelines</div>
+
+				<ol>
+					<li>When in doubt, create an incident. Better for staff to respond to a false alarm than it is to not be aware of a situation that becomes serious.</li>
+					<li>When writing an incident, be descriptive but concise. It's better to take 30 seconds and omit details than it is to take 5 minutes and capture everything.</li>
+					<li>If your incident isn’t acknowledged immediately, DO NOT make another one. The system will continue attempting to contact the appropriate parties and escalate if necessary.</li>
+				</ol>
+			</div>
+		</div>
+
+		<dash-incidents-list class="material column"></dash-incidents-list>
+	</template>
+
+	<script src="dash-incidents.js" type="module"></script>
+</dom-module>

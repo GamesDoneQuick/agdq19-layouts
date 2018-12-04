@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LttP Tracker</title>
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<script>
+		{
+			const links = [
+				'elements/molecules/gdq-lttp-tracker/gdq-lttp-tracker.html'
+			];
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+	<custom-style>
+		<style include="iron-flex iron-positioning">
+			body {
+				overflow: hidden;
+			}
+
+			gdq-lttp-tracker {
+				@apply --layout-flex;
+			}
+		</style>
+	</custom-style>
+</head>
+<body class="fullbleed vertical layout">
+	<gdq-lttp-tracker></gdq-lttp-tracker>
+</body>
+</html>

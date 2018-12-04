@@ -1,0 +1,104 @@
+<link rel="import" href="../../../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../../bower_components/paper-styles/element-styles/paper-material-styles.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/elements/interfaces/ui-panel-label/ui-panel-label.html">
+<link rel="import" href="../../../../shared/elements/interfaces/ui-rundown/ui-rundown.html">
+<link rel="import" href="../../../../shared/style/gdq-checkbox-style.html">
+
+<dom-module id="dash-audio">
+	<template>
+		<style include="paper-material-styles gdq-checkbox-style">
+			:host {
+				display: block;
+				max-width: 448px;
+				font-family: Roboto, sans-serif;
+				background-color: #dedede;
+				padding: 16px;
+			}
+
+			#checklistStatus {
+				width: 100%;
+				height: 49px;
+				font-size: 36px;
+				font-weight: 500;
+				text-transform: uppercase;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+			}
+
+			#stopwatch {
+				text-align: center;
+				font-variant-numeric: tabular-nums;
+				-moz-font-feature-settings: "tnum";
+				-webkit-font-feature-settings: "tnum";
+				font-feature-settings: "tnum";
+			}
+
+			#stopwatch-time {
+				font-size: 100px;
+				font-weight: 700;
+			}
+
+			#currentRun {
+				text-align: center;
+				padding-bottom: 18px;
+			}
+
+			#currentRun-name {
+				font-size: 36px;
+				font-weight: 500;
+				line-height: 43px;
+				margin-bottom: 12px;
+				padding: 0 16px;
+			}
+
+			#checklistLabel {
+				margin-bottom: 21px;
+			}
+
+			.card {
+				background-color: white;
+				@apply --paper-material;
+				@apply --paper-material-elevation-1;
+			}
+
+			paper-checkbox {
+				margin-left: 16px;
+				margin-right: 16px;
+				font-weight: bold;
+			}
+		</style>
+
+		<div class="card" style="padding-top: 8px; margin-bottom: 16px;">
+			<div id="checklistStatus"></div>
+
+			<div id="stopwatch">
+				<div id="stopwatch-time">[[stopwatchTime]]</div>
+			</div>
+
+			<div id="currentRun">
+				<div id="currentRun-name"></div>
+				<div id="currentRun-runners">[[calcRunnersString(runners)]]</div>
+			</div>
+		</div>
+
+		<div class="card" style="padding-top: 16px; padding-bottom: 26px; margin-bottom: 16px;">
+			<ui-panel-label id="checklistLabel">Audio Checklist</ui-panel-label>
+
+			<template is="dom-repeat" items="[[audioEngineerDuties]]" mutable-data>
+				<paper-checkbox
+					category="audioEngineerDuties"
+					checked="[[item.complete]]">
+					[[item.name]]
+				</paper-checkbox>
+			</template>
+		</div>
+
+		<ui-rundown class="card" style="padding-top: 16px; padding-bottom: 6px;"></ui-rundown>
+	</template>
+
+	<script src="dash-audio.js" type="module"></script>
+</dom-module>

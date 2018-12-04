@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="import" href="../bower_components/polymer/lib/elements/custom-style.html">
+	<link rel="import" href="../bower_components/shadycss/apply-shim.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
+	<custom-style>
+		<style>
+			body {
+				margin-right: 24px;
+				@apply --layout-vertical;
+				@apply --layout-center;
+				@apply --layout-flex-none;
+			}
+
+			label {
+				text-transform: uppercase;
+				font-size: 12px;
+				font-weight: bold;
+				margin-bottom: 0;
+				pointer-events: none;
+				user-select: none;
+				white-space: nowrap;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<label for="toggle">Enable Milestone Tracker</label>
+	<paper-toggle-button id="toggle"></paper-toggle-button>
+	<script src="record-tracker.js" type="module"></script>
+</body>
+</html>

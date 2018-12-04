@@ -1,0 +1,33 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"status": {
+			"type": "string",
+			"default": "disconnected",
+			"enum": ["connected", "connecting", "disconnected", "error"]
+		},
+		"siteUrl": {
+			"type": "string",
+			"default": "https://bingosync.com"
+		},
+		"socketUrl": {
+			"type": "string",
+			"default": "wss://sockets.bingosync.com"
+		},
+		"playerName": {
+			"type": "string",
+			"default": "NodeCG"
+		},
+		"roomCode": {
+			"type": "string",
+			"default": ""
+		},
+		"passphrase": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"required": ["status", "siteUrl", "socketUrl", "playerName", "roomCode", "passphrase"]
+}

@@ -1,0 +1,67 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="dash-host-bid-option">
+	<template>
+		<style>
+			:host {
+				font-weight: 400;
+				font-size: 18px;
+				@apply --layout-flex-none;
+			}
+
+			/* Bold the name of the winning option. */
+			:host([index="0"]) {
+				font-weight: 600;
+			}
+
+			#text {
+				margin-top: 14px;
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+			}
+
+			#name {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				@apply --layout-flex;
+			}
+
+			#total {
+				margin-left: 1em;
+				@apply --layout-flex-none;
+			}
+
+			#meter {
+				position: relative;
+				height: 7px;
+				width: 100%;
+				margin-top: 3px;
+				background-color: #D8D8D8;
+			}
+
+			#meter-fill {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #8560a8;
+				transform: scaleX(0);
+				transform-origin: left;
+			}
+		</style>
+
+		<div id="text">
+			<div id="name" title="[[option.name]]">[[option.name]]</div>
+			<div id="total">[[option.total]]</div>
+		</div>
+
+		<div id="meter">
+			<div id="meter-fill" style="[[calcOptionMeterFillStyle(bid, option)]]"></div>
+		</div>
+	</template>
+
+	<script src="dash-host-bid-option.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,32 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="gdq-omnibar-list">
+	<template>
+		<style>
+			:host {
+				width: 100%;
+				height: 100%;
+				min-width: 1px;
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				@apply --layout-start;
+			}
+
+			#content {
+				height: 100%;
+				@apply --layout-horizontal;
+				@apply --layout-flex-none;
+			}
+
+			#content ::slotted(:not(:last-child)) {
+				margin-right: var(--gdq-omnibar-list-margin-size);
+			}
+		</style>
+
+		<div id="content">
+			<slot id="contentSlot"></slot>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-list.js" type="module"></script>
+</dom-module>

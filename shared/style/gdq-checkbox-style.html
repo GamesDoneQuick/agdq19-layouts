@@ -1,0 +1,43 @@
+<dom-module id="gdq-checkbox-style">
+	<template>
+		<style>
+			paper-checkbox {
+				align-items: center;
+				border-radius: 3px;
+				border: 1px solid black;
+				display: flex;
+				height: 35px;
+				margin-top: 5px;
+				padding: 0 12px;
+				--paper-checkbox-checked-color: #169b14;
+				--paper-checkbox-label: {
+					user-select: none;
+				}
+			}
+
+			paper-checkbox.non-interactive {
+				pointer-events: none;
+				background-color: #e7e7e7;
+				border: 1px solid transparent;
+				--paper-checkbox-unchecked-background-color: white;
+				--paper-checkbox-label-color: black;
+				--paper-checkbox-label-spacing: 0;
+				--paper-checkbox-label: {
+					margin-left: 8px;
+				}
+			}
+
+			paper-checkbox.has-tooltip {
+				--paper-checkbox-label: {
+					margin-left: 8px;
+					border-bottom: 1px dashed #999;
+				}
+			}
+
+			paper-checkbox[checked] {
+				background-color: #9bd470;
+				border: 1px solid transparent;
+			}
+		</style>
+	</template>
+</dom-module>

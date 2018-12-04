@@ -1,0 +1,46 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
+
+<dom-module id="atom-gradient-text">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				display: block;
+			}
+
+			#shadow {
+				color: transparent;
+				text-shadow: var(--atom-gradient-text-shadow, 0 0 18px rgba(58, 216, 255, 0.8));
+			}
+
+			#gradientFill {
+				top: 0;
+				position: absolute;
+				color: transparent;
+				--sc-fitted-text-content: {
+					background-color: #00DEFF;
+					background-image: var(--atom-gradient-text-gradient, linear-gradient(
+						180deg,
+						#93FFE4 0%,
+						#00ADFD 100%
+					));
+				}
+			}
+
+			:host([align="left"]) #gradientFill {
+				left: 0;
+			}
+
+			:host([align="right"]) #gradientFill {
+				right: 0;
+			}
+		</style>
+
+		<sc-fitted-text align="[[align]]" text="[[text]]" max-width="[[maxWidth]]" id="shadow"></sc-fitted-text>
+		<sc-fitted-text align="[[align]]" text="[[text]]" max-width="[[maxWidth]]" id="gradientFill"></sc-fitted-text>
+	</template>
+
+	<script src="atom-gradient-text.js" type="module"></script>
+</dom-module>

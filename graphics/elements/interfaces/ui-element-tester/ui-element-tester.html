@@ -1,0 +1,62 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/web-animations-js/web-animations-next-lite.min.html">
+
+<dom-module id="ui-element-tester">
+	<template>
+		<style>
+			:host {
+				margin: 8px;
+				@apply --layout-vertical;
+			}
+
+			#controls {
+				margin-top: 8px;
+				padding: 0 4px;
+				background: #ebebeb;
+				border-radius: 3px;
+				box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);
+				min-width: 200px;
+				@apply --element-tester-controls;
+				@apply --layout-horizontal;
+				@apply --layout-wrap;
+			}
+
+			.control {
+				width: 50%;
+				box-sizing: border-box;
+				padding: 0 4px;
+			}
+
+			.prefix {
+				margin-right: 8px;
+			}
+
+			.prefix-color {
+				font-family: monospace;
+			}
+
+			paper-item {
+				cursor: pointer;
+			}
+
+			paper-input[type="checkbox"] {
+				cursor: pointer;
+				user-select: none;
+			}
+		</style>
+
+		<div id="element">
+			<slot id="elementSlot"></slot>
+		</div>
+
+		<div id="controls"></div>
+	</template>
+
+	<script src="ui-element-tester.js" type="module"></script>
+</dom-module>

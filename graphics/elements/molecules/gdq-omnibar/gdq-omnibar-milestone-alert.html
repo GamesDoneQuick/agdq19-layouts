@@ -1,0 +1,54 @@
+<link rel="import" href="../../../../bower_components/html-echo/html-echo.html">
+
+<dom-module id="gdq-omnibar-milestone-alert">
+	<template strip-whitespace>
+		<style>
+			:host {
+				display: block;
+				font-weight: 500;
+			}
+
+			.layer {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				text-transform: uppercase;
+				will-change: clip-path;
+				clip-path: inset(0 100% 0 0%);
+				color: black;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			.teal {
+				background-color: #00FFFF;
+			}
+
+			.green {
+				background-color: #00FF00;
+			}
+
+			b {
+				font-weight: 700;
+			}
+		</style>
+
+		<div id="layer1" class="layer teal">
+			Milestone unlocked!&nbsp;<b>Surpassed [[displayingMilestone.name]]</b>
+		</div>
+
+		<div id="layer2" class="layer green">
+			[[_formatTotal(displayingMilestone.total)]]
+		</div>
+
+		<html-echo
+			id="layer3"
+			class="layer teal"
+			html="[[_calcLayer3Message(displayingMilestone.succeedingMilestone)]]">
+		</html-echo>
+	</template>
+
+	<script src="gdq-omnibar-milestone-alert.js" type="module"></script>
+</dom-module>

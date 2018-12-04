@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"type": "array",
+	"minItems": 5,
+	"maxItems": 5,
+	"items": {
+		"type": "object",
+		"additionalProperties": false,
+		"properties": {
+			"name": {
+				"type": "string"
+			},
+			"title": {
+				"type": "string"
+			}
+		}
+	},
+
+	"default": [{
+		"name": "",
+		"title": ""
+	}, {
+		"name": "",
+		"title": ""
+	}, {
+		"name": "",
+		"title": ""
+	}, {
+		"name": "",
+		"title": ""
+	}, {
+		"name": "",
+		"title": "YOUR_HOST"
+	}]
+}

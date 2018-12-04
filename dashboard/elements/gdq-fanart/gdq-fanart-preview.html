@@ -1,0 +1,79 @@
+<link rel="import" href="../../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="gdq-fanart-preview">
+	<template>
+		<style>
+			:host {
+				@apply --layout-center-center;
+				@apply --layout-vertical;
+				background: rgba(0, 0, 0, 0.7);
+				box-sizing: border-box;
+				color: white;
+				height: 100vh;
+				left: 0;
+				padding: 32px;
+				position: fixed;
+				top: 0;
+				width: 100vw;
+				z-index: 100;
+			}
+
+			:host(:not([opened])) {
+				display: none;
+				pointer-events: none;
+			}
+
+			#main {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				margin-top: auto;
+			}
+
+			#main paper-icon-button {
+				width: 110px;
+				height: 110px;
+			}
+
+			#image {
+				max-width: 80vw;
+				max-height: 75vh;
+			}
+
+			#close {
+				@apply --layout-self-end;
+				margin-top: auto;
+				width: 80px;
+				height: 80px;
+			}
+		</style>
+
+		<div id="main">
+			<paper-icon-button
+				id="previous"
+				icon="hardware:keyboard-arrow-left"
+				disabled="[[_calcPreviousDisabled(_currentImageIndex)]]"
+				on-tap="previous">
+			</paper-icon-button>
+
+			<img id="image"
+				 src="[[_calcImageSrc(_tweet, _currentImageIndex)]]">
+
+			<paper-icon-button
+				id="next"
+				icon="hardware:keyboard-arrow-right"
+				disabled="[[_calcNextDisabled(_tweet, _currentImageIndex)]]"
+				on-tap="next">
+			</paper-icon-button>
+		</div>
+
+		<paper-icon-button
+			id="close"
+			icon="close"
+			on-tap="close">
+		</paper-icon-button>
+	</template>
+
+	<script src="gdq-fanart-preview.js" type="module"></script>
+</dom-module>

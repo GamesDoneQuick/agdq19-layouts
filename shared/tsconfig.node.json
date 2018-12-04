@@ -1,0 +1,17 @@
+{
+	"extends": "../tsconfig.base",
+	"compilerOptions": {
+		"module": "commonjs",
+		"rootDir": ".",
+		"outDir": "../dist/shared",
+		"composite": true,
+		"lib": ["dom", "es2017"],
+
+		// Extra output
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"inlineSourceMap": false
+	},
+	"include": ["lib/**/*.ts"]
+}

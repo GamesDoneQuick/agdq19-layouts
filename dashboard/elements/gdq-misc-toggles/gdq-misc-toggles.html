@@ -1,0 +1,50 @@
+<link rel="import" href="../../../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../../../bower_components/polymer/lib/utils/render-status.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="gdq-misc-toggles">
+	<template>
+		<style>
+			:host {
+				@apply --layout-around-justified;
+				@apply --layout-center;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+			}
+
+			label {
+				font-size: 12px;
+				font-weight: bold;
+				margin-bottom: 8px;
+				pointer-events: none;
+				text-align: center;
+				text-transform: uppercase;
+				user-select: none;
+				white-space: nowrap;
+			}
+
+			.group {
+				@apply --layout-center;
+				@apply --layout-vertical;
+			}
+		</style>
+
+		<div class="group">
+			<label for="milestoneToggle">Milestone<br/>Tracker</label>
+			<paper-toggle-button
+				id="milestoneToggle"
+				on-change="_handleMiletoneTrackerToggleChange">
+			</paper-toggle-button>
+		</div>
+
+		<div class="group">
+			<label for="uploadToggle">Auto-Upload<br/>Recordings</label>
+			<paper-toggle-button
+				id="uploadToggle"
+				on-change="_handleUploadToggleChange">
+			</paper-toggle-button>
+		</div>
+	</template>
+
+	<script src="gdq-misc-toggles.js" type="module"></script>
+</dom-module>

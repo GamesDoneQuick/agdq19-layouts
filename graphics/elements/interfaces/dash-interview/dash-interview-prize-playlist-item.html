@@ -1,0 +1,77 @@
+<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+
+<dom-module id="dash-interview-prize-playlist-item">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				@apply --layout-center;
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				min-height: 65px;
+			}
+
+			#checkbox {
+				--paper-checkbox-checked-color: #7D7D7D;
+				--paper-checkbox-checkmark-color: #C2C2C2;
+				--paper-checkbox-size: 30px;
+				margin-left: 16px;
+				margin-right: 4px;
+			}
+
+			#name {
+				@apply --layout-flex;
+				color: black;
+				font-size: 18px;
+				font-weight: 500;
+			}
+
+			#remove {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				height: 40px;
+				margin-left: 10px;
+				margin-right: 4px;
+				min-width: 0;
+				padding: 0;
+				width: 40px;
+			}
+
+			#remove-icon {
+				color: white;
+				height: 32px;
+				width: 32px;
+			}
+
+			/* Start [complete] styles. */
+			:host([complete]) #name {
+				color: #7D7D7D;
+				text-decoration: line-through;
+			}
+			/* End [complete] styles. */
+		</style>
+
+		<paper-checkbox
+			id="checkbox"
+			checked="[[complete]]"
+			on-checked-changed="_handleCheckboxChanged">
+		</paper-checkbox>
+
+		<div id="name" title="[[prize.description]]">
+			[[prize.description]]
+		</div>
+
+		<paper-button
+			id="remove"
+			class="red"
+			on-tap="removeFromPlaylist"
+			alt="Remove from playlist"
+			raised>
+			<iron-icon icon="remove" id="remove-icon"></iron-icon>
+		</paper-button>
+	</template>
+
+	<script src="dash-interview-prize-playlist-item.js" type="module"></script>
+</dom-module>

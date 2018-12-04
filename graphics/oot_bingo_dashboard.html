@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>OoT Bingo Dashboard</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="elements/interfaces/dash-ootbingo/dash-ootbingo.html">
+	<custom-style>
+		<style include="iron-flex iron-positioning">
+			body {
+				background-color: #434343;
+				padding: 16px;
+			}
+
+			dash-ootbingo {
+				@apply --layout-flex;
+			}
+		</style>
+	</custom-style>
+</head>
+	<body class="fullbleed vertical layout">
+		<dash-ootbingo></dash-ootbingo>
+	</body>
+</html>

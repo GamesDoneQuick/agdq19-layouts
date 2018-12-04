@@ -1,0 +1,49 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"days": {
+			"type": "number",
+			"default": 0
+		},
+		"hours": {
+			"type": "number",
+			"default": 0
+		},
+		"minutes": {
+			"type": "number",
+			"default": 0
+		},
+		"seconds": {
+			"type": "number",
+			"default": 0
+		},
+		"milliseconds": {
+			"type": "number",
+			"default": 0
+		},
+		"formatted": {
+			"type": "string",
+			"default": "00:00"
+		},
+		"raw": {
+			"type": "number",
+			"default": 0
+		},
+		"timestamp": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"required": [
+		"days",
+		"hours",
+		"minutes",
+		"seconds",
+		"milliseconds",
+		"formatted",
+		"raw",
+		"timestamp"
+	]
+}

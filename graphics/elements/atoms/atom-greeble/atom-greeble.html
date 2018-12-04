@@ -1,0 +1,53 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="atom-greeble">
+	<template>
+		<style>
+			:host {
+				display: block;
+				@apply --layout-vertical;
+			}
+
+			:host([align="left"]) {
+				padding-right: 1px;
+				@apply --layout-start;
+			}
+
+			:host([align="right"]) {
+				padding-left: 1px;
+				@apply --layout-end;
+			}
+
+			#topSquare {
+				margin-bottom: 1px;
+			}
+
+			#line {
+				width: 1px;
+				height: auto;
+				background-color: var(--atom-greeble-stroke-color);
+				@apply --layout-flex;
+			}
+
+			#bottomSquare {
+				margin-top: 1px;
+			}
+
+			.square {
+				width: 3px;
+				height: 3px;
+				border: 1px solid var(--atom-greeble-stroke-color);
+				background-color: var(--atom-greeble-fill-color);
+				box-sizing: border-box;
+				@apply --layout-flex-none;
+			}
+		</style>
+
+		<div id="topSquare" class="square"></div>
+		<div id="line"></div>
+		<div id="bottomSquare" class="square"></div>
+	</template>
+
+	<script src="atom-greeble.js" type="module"></script>
+</dom-module>

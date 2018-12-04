@@ -1,0 +1,41 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="gdq-omnibar-left-divider">
+	<template>
+		<style>
+			:host {
+				height: 100%;
+				@apply --layout-horizontal;
+			}
+
+			#thickLine {
+				width: 3px;
+				background: linear-gradient(180deg, #FFFFFF 0%, #555555 100%), #C4C4C4;
+				box-shadow: 2px 0 10px #FFFFFF;
+			}
+
+			#thinLine {
+				width: 1px;
+				margin-left: 1px;
+			}
+
+			#thinLine-top {
+				height: 32.72%;
+				background: linear-gradient(0deg, #888888 0%, #CCCCCC 100%);
+			}
+
+			#thinLine-bottom {
+				height: 67.28%;
+				background: linear-gradient(0deg, #888888 0%, #CCCCCC 100%);
+			}
+		</style>
+
+		<div id="thickLine"></div>
+		<div id="thinLine">
+			<div id="thinLine-top"></div>
+			<div id="thinLine-bottom"></div>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-left-divider.js" type="module"></script>
+</dom-module>

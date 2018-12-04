@@ -1,0 +1,38 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="gdq-break-header.html">
+<link rel="import" href="gdq-break-schedule-run.html">
+
+<dom-module id="gdq-break-schedule">
+	<template>
+		<style>
+			:host {
+				width: 729px;
+				@apply --layout-vertical;
+			}
+
+			#upNext {
+				margin-bottom: 0;
+			}
+
+			gdq-break-schedule-run {
+				padding-right: 40px;
+				opacity: 0;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<gdq-break-header text="UP_NEXT"></gdq-break-header>
+		<gdq-break-schedule-run id="upNext" up-next run="[[upNext]]"></gdq-break-schedule-run>
+
+		<gdq-break-header text="ON_DECK"></gdq-break-header>
+		<gdq-break-schedule-run run="[[_getArrayItem(onDeck, 0)]]"></gdq-break-schedule-run>
+		<gdq-break-schedule-run run="[[_getArrayItem(onDeck, 1)]]"></gdq-break-schedule-run>
+		<gdq-break-schedule-run run="[[_getArrayItem(onDeck, 2)]]"></gdq-break-schedule-run>
+	</template>
+
+	<script src="gdq-break-schedule.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,440 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+
+<dom-module id="gdq-run-editor">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				@apply --layout-center;
+			}
+
+			#title {
+				font-size: 24px;
+				font-weight: 500;
+				margin-bottom: 16px;
+			}
+
+			#run,
+			#runners {
+				@apply --layout-vertical;
+				padding: 16px;
+			}
+
+			#run {
+				@apply --layout-flex;
+				margin-right: 4px;
+				padding-left: 0;
+			}
+
+			#runners {
+				@apply --layout-flex-2;
+				border: 1px solid #C1C1C1;
+				margin-left: 4px;
+			}
+
+			#runners > :nth-child(1) paper-input {
+				--paper-input-container-focus-color: #32a7d3;
+				--paper-input-container-label: {
+					color: #32a7d3;
+				};
+			}
+
+			#runners > :nth-child(2) paper-input {
+				--paper-input-container-focus-color: #fa5959;
+				--paper-input-container-label: {
+					color: #fa5959;
+				};
+			}
+
+			#runners > :nth-child(3) paper-input {
+				--paper-input-container-focus-color: #24c55d;
+				--paper-input-container-label: {
+					color: #24c55d;
+				};
+			}
+
+			#runners > :nth-child(4) paper-input {
+				--paper-input-container-focus-color: #dd4dee;
+				--paper-input-container-label: {
+					color: #dd4dee;
+				};
+			}
+
+			#buttons {
+				margin-top: 16px;
+			}
+
+			#resetRun {
+				--paper-button: {
+					background-color: #C9513E;
+					color: white;
+				}
+			}
+
+			#applyChanges {
+				--paper-button: {
+					background-color: #5BA664;
+					color: white;
+				}
+			}
+
+			.row {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			.row > :not(:last-child) {
+				margin-right: 12px;
+			}
+
+			.row > :not(:first-child) {
+				margin-left: 12px;
+			}
+
+			.runner-buttons {
+				@apply --layout-horizontal;
+			}
+
+			.runner-buttons paper-button {
+				padding: 0;
+				min-width: 0;
+				width: 42px;
+				height: 42px;
+				--paper-button: {
+					color: white;
+					background-color: #645BA6;
+				}
+			}
+
+			paper-input {
+				@apply --layout-flex;
+				--paper-input-container-disabled: {
+					opacity: 1;
+					background-color: #ffb0b3;
+				}
+			}
+
+			paper-checkbox[disabled] {
+				background-color: #ffb0b3;
+			}
+		</style>
+
+		<div id="title">[[title]]</div>
+
+		<div class="row">
+			<div id="run">
+				<paper-input
+					label="Name"
+					value="{{name}}"
+				 	hidden$="[[calcHide('name', showingOriginal)]]"
+					always-float-label>
+				</paper-input>
+				<paper-input
+					label="Name"
+					value="[[originalValues.name]]"
+				 	hidden$="[[!calcHide('name', showingOriginal)]]"
+					always-float-label
+					disabled>
+				</paper-input>
+
+				<paper-input
+					label="Category"
+					value="{{category}}"
+				 	hidden$="[[calcHide('category', showingOriginal)]]"
+					always-float-label>
+				</paper-input>
+				<paper-input
+					label="Category"
+					value="[[originalValues.category]]"
+				 	hidden$="[[!calcHide('category', showingOriginal)]]"
+					always-float-label
+					disabled>
+				</paper-input>
+
+
+				<paper-input
+					label="Estimate"
+					value="{{estimate}}"
+				 	hidden$="[[calcHide('estimate', showingOriginal)]]"
+					always-float-label>
+				</paper-input>
+				<paper-input
+					label="Estimate"
+					value="[[originalValues.estimate]]"
+				 	hidden$="[[!calcHide('estimate', showingOriginal)]]"
+					always-float-label
+					disabled>
+				</paper-input>
+
+				<paper-input
+					label="Console"
+					value="{{console}}"
+				 	hidden$="[[calcHide('console', showingOriginal)]]"
+					always-float-label>
+				</paper-input>
+				<paper-input
+					label="Console"
+					value="[[originalValues.console]]"
+					hidden$="[[!calcHide('console', showingOriginal)]]"
+					always-float-label
+					disabled>
+				</paper-input>
+
+				<div class="row" style="align-items: center;">
+					<div>
+						<paper-input
+							label="Release Year"
+							value="{{releaseYear}}"
+					 		hidden$="[[calcHide('releaseYear', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Release Year"
+							value="[[originalValues.releaseYear]]"
+							hidden$="[[!calcHide('releaseYear', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div>
+						<paper-checkbox
+							checked="{{coop}}"
+							hidden$="[[calcHide('coop', showingOriginal)]]">
+							<span style="white-space: nowrap;">Co-op</span>
+						</paper-checkbox>
+						<paper-checkbox
+							checked="[[originalValues.coop]]"
+							hidden$="[[!calcHide('coop', showingOriginal)]]"
+							disabled>
+							<span style="white-space: nowrap;">Co-op</span>
+						</paper-checkbox>
+					</div>
+				</div>
+			</div>
+
+			<div id="runners">
+				<div class="row" data-index="0">
+					<div>
+						<paper-input
+							label="Runner"
+							always-float-label
+							value="{{runners.0.name}}"
+						 	hidden$="[[calcHide('runners.0.name', showingOriginal)]]">
+						</paper-input>
+						<paper-input
+							label="Runner"
+							value="[[originalValues.runners.0.name]]"
+							hidden$="[[!calcHide('runners.0.name', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div>
+						<paper-input
+							label="Twitch Channel"
+							value="{{runners.0.stream}}"
+						 	hidden$="[[calcHide('runners.0.stream', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Twitch Channel"
+						 	value="[[originalValues.runners.0.stream]]"
+							hidden$="[[!calcHide('runners.0.stream', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div class="runner-buttons">
+						<paper-button
+							class="runner-up-button"
+							on-tap="_moveRunnerUp"
+							raised
+							disabled>
+							<iron-icon icon="arrow-upward"></iron-icon>
+						</paper-button>
+						<paper-button
+							class="runner-down-button"
+							on-tap="_moveRunnerDown"
+							raised>
+							<iron-icon icon="arrow-downward"></iron-icon>
+						</paper-button>
+					</div>
+				</div>
+
+				<div class="row" data-index="1">
+					<div>
+						<paper-input
+							label="Runner 2"
+							value="{{runners.1.name}}"
+						 	hidden$="[[calcHide('runners.1.name', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Runner 2"
+							value="[[originalValues.runners.1.name]]"
+						 	hidden$="[[!calcHide('runners.1.name', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div>
+						<paper-input
+							label="Twitch Channel"
+							value="{{runners.1.stream}}"
+						 	hidden$="[[calcHide('runners.1.stream', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Twitch Channel"
+							value="[[originalValues.runners.1.stream]]"
+							hidden$="[[!calcHide('runners.1.stream', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div class="runner-buttons">
+						<paper-button
+							class="runner-up-button"
+							on-tap="_moveRunnerUp"
+							raised>
+							<iron-icon icon="arrow-upward"></iron-icon>
+						</paper-button>
+						<paper-button
+							class="runner-down-button"
+							on-tap="_moveRunnerDown"
+							raised>
+							<iron-icon icon="arrow-downward"></iron-icon>
+						</paper-button>
+					</div>
+				</div>
+
+				<div class="row" data-index="2">
+					<div>
+						<paper-input
+							label="Runner 3"
+							value="{{runners.2.name}}"
+							hidden$="[[calcHide('runners.2.name', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Runner 3"
+							value="[[originalValues.runners.2.name]]"
+							hidden$="[[!calcHide('runners.2.name', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div>
+						<paper-input
+							label="Twitch Channel"
+							value="{{runners.2.stream}}"
+						 	hidden$="[[calcHide('runners.2.stream', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Twitch Channel"
+						 	value="[[originalValues.runners.2.stream]]"
+						 	hidden$="[[!calcHide('runners.2.stream', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div class="runner-buttons">
+						<paper-button
+							class="runner-up-button"
+							on-tap="_moveRunnerUp"
+							raised>
+							<iron-icon icon="arrow-upward"></iron-icon>
+						</paper-button>
+						<paper-button
+							class="runner-down-button"
+							on-tap="_moveRunnerDown"
+							raised>
+							<iron-icon icon="arrow-downward"></iron-icon>
+						</paper-button>
+					</div>
+				</div>
+
+				<div class="row" data-index="3">
+					<div>
+						<paper-input
+							label="Runner 4"
+							value="{{runners.3.name}}"
+							hidden$="[[calcHide('runners.3.name', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Runner 4"
+							value="[[originalValues.runners.3.name]]"
+							hidden$="[[!calcHide('runners.3.name', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div>
+						<paper-input
+							label="Twitch Channel"
+							value="{{runners.3.stream}}"
+							hidden$="[[calcHide('runners.3.stream', showingOriginal)]]"
+							always-float-label>
+						</paper-input>
+						<paper-input
+							label="Twitch Channel"
+							value="[[originalValues.runners.3.stream]]"
+							hidden$="[[!calcHide('runners.3.stream', showingOriginal)]]"
+							always-float-label
+							disabled>
+						</paper-input>
+					</div>
+
+					<div class="runner-buttons">
+						<paper-button
+							class="runner-up-button"
+							on-tap="_moveRunnerUp"
+							raised>
+							<iron-icon icon="arrow-upward"></iron-icon>
+						</paper-button>
+						<paper-button
+							class="runner-down-button"
+							on-tap="_moveRunnerDown"
+							raised
+							disabled>
+							<iron-icon icon="arrow-downward"></iron-icon>
+						</paper-button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="buttons">
+			<paper-button
+				id="resetRun"
+				on-tap="resetRun"
+				on-mouseover="showOriginal"
+				on-mouseout="hideOriginal"
+				raised>
+				RESET DATA TO ORIGINAL
+			</paper-button>
+			<paper-button
+				id="applyChanges"
+				on-tap="applyChanges"
+				raised>
+				APPLY CHANGES
+			</paper-button>
+		</div>
+	</template>
+
+	<script src="gdq-run-editor.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,130 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../shared/style/gdq-checkbox-style.html">
+<link rel="import" href="gdq-checklist-recording.html">
+
+<dom-module id="gdq-checklist">
+	<template>
+		<style include="gdq-checkbox-style">
+			:host {
+				padding: 16px;
+				@apply --layout-vertical;
+			}
+
+			.header {
+				font-size: 13px;
+				font-weight: 500;
+				border-bottom: 1px solid black;
+				margin-bottom: 5px;
+				user-select: none;
+			}
+
+			.group {
+				@apply --layout-vertical;
+			}
+
+			#columns {
+				@apply --layout-horizontal;
+			}
+
+			#columns > * {
+				@apply --layout-flex;
+				margin: 0 7px;
+			}
+
+			#columns > :first-child {
+				margin-left: 0;
+			}
+
+			#columns > :last-child {
+				margin-right: 0;
+			}
+
+			#audioCheckboxWrapper {
+				cursor: not-allowed;
+			}
+
+			#recording {
+				margin-top: 5px;
+				@apply --layout-flex;
+			}
+
+			paper-tooltip {
+				margin-left: -8px;
+				max-width: 400px;
+				--paper-tooltip: {
+					font-size: 14px;
+				};
+			}
+
+			section {
+				@apply --layout-vertical;
+			}
+		</style>
+
+		<div id="columns">
+			<section>
+				<div class="header">Stream Tech Duties</div>
+				<div class="group">
+					<template is="dom-repeat" items="[[techStationDuties]]" mutable-data>
+						<paper-checkbox category="techStationDuties" checked="[[item.complete]]">[[item.name]]</paper-checkbox>
+					</template>
+
+					<div id="audioCheckboxWrapper">
+						<paper-checkbox
+							id="audioCheckbox"
+							class="non-interactive has-tooltip"
+							checked="[[audioReady]]">
+							Audio Engineer(s) Ready
+						</paper-checkbox>
+					</div>
+				</div>
+
+				<gdq-checklist-recording
+					id="recording"
+					category="special"
+					name="Cycle Recordings"
+					checked="[[recordingsCycled]]">
+				</gdq-checklist-recording>
+			</section>
+
+			<section>
+				<div class="header">Extra Content</div>
+				<div class="group horizontal">
+					<template is="dom-repeat" items="[[extraContent]]" mutable-data>
+						<paper-checkbox category="extraContent" checked="[[item.complete]]">[[item.name]]</paper-checkbox>
+					</template>
+				</div>
+
+				<div class="header" style="margin-top: 21px;">Stage Tech Duties</div>
+				<div class="group">
+					<template is="dom-repeat" items="[[stageTechDuties]]" mutable-data>
+						<paper-checkbox category="stageTechDuties" checked="[[item.complete]]">[[item.name]]</paper-checkbox>
+					</template>
+				</div>
+			</section>
+		</div>
+
+		<paper-tooltip
+			id="audioTooltip"
+			for="audioCheckboxWrapper"
+			position="right"
+			animation-delay="0">
+			Automatically checked when the Audio Engineer(s) have completed their own checklist.
+		</paper-tooltip>
+
+		<paper-tooltip
+			id="recordingTooltip"
+			for="recording"
+			position="right"
+			animation-delay="0">
+			Checking this box will<br/>automatically cycle the recordings.
+		</paper-tooltip>
+	</template>
+
+	<script src="gdq-checklist.js" type="module"></script>
+</dom-module>

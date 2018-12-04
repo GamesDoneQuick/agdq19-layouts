@@ -1,0 +1,77 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="dash-host-bid-option.html">
+<link rel="import" href="dash-host-styles.html">
+
+<dom-module id="dash-host-bid">
+	<template>
+		<style include="dash-host-styles iron-flex iron-flex-alignment">
+			:host {
+				display: block;
+				font-size: 20px;
+				font-weight: 500;
+				padding-bottom: 10px;
+				@apply --layout-flex-none;
+			}
+
+			:host(:first-of-type) {
+				padding-top: 4px;
+			}
+
+			:host(:last-of-type) {
+				padding-bottom: 4px;
+			}
+
+			#material {
+				padding: 12px;
+			}
+
+			#challengeProgress {
+				font-weight: bold;
+			}
+
+			.additionalOptions {
+				font-size: 16px;
+				margin-top: 8px;
+				margin-bottom: -4px;
+				text-align: right;
+				color: #2c92ff;
+			}
+
+			:host(:hover) .additionalOptions {
+				text-decoration: underline;
+			}
+
+			:host([closed]) #material {
+				background-color: #cfffcf;
+			}
+
+			:host([failed]) #material {
+				/* override [closed] style */
+				background-color: #ffe2e2;
+			}
+		</style>
+
+		<div id="material" class="material stroked">
+			<div>[[calcBidName(bid.description)]]</div>
+
+			<template is="dom-if" if="[[bidIsChallenge(bid)]]">
+				<div id="challengeProgress">[[bid.total]] / [[bid.goal]]</div>
+			</template>
+
+			<template is="dom-if" if="[[!bidIsChallenge(bid)]]">
+				<template is="dom-repeat" items="[[limitOptions(bid.options)]]" as="option">
+					<dash-host-bid-option bid="[[bid]]" option="[[option]]" index="[[index]]"></dash-host-bid-option>
+				</template>
+
+				<template is="dom-if" if="[[bidHasMoreThanThreeOptions(bid)]]">
+					<div class="additionalOptions">
+						Click to show [[calcNumAdditionalOptions(bid)]] additional option(s)
+					</div>
+				</template>
+			</template>
+		</div>
+	</template>
+
+	<script src="dash-host-bid.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,48 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../atoms/atom-gridmask-image/atom-gridmask-image.html">
+
+<dom-module id="gdq-sponsors">
+	<template>
+		<style>
+			:host {
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 100%;
+				padding: 20px;
+				border-style: solid;
+				border-width: 1px;
+				border-image: linear-gradient(
+					to bottom,
+					#85f8ff 0%,
+					#85f8ff 50%,
+					#85f8ff 100%
+				) 1;
+				box-sizing: border-box;
+				box-shadow: inset 0 0 10px rgba(133, 248, 255, 0.66);
+				background: repeating-linear-gradient(
+					45deg,
+					rgba(133, 248, 255, 0.1),
+					rgba(133, 248, 255, 0.1) 1px,
+					rgba(133, 248, 255, 0) 1px,
+					rgba(133, 248, 255, 0) 20px
+				), repeating-linear-gradient(
+					135deg,
+					rgba(133, 248, 255, 0.1),
+					rgba(133, 248, 255, 0.1) 1px,
+					rgba(133, 248, 255, 0) 1px,
+					rgba(133, 248, 255, 0) 20px
+				);
+			}
+
+			#image {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+
+		<atom-gridmask-image id="image"></atom-gridmask-image>
+	</template>
+
+	<script src="gdq-sponsors.js" type="module"></script>
+</dom-module>

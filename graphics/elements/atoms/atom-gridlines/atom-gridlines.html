@@ -1,0 +1,43 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="atom-gridlines">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				display: block;
+				height: 100%;
+				width: 100%;
+				--atom-gridline-grid-color-default: rgba(33, 97, 143, 0.35);
+				background-size: 10px 10px;
+				background-color: #050505;
+				background-image: linear-gradient(
+					0deg,
+					transparent 24%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 25%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 26%,
+					transparent 27%,
+					transparent 74%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 75%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 76%,
+					transparent 77%,
+					transparent
+				),
+				linear-gradient(90deg,
+					transparent 24%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 25%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 26%,
+					transparent 27%,
+					transparent 74%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 75%,
+					var(--atom-gridline-grid-color, var(--atom-gridline-grid-color-default)) 76%,
+					transparent 77%,
+					transparent
+				);
+			}
+		</style>
+	</template>
+
+	<script src="atom-gridlines.js" type="module"></script>
+</dom-module>

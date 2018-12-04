@@ -1,0 +1,51 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="atom-inner-glow-text">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+
+			#filterHolder {
+				position: absolute;
+				top: 0;
+				left: 0;
+				visibility: hidden;
+				z-index: -10;
+			}
+
+			#innerGlowEffectFlood {
+				flood-color: var(--atom-inner-glow-text-glow-color);
+				flood-opacity: var(--atom-inner-glow-text-glow-opacity, 1);
+			}
+
+			#text {
+				filter: url('#inset-shadow');
+			}
+		</style>
+
+		<svg id="filterHolder">
+			<!-- Adapted from https://www.xanthir.com/b4Yv0 -->
+			<filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+				<feComponentTransfer in=SourceAlpha>
+					<feFuncA type="table" tableValues="1 0" />
+				</feComponentTransfer>
+				<feGaussianBlur stdDeviation="0.5"/>
+				<feOffset dx="0" dy="0" result="offsetblur"/>
+				<feFlood id="innerGlowEffectFlood" result="color"/>
+				<feComposite in2="offsetblur" operator="in"/>
+				<feComposite in2="SourceAlpha" operator="in" />
+				<feMerge>
+					<feMergeNode in="SourceGraphic" />
+					<feMergeNode />
+				</feMerge>
+			</filter>
+		</svg>
+
+		<div id="text">[[text]]</div>
+	</template>
+
+	<script src="atom-inner-glow-text.js" type="module"></script>
+</dom-module>

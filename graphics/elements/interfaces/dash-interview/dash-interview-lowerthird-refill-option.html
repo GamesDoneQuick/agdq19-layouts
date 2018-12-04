@@ -1,0 +1,54 @@
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="dash-interview-lowerthird-refill-option">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				margin: 0 55px;
+				white-space: nowrap;
+				width: 280px;
+			}
+
+			#label {
+				font-size: 24px;
+				text-align: center;
+				text-transform: capitalize;
+				margin-bottom: 16px;
+			}
+
+			#button {
+				margin: 0;
+				margin-top: 21px;
+				height: 50px;
+				font-size: 24px;
+				font-weight: 900;
+				--paper-button: {
+					color: white;
+					background-color: #5BA664;
+				}
+			}
+
+			.name {
+				height: 41px;
+				background: #EBEBEB;
+				box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+				border-radius: 3px;
+				margin: 5px 0;
+				font-size: 18px;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+		</style>
+
+		<div id="label">[[type]] Lineup</div>
+
+		<template is="dom-repeat" items="[[names]]" as="name">
+			<div class="name">[[name]]</div>
+		</template>
+
+		<paper-button id="button" on-tap="accept" raised>Use [[type]]</paper-button>
+	</template>
+
+	<script src="dash-interview-lowerthird-refill-option.js" type="module"></script>
+</dom-module>

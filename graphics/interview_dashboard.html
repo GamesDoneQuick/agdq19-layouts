@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interview Dashboard</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<link rel="import" href="../bower_components/sc-data-binding-helpers/sc-data-binding-helpers.html">
+	<link rel="import" href="../shared/imports/svgjs.html">
+	<link rel="import" href="../shared/style/gdq-checkbox-style.html">
+	<link rel="import" href="../shared/style/gdq-fui-styles.html">
+	<link rel="import" href="../shared/style/gdq-text-styles.html">
+	<link rel="import" href="../shared/style/gdq-text-styles.html">
+	<link rel="import" href="../shared/style/gdq-ui-theme.html">
+	<script>
+		{
+			const links = [
+				'elements/interfaces/dash-interview/dash-interview.html'
+			];
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+
+	<custom-style>
+		<style include="iron-flex iron-positioning">
+			body {
+				background-color: #5D6465;
+				font-family: Roboto, sans-serif;
+			}
+
+			dash-interview {
+				@apply --layout-flex;
+			}
+		</style>
+	</custom-style>
+</head>
+	<body class="fullbleed vertical layout">
+		<dash-interview></dash-interview>
+	</body>
+</html>
+

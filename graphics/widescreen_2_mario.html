@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2 Player, Mario Maker Score Overlay</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="">
+	<script>
+		window.extraImports = [
+			'elements/atoms/atom-score-display/atom-score-display.html'
+		];
+	</script>
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+
+	<custom-style>
+		<style>
+			#score-left, #score-right {
+				bottom: 323px;
+			}
+
+			#score-left {
+				left: 726px;
+			}
+
+			#score-right {
+				right: 725px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<atom-score-display id="score-left" team-index="0"></atom-score-display>
+		<atom-score-display id="score-right" team-index="1"></atom-score-display>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

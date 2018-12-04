@@ -1,0 +1,156 @@
+<link rel="import" href="../../../../bower_components/html-echo/html-echo.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
+<link rel="import" href="../../../../shared/fonts/letter-gothic-std/import.html">
+
+<dom-module id="gdq-break-schedule-run">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+
+			:host(:not(:last-of-type)) {
+				margin-bottom: 10px;
+			}
+
+			#name {
+				width: 100%;
+				height: 38px;
+				background: rgba(214, 208, 255, 0.2);
+				border-style: solid;
+				border-width: 1px;
+				border-image: linear-gradient(
+					to bottom,
+					rgb(61, 200, 224) 0%,
+					rgba(255, 255, 255, 0) 100%
+				) 1;
+				box-sizing: border-box;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#name-text {
+				line-height: 1;
+				font-size: 22px;
+				color: #FFFFFF;
+				text-shadow: 0 0 18px #56CCF2,
+							 2px 2px 0 #000000;
+				margin-left: 15px;
+				margin-right: auto;
+				text-transform: uppercase;
+				font-style: italic;
+				font-weight: 600;
+			}
+
+			#name-greeble {
+				margin-right: 5px;
+				width: 12px;
+				height: 100%;
+				background: linear-gradient(
+					to bottom,
+					rgba(255, 255, 255, 0.4) 0%,
+					rgba(255, 255, 255, 0) 100%
+				);
+			}
+
+			#info {
+				width: 632px;
+				height: 23px;
+				box-sizing: border-box;
+				border: 1px solid #fff5ff;
+				border-top: 0;
+				border-right: 0;
+				margin-top: 14px;
+				@apply --layout-horizontal;
+			}
+
+			#info-category,
+			#info-runner {
+				position: relative;
+				top: -4px;
+				line-height: normal;
+				font-size: 18px;
+				text-align: center;
+				letter-spacing: -0.05em;
+				color: #FFFFFF;
+				padding: 0 24px;
+				font-family: "Letter Gothic Std";
+				white-space: nowrap;
+				text-transform: uppercase;
+			}
+
+			#info-runner {
+				max-width: 350px;
+			}
+
+			#bottomGreeble {
+				margin-top: -1px;
+			}
+
+			.info-divider {
+				width: 1px;
+				height: 22px;
+				background: #76f1fd;
+				@apply --layout-flex-none;
+			}
+
+			/* "Up Next" styles */
+			:host([up-next]) #name {
+				height: 49px;
+				background-color:  rgba(145, 145, 145, 0.3);
+				background-image: linear-gradient(
+					to bottom,
+					rgba(255, 246, 0, 0.15) -7.92%,
+					rgba(243, 233, 5, 0.125) 39.72%,
+					rgba(214, 231, 11, 0.125) 74.57%,
+					rgba(255, 246, 0, 0.25) 120.79%
+				);
+				border-image: linear-gradient(
+					to bottom,
+					rgba(255, 255, 0, 100) 0%,
+					rgba(255, 255, 0, 0) 100%
+				) 1;
+			}
+
+			:host([up-next]) #name-text {
+				font-size: 36px;
+				text-shadow: 0 0 18px rgba(255, 223, 58, 0.8),
+				2px 2px 0px #000000;
+			}
+
+			:host([up-next]) #name-greeble {
+				width: 26px;
+				background: linear-gradient(
+					to bottom,
+					rgba(249, 239, 0, 0.75) 0%,
+					rgba(249, 239, 0, 0) 100%
+				);
+			}
+			/* End "Up Next" styles */
+		</style>
+
+		<div id="name">
+			<sc-fitted-text
+				id="name-text"
+				max-width="620"
+				text="[[_formatRunName(run.name)]]"
+				align="left">
+			</sc-fitted-text>
+			<div id="name-greeble"></div>
+		</div>
+
+		<div id="info">
+			<sc-fitted-text id="info-category" text="[[run.category]]" align="left" max-width="302"></sc-fitted-text>
+			<div class="info-divider"></div>
+			<sc-fitted-text id="info-runner" align="left"></sc-fitted-text>
+			<div class="info-divider"></div>
+		</div>
+		<template is="dom-if" if="[[upNext]]">
+			<img id="bottomGreeble" src="[[importPath]]img/run-bottom-greeble.svg">
+		</template>
+	</template>
+
+	<script src="gdq-break-schedule-run.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,68 @@
+<link rel="import" href="../../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+
+<dom-module id="atom-ootbingo-board">
+	<template>
+		<style>
+			:host {
+				background: #434343;
+				border: 1px solid #00FFFF;
+				box-sizing: border-box;
+				display: grid;
+				font-size: 16px;
+				grid-auto-flow: row;
+				grid-gap: 4px;
+				grid-template-columns: repeat(5, 1fr);
+				grid-template-rows: repeat(5, 1fr);
+			}
+
+			:host([line-focused]) {
+				grid-auto-flow: column;
+				grid-template-columns: 1fr;
+			}
+
+			.cell {
+				@apply --layout-center-center;
+				@apply --layout-vertical;
+				background: #1D0013;
+				box-shadow: inset 0 0 25px rgba(95, 95, 95, 0.75);
+				padding: var(--atom-ootbingo-board-cell-padding, 8px);
+			}
+
+			.cell-text {
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: var(--atom-ootbingo-board-cell-line-clamp, 7);
+				color: white;
+				display: -webkit-box;
+				font-family: 'Source Code Pro', monospace;
+				font-weight: bold;
+				letter-spacing: -0.04em;
+				overflow: hidden;
+				text-align: center;
+				text-overflow: ellipsis;
+				word-break: break-word;
+				word-wrap: break-word;
+			}
+
+			.cell[complete] {
+				background: #005B1A;
+				box-shadow: inset 0 0 25px rgba(0, 199, 163, 0.75);
+			}
+		</style>
+
+		<nodecg-replicant id="boardRep" replicant-name="ootBingo:board" value="{{board}}"></nodecg-replicant>
+
+		<template is="dom-repeat" items="[[_calcCells(board.cells, board.selectedLine, board.lineFocused)]]" as="cell" mutable-data>
+			<div class="cell" complete$="[[_calcComplete(cell)]]" title="[[cell.name]]">
+				<div class="cell-text">
+					[[cell.name]]
+				</div>
+			</div>
+		</template>
+	</template>
+
+	<script src="atom-ootbingo-board.js" type="module"></script>
+</dom-module>

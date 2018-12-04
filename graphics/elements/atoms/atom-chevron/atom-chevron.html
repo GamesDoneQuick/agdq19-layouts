@@ -1,0 +1,43 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/imports/svgjs.html">
+
+<dom-module id="atom-chevron">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				display: block;
+			}
+
+			#fillTriangle {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				clip-path: polygon(0 0, 100% 50%, 0 100%);
+				background: var(--atom-chevron-background, transparent);
+				@apply --atom-chevron-fill-triangle;
+			}
+
+			svg {
+				position: relative;
+
+				/* Without this, the SVG appears in the wrong location when direction="left",
+				 * because of this commit to Chromium:
+				 * https://chromium.googlesource.com/chromium/src/+/dcb01178e8d36c9567f9b5ae3f7e814d42443327 */
+				transform-origin: 0 0 0;
+				@apply --atom-chevron-chevron;
+			}
+
+			:host([direction="left"]) #fillTriangle {
+				clip-path: polygon(100% 0, 0 50%, 100% 100%);
+			}
+		</style>
+
+		<div id="fillTriangle"></div>
+	</template>
+
+	<script src="atom-chevron.js" type="module"></script>
+</dom-module>

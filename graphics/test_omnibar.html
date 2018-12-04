@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Test Omnibar</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+	<link rel="import" href="../shared/fonts/source-code-pro/import.html">
+	<link rel="import" href="../shared/imports/gsap.html">
+	<link rel="import" href="elements/molecules/gdq-omnibar/gdq-omnibar.html">
+	<custom-style>
+		<style include="iron-positioning">
+			body {
+				@apply --layout-vertical;
+				@apply --layout-start;
+				opacity: 1;
+			}
+		</style>
+	</custom-style>
+</head>
+<body class="fullbleed">
+	<test-app></test-app>
+
+	<dom-module id="test-app">
+		<template>
+			<style include="iron-flex iron-flex-alignment">
+				:host {
+					@apply --layout-vertical;
+					margin: 8px;
+				}
+
+				#omnibar-wrapper {
+					background: gray;
+					padding: 14px;
+					margin-bottom: 4px;
+				}
+
+				#controls {
+					@apply --layout-vertical;
+				}
+
+				#controls vaadin-combo-box {
+					@apply --layout-flex;
+					margin-left: 6px;
+				}
+
+				#controls paper-icon-button {
+					margin: 0 0.5em;
+					align-self: flex-end;
+					@apply --layout-flex-none;
+				}
+
+				.controls-row {
+					@apply --layout-horizontal;
+				}
+
+				.controls-group {
+					@apply --layout-horizontal;
+					@apply --layout-flex;
+				}
+
+				.controls-row .controls-group {
+					border: 1px solid black;
+					border-bottom: 0;
+					border-top: 0;
+					padding: 0 8px;
+				}
+
+				.controls-row .controls-group:first-child {
+					border-left: 0;
+					padding-left: 0;
+				}
+
+				.controls-row .controls-group:last-child {
+					border-right: 0;
+					padding-right: 0;
+				}
+			</style>
+
+			<div id="omnibar-wrapper">
+				<gdq-omnibar id="omnibar" no-auto-loop skip-label-anims></gdq-omnibar>
+			</div>
+
+			<div id="controls">
+				<div class="controls-row">
+					<div class="controls-group">
+						<vaadin-combo-box
+							label="All Bids"
+							items="[[bids]]"
+							item-label-path="public"
+							item-value-path="id"
+							on-selected-item-changed="_selectedBidChanged"
+							selected-item="{{selectedBid}}">
+						</vaadin-combo-box>
+						<paper-icon-button
+							disabled="[[!selectedBid]]"
+							icon="refresh"
+							title="Replay selected bid"
+							on-tap="replaySelectedBid">
+						</paper-icon-button>
+					</div>
+
+					<div class="controls-group">
+						<vaadin-combo-box
+							label="All Prizes"
+							items="[[prizes]]"
+							item-label-path="name"
+							item-value-path="id"
+							on-selected-item-changed="_selectedPrizeChanged"
+							selected-item="{{selectedPrize}}">
+						</vaadin-combo-box>
+						<paper-icon-button
+							disabled="[[!selectedPrize]]"
+							icon="refresh"
+							title="Replay selected prize"
+							on-tap="replaySelectedPrize">
+						</paper-icon-button>
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<script>
+			const allBids = nodecg.Replicant('allBids');
+			const allPrizes = nodecg.Replicant('allPrizes');
+
+			class GdqBreakTestApp extends Polymer.Element {
+				static get is() {
+					return 'test-app';
+				}
+
+				static get properties() {
+					return {
+						bids: Array,
+						prizes: Array,
+						selectedBid: {
+							type: Object,
+							value: null
+						},
+						selectedPrize: {
+							type: Object,
+							value: null
+						}
+					};
+				}
+
+				ready() {
+					super.ready();
+
+					allBids.on('change', newVal => {
+						this.bids = newVal.slice(0);
+					});
+
+					allPrizes.on('change', newVal => {
+						this.prizes = newVal.slice(0);
+					});
+				}
+
+				showBid(bid) {
+					if (!bid) {
+						return;
+					}
+
+					const bidsArr = [bid];
+					if (bid.type === 'challenge') {
+						this.$.omnibar.showChallenges(bidsArr, {showClosed: true});
+					} else {
+						this.$.omnibar.showChoices(bidsArr, {showClosed: true});
+					}
+				}
+
+				showPrize(prize) {
+					if (!prize) {
+						return;
+					}
+
+					const prizesArr = [prize];
+					this.$.omnibar.showCurrentPrizes(prizesArr);
+				}
+
+				replaySelectedBid() {
+					this.showBid(this.selectedBid);
+				}
+
+				replaySelectedPrize() {
+					this.showPrize(this.selectedPrize);
+				}
+
+				_selectedBidChanged(e) {
+					const bid = e.detail.value;
+					this._showBidDebouncer = Polymer.Debouncer.debounce(
+						this._showBidDebouncer,
+						Polymer.Async.timeOut.after(50),
+						() => {
+							this.showBid(bid);
+						}
+					);
+				}
+
+				_selectedPrizeChanged(e) {
+					const prize = e.detail.value;
+					this._showPrizeDebouncer = Polymer.Debouncer.debounce(
+						this._showPrizeDebouncer,
+						Polymer.Async.timeOut.after(50),
+						() => {
+							this.showPrize(prize);
+						}
+					);
+				}
+			}
+
+			customElements.define(GdqBreakTestApp.is, GdqBreakTestApp);
+		</script>
+	</dom-module>
+</body>
+</html>

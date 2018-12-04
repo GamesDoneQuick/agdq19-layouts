@@ -1,0 +1,116 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../shared/lib/maybe-random.js">
+
+<dom-module id="gdq-omnibar-list-item">
+	<template>
+		<style>
+			:host {
+				height: 100%;
+				position: relative;
+				box-sizing: border-box;
+				@apply --layout-vertical;
+
+				/* Prep for animation. */
+				transform: translateX(20px);
+				opacity: 0;
+			}
+
+			#text {
+				position: relative;
+				height: 100%;
+				font-weight: 500;
+				padding: 0 10px;
+				@apply --layout-vertical;
+				@apply --layout-center-justified;
+				@apply --layout-flex;
+			}
+
+			#text > * {
+				position: relative;
+			}
+
+			#text-firstLine {
+				font-style: normal;
+				font-weight: normal;
+				line-height: normal;
+				font-size: 16px;
+				color: transparent;
+				text-shadow: 0 0 4px rgba(197, 189, 3, 0.2);
+				background-image: linear-gradient(
+					180deg,
+					#FFFFFF 0%,
+					#EEEEEE 100%
+				);
+				-webkit-background-clip: text;
+			}
+
+			#text-secondLine {
+				font-style: normal;
+				font-weight: normal;
+				line-height: normal;
+				font-size: 14px;
+				color: transparent;
+				text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+				background-image: linear-gradient(
+					180deg,
+					#95ECE9 0%,
+					#0EC1D5 100%
+				);
+				-webkit-background-clip: text;
+			}
+
+			.border {
+				position: relative;
+				width: 100%;
+				height: 4px;
+				@apply --layout-flex-none;
+			}
+
+			.border-body {
+				width: 100%;
+				height: 100%;
+				background-color: var(--gdq-omnibar-list-item-border-color, #02619c);
+				will-change: transform;
+				transform-origin: left;
+			}
+
+			.border-cap {
+				position: absolute;
+				top: 0;
+				width: 1px;
+				height: 100%;
+				background-color: var(--gdq-omnibar-list-item-border-cap-color, #0079ec);
+				will-change: transform;
+				transform-origin: left;
+				z-index: 1;
+			}
+
+			.border-cap:first-child {
+				left: 0;
+			}
+
+			.border-cap:last-child {
+				right: 0;
+			}
+		</style>
+
+		<div id="topBorder" class="border">
+			<div class="border-cap"></div>
+			<div class="border-body"></div>
+			<div class="border-cap"></div>
+		</div>
+
+		<div id="text">
+			<div id="text-firstLine">[[firstLine]]</div>
+			<div id="text-secondLine">[[secondLine]]</div>
+		</div>
+
+		<div id="bottomBorder" class="border">
+			<div class="border-cap"></div>
+			<div class="border-body"></div>
+			<div class="border-cap"></div>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-list-item.js" type="module"></script>
+</dom-module>

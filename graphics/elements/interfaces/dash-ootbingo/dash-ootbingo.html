@@ -1,0 +1,218 @@
+<link rel="import" href="../../../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/elements/interfaces/ui-toast/ui-toast.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="../../atoms/atom-ootbingo-board/atom-ootbingo-board.html">
+
+<dom-module id="dash-ootbingo">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				@apply --layout-horizontal;
+				font-family: Roboto, sans-serif;
+				--paper-input-container: {
+					--paper-input-container-color: #64FF6C;
+					--paper-input-container-focus-color: white;
+					--paper-input-container-input-color: white;
+				};
+			}
+
+			#board-wrapper {
+				@apply --layout-flex-none;
+				box-sizing: border-box;
+				display: grid;
+				grid-gap: 37px 47px;
+				grid-template-columns: 59px repeat(5, 1fr);
+				grid-template-rows: 50px repeat(5, 1fr) 50px;
+				height: 929px;
+				width: 1132px;
+			}
+
+			#form {
+				@apply --layout-vertical;
+				width: 549px;
+				margin-left: 20px;
+			}
+
+			#status {
+				color: white;
+				font-size: 16px;
+				font-weight: 500;
+				margin-left: 9px;
+			}
+
+			#status-actual {
+				text-transform: uppercase;
+			}
+
+			:host([status="connected"]) #status-actual {
+				color: #33FF00;
+			}
+
+			:host([status="disconnected"]) #status-actual,
+			:host([status="error"]) #status-actual {
+				color: #FF9393;
+			}
+
+			:host([status="connecting"]) #status-actual {
+				color: #FFEB00;
+			}
+
+			.lineSelector {
+				margin: 0;
+				min-width: 0;
+				padding: 0;
+				--paper-button: {
+					color: white;
+					background-color: #645BA6;
+				}
+			}
+
+			.lineSelector[selected] {
+				--paper-button: {
+					color: white;
+					background-color: #FF7522;
+				}
+			}
+
+			.buttonRow {
+				@apply --layout-horizontal;
+				margin: 5px 0;
+			}
+
+			.buttonRow > * {
+				@apply --layout-flex;
+			}
+
+			.buttonRow > :first-child {
+				margin-left: 0;
+			}
+
+			.buttonRow > :last-child {
+				margin-right: 0;
+			}
+		</style>
+
+		<nodecg-replicant id="boardRep" replicant-name="ootBingo:board" value="{{board}}"></nodecg-replicant>
+		<nodecg-replicant replicant-name="ootBingo:socket" value="{{socket}}"></nodecg-replicant>
+
+		<div id="board-wrapper">
+			<paper-button style="grid-row: 1; grid-column: 1" class="lineSelector" raised>TL-BR</paper-button>
+			<paper-button style="grid-row: 1; grid-column: 2" class="lineSelector" raised>COL1</paper-button>
+			<paper-button style="grid-row: 1; grid-column: 3" class="lineSelector" raised>COL2</paper-button>
+			<paper-button style="grid-row: 1; grid-column: 4" class="lineSelector" raised>COL3</paper-button>
+			<paper-button style="grid-row: 1; grid-column: 5" class="lineSelector" raised>COL4</paper-button>
+			<paper-button style="grid-row: 1; grid-column: 6" class="lineSelector" raised>COL5</paper-button>
+			<paper-button style="grid-row: 2; grid-column: 1" class="lineSelector" raised>ROW1</paper-button>
+			<paper-button style="grid-row: 3; grid-column: 1" class="lineSelector" raised>ROW2</paper-button>
+			<paper-button style="grid-row: 4; grid-column: 1" class="lineSelector" raised>ROW3</paper-button>
+			<paper-button style="grid-row: 5; grid-column: 1" class="lineSelector" raised>ROW4</paper-button>
+			<paper-button style="grid-row: 6; grid-column: 1" class="lineSelector" raised>ROW5</paper-button>
+			<paper-button style="grid-row: 7; grid-column: 1" class="lineSelector" raised>BL-TR</paper-button>
+
+			<paper-button
+				style="grid-row: 7; grid-column: 3 / 6"
+				class="green"
+				on-tap="toggleLineFocus"
+				raised>
+				[[_calcFocusToggleText(board.lineFocused)]]
+			</paper-button>
+
+			<atom-ootbingo-board
+				id="board"
+				style="grid-row: 2 / 7; grid-column: 2 / 7">
+			</atom-ootbingo-board>
+		</div>
+
+		<div id="form">
+			<div id="status">
+				Current Status: <span id="status-actual">[[status]]</span>
+			</div>
+
+			<paper-input
+				id="siteUrl"
+				label="Site URL"
+				value="[[socket.siteUrl]]"
+				disabled="[[_submitting]]">
+			</paper-input>
+
+			<paper-input
+				id="socketUrl"
+				label="Socket URL"
+				value="[[socket.socketUrl]]"
+				disabled="[[_submitting]]">
+			</paper-input>
+
+			<paper-input
+				id="playerName"
+				label="Player Name"
+				type="playerName"
+				value="[[socket.playerName]]"
+				disabled="[[_submitting]]">
+			</paper-input>
+
+			<paper-input
+				id="roomCode"
+				label="Room Code"
+				value="[[socket.roomCode]]"
+				disabled="[[_submitting]]">
+			</paper-input>
+
+			<paper-input
+				id="passphrase"
+				label="Password"
+				type="password"
+				value="[[socket.passphrase]]"
+				disabled="[[_submitting]]">
+			</paper-input>
+
+			<div class="buttonRow">
+				<paper-button
+					id="submit"
+					class="green"
+					on-tap="submit"
+					disabled="[[_submitting]]"
+					raised>
+					Submit
+				</paper-button>
+
+				<paper-button
+					id="defaults"
+					class="green"
+					on-tap="defaults"
+					disabled="[[_submitting]]"
+					raised>
+					Defaults
+				</paper-button>
+			</div>
+
+			<div class="buttonRow">
+				<paper-button
+					id="toggleCard"
+					class$="[[_calcToggleClass(board.cardHidden)]]"
+					on-tap="toggleCard"
+					raised>
+					[[_calcToggleCardText(board.cardHidden)]]
+				</paper-button>
+
+				<paper-button
+					id="toggleEmbiggen"
+					class$="[[_calcToggleClass(board.embiggen)]]"
+					on-tap="toggleEmbiggen"
+					raised>
+					[[_calcToggleEmbiggenText(board.embiggen)]]
+				</paper-button>
+			</div>
+		</div>
+
+		<ui-toast id="toast"></ui-toast>
+	</template>
+
+	<script src="dash-ootbingo.js" type="module"></script>
+</dom-module>

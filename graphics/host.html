@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Host Dashboard</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<link rel="import" href="../shared/style/gdq-checkbox-style.html">
+	<link rel="import" href="../shared/style/gdq-scroll-style.html">
+	<link rel="import" href="../shared/style/gdq-text-styles.html">
+	<link rel="import" href="../shared/style/gdq-ui-theme.html">
+	<script>
+		{
+			const links = [
+				'elements/interfaces/dash-host/dash-host.html'
+			];
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+	<custom-style>
+		<style include="iron-flex iron-positioning">
+			body {
+				background-color: #ebebeb;
+			}
+
+			dash-host {
+				@apply --layout-flex;
+			}
+		</style>
+	</custom-style>
+</head>
+<body class="fullbleed vertical layout">
+	<dash-host></dash-host>
+</body>
+</html>

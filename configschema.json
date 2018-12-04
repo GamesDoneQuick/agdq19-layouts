@@ -1,0 +1,246 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+
+	"properties": {
+		"useMockData": {
+			"type": "boolean",
+			"description": "Whether or not to use mock data instead of the real tracker API. If true, pulls from Lange's Dropbox.",
+			"default": false
+		},
+		"displayDuration": {
+			"type": "number",
+			"description": "How long (in seconds) most things show on-screen for.",
+			"default": 10
+		},
+		"omnibar": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"scrollHoldDuration": {
+					"type": "number",
+					"description": "How long (in seconds) to hold items during a scroll.",
+					"default": 7
+				}
+			}
+		},
+		"osc": {
+			"type": ["object", "null"],
+			"properties": {
+				"address": {
+					"type": "string",
+					"description": "The IP address or hostname of a Behringer X32 digital mixer."
+				},
+				"gameAudioChannels": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"sd": {
+								"type": ["integer", "null"]
+							},
+							"hd": {
+								"type": ["integer", "null"]
+							}
+						}
+					},
+					"minItems": 4,
+					"maxItems": 4
+				}
+			},
+			"required": ["address", "gameAudioChannels"],
+			"default": null
+		},
+		"twitter": {
+			"type": ["object", "null"],
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"default": true
+				},
+				"websocketUrl": {
+					"type": "string",
+					"description": "The URL of your deployment of of https://github.com/GamesDoneQuick/twitter-socket.io-adapter."
+				},
+				"preSharedKey": {
+					"type": "string",
+					"description": "The password used to authenticate with your deployment of https://github.com/GamesDoneQuick/twitter-socket.io-adapter."
+				},
+				"debug": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			"required": ["websocketUrl", "preSharedKey"],
+			"default": null
+		},
+		"twitch": {
+			"type": ["object", "null"],
+			"additionalProperties": false,
+			"properties": {
+				"channelId": {
+					"type": "string",
+					"description": "The ID (not name!) of the Twitch channel to operate on."
+				},
+				"oauthToken": {
+					"type": "string",
+					"description": "The OAuth token to use to make API requests."
+				},
+				"titleTemplate": {
+					"type": "string",
+					"description": "The template used to set the title of the stream whenever the current run changes."
+				},
+				"clientId": {
+					"type": "string",
+					"description": "The Client ID of the Twitch API application to use when sending API requests."
+				},
+				"bitsOffset": {
+					"type": "number",
+					"description": "The amount of bits to subtract from the total shown.",
+					"default": 0
+				},
+				"debug": {
+					"type": "boolean",
+					"description": "If true, enables additional debug logging for some Twitch systems.",
+					"default": false
+				}
+			},
+			"required": ["channelId", "oauthToken", "clientId", "bitsOffset", "debug"],
+			"default": null
+		},
+		"footpedal": {
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"default": false
+				},
+				"buttonId": {
+					"type": "number",
+					"default": 31
+				}
+			}
+		},
+		"firebase": {
+			"type": ["object", "null"],
+			"description": "Credentials used to log into Firebase, which is what hosts Lightning Round.",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"project_id": {
+					"type": "string"
+				},
+				"private_key_id": {
+					"type": "string"
+				},
+				"private_key": {
+					"type": "string"
+				},
+				"client_email": {
+					"type": "string"
+				},
+				"client_id": {
+					"type": "string"
+				},
+				"auth_uri": {
+					"type": "string"
+				},
+				"token_uri": {
+					"type": "string"
+				},
+				"auth_provider_x509_cert_url": {
+					"type": "string"
+				},
+				"client_x509_cert_url": {
+					"type": "string"
+				}
+			},
+			"required": ["project_id", "private_key", "client_email"],
+			"additionalProperties": false,
+			"default": null
+		},
+		"tracker": {
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"eventId": {
+					"type": "number",
+					"default": 24
+				}
+			},
+			"description": "Login information for the private areas of the tracker API.",
+			"required": ["username", "password", "eventId"]
+		},
+		"youtubeUploadScriptPath": {
+			"type": "string"
+		},
+		"donationSocketUrl": {
+			"type": "string"
+		},
+		"casparcg": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"host": {
+					"type": "string",
+					"default": "localhost"
+				},
+				"port": {
+					"type": "number",
+					"default": 5250
+				},
+				"lockSecret": {
+					"type": "string",
+					"default": ""
+				},
+				"localOscPort": {
+					"type": "number",
+					"default": 6250
+				},
+				"adsPath": {
+					"type": "string",
+					"default": "casparcg/server/media"
+				},
+				"debug": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			"required": ["host", "port", "lockSecret", "localOscPort", "adsPath"]
+		},
+		"nowPlayingKey": {
+			"type": "string"
+		},
+		"victorOps": {
+			"type": ["object", "null"],
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"default": true
+				},
+				"apiId": {
+					"type": "string"
+				},
+				"apiKey": {
+					"type": "string"
+				},
+				"restEndpoint": {
+					"type": "string",
+					"description": "https://help.victorops.com/knowledge-base/victorops-restendpoint-integration/"
+				}
+			},
+			"description": "API credentials for the optional VictorOps integration..",
+			"required": ["enabled", "apiId", "apiKey", "restEndpoint"],
+			"default": null
+		}
+	},
+
+	"required": ["tracker"]
+}

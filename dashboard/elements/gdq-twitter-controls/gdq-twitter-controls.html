@@ -1,0 +1,86 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../shared/elements/interfaces/ui-panel-label/ui-panel-label.html">
+<link rel="import" href="tweet-item.html">
+
+<dom-module id="gdq-twitter-controls">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				@apply --layout-vertical;
+			}
+
+			#scrollWrapper {
+				margin: 10px;
+				padding-right: 12px;
+				overflow-y: scroll;
+				@apply --layout-flex;
+			}
+
+			#empty {
+				text-align: center;
+				border: 4px dashed #B7B7B7;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 24px;
+				box-sizing: border-box;
+			}
+
+			#cover {
+				position: absolute;
+				top: 29px;
+				left: 0;
+				width: 100%;
+				height: calc(100% - 29px);
+				background-color: rgba(0,0,0,0.85);
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			::-webkit-scrollbar-track {
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				border-radius: 5px;
+				background: #757575;
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+			}
+
+			::-webkit-scrollbar-thumb:window-inactive {
+				background: #b9b9b9;;
+			}
+		</style>
+
+		<ui-panel-label id="label">Twitter Overlay</ui-panel-label>
+
+		<div id="scrollWrapper">
+			<div id="tweets">
+				<template is="dom-repeat" items="[[tweets]]" as="tweet" sort="_sortTweets" mutable-data>
+					<tweet-item value="[[tweet]]"></tweet-item>
+				</template>
+			</div>
+			<div id="empty">There are no tweets in the queue.</div>
+		</div>
+
+		<div id="cover">
+			<p>This layout does not have a Twitter graphic.</p>
+		</div>
+	</template>
+
+	<script src="gdq-twitter-controls.js" type="module"></script>
+</dom-module>

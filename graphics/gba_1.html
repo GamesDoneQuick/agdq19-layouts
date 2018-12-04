@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GBA, 1 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style is="custom-style">
+			#lineone {
+				width: 333px;
+				height: 845px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				border-right: 1px solid #00ffff;
+			}
+
+			#linetwo {
+				width: 333px;
+				height: 91px;
+				position: absolute;
+				left: 0;
+				top: 100px;
+				background-color: #051113;
+				border-bottom: 1px solid #00ffff;
+			}
+
+			gdq-runner-nameplate {
+				top: 393px;
+				left: 10px;
+				width: 312px;
+			}
+
+			gdq-runinfo {
+				left: 0;
+				top: 0;
+				width: 333px;
+				height: 167px;
+				--gdq-runinfo-name-padding: 8px 16px;
+				--gdq-runinfo-misc-height: 43px;
+			}
+
+			gdq-timer {
+				left: 10px;
+				top: 440px;
+				height: 57px;
+				width: 312px;
+				font-size: 42px;
+				--gdq-timer-voffset: -1px;
+			}
+
+			gdq-tweet, gdq-sponsors {
+				bottom: 10px;
+				left: 10px;
+				width: 313px;
+				height: 330px;
+			}
+
+			gdq-tweet {
+				--gdq-tweet-body: {
+					font-size: 16px;
+				};
+			}
+
+			atom-tronlines {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				border-top: 1px solid #00ffff;
+			}
+
+			atom-gridlines {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 333px;
+				height: 100px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<atom-gridlines></atom-gridlines>
+		<atom-tronlines width="333" height="425"></atom-tronlines>
+		<div id="lineone"></div>
+		<div id="linetwo"></div>
+		<gdq-runinfo></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+		<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

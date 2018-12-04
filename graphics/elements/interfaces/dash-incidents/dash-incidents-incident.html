@@ -1,0 +1,141 @@
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../dash-host/dash-host-styles.html">
+
+<dom-module id="dash-incidents-incident">
+	<template>
+		<style include="dash-host-styles ">
+			:host {
+				@apply --layout-flex-none;
+				display: block;
+				font-size: 20px;
+				font-weight: 500;
+				white-space: nowrap;
+
+				--unacked-color: #FF8282;
+				--acked-color: #FFA800;
+				--resolved-color: #5BA664;
+			}
+
+			:host(:first-of-type) {
+				padding-top: 4px;
+			}
+
+			:host(:last-of-type) {
+				padding-bottom: 4px;
+			}
+
+			#material {
+				@apply --layout-horizontal;
+				font-size: 20px;
+				font-weight: 500;
+				height: 80px;
+				position: relative;
+				width: 576px;
+			}
+
+			#stoplight {
+				width: 18px;
+				height: 80px;
+			}
+
+			#details {
+				@apply --layout-center-justified;
+				@apply --layout-flex;
+				@apply --layout-vertical;
+				padding: 0 18px;
+			}
+
+			#details > div {
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+			}
+
+			#details-top {
+				margin-bottom: 9px;
+			}
+
+			#timestamp {
+				@apply --layout-flex-none;
+				margin-left: 0.5em;
+			}
+
+			#status {
+				@apply --layout-flex-none;
+				margin-right: 0.5em;
+				text-transform: uppercase;
+			}
+
+			#description,
+			#contact {
+				@apply --layout-flex;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			#contact {
+				text-align: right;
+			}
+
+			/* Begin unacked styles. */
+			:host([current-phase="unacked"]) #stoplight {
+				background-color: var(--unacked-color);
+			}
+
+			:host([current-phase="unacked"]) #status {
+				color: var(--unacked-color);
+			}
+
+			:host([current-phase="unacked"]) #contact {
+				color: var(--unacked-color);
+			}
+			/* End unacked styles. */
+
+			/* Begin acked styles. */
+			:host([current-phase="acked"]) #stoplight {
+				background-color: var(--acked-color);
+			}
+
+			:host([current-phase="acked"]) #status {
+				color: var(--acked-color);
+				margin-right: 0.25em;
+			}
+
+			:host([current-phase="acked"]) #contact {
+				text-align: left;
+			}
+			/* End acked styles. */
+
+			/* Begin resolved styles. */
+			:host([current-phase="resolved"]) #stoplight {
+				background-color: var(--resolved-color);
+			}
+
+			:host([current-phase="resolved"]) #status {
+				color: var(--resolved-color);
+			}
+
+			:host([current-phase="resolved"]) #contact {
+				text-align: left;
+			}
+			/* End resolved styles. */
+		</style>
+
+		<div id="material" class="material stroked">
+			<div id="stoplight"></div>
+
+			<div id="details">
+				<div id="details-top">
+					<div id="description">[[incident.entityDisplayName]]</div>
+					<div id="timestamp">[[_formatDate(incident.startTime)]]</div>
+				</div>
+
+				<div id="details-bottom">
+					<div id="status">[[_calcStatusText(incident.currentPhase)]]</div>
+					<div id="contact">[[_calcFormattedPageTarget(incident)]]</div>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<script src="dash-incidents-incident.js" type="module"></script>
+</dom-module>

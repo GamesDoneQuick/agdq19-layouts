@@ -1,0 +1,29 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/gdqpixel/import.html">
+
+<dom-module id="atom-tiny-alerts">
+	<template>
+		<style>
+			:host {
+				display: block;
+				position: relative;
+			}
+
+			.alert {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				clip-path: inset(0 50%);
+				color: black;
+				font-family: gdqpixel, monospace;
+				font-size: 12px;
+				height: 29px;
+				padding: 0 12px;
+				position: absolute;
+				will-change: transform, clip-path;
+			}
+		</style>
+	</template>
+
+	<script src="atom-tiny-alerts.js" type="module"></script>
+</dom-module>

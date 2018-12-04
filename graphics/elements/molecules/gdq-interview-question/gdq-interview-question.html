@@ -1,0 +1,34 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../molecules/gdq-tweet/gdq-tweet.html">
+
+<dom-module id="gdq-interview-question">
+	<template>
+		<style>
+			:host {
+				position: absolute;
+				width: 100%;
+				height: 200px;
+				bottom: 72px;
+				z-index: 2;
+				@apply --layout-vertical;
+				@apply --layout-center;
+			}
+
+			#tweet {
+				position: relative;
+				height: 100%;
+				width: 1200px;
+			}
+		</style>
+
+		<gdq-tweet
+			id="tweet"
+			bind-to-message="false"
+			label="SOCIAL_MEDIA_QUESTION"
+			background-opacity="0.8">
+		</gdq-tweet>
+	</template>
+
+	<script src="gdq-interview-question.js" type="module"></script>
+</dom-module>

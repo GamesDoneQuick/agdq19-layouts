@@ -1,0 +1,151 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../../../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="gdq-timekeeper-coop.html">
+<link rel="import" href="gdq-timekeeper-runner.html">
+
+<dom-module id="gdq-timekeeper">
+	<template>
+		<style include="iron-flex iron-flex-alignment gdq-ui-theme">
+			:host {
+				@apply --layout-vertical;
+				width: 100%;
+				font-family: 'roboto', sans-serif;
+				white-space: nowrap;
+				height: 447px;
+			}
+
+			:host([checklist-incomplete]) #timer {
+				background-color: #ff6d6b;
+				color: white;
+			}
+
+			:host([paused]) #timer {
+				background-color: #e99002;
+				color: white;
+			}
+
+			#timer {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-around-justified;
+				@apply --layout-flex-none;
+				font-weight: 700;
+				height: 105px;
+			}
+
+			#timer-time {
+				font-size: 42px;
+			}
+
+			#timer paper-button {
+				width: 128px;
+				height: 30px;
+				margin: 4px 3px;
+			}
+
+			#timer paper-button {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				font-size: 16px;
+				font-weight: bold;
+				padding: 0;
+			}
+
+			paper-dialog {
+				font-size: larger;
+			}
+
+			paper-dialog paper-input {
+				--paper-input-container-input: {
+					font-size: larger;
+				};
+
+				--paper-input-container-label: {
+					font-size: larger;
+				};
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="timer">
+			<span id="timer-time">[[time]]</span>
+
+			<div class="layout vertical">
+				<div class="layout horizontal">
+					<paper-button raised class="green" on-tap="startTimer" disabled="[[calcStartDisabled(checklistIncomplete, state)]]">
+						<iron-icon icon="av:play-arrow" title="Start/Resume All"></iron-icon>
+						&nbsp;[[calcStartText(state)]]
+					</paper-button>
+
+					<paper-button raised class="yellow" on-tap="stopTimer" disabled="[[calcPauseDisabled(state)]]">
+						<iron-icon icon="av:pause" title="Pause Timer"></iron-icon>
+						&nbsp;Pause
+					</paper-button>
+				</div>
+
+				<div class="layout horizontal">
+					<paper-button raised class="purple" on-tap="confirmReset">
+						<iron-icon icon="refresh" title="Reset"></iron-icon>
+						&nbsp;Reset
+					</paper-button>
+
+					<paper-button raised class="purple" on-tap="editMasterTime" disabled="[[checklistIncomplete]]">
+						<iron-icon icon="editor:mode-edit" title="Edit"></iron-icon>
+						&nbsp;Edit
+					</paper-button>
+				</div>
+			</div>
+		</div>
+
+		<template is="dom-repeat" items="[[runners]]" as="runner">
+			<gdq-timekeeper-runner
+				runner="[[runner]]"
+				index="[[index]]"
+				results="[[results]]"
+				hidden="[[coop]]"
+				on-edit-time="editRunnerTime"></gdq-timekeeper-runner>
+		</template>
+
+		<gdq-timekeeper-coop
+			hidden="[[!coop]]"
+			runners="[[runners]]"
+			results="[[results]]"
+			on-edit-time="editCoopTime"></gdq-timekeeper-coop>
+
+		<paper-dialog id="resetDialog" with-backdrop>
+			<p>
+				Are you sure you want to reset the timer and each runner's final time? This cannot be undone!
+			</p>
+			<div class="buttons">
+				<paper-button dialog-confirm on-tap="resetTimer">Yes, reset</paper-button>
+				<paper-button dialog-dismiss autofocus>No, do not reset</paper-button>
+			</div>
+		</paper-dialog>
+
+		<paper-dialog id="editDialog" with-backdrop>
+			<p id="editDialog-text"></p>
+			<paper-input
+				id="editDialog-input"
+				label="Final Time"
+				placeholder="00:00:00.00"
+				auto-validate></paper-input>
+			<div class="buttons">
+				<paper-button dialog-confirm on-tap="saveEditedTime">Save</paper-button>
+				<paper-button dialog-dismiss autofocus>Cancel</paper-button>
+			</div>
+		</paper-dialog>
+	</template>
+
+	<script src="gdq-timekeeper.js" type="module"></script>
+</dom-module>

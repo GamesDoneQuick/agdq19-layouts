@@ -1,0 +1,171 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../shared/elements/interfaces/ui-tweet/ui-tweet.html">
+
+<dom-module id="fanart-item">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				@apply --shadow-elevation-2dp;
+				background-color: white;
+				border: 1px solid black;
+				box-sizing: border-box;
+				margin: 12px 0;
+			}
+
+			:host(:first-child) {
+				margin-top: 2px;
+			}
+
+			:host(:last-child) {
+				margin-bottom: 2px;
+			}
+
+			#imageAndControls {
+				position: relative;
+				@apply --layout-horizontal;
+				@apply --layout-start;
+			}
+
+			#image {
+				@apply --layout-flex-none;
+			}
+
+			#controls {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				background: linear-gradient(180deg, rgba(0, 0, 0, 0.59) 0%, rgba(0, 0, 0, 0.35) 100%);
+				height: 100%;
+				left: 0;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				transition: opacity 100ms ease-in-out;
+				width: 100%;
+			}
+
+			#imageAndControls:hover #controls {
+				opacity: 1;
+			}
+
+			#preview {
+				background: #0B005B;
+			}
+
+			#preview:hover {
+				background: #645BA6;
+			}
+
+			#accept {
+				background: #064E00;
+			}
+
+			#accept:hover {
+				background: #5BA664;
+			}
+
+			#reject {
+				background: #430000;
+			}
+
+			#reject:hover {
+				background: #C9513E;
+			}
+
+			#indicator {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				background: black;
+				border-radius: 3px;
+				bottom: 12px;
+				color: white;
+				font-size: 14px;
+				height: 26px;
+				left: 109px;
+				position: absolute;
+				text-align: center;
+				width: 90px;
+			}
+
+			#tweet {
+				@apply --layout-flex-none;
+				padding: 4px 9px 9px;
+			}
+
+			.button {
+				@apply --layout-center-center;
+				@apply --layout-vertical;
+			}
+
+			paper-icon-button {
+				border-radius: 50%;
+				color: white;
+				height: 70px;
+				margin: 0 13px;
+				width: 70px;
+				padding: 16px;
+			}
+
+			label {
+				color: white;
+				font-size: 14px;
+				margin-top: 2px;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="imageAndControls">
+			<img
+				id="image"
+				width="308"
+				src="[[_computeImageUrl(value.gdqMedia)]]">
+
+			<div id="controls">
+				<div class="button">
+					<paper-icon-button
+						id="preview"
+						on-tap="preview"
+						icon="zoom-in">
+					</paper-icon-button>
+					<label for="preview">Preview</label>
+				</div>
+
+				<div class="button">
+					<paper-icon-button
+						id="accept"
+						on-tap="accept"
+						icon="check"
+						title="Accept and show">
+					</paper-icon-button>
+					<label for="accept">Show</label>
+				</div>
+
+				<div class="button">
+					<paper-icon-button
+						id="reject"
+						on-tap="reject"
+						icon="clear"
+						title="Reject and discard">
+					</paper-icon-button>
+					<label for="reject">Clear</label>
+				</div>
+			</div>
+
+			<div id="indicator" hidden="[[_calcIndicatorHidden(value.gdqMedia)]]">
+				1/[[value.gdqMedia.length]]
+			</div>
+		</div>
+
+		<ui-tweet id="tweet" tweet="[[value]]" no-avatar></ui-tweet>
+	</template>
+
+	<script src="fanart-item.js" type="module"></script>
+</dom-module>

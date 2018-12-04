@@ -1,0 +1,32 @@
+<link rel="import" href="../ui-panel-label/ui-panel-label.html">
+<link rel="import" href="ui-obs-status-item.html">
+
+<dom-module id="ui-obs-status">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+			}
+
+			#body {
+				@apply --layout-center-justified;
+				@apply --layout-flex;
+				@apply --layout-vertical;
+				box-sizing: border-box;
+				padding: 0 16px;
+			}
+		</style>
+
+		<nodecg-replicant replicant-name="_obs:namespaces" value="{{_namespaces}}"></nodecg-replicant>
+
+		<ui-panel-label id="label">OBS STATUS</ui-panel-label>
+
+		<div id="body">
+			<template is="dom-repeat" items="[[_namespaces]]" as="namespace">
+				<ui-obs-status-item namespace="[[namespace]]"></ui-obs-status-item>
+			</template>
+		</div>
+	</template>
+
+	<script src="ui-obs-status.js" type="module"></script>
+</dom-module>

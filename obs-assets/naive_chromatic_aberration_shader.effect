@@ -1,0 +1,39 @@
+uniform float r_offset_x;
+uniform float r_offset_y;
+uniform float b_offset_x;
+uniform float b_offset_y;
+uniform float g_offset_x;
+uniform float g_offset_y;
+
+float4 sampleOffset(float2 uv, float xOffset, float yOffset)
+{
+	return image.Sample(textureSampler, float2(uv.x - uv_pixel_interval.x * xOffset, uv.y - uv_pixel_interval.y * yOffset));
+}
+
+float4 mainImage(VertData v_in) : TARGET
+{
+	float4 in_color = image.Sample(textureSampler, v_in.uv);
+
+	float4 sampled_r_pixel = sampleOffset(v_in.uv, r_offset_x, r_offset_y);
+	float4 sampled_g_pixel = sampleOffset(v_in.uv, g_offset_x, g_offset_y);
+	float4 sampled_b_pixel = sampleOffset(v_in.uv, b_offset_x, b_offset_y);
+
+	float4 out_color;
+	out_color.r = sampled_r_pixel.r;
+	out_color.g = sampled_g_pixel.g;
+	out_color.b = sampled_b_pixel.b;
+
+	float newAlpha = 0;
+	if (sampled_r_pixel.a > 0) {
+		newAlpha += (sampled_r_pixel.a / 3);
+	}
+	if (sampled_g_pixel.a > 0) {
+		newAlpha += (sampled_g_pixel.a / 3);
+	}
+	if (sampled_b_pixel.a > 0) {
+		newAlpha += (sampled_b_pixel.a / 3);
+	}
+
+	out_color.a = max(newAlpha, in_color.a);
+    return out_color;
+}

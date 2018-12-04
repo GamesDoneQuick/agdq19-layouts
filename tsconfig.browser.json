@@ -1,0 +1,26 @@
+{
+	"extends": "./tsconfig.base",
+	"compilerOptions": {
+		"module": "es2015",
+		"experimentalDecorators": true,
+		"skipLibCheck": true,
+		"paths": {
+			"tslib" : ["node_modules/tslib/tslib.d.ts"]
+		},
+
+		// Extra output
+		"declaration": false,
+		"declarationMap": false,
+		"sourceMap": false,
+		"inlineSourceMap": true
+	},
+	"include": [
+		"../../types/browser.d.ts",
+		"src/types/easeljs.d.ts",
+		"bower_components/**/*.d.ts",
+		"bower_components/svg.js/svg.js.d.ts",
+		"dashboard/**/*.ts",
+		"graphics/**/*.ts",
+		"shared/**/*.ts"
+	]
+}

@@ -1,0 +1,20 @@
+node_modules
+bower_components
+
+coverage
+.nyc_output
+
+/graphics/img/boxart/*
+!/graphics/img/boxart/default.png
+!.empty_directory
+
+# JetBrains IDEs (IntelliJ/WebStorm)
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/copyright/profiles_settings.xml
+/.idea/workspace.xml
+/.idea/shelf/
+
+firebase-credentials.json
+
+npm-debug.log

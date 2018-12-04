@@ -1,0 +1,121 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="../../atoms/atom-sub-alerts/atom-sub-alerts.html">
+
+<dom-module id="gdq-countdown">
+	<template>
+		<style>
+			:host {
+				display: block;
+				width: 1600px;
+				height: 900px;
+				font-family: gdqpixel, monospace;
+			}
+
+			#gdqlogo {
+				position: absolute;
+				top: 536px;
+				left: 29px;
+			}
+
+			#leftLine {
+				position: absolute;
+				top: 749px;
+				left: 0;
+				width: 495px;
+				height: 1px;
+				background: white;
+			}
+
+			#rightLine {
+				position: absolute;
+				top: 749px;
+				right: 0;
+				width: 763px;
+				height: 1px;
+				background: white;
+			}
+
+			#pressStart {
+				font-size: 20px;
+			}
+
+			#countdown,
+			#pressStart {
+				position: absolute;
+				top: 760px;
+				right: 1105px;
+				text-align: right;
+				color: #85f8ff;
+				text-transform: uppercase;
+			}
+
+			#countdown {
+				font-size: 30px;
+				@apply --layout-horizontal;
+			}
+
+			#nowPlaying {
+				position: absolute;
+				top: 760px;
+				left: 844px;
+				font-size: 20px;
+				color: #85f8ff;
+				text-transform: uppercase;
+				padding-right: 1em;
+				box-sizing: border-box;
+				word-wrap: break-word;
+				word-break: break-word;
+			}
+
+			#subscriptionAlerts {
+				bottom: 0;
+				height: 64px;
+				left: 0;
+				position: absolute;
+				width: 100%;
+			}
+
+			.oscillate {
+				color: white;
+				animation: oscillate 2s alternate infinite ease-in;
+			}
+
+			.blink {
+				animation: blink 1s step-start 0s infinite;
+			}
+
+			@keyframes oscillate {
+				from { color: white; }
+				to { color: #85f8ff; }
+			}
+
+			@keyframes blink {
+				50% { opacity: 0; }
+			}
+		</style>
+
+		<img id="gdqlogo" src="[[importPath]]img/gdqlogo.png">
+		<div id="leftLine"></div>
+		<div id="rightLine"></div>
+
+		<div id="pressStart">
+			Press <span class="oscillate">pogChamp</span> to start
+		</div>
+
+		<div id="countdown">
+			<div id="countdownMinutesTens"></div>
+			<div id="countdownMinutesOnes"></div>
+			<div id="countdownColon">:</div>
+			<div id="countdownSecondsTens"></div>
+			<div id="countdownSecondsOnes"></div>
+		</div>
+
+		<div id="nowPlaying"></div>
+
+		<atom-sub-alerts id="subscriptionAlerts"></atom-sub-alerts>
+	</template>
+
+	<script src="gdq-countdown.js" type="module"></script>
+</dom-module>

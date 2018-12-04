@@ -1,0 +1,74 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../shared/style/gdq-text-styles.html">
+<link rel="import" href="../../atoms/atom-tweening-number/atom-tweening-number.html">
+
+<dom-module id="gdq-omnibar-total">
+	<template>
+		<style include="gdq-text-styles">
+			:host {
+				position: relative;
+				height: 100%;
+				white-space: nowrap;
+				padding-right: 8px;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#leftEdge {
+				width: 3px;
+				height: 100%;
+				background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%);
+				box-shadow: 0 0 10px #FFFFFF;
+				margin-right: 15px;
+			}
+
+			#totals {
+				@apply --layout-vertical;
+			}
+
+			#totalText {
+				font-size: 24px;
+				font-family: gdqpixel, monospace;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#totalTextAmount {
+				display: block;
+				position: absolute;
+				top: 11px;
+				left: 37px;
+			}
+
+			#totalTextAmountPlaceholder {
+				opacity: 0;
+			}
+
+			.gradientText {
+				color: transparent;
+				text-shadow: 0 0 12px rgba(241, 111, 0, 0.5);
+				background-image: var(--atom-gradient-text-gradient, linear-gradient(
+					180deg,
+					#f5deab 0%,
+					#ffd267 100%
+				));
+				-webkit-background-clip: text;
+			}
+		</style>
+
+		<div id="leftEdge"></div>
+
+		<div id="totals">
+			<div id="totalText">
+				<div id="totalTextDollars" class="gradientText">$</div>
+
+				<!-- Workaround for https://bugs.chromium.org/p/chromium/issues/detail?id=670292 -->
+				<div id="totalTextAmountPlaceholder"></div>
+				<atom-tweening-number id="totalTextAmount" class="gradientText"></atom-tweening-number>
+			</div>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-total.js" type="module"></script>
+</dom-module>
