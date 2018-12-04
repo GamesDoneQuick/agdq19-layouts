@@ -404,6 +404,8 @@
     "build": "npm run schema-types && npm run build:extension && npm run build:browser",
     "build:extension": "trash dist && tsc -b tsconfig.node.json",
     "build:browser": "tsc -p tsconfig.browser.json",
+    "watch:extension": "tsc -b tsconfig.node.json --watch",
+    "watch:browser": "tsc -p tsconfig.browser.json --watch",
     "generate-fixture-screenshots": "generate-fixture-screenshots",
     "debug-fixture-screenshots": "generate-fixture-screenshots --debug",
     "mock-donations": "node ./scripts/test_donation_server",
