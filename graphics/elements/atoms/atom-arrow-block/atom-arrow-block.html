@@ -1,0 +1,55 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/imports/svgjs.html">
+
+<dom-module id="atom-arrow-block">
+	<template>
+		<style>
+			:host {
+				display: block;
+				position: relative;
+			}
+
+			#filterHolder {
+				display: none;
+			}
+
+			#glowFilterFlood {
+				flood-color: var(--atom-arrow-block-glow-color);
+				flood-opacity: var(--atom-arrow-block-glow-opacity, 1);
+			}
+
+			#content {
+				position: absolute;
+				top: -1px;
+				left: 18px;
+				height: 100%;
+				z-index: 1;
+				padding: 0 13px;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+		</style>
+
+		<svg id="filterHolder" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<defs id="filterDefs">
+				<filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+					<feGaussianBlur stdDeviation="6" result="blur"/>
+					<feFlood id="glowFilterFlood" result="flood"/>
+					<feComposite in="flood" in2="blur" operator="in" result="comp"/>
+					<feMerge>
+						<feMergeNode in="comp"></feMergeNode>
+						<feMergeNode in="SourceGraphic"></feMergeNode>
+					</feMerge>
+				</filter>
+			</defs>
+		</svg>
+
+		<div id="content">
+			<slot id="contentSlot"></slot>
+		</div>
+	</template>
+
+	<script src="atom-arrow-block.js" type="module"></script>
+</dom-module>

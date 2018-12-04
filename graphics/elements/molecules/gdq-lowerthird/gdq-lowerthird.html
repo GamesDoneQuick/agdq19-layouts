@@ -1,0 +1,178 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="gdq-lowerthird-nameplate.html">
+
+<dom-module id="gdq-lowerthird">
+	<template>
+		<style>
+			:host {
+				@apply --layout-center;
+				@apply --layout-vertical;
+				bottom: 0;
+				font-family: "Source Code Pro";
+				font-size: 31px;
+				left: 0;
+				opacity: 0; /* hide loading flash */
+				position: absolute;
+				width: 100%;
+				will-change: transform;
+			}
+
+			#background {
+				background: rgba(5, 17, 19, 0.75);
+				border-top: 1px solid #00FFFF;
+				bottom: 0;
+				height: 88px;
+				left: 0;
+				position: absolute;
+				width: 100%;
+				will-change: transform;
+				z-index: -1;
+			}
+
+			#header {
+				--gdq-lowerthird-nameplate-height: 33px;
+				@apply --layout-flex-none;
+				font-size: 24px;
+				font-weight: 700;
+				margin-bottom: 12px;
+				width: 208px;
+			}
+
+			#mainNames {
+				@apply --layout-horizontal;
+			}
+
+			#mainNames gdq-lowerthird-nameplate,
+			#hostName gdq-lowerthird-nameplate {
+				--atom-nameplate-padding: 8px;
+				font-size: 34px;
+				font-weight: 600;
+			}
+
+			#mainNames gdq-lowerthird-nameplate:first-child {
+				margin-left: 0;
+			}
+
+			#mainNames gdq-lowerthird-nameplate:last-child {
+				margin-right: 0;
+			}
+
+			#hostName {
+				margin-top: 12px;
+				width: 450px;
+			}
+
+			:host(:not[num-names="5"]) #hostName {
+				display: none;
+			}
+
+			#hostName gdq-lowerthird-nameplate {
+				width: 450px;
+				z-index: 1;
+			}
+
+			gdq-lowerthird-nameplate {
+				transform-origin: center center;
+				will-change: height, transform;
+			}
+
+			/* Begin 5-name styles. */
+			:host([num-names="5"]) {
+				height: 207px;
+			}
+
+			:host([num-names="5"]) #background {
+				height: 139px;
+			}
+
+			:host([num-names="5"]) #mainNames gdq-lowerthird-nameplate {
+				margin: 0 4px;
+				width: 367px;
+			}
+
+			/* End 5-name styles. */
+
+			/* Begin 4-name styles. */
+			:host([num-names="4"]) {
+				height: 155px;
+			}
+
+			:host([num-names="4"]) #mainNames gdq-lowerthird-nameplate {
+				margin: 0 4px;
+				width: 367px;
+			}
+
+			/* End 4-name styles. */
+
+			/* Begin 3-name styles. */
+			:host([num-names="3"]) {
+				height: 165px;
+			}
+
+			:host([num-names="3"]) #mainNames gdq-lowerthird-nameplate {
+				--gdq-lowerthird-nameplate-height: 64px;
+				margin: 0 5px;
+				width: 467px;
+			}
+
+			/* End 3-name styles. */
+
+			/* Begin 2-name styles. */
+			:host([num-names="2"]) {
+				height: 175px;
+			}
+
+			:host([num-names="1"]) #header {
+				margin-bottom: 16px;
+			}
+
+			:host([num-names="2"]) #mainNames gdq-lowerthird-nameplate {
+				--gdq-lowerthird-nameplate-height: 73px;
+				margin: 0 6px;
+				width: 608px;
+			}
+
+			/* End 2-name styles. */
+
+			/* Begin 1-name styles. */
+			:host([num-names="1"]) {
+				@apply --layout-start;
+				height: 165px;
+				padding-left: 36px;
+			}
+
+			:host([num-names="1"]) #header {
+				margin-bottom: 10px;
+			}
+
+			:host([num-names="1"]) #mainNames gdq-lowerthird-nameplate {
+				--gdq-lowerthird-nameplate-height: 80px;
+				margin: 0;
+				width: 667px;
+			}
+
+			/* End 1-name styles. */
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="background"></div>
+
+		<gdq-lowerthird-nameplate id="header" header></gdq-lowerthird-nameplate>
+
+		<div id="mainNames">
+			<gdq-lowerthird-nameplate></gdq-lowerthird-nameplate>
+			<gdq-lowerthird-nameplate></gdq-lowerthird-nameplate>
+			<gdq-lowerthird-nameplate></gdq-lowerthird-nameplate>
+			<gdq-lowerthird-nameplate></gdq-lowerthird-nameplate>
+		</div>
+
+		<gdq-lowerthird-nameplate id="hostName"></gdq-lowerthird-nameplate>
+	</template>
+
+	<script src="gdq-lowerthird.js" type="module"></script>
+</dom-module>

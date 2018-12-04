@@ -1,0 +1,152 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"definitions": {
+		"pagedPolicy": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"policy": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"slug": {
+							"type": "string"
+						}
+					},
+					"required": ["name", "slug"]
+				},
+				"team": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"slug": {
+							"type": "string"
+						}
+					},
+					"required": ["name", "slug"]
+				}
+			},
+			"required": ["policy", "teams"]
+		},
+
+		"transition": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"at": {
+					"type": "string"
+				},
+				"by": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				},
+				"manually": {
+					"type": "boolean"
+				},
+				"alertId": {
+					"type": "string"
+				},
+				"alertUrl": {
+					"type": "string"
+				}
+			},
+			"required": ["name", "at", "by", "message", "manually", "alertId", "alertUrl"]
+		},
+
+		"incident": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"incidentNumber": {
+					"type": "string"
+				},
+				"startTime": {
+					"type": "string"
+				},
+				"currentPhase": {
+					"type": "string"
+				},
+				"alertCount": {
+					"type": "number"
+				},
+				"lastAlertTime": {
+					"type": "string"
+				},
+				"lastAlertId": {
+					"type": "string"
+				},
+				"entityId": {
+					"type": "string"
+				},
+				"host": {
+					"type": "string"
+				},
+				"service": {
+					"type": "string"
+				},
+				"pagedUsers": {
+					"type": "array",
+					"additionalItems": false,
+					"items": {
+						"type": "string"
+					}
+				},
+				"pagedTeams": {
+					"type": "array",
+					"additionalItems": false,
+					"items": {
+						"type": "string"
+					}
+				},
+				"pagedPolicies": {
+					"type": "array",
+					"additionalItems": false,
+					"items": {
+						"$ref": "#/definitions/pagedPolicy"
+					}
+				},
+				"transitions": {
+					"type": "array",
+					"additionalItems": false,
+					"items": {
+						"$ref": "#/definitions/transition"
+					}
+				}
+			},
+			"required": [
+				"incidentNumber",
+				"startTime",
+				"currentPhase",
+				"alertCount",
+				"lastAlertTime",
+				"lastAlertId",
+				"entityId",
+				"host",
+				"service",
+				"pagedUsers",
+				"pagedTeams",
+				"pagedPolicies",
+				"transitions"
+			]
+		}
+	},
+
+	"type": "array",
+	"additionalItems": false,
+	"items": {
+		"$ref": "#/definitions/incident"
+	},
+	"default": []
+}

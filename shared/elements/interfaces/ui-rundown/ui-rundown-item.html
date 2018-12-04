@@ -1,0 +1,137 @@
+<link rel="import" href="../../../../bower_components/html-echo/html-echo.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-icons/notification-icons.html">
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="ui-rundown-item">
+	<template strip-whitespace>
+		<style>
+			:host {
+				position: relative;
+				padding: 4px 9px;
+				margin: 8px 0;
+				min-height: 55px;
+				box-sizing: border-box;
+				font-weight: bold;
+				@apply --layout-horizontal;
+				@apply --shadow-elevation-2dp;
+			}
+
+			:host(:first-of-type) {
+				margin-top: 4px;
+			}
+
+			:host(:last-of-type) {
+				margin-bottom: 4px;
+			}
+
+			:host([item-type="run"]) {
+				background-color: #E3E3E3;
+			}
+
+			:host([item-type="adBreak"]) {
+				background-color: #D9D3FF;
+			}
+
+			:host([item-type="interview"]) {
+				background-color: #EBCFCF;
+			}
+
+			:host([current]) #green {
+				display: block !important;
+			}
+
+			:host([current]) {
+				padding-left: 14px;
+			}
+
+			#green {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 9px;
+				height: 100%;
+				background: #5BA664;
+				display: none;
+			}
+
+			#body {
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			.line {
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+			}
+
+			#name {
+				font-size: 20px;
+				@apply --layout-flex;
+			}
+
+			#notesIcon {
+				position: relative;
+				top: -2px;
+				width: 20px;
+				height: 20px;
+			}
+
+			#topRight,
+			#bottomRight,
+			#bottomLeft {
+				font-size: 14px;
+				font-style: italic;
+			}
+
+			#topRight,
+			#bottomRight {
+				margin-left: 36px;
+				text-align: right;
+				@apply --layout-end;
+				@apply --layout-flex-none;
+			}
+
+			#topRight {
+				@apply --layout-vertical;
+			}
+
+			.interviewer {
+				font-weight: bold;
+				color: #A90000;
+			}
+
+			:host([item-type="interview"]) #topRight {
+				display: block;
+				max-width: 190px;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="green"></div>
+		<div id="body">
+			<div id="top" class="line">
+				<div id="name">
+					[[name]]
+					<iron-icon
+						id="notesIcon"
+						icon="notification:event-note"
+						hidden="[[!_itemHasNotes(item)]]">
+					</iron-icon>
+				</div>
+				<div id="topRight"></div>
+			</div>
+
+			<div id="bottom" class="line">
+				<div id="bottomLeft"></div>
+				<div id="bottomRight"></div>
+			</div>
+		</div>
+	</template>
+
+	<script src="ui-rundown-item.js" type="module"></script>
+</dom-module>

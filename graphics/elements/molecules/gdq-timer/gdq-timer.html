@@ -1,0 +1,119 @@
+<link rel="import" href="../../../../bower_components/html-echo/html-echo.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="../../../../shared/style/gdq-fui-styles.html">
+<link rel="import" href="../../../../shared/style/gdq-text-styles.html">
+<link rel="import" href="../../atoms/atom-binary-clock/atom-binary-clock.html">
+
+<dom-module id="gdq-timer">
+	<template strip-whitespace>
+		<style include="gdq-fui-styles gdq-text-styles">
+			:host {
+				position: absolute;
+				box-sizing: border-box;
+				font-size: 42px;
+				contain: strict;
+				@apply --fui-glow-rect;
+			}
+
+			#innerRect {
+				width: calc(100% - 8px);
+				height: calc(100% + 2px);
+				margin: -1px 4px;
+				@apply --fui-glow-rect;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#startFlash {
+				position: absolute;
+				display: flex;
+				background-color: white;
+				width: 100%;
+				height: 100%;
+				bottom: 0;
+				mix-blend-mode: color-dodge;
+				opacity: 0;
+			}
+
+			#binaryClock {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding: 4px 8px;
+				box-sizing: border-box;
+				contain: strict;
+			}
+
+			/* Can't be a flex div due to: https://bugs.chromium.org/p/chromium/issues/detail?id=670292 */
+			#time {
+				position: relative;
+				top: var(--gdq-timer-voffset, 0);
+				font-family: "Source Code Pro", sans-serif;
+				font-style: normal;
+				font-weight: 600;
+				line-height: normal;
+				text-align: center;
+				z-index: 1;
+				contain: layout style;
+				will-change: transform;
+			}
+
+			/* .colon elements being relatively positioned seems to break inheritance of this bg image clipping. */
+			/* The fix is to just also apply it directly to .colon elements, instead of just their parent. */
+			#time,
+			.colon {
+				color: transparent;
+				background-image: var(--atom-gradient-text-gradient, linear-gradient(
+					180deg,
+					#FFFFFF 0%,
+					#B1B1B1 100%
+				));
+				-webkit-background-clip: text;
+				--atom-gradient-text-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+			}
+
+			.colon {
+				position: relative;
+				top: -2px;
+			}
+
+			.decimalPoint {
+				font-size: 66%;
+			}
+
+			.decimalValue {
+				font-size: 66%;
+			}
+		</style>
+
+		<div id="innerRect">
+			<atom-binary-clock
+				id="binaryClock"
+				pulsating="[[notStarted]]"
+				randomized="[[finished]]"
+				hours="[[hours]]"
+				minutes="[[minutes]]"
+				seconds="[[seconds]]"
+				milliseconds="[[milliseconds]]">
+			</atom-binary-clock>
+			<div id="time">
+				<span hidden="[[_lessThanEqZero(hours)]]">[[hours]]</span>
+				<span class="colon" hidden="[[_lessThanEqZero(hours)]]">:</span>
+
+				<span>[[_padTime(minutes)]]</span>
+				<span class="colon">:</span>
+
+				<span>[[_padTime(seconds)]]</span>
+				<span class="decimalPoint">.</span>
+				<span class="decimalValue">[[_formatMilliseconds(milliseconds)]]</span>
+			</div>
+			<div id="startFlash"></div>
+		</div>
+	</template>
+
+	<script src="gdq-timer.js" type="module"></script>
+</dom-module>

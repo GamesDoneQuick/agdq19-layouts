@@ -1,0 +1,20 @@
+{
+	"extends": "./tsconfig.base",
+	"compilerOptions": {
+		"module": "commonjs",
+		"rootDir": "src/extension",
+		"outDir": "dist/extension",
+		"types": [
+			"node"
+		],
+
+		// Extra output
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"inlineSourceMap": false
+	},
+	"include": ["src/extension/**/*.ts"],
+	"exclude": ["src/extension/**/*spec.ts"],
+	"references": [{"path": "shared/tsconfig.node.json"}]
+}

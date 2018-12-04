@@ -1,0 +1,81 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input-error.html">
+<link rel="import" href="../time-input/time-input.html">
+
+<dom-module id="gdq-countdown">
+	<template>
+		<style include="iron-flex iron-flex-alignment">
+			:host {
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#label {
+				font-size: 18px;
+				text-transform: uppercase;
+				margin-left: 32px;
+				margin-right: auto;
+			}
+
+			#countdownContainer {
+				padding-top: 0;
+				margin-top: -6px;
+				width: 100px;
+			}
+
+			#timeInput {
+				font-size: 32px!important;
+			}
+
+			#start,
+			#stop {
+				width: 90px;
+				height: 45px;
+				@apply --layout-flex-none;
+			}
+
+			#start {
+				margin-left: auto;
+				--paper-button: {
+					background-color: #5BA664;
+					color: white;
+				}
+			}
+
+			#stop {
+				margin-right: 24px;
+				--paper-button: {
+					background-color: #C9513E;
+					color: white;
+				}
+			}
+		</style>
+
+		<div id="label">Countdown</div>
+
+		<paper-input-container id="countdownContainer" no-label-float auto-validate attr-for-value="value">
+			<time-input
+				id="timeInput"
+				slot="input"
+				class="paper-input-input"
+				on-invalid-changed="_handleTimeInvalidChanged"></time-input>
+			<paper-input-error slot="add-on">Invalid time</paper-input-error>
+		</paper-input-container>
+
+		<paper-button class="flex" id="start" raised on-tap="start">
+			<iron-icon icon="av:play-arrow"></iron-icon>
+			&nbsp;Start
+		</paper-button>
+
+		<paper-button class="flex" id="stop" raised on-tap="stop">
+			<iron-icon icon="av:stop"></iron-icon>
+			&nbsp;Stop
+		</paper-button>
+	</template>
+
+	<script src="gdq-countdown.js" type="module"></script>
+</dom-module>

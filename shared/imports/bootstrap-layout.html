@@ -1,0 +1,35 @@
+<!-- Note: the word "bootstrap" here does not refer to Bootstrap, the CSS framework. -->
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../bower_components/polymer/lib/utils/debounce.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/sc-fitted-text/sc-fitted-text.html">
+<link rel="import" href="../style/gdq-fui-styles.html">
+<link rel="import" href="../style/gdq-text-styles.html">
+<link rel="import" href="svgjs.html">
+<script>
+	{
+		let links = [
+			'elements/atoms/atom-gridlines/atom-gridlines.html',
+			'elements/atoms/atom-tronlines/atom-tronlines.html',
+			'elements/molecules/gdq-runinfo/gdq-runinfo.html',
+			'elements/molecules/gdq-runner-nameplate/gdq-runner-nameplate.html',
+			'elements/molecules/gdq-sponsors/gdq-sponsors.html',
+			'elements/molecules/gdq-timer/gdq-timer.html',
+			'elements/molecules/gdq-tweet/gdq-tweet.html'
+		];
+
+		if (window.extraImports && Array.isArray(window.extraImports)) {
+			links = links.concat(extraImports)
+		}
+
+		for (const link of links) {
+			const linkElem = document.createElement('link');
+			linkElem.rel = 'import';
+			linkElem.href = link;
+			document.head.appendChild(linkElem);
+		}
+	}
+</script>

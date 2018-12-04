@@ -1,0 +1,22 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="ui-panel-label">
+	<template>
+		<style>
+			:host {
+				@apply --layout-center-center;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+				background-color: #C4C4C4;
+				font-size: 20px;
+				font-weight: bold;
+				height: 29px;
+				text-transform: uppercase;
+			}
+		</style>
+
+		<slot></slot>
+	</template>
+
+	<script src="ui-panel-label.js" type="module"></script>
+</dom-module>

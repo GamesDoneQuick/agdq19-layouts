@@ -1,0 +1,117 @@
+<link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../../shared/style/gdq-checkbox-style.html">
+
+<dom-module id="dash-producer-checklist">
+	<template>
+		<style include="gdq-checkbox-style">
+			:host {
+				padding: 16px;
+				@apply --layout-horizontal;
+			}
+
+			.header {
+				font-size: 13px;
+				font-weight: 500;
+				border-bottom: 1px solid black;
+				margin-bottom: 5px;
+				padding-bottom: 5px;
+				user-select: none;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			.header:not(:first-child) {
+				margin-top: 12px;
+			}
+
+			.group {
+				@apply --layout-vertical;
+			}
+
+			section {
+				margin: 0 12px;
+				min-width: 1px;
+				@apply --layout-flex;
+			}
+
+			section:first-of-type {
+				margin-left: 0;
+			}
+
+			section:last-of-type {
+				margin-right: 0;
+			}
+
+			paper-checkbox {
+				--paper-checkbox-label: {
+					line-height: 1;
+				}
+			}
+		</style>
+
+		<section>
+			<div class="header">Stream Tech</div>
+			<div class="group">
+				<template is="dom-repeat" items="[[techStationDuties]]" mutable-data>
+					<paper-checkbox
+						category="techStationDuties"
+						checked="[[item.complete]]"
+						class="non-interactive">
+						[[item.name]]
+					</paper-checkbox>
+				</template>
+
+				<template is="dom-repeat" items="[[specialDuties]]" mutable-data>
+					<paper-checkbox
+						category="special"
+						checked="[[item.complete]]"
+						class="non-interactive">
+						[[item.name]]
+					</paper-checkbox>
+				</template>
+			</div>
+		</section>
+
+		<section>
+			<div class="header">Stage Tech</div>
+			<div class="group">
+				<template is="dom-repeat" items="[[stageTechDuties]]" mutable-data>
+					<paper-checkbox
+						category="stageTechDuties"
+						checked="[[item.complete]]"
+						class="non-interactive">
+						[[_calcItemName(item)]]
+					</paper-checkbox>
+				</template>
+			</div>
+		</section>
+
+		<section>
+			<div class="header">Audio Tech</div>
+			<div class="group">
+				<template is="dom-repeat" items="[[audioEngineerDuties]]" mutable-data>
+					<paper-checkbox
+						category="audioEngineerDuties"
+						checked="[[item.complete]]"
+						class="non-interactive">
+						[[_calcItemName(item)]]
+					</paper-checkbox>
+				</template>
+			</div>
+
+			<div class="header">Extra Content</div>
+			<div class="group horizontal">
+				<template is="dom-repeat" items="[[extraContent]]" mutable-data>
+					<paper-checkbox
+						category="extraContent"
+						checked="[[item.complete]]"
+						class="non-interactive">
+						[[_calcItemName(item)]]
+					</paper-checkbox>
+				</template>
+			</div>
+		</section>
+	</template>
+
+	<script src="dash-producer-checklist.js" type="module"></script>
+</dom-module>

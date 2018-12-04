@@ -1,0 +1,49 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="atom-tronlines">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				display: block;
+				font-family: Roboto, sans-serif;
+			}
+
+			:host([direction="left"]) #canvas {
+				transform-origin: top left;
+				transform: rotate(-90deg) translate(-100%, 0%);
+			}
+
+			:host([direction="right"]) #canvas {
+				transform-origin: top left;
+				transform: rotate(90deg) translate(0%, -100%);
+			}
+
+			:host([direction="down"]) #canvas {
+				transform: rotate(180deg);
+			}
+
+			#canvas {
+				position: absolute;
+			}
+
+			:host(:not([debug])) #debugInfo {
+				display: none;
+			}
+
+			#debugInfo {
+				position: absolute;
+				top: 0;
+				right: 5px;
+				font-size: 14px;
+				color: white;
+			}
+		</style>
+
+		<canvas id="canvas"></canvas>
+		<div id="debugInfo"></div>
+	</template>
+
+	<script src="atom-tronlines.js" type="module"></script>
+</dom-module>

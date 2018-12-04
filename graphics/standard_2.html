@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 2 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			#lineone {
+				position: absolute;
+				width: 3px;
+				height: 599px;
+				left: 798px;
+				top: 0;
+				background-color: #ffffff;
+				border-left: 1px solid #ffffff;
+				border-right: 1px solid #ffffff;
+			}
+
+			.tronleft {
+				left: 0;
+				border-right: 1px solid #00ffff;
+			}
+
+			.tronright {
+				right: 0;
+				border-left: 1px solid #00ffff;
+			}
+
+			gdq-runner-nameplate {
+				top: 600px;
+				width: 400px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				right: 1026px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				left: 1026px;
+			}
+
+			gdq-runinfo {
+				bottom: 18px;
+				width: 550px;
+				height: 175px;
+				--gdq-runinfo-name-padding: 0 16px 8px 16px;
+				--gdq-runinfo-misc-height: 47px;
+			}
+
+			gdq-timer {
+				left: 572px;
+				bottom: 191px;
+				height: 65px;
+				width: 456px;
+				font-size: 56px;
+				--gdq-timer-voffset: -2px;
+				z-index: 2;
+			}
+
+			gdq-tweet {
+				bottom: 14px;
+				right: 11px;
+				width: 528px;
+				height: 176px;
+
+				--gdq-tweet-name-font-size: 16px;
+				--gdq-tweet-body: {
+					font-size: 16px;
+				};
+			}
+
+			gdq-sponsors {
+				bottom: 14px;
+				right: 11px;
+				width: 528px;
+				height: 176px;
+			}
+
+			atom-tronlines {
+				position: absolute;
+				bottom: 0;
+				border-top: 1px solid #ffffff;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<div id="lineone"></div>
+		<atom-tronlines height="244" width="550" class="tronleft"></atom-tronlines>
+		<atom-tronlines height="244" width="550" class="tronright"></atom-tronlines>
+		<gdq-runinfo max-name-size="45"></gdq-runinfo>
+		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

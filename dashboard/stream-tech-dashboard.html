@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stream Tech Dashboard</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/iron-input/iron-input.html">
+	<link rel="import" href="../bower_components/iron-validatable-behavior/iron-validatable-behavior.html">
+	<link rel="import" href="../bower_components/iron-validator-behavior/iron-validator-behavior.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/mixins/mutable-data.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<link rel="import" href="../shared/style/gdq-checkbox-style.html">
+	<link rel="import" href="../shared/style/gdq-text-styles.html">
+	<link rel="import" href="../shared/style/gdq-ui-theme.html">
+
+	<script>
+		{
+			const links = [
+				'../shared/elements/interfaces/ui-rundown/ui-rundown.html',
+				'elements/gdq-checklist/gdq-checklist.html',
+				'elements/gdq-countdown/gdq-countdown.html',
+				'elements/gdq-fanart/gdq-fanart.html',
+				'elements/gdq-misc-toggles/gdq-misc-toggles.html',
+				'elements/gdq-schedule/gdq-schedule.html',
+				'elements/gdq-timekeeper/gdq-timekeeper.html',
+				'elements/gdq-totals/gdq-totals.html',
+				'elements/gdq-marioscores/gdq-marioscores.html',
+				'elements/gdq-twitter-controls/gdq-twitter-controls.html'
+			];
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+
+	<custom-style>
+		<style include="iron-flex iron-flex-alignment">
+			body {
+				background-color: #f5f5f5;
+				margin: 0;
+				@apply --layout-horizontal;
+				@apply --layout-center-justified;
+			}
+
+			#wrapper {
+				width: 100vw;
+				@apply --layout-horizontal;
+				@apply --layout-flex-none;
+			}
+
+			#container {
+				box-sizing: border-box;
+				column-gap: 10px;
+				display: grid;
+				flex-grow: 1;
+				flex-shrink: 0;
+				grid-row-gap: 10px;
+				grid-template-columns: 350px 484px 514px 484px;
+				grid-template-rows: 360px 467px 92px;
+				padding: 15px 20px;
+			}
+
+			.bordered {
+				box-sizing: border-box;
+				background: white;
+				border: 1px solid black;
+			}
+
+			gdq-fanart {
+				grid-column: 1;
+				grid-row: 1 / 4;
+			}
+
+			gdq-twitter-controls {
+				grid-column: 2;
+				grid-row: 1;
+			}
+
+			ui-rundown {
+				grid-column: 2;
+				grid-row: 2;
+			}
+
+			gdq-misc-toggles {
+				grid-column: 2;
+				grid-row: 3;
+			}
+
+			#timekeeperAndChecklist {
+				grid-column: 3;
+				grid-row: 1 / 3;
+			}
+
+			gdq-countdown {
+				grid-column: 3;
+				grid-row: 3;
+			}
+
+			gdq-totals {
+				margin-bottom: 20px;
+			}
+
+			#totalsAndSchedule {
+				/*@apply --layout-vertical;*/
+				grid-column: 4;
+				grid-row: 1 / 3;
+			}
+
+			gdq-marioscores {
+				grid-column: 4;
+			}
+
+			gdq-schedule {
+				/*@apply --layout-flex;*/
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="container">
+			<gdq-fanart class="bordered"></gdq-fanart>
+
+			<gdq-twitter-controls class="bordered"></gdq-twitter-controls>
+			<ui-rundown class="bordered"></ui-rundown>
+			<gdq-misc-toggles class="bordered"></gdq-misc-toggles>
+
+			<div id="timekeeperAndChecklist">
+				<gdq-timekeeper class="bordered"></gdq-timekeeper>
+				<gdq-checklist class="bordered" style="border-top: 0;"></gdq-checklist>
+			</div>
+			<gdq-countdown class="bordered"></gdq-countdown>
+
+			<div id="totalsAndSchedule">
+				<gdq-totals></gdq-totals>
+				<gdq-schedule class="bordered"></gdq-schedule>
+
+			</div>
+			<gdq-marioscores class="bordered"></gdq-marioscores>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/utils/render-status.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../atoms/atom-gridmask-image/atom-gridmask-image.html">
+
+<dom-module id="gdq-break-prizes">
+	<template>
+		<style>
+			:host {
+				width: 815px; /* only needed because of the width tween on the #photo element */
+				@apply --layout-horizontal;
+			}
+
+			#info {
+				width: 362px;
+				margin-right: 40px;
+			}
+
+			#info-description {
+				height: 103px;
+				color: #00FFFF;
+				margin-bottom: 16px;
+				--corner-clip-size: 28px;
+			}
+
+			#info-minimumBid {
+				height: 44px;
+				color: #FFFFFF;
+				white-space: nowrap;
+				--corner-clip-size: 14px;
+			}
+
+			#info-disclaimer {
+				font-size: 10px;
+				text-transform: uppercase;
+				color: #FFFFFF;
+				margin-top: 9px;
+				margin-left: 18px;
+			}
+
+			#photo {
+				position: relative;
+				width: 413px;
+				height: 231px;
+				box-sizing: border-box;
+				margin-top: 10px;
+				margin-left: auto;
+			}
+
+			#photo-actual {
+				width: 100%;
+				height: 100%;
+			}
+
+			#photo-label {
+				position: absolute;
+				width: 301px;
+				height: 16px;
+				left: -18px;
+				bottom: -8px;
+				background: #ffffff;
+				color: black;
+				font-size: 12px;
+				font-weight: 400;
+				box-sizing: border-box;
+				padding: 0 4px;
+				line-height: 1;
+				text-transform: uppercase;
+				white-space: nowrap;
+				z-index: 1;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#provider {
+				overflow: hidden;
+			}
+
+			.header {
+				font-size: 12px;
+				color: #FFFFFF;
+				padding-left: 18px;
+				border-bottom: 1px solid white;
+				padding-bottom: 3px;
+				margin-bottom: 2px;
+			}
+
+			.data {
+				background-color: rgba(145, 145, 145, 0.3);
+				padding: 5px 17px;
+				box-sizing: border-box;
+				width: 100%;
+				text-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+				text-transform: uppercase;
+				font-style: normal;
+				font-weight: normal;
+				line-height: normal;
+				font-size: 24px;
+				color: white;
+				clip-path: polygon(
+					0 0,
+					100% 0,
+					100% calc(100% - var(--corner-clip-size)),
+					calc(100% - var(--corner-clip-size)) 100%,
+					0 100%
+				);
+			}
+		</style>
+
+		<div id="info">
+			<div class="header">PRIZE_AVAILABLE</div>
+			<div id="info-description" class="data">
+				<div id="info-description-text"></div>
+			</div>
+
+			<div class="header">MINIMUM_BID_FOR_ENTRY</div>
+			<div id="info-minimumBid" class="data">
+				<div id="info-minimumBid-text"></div>
+			</div>
+
+			<div id="info-disclaimer">
+				No donation necessary for entry.<br/>
+				See website for details.
+			</div>
+		</div>
+
+		<div id="photo">
+			<atom-gridmask-image
+				id="photo-actual"
+				fallback-src="[[importPath]]img/prize-fallback.png"
+				with-background
+				stroke-size="1"
+				preserve-aspect-ratio="xMidYMid slice">
+			</atom-gridmask-image>
+
+			<div id="photo-label">
+				PROVIDED_BY:&nbsp;<div id="provider"></div>
+			</div>
+		</div>
+	</template>
+
+	<script src="gdq-break-prizes.js" type="module"></script>
+</dom-module>

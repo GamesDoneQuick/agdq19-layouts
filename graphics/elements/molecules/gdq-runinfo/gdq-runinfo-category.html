@@ -1,0 +1,118 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../atoms/atom-chevron/atom-chevron.html">
+<link rel="import" href="../../atoms/atom-gradient-text/atom-gradient-text.html">
+
+<dom-module id="gdq-runinfo-category">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				height: 27px;
+				box-sizing: border-box;
+				font-size: 16px;
+				@apply --layout-horizontal;
+				filter: drop-shadow(0 0 20px rgba(64, 113, 253, 0.5))
+			}
+
+			#line {
+				position: absolute;
+				top: 13px;
+				left: 0;
+				height: 1px;
+				width: 100%;
+				background: #FFFFFF;
+			}
+
+
+			#leftChevron {
+				margin-right: -1px;
+			}
+
+			#rightChevron {
+				margin-left: -1px;
+			}
+
+			#textContainer {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#text {
+				--atom-gradient-text-gradient: linear-gradient(
+					180deg,
+					rgb(0, 0, 0) 0%,
+					rgb(35, 41, 64) 100%
+				);
+				--atom-gradient-text-shadow: rgba(7, 112, 255, 0.8);
+			}
+
+			.wing {
+				height: 100%;
+				width: 50%;
+				overflow: hidden;
+			}
+
+			.wingContent {
+				height: 100%;
+				will-change: transform;
+				@apply --layout-horizontal;
+			}
+
+			.wingBody {
+				height: 100%;
+				border: 1px solid #FFFFFF;
+				border-left: 0;
+				border-right: 0;
+				background: #4fa2d6;
+				box-sizing: border-box;
+				@apply --layout-flex;
+			}
+
+			atom-chevron {
+				width: 16px;
+				height: 100%;
+				--atom-chevron-background: #4fa2d6;
+				--atom-chevron-fill-color: #1d3d8f;
+				--atom-chevron-stroke-color: #FFFFFF;
+				@apply --layout-flex-none;
+			}
+
+			atom-gradient-text {
+				z-index: 1;
+			}
+		</style>
+
+		<div id="line"></div>
+
+		<div id="leftWing" class="wing">
+			<div class="wingContent">
+				<atom-chevron id="leftChevron" direction="left"></atom-chevron>
+				<div class="wingBody"></div>
+			</div>
+		</div>
+
+		<div id="rightWing" class="wing">
+			<div class="wingContent">
+				<div class="wingBody"></div>
+				<atom-chevron id="rightChevron"></atom-chevron>
+			</div>
+		</div>
+
+		<div id="textContainer">
+			<atom-gradient-text
+				id="text"
+				align="center"
+				max-width="[[maxTextWidth]]"
+				text="[[category]]">
+			</atom-gradient-text>
+		</div>
+	</template>
+
+	<script src="gdq-runinfo-category.js" type="module"></script>
+</dom-module>

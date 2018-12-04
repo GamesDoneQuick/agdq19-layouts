@@ -1,0 +1,124 @@
+<link rel="import" href="../../../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../atoms/atom-chevron/atom-chevron.html">
+
+<dom-module id="gdq-omnibar-cta">
+	<template>
+		<style>
+			:host {
+				display: block;
+				font-style: normal;
+				font-weight: normal;
+				line-height: normal;
+				font-size: 32px;
+				text-align: center;
+				color: #ffd267;
+				text-shadow: 0 0 12px rgba(255, 221, 114, 0.33);
+				height: 100%;
+				will-change: transform;
+			}
+
+			#leftChevrons {
+				left: calc(50% - 9px);
+				transform-origin: right;
+			}
+
+			#leftChevrons > .chevron:not(:last-of-type) {
+				margin-right: -18.3px;
+			}
+
+			#rightChevrons {
+				right: calc(50% - 9px);
+				transform-origin: left;
+			}
+
+			#rightChevrons > .chevron:not(:first-of-type) {
+				margin-left: -18.3px;
+			}
+
+			.line {
+				position: absolute;
+				top: -1px;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				contain: strict;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			.line-content {
+				padding: 0 24px;
+				clip-path: inset(0 50%);
+				will-change: clip-path;
+			}
+
+			.line:not(.iron-selected) {
+				visibility: hidden;
+			}
+
+			.bold {
+				font-weight: 600;
+			}
+
+			.white {
+				color: white;
+			}
+
+			.chevronGroup {
+				position: absolute;
+				top: 4.5px;
+				width: 0;
+				z-index: 1;
+				will-change: transform;
+				@apply --layout-horizontal;
+				@apply --layout-center-justified;
+			}
+
+			atom-chevron {
+				width: 25px;
+				height: 45px;
+				will-change: transform;
+				z-index: 2;
+				--atom-chevron-stroke-size: 0px;
+				--atom-chevron-thickness: 7px;
+				--atom-chevron-fill-color: #ffd267;
+			}
+
+			.chevron:not(.chevron--bg) {
+				filter: drop-shadow(0 0 12px #ffeb87);
+			}
+
+			.chevron--bg {
+
+			}
+		</style>
+
+		<div id="leftChevrons" class="chevronGroup">
+			<atom-chevron direction="left" no-auto-render class="chevron"></atom-chevron>
+			<atom-chevron direction="left" no-auto-render class="chevron chevron--bg"></atom-chevron>
+			<atom-chevron direction="left" no-auto-render class="chevron"></atom-chevron>
+		</div>
+
+		<iron-selector id="lineSelector" attr-for-selected="id">
+			<div id="benefits" class="line">
+				<div id="benefitsContent" class="line-content">
+					<span class="bold">#AGDQ2018</span>&nbsp;benefits&nbsp;the&nbsp;<span class="white">TwitchCon Charity Plaza</span>
+				</div>
+			</div>
+
+			<div id="donate" class="line">
+				<div id="donateContent" class="line-content">
+					Donate at&nbsp;<span class="bold white">gamesdonequick.com</span>
+				</div>
+			</div>
+		</iron-selector>
+
+		<div id="rightChevrons" class="chevronGroup">
+			<atom-chevron direction="right" no-auto-render class="chevron"></atom-chevron>
+			<atom-chevron direction="right" no-auto-render class="chevron chevron--bg"></atom-chevron>
+			<atom-chevron direction="right" no-auto-render class="chevron"></atom-chevron>
+		</div>
+	</template>
+
+	<script src="gdq-omnibar-cta.js" type="module"></script>
+</dom-module>

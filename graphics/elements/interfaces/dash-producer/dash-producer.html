@@ -1,0 +1,260 @@
+<link rel="import" href="../../../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../../../../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../../../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
+<link rel="import" href="../../../../shared/elements/interfaces/ui-obs-status/ui-obs-status.html">
+<link rel="import" href="../../../../shared/elements/interfaces/ui-rundown/ui-rundown.html">
+<link rel="import" href="../dash-host/dash-host-bids.html">
+<link rel="import" href="../dash-host/dash-host-currentrun.html">
+<link rel="import" href="../dash-host/dash-host-prizes.html">
+<link rel="import" href="../dash-host/dash-host-styles.html">
+<link rel="import" href="../dash-host/dash-host-totals.html">
+<link rel="import" href="../dash-host/dash-host-twitch-ads.html">
+<link rel="import" href="../dash-incidents/dash-incidents.html">
+<link rel="import" href="dash-producer-checklist.html">
+
+<dom-module id="dash-producer">
+	<template>
+		<style include="dash-host-styles iron-flex iron-flex-alignment">
+			:host {
+				font-family: Roboto, sans-serif;
+				color: #000000;
+				box-sizing: border-box;
+				@apply --layout-vertical;
+			}
+
+			#header {
+				font-size: 24px;
+				font-weight: 700;
+				background-color: #C4C4C4;
+				height: 40px;
+				padding: 0 18px;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-justified;
+			}
+
+			#contentTabs {
+				height: 58px;
+			}
+
+			#header > div {
+				width: 33.33%;
+				text-align: center;
+			}
+
+			#header > div:first-of-type {
+				text-align: left;
+			}
+
+			#header > div:last-of-type {
+				text-align: right;
+			}
+
+			#pagesWrapper {
+				@apply --layout-flex;
+				@apply --layout-vertical;
+				overflow: scroll;
+			}
+
+			#pagesWrapper > * {
+				@apply --layout-flex;
+			}
+
+			#gridWrapper {
+				@apply --layout-self-start;
+				box-sizing: border-box;
+				display: grid;
+				grid-gap: 18px;
+				grid-template-columns: 550px auto 550px;
+				grid-template-rows: auto;
+				padding: 22px 32px;
+			}
+
+			#rightColumn,
+			#leftColumn {
+				/* Makes these columns a bit shorter, which helps to emphasize the total in the center column. */
+				padding-top: 11px;
+			}
+
+			#leftColumn {
+				grid-column: 1;
+				grid-row: 1;
+				@apply --layout-vertical;
+			}
+
+			#bidsAndPrizes {
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			#bidsAndPrizes paper-tabs {
+				height: 69px;
+			}
+
+			#bidsAndPrizes iron-pages {
+				@apply --layout-flex;
+				@apply --layout-vertical;
+			}
+
+			#bidsAndPrizes iron-pages > * {
+				@apply --layout-flex;
+			}
+
+			#scheduleAndStats {
+				grid-column: 2;
+				grid-row: 1;
+				@apply --layout-vertical;
+			}
+
+			#totals {
+				margin-bottom: 12px;
+			}
+
+			#currentRun {
+				height: 404px;
+				@apply --layout-flex-none;
+			}
+
+			#checklist {
+				margin-top: 28px;
+			}
+
+			#rundown {
+				@apply --layout-flex;
+				margin-top: 17px;
+			}
+
+			#rightColumn {
+				grid-column: 3;
+				grid-row: 1;
+				@apply --layout-vertical;
+			}
+
+			#recordingsAndAds {
+				@apply --layout-horizontal;
+				@apply --layout-flex-none;
+				height: 147px;
+			}
+
+			#recordings {
+				margin-right: 7px;
+				min-width: 1px;
+				@apply --layout-flex;
+			}
+
+			#twitchAds {
+				margin-left: 7px;
+				@apply --layout-flex;
+			}
+
+			paper-tabs {
+				background-color: white;
+				--paper-tabs-selection-bar-color: #8162A5;
+				--paper-tab-ink: #8162A5;
+				--paper-tabs-selection-bar: {
+					border-bottom-width: 8px;
+				};
+				--paper-tab: {
+					padding: 0;
+				};
+				--paper-tab-content: {
+					font-size: 24px;
+					font-weight: bold;
+					border-left: 0.5px solid transparent;
+					border-right: 0.5px solid transparent;
+				};
+				--paper-tab-content-unselected: {
+					background-color: #F5F5F5;
+					border-left: 0.5px solid #F5F5F5;
+					border-right: 0.5px solid #F5F5F5;
+				};
+				@apply --layout-flex-none;
+			}
+		</style>
+
+		<div id="header">
+			<div>[[currentTime]]</div>
+			<div>PRODUCER'S DASHBOARD</div>
+			<div>AGDQ2018</div>
+		</div>
+
+		<paper-tabs id="contentTabs" selected="{{selectedContentTab}}">
+			<paper-tab>Dashboard</paper-tab>
+			<paper-tab>Volunteer Schedule</paper-tab>
+			<!--<paper-tab>Volunteer Evals</paper-tab>-->
+			<paper-tab>Incidents</paper-tab>
+			<paper-tab>Full Schedule</paper-tab>
+		</paper-tabs>
+
+		<iron-pages id="pagesWrapper" selected="[[selectedContentTab]]">
+			<div id="gridWrapper">
+				<div id="leftColumn">
+					<div id="bidsAndPrizes" class="material">
+						<paper-tabs selected="{{selectedBidsAndPrizesTab}}">
+							<paper-tab>CHALLENGES</paper-tab>
+							<paper-tab>BID WARS</paper-tab>
+							<paper-tab>PRIZES</paper-tab>
+						</paper-tabs>
+
+						<iron-pages selected="[[selectedBidsAndPrizesTab]]">
+							<dash-host-bids id="challenges" class="material" bid-types='["challenge"]'></dash-host-bids>
+							<dash-host-bids id="bids" class="material"></dash-host-bids>
+							<dash-host-prizes id="prizes" class="material"></dash-host-prizes>
+						</iron-pages>
+					</div>
+				</div>
+
+				<div id="scheduleAndStats">
+					<dash-host-totals id="totals" class="material"></dash-host-totals>
+					<dash-host-currentrun id="currentRun" class="material"></dash-host-currentrun>
+					<dash-producer-checklist id="checklist" class="material"></dash-producer-checklist>
+				</div>
+
+				<div id="rightColumn">
+					<div id="recordingsAndAds">
+						<ui-obs-status id="recordings" class="material"></ui-obs-status>
+						<dash-host-twitch-ads id="twitchAds" class="material" hide-controls></dash-host-twitch-ads>
+					</div>
+
+					<ui-rundown
+						id="rundown"
+						class="material"
+						max-runs-to-show="Infinity"
+						allow-scrollback>
+					</ui-rundown>
+				</div>
+			</div>
+
+			<iframe
+				src="https://docs.google.com/spreadsheets/d/1dptp4DPhoIf1gPtTdO1wTIyVZiDnSUtu_WmxAgjD-14/edit"
+				frameBorder="0">
+			</iframe>
+
+			<!--<iframe-->
+				<!--src="https://docs.google.com/spreadsheets/d/1HPjKWS3Rujf0O7YloG-VAo-bwGfyzfpYNTm-1F-7L3w/edit"-->
+				<!--frameBorder="0">-->
+			<!--</iframe>-->
+
+			<dash-incidents></dash-incidents>
+
+			<iframe
+				src="https://gamesdonequick.com/schedule"
+				frameBorder="0">
+			</iframe>
+		</iron-pages>
+	</template>
+
+	<script src="dash-producer.js" type="module"></script>
+</dom-module>

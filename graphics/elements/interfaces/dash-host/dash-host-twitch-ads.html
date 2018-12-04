@@ -1,0 +1,120 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="dash-host-twitch-ads">
+	<template>
+		<style>
+			:host {
+				padding: 0 24px;
+				line-height: 1;
+				white-space: nowrap;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#left {
+				width: 220px;
+				@apply --layout-vertical;
+			}
+
+			#play {
+				margin-left: 0;
+				margin-right: 0;
+				height: 50px;
+				--paper-button: {
+					color: white;
+					background-color: #5BA664;
+				}
+			}
+
+			paper-listbox {
+				width: 160px;
+			}
+
+			#right {
+				margin-left: auto;
+				@apply --layout-vertical;
+				@apply --layout-end;
+			}
+
+			#sinceDiv {
+				font-weight: bold;
+				@apply --layout-horizontal;
+				@apply --layout-baseline;
+			}
+
+			#timeLeft {
+				font-weight: bold;
+				color: #D24C55;
+				font-size: 72px;
+			}
+
+			#sinceLabel {
+				color: black;
+				font-size: 18px;
+			}
+
+			#timeSince {
+				color: #5BA664;
+				font-size: 36px;
+				margin-left: 0.3em;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="left" hidden="[[hideControls]]">
+			<paper-button
+				id="play"
+				on-tap="play"
+				disabled="[[!canPlay]]"
+				raised>
+				[[_calcPlayButtonLabel(canPlay, cantPlayReason)]]
+			</paper-button>
+			<paper-dropdown-menu no-animations label="Twitch Ad Duration">
+				<paper-listbox
+					disabled
+					id="listbox"
+					slot="dropdown-content"
+					selected="1">
+					<paper-item data-value="30">30 Sec</paper-item>
+					<paper-item data-value="60">60 Sec</paper-item>
+					<paper-item data-value="90">90 Sec</paper-item>
+				</paper-listbox>
+			</paper-dropdown-menu>
+		</div>
+
+		<div id="right">
+			<div id="timeLeft">[[timeLeft]]</div>
+			<div id="sinceDiv">
+				<div id="sinceLabel">Since Last Ad:</div>
+				<div id="timeSince">[[timeSince]]</div>
+			</div>
+		</div>
+
+		<paper-dialog
+			id="confirmDialog"
+			on-iron-overlay-closed="_handleConfirmDialogClosed"
+			with-backdrop>
+			<h2>Confirm Twitch Ad Break</h2>
+
+			<div>
+				Are you sure you wish to <b>start</b> a Twitch ad break?
+			</div>
+
+			<div class="buttons">
+				<paper-button dialog-dismiss autofocus raised>No, Cancel</paper-button>
+				<paper-button dialog-confirm raised>Yes, Begin</paper-button>
+			</div>
+		</paper-dialog>
+	</template>
+
+	<script src="dash-host-twitch-ads.js" type="module"></script>
+</dom-module>

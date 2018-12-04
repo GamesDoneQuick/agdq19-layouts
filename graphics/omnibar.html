@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Omnibar</title>
+	<link rel="stylesheet" href="style/base.css">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/mixins/mutable-data.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<link rel="import" href="../bower_components/sc-fitted-text/sc-fitted-text.html">
+	<link rel="import" href="../shared/style/gdq-fui-styles.html">
+	<link rel="import" href="../shared/style/gdq-text-styles.html">
+	<link rel="import" href="../shared/imports/svgjs.html">
+	<script>
+		{
+			let links = [
+				'elements/molecules/gdq-omnibar/gdq-omnibar.html'
+			];
+
+			if (window.extraImports && Array.isArray(window.extraImports)) {
+				links = links.concat(extraImports)
+			}
+
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+	<link rel="import" href="">
+	<style>
+		#container {
+			width: 1600px;
+			height: 55px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<gdq-omnibar></gdq-omnibar>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

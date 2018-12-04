@@ -1,0 +1,38 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/utils/templatize.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="ui-sortable-list-item.html">
+
+<dom-module id="ui-sortable-list">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				@apply --layout-vertical;
+				overflow-y: auto;
+				padding-right: 9px;
+			}
+		</style>
+
+		<nodecg-replicant
+			id="replicant"
+			replicant-name="[[replicantName]]"
+			replicant-bundle="[[replicantBundle]]"
+			value="{{_itemsReplicantValue}}">
+		</nodecg-replicant>
+
+		<template id="repeat" is="dom-repeat" items="[[_actualItems]]" mutable-data>
+			<ui-sortable-list-item
+				index="[[index]]"
+				item="[[item]]"
+				items="[[_actualItems]]"
+				on-move-item-up="_moveItemUpPressed"
+				on-move-item-Down="_moveItemDownPressed">
+			</ui-sortable-list-item>
+		</template>
+	</template>
+
+	<script src="ui-sortable-list.js" type="module"></script>
+</dom-module>

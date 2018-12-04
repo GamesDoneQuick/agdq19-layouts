@@ -1,0 +1,56 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="../../../../shared/style/gdq-fui-styles.html">
+<link rel="import" href="../../../../shared/style/gdq-text-styles.html">
+
+<dom-module id="atom-score-display">
+	<template>
+		<style include="gdq-fui-styles gdq-text-styles">
+			:host {
+				display: flex;
+				position: absolute;
+				height: 60px;
+				width: 72px;
+				text-transform: uppercase;
+				color: white;
+				font-family: "Source Code Pro", monospace;
+				@apply --fui-glow-rect;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#scoreText {
+				position: relative;
+				top: -1px;
+				display: flex;
+				flex: 1;
+				white-space: nowrap;
+				font-size: 50px;
+				font-weight: 600;
+				z-index: 1;
+				line-height: 1;
+				min-width: 1px;
+				box-sizing: border-box;
+			}
+
+			sc-fitted-text {
+				--sc-fitted-text-content: {
+					color: var(--atom-nameplate-name-color, transparent);
+					background-image: var(--atom-gradient-text-gradient, linear-gradient(
+						180deg,
+						#FFFFFF 0%,
+						#B1B8F4 100%
+					));
+					text-shadow: 0 0 16px rgba(58, 216, 255, 0.8);
+				};
+			}
+		</style>
+
+		<sc-fitted-text id="scoreText" text="[[score]]" align="center"></sc-fitted-text>
+	</template>
+
+	<script src="atom-score-display.js" type="module"></script>
+</dom-module>

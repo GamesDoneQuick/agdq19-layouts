@@ -1,0 +1,123 @@
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="../../../../shared/style/gdq-scroll-style.html">
+<link rel="import" href="../../atoms/atom-refresh-indicator/atom-refresh-indicator.html">
+<link rel="import" href="dash-host-bid.html">
+<link rel="import" href="dash-host-bid-option.html">
+<link rel="import" href="dash-host-styles.html">
+
+<dom-module id="dash-host-bids">
+	<template>
+		<style include="dash-host-styles gdq-scroll-style">
+			:host {
+				padding: 0 16px;
+				box-sizing: border-box;
+				@apply --layout-vertical;
+			}
+
+			#cooldown {
+				width: 100%;
+				margin-top: 14px;
+				@apply --layout-flex-none;
+			}
+
+			#filter {
+				@apply --layout-flex-none;
+
+				--paper-input-container-input: {
+					font-weight: 400;
+				};
+
+				--paper-input-container-label: {
+					font-weight: 400;
+				};
+
+				--paper-input-container-label-focus: {
+					color: #8560a8
+				};
+
+				--paper-input-container-underline: {
+					position: relative;
+					top: 2px;
+					border-bottom: 3px solid #8560a8;
+				};
+
+				--paper-input-container-underline-focus: {
+					top: 2px;
+					border-bottom: 3px solid #C693F2;
+				}
+			}
+
+			#list {
+				padding-right: 14px;
+				margin-top: 9px;
+				margin-bottom: 13px;
+				box-sizing: border-box;
+				min-height: 1px;
+				overflow-y: scroll;
+				overflow-x: hidden;
+				@apply --layout-flex;
+			}
+
+			#dialog {
+				width: 506px;
+				@apply --layout-vertical;
+			}
+
+			#dialog-title {
+				font-size: 20px;
+				font-weight: 600;
+			}
+
+			#dialog-body {
+				@apply --layout-vertical;
+			}
+
+			#dialog-close {
+				height: 34px;
+				font-size: 16px;
+				--paper-button: {
+					color: white;
+					background-color: #5BA664;
+				};
+				@apply --layout-self-center;
+				@apply --layout-flex-none;
+			}
+
+			dash-host-bid[type="choice-many"] {
+				cursor: pointer;
+			}
+		</style>
+
+		<atom-refresh-indicator id="cooldown"></atom-refresh-indicator>
+
+		<paper-input
+			id="filter"
+			label="Filter"
+			placeholder="Type in filter here"
+			type="search"
+			value="{{bidFilterString}}">
+		</paper-input>
+
+		<div id="list">
+			<template is="dom-repeat" items="[[relevantBids]]" as="bid" filter="{{computeBidsFilter(bidFilterString)}}">
+				<dash-host-bid bid="[[bid]]" on-tap="_handleBidTap"></dash-host-bid>
+			</template>
+		</div>
+
+		<paper-dialog id="dialog" with-backdrop>
+			<div id="dialog-title">[[calcBidName(dialogBid.description)]]</div>
+			<paper-dialog-scrollable id="dialog-body">
+				<template is="dom-repeat" items="[[dialogBid.options]]" as="option">
+					<dash-host-bid-option bid="[[dialogBid]]" option="[[option]]" index="[[index]]"></dash-host-bid-option>
+				</template>
+			</paper-dialog-scrollable>
+			<paper-button id="dialog-close" on-tap="closeDialog" raised>OK</paper-button>
+		</paper-dialog>
+	</template>
+
+	<script src="dash-host-bids.js" type="module"></script>
+</dom-module>

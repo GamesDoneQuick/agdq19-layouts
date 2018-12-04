@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Test Tron Lines</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="elements/interfaces/ui-element-tester/ui-element-tester.html">
+	<link rel="import" href="elements/atoms/atom-tronlines/atom-tronlines.html">
+	<custom-style>
+		<style>
+			body {
+				opacity: 1;
+				background: hsla(189, 58%, 25%, 1);
+				@apply --layout-vertical;
+				@apply --layout-start;
+			}
+
+			element-tester {
+				--element-tester-controls: {
+					width: 300px;
+				}
+			}
+
+			#clear {
+				margin: 0;
+				margin-top: 8px;
+				--paper-button: {
+					background-color: #C9513E;
+					color: white;
+				};
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<ui-element-tester>
+		<atom-tronlines></atom-tronlines>
+		<paper-button id="clear" raised>Clear Nodes</paper-button>
+	</ui-element-tester>
+
+	<script>
+		const clearButton = document.getElementById('clear');
+		const tronlines = document.querySelector('atom-tronlines');
+		clearButton.addEventListener('click', () => {
+			tronlines.clear(true);
+		});
+	</script>
+</body>
+</html>

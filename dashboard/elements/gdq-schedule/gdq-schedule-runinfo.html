@@ -1,0 +1,181 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="gdq-schedule-runinfo">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				color: var(--gdq-schedule-runinfo-color, black);
+			}
+
+			#label {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				background: #8C8C8C;
+				color: white;
+				font-size: 18px;
+				font-weight: 500;
+				height: 26px;
+				text-align: center;
+				width: 100%;
+			}
+
+			.padded {
+				padding: 4px;
+			}
+
+			section {
+				@apply --layout-vertical;
+			}
+
+			.modified {
+				background-color: #CEE0C9;
+			}
+
+			.modified label:after {
+				content: '*';
+			}
+
+			.divider {
+				border-bottom: 1px dashed var(--gdq-schedule-runinfo-color, black);
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			#name .value {
+				font-weight: 500;
+				font-size: 18px;
+				height: 2.4em;
+				word-wrap: break-word;
+				white-space: normal;
+
+				/* limit max lines to 2 */
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+
+			#runners {
+				@apply --layout-horizontal;
+				@apply --layout-wrap;
+			}
+
+			.runner {
+				@apply --layout-vertical;
+				width: calc(50% - 4px);
+				padding-right: 8px;
+				box-sizing: border-box;
+			}
+
+			.runner:nth-child(odd) {
+				margin-right: 4px;
+			}
+
+			.runner:nth-child(even) {
+				margin-left: 4px;
+			}
+
+			#misc {
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+				flex-wrap: wrap;
+			}
+
+			#misc > div {
+				@apply --layout-vertical;
+				width: 50%;
+				box-sizing: border-box;
+			}
+
+			#console {
+				overflow: hidden;
+				white-space: nowrap;
+			}
+
+			#notes .value {
+				white-space: normal;
+				height: 5em;
+				overflow-y: auto;
+				word-wrap: break-word;
+			}
+
+			label {
+				font-size: 13px;
+			}
+
+			.value {
+				font-size: 16px;
+				font-weight: 500;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: inline-block;
+			}
+		</style>
+
+		<div id="label">[[label]] (#[[order]])</div>
+
+		<section id="name" class$="padded [[calcModified(originalValues.name)]]">
+			<label>Name</label>
+			<span class="value" title="[[calcName(name)]]">[[calcName(name)]]</span>
+		</section>
+
+		<div class="divider"></div>
+
+		<section id="runners">
+			<div class$="padded runner [[calcModified(originalValues.runners.0)]]" style="margin-bottom: 12px;">
+				<label>Runner</label>
+				<span class="value" title="[[runners.0.name]]">[[runners.0.name]]&#8203;</span>
+			</div>
+			<div class$="padded runner [[calcModified(originalValues.runners.1)]]" style="margin-bottom: 12px;">
+				<label>Runner 2</label>
+				<span class="value" title="[[runners.1.name]]">[[runners.1.name]]&#8203;</span>
+			</div>
+			<div class$="padded runner [[calcModified(originalValues.runners.2)]]">
+				<label>Runner 3</label>
+				<span class="value" title="[[runners.2.name]]">[[runners.2.name]]&#8203;</span>
+			</div>
+			<div class$="padded runner [[calcModified(originalValues.runners.3)]]">
+				<label>Runner 4</label>
+				<span class="value" title="[[runners.3.name]]">[[runners.3.name]]&#8203;</span>
+			</div>
+		</section>
+
+		<div class="divider"></div>
+
+		<section class$="padded [[calcModified(originalValues.category)]]">
+			<label>Category</label>
+			<span class="value" title="[[category]]">[[category]]&#8203;</span>
+		</section>
+
+		<div class="divider"></div>
+
+		<section id="misc">
+			<div class$="padded [[calcModified(originalValues.estimate)]]">
+				<label>Estimate</label>
+				<span class="value">[[estimate]]&#8203;</span>
+			</div>
+			<div id="console" class$="padded [[calcModified(originalValues.console)]]">
+				<label>Console</label>
+				<span title="[[console]]" class="value">[[console]]&#8203;</span>
+			</div>
+			<div class$="padded [[calcModified(originalValues.releaseYear)]]">
+				<label>Release Year</label>
+				<span class="value">[[releaseYear]]&#8203;</span>
+			</div>
+			<div class$="padded [[calcModified(originalValues.coop)]]">
+				<label>Co-op</label>
+				<span class="value">[[coop]]&#8203;</span>
+			</div>
+		</section>
+
+		<div class="divider"></div>
+
+		<section id="notes" class="padded">
+			<label>Tech Notes</label>
+			<div class="value"></div>
+		</section>
+	</template>
+
+	<script src="gdq-schedule-runinfo.js" type="module"></script>
+</dom-module>

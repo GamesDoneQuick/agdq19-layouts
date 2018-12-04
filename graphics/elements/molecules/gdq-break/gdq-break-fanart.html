@@ -1,0 +1,85 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="../../../../shared/imports/svgjs.html">
+<link rel="import" href="../../atoms/atom-gridmask-image/atom-gridmask-image.html">
+<link rel="import" href="../gdq-tweet/gdq-tweet.html">
+
+<dom-module id="gdq-break-fanart">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				box-sizing: border-box;
+				font-weight: 400;
+				position: absolute;
+			}
+
+			#fanart {
+				@apply --layout-center-center;
+				@apply --layout-horizontal;
+				box-sizing: border-box;
+				height: 502px;
+				position: relative;
+				width: 797px;
+			}
+
+			#label {
+				@apply --layout-center;
+				@apply --layout-horizontal;
+				background: #00FFFF;
+				box-sizing: border-box;
+				color: black;
+				font-size: 12px;
+				font-weight: 400;
+				height: 16px;
+				left: 21px;
+				line-height: 1;
+				padding: 0 4px;
+				position: absolute;
+				text-transform: uppercase;
+				top: -8px;
+				transform-origin: left;
+				white-space: nowrap;
+				width: 225px;
+				will-change: transform, clip-path;
+				z-index: 1;
+			}
+
+			#background {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+
+			#tweet {
+				height: 164px;
+				margin-top: 11px;
+				position: relative;
+				width: 816px;
+			}
+
+			#image {
+				height: 457px;
+				width: 720px;
+				z-index: 1;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="fanart">
+			<div id="background"></div>
+			<div id="label">FAN_ART_AND_OTHER_MEDIA</div>
+			<atom-gridmask-image
+				id="image"
+				cell-stagger="0.001">
+			</atom-gridmask-image>
+		</div>
+
+		<gdq-tweet id="tweet" bind-to-message="false"></gdq-tweet>
+	</template>
+
+	<script src="gdq-break-fanart.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 1 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+</head>
+<body>
+	<div id="container">
+		<layout-app></layout-app>
+	</div>
+
+	<dom-module id="layout-app">
+		<template>
+			<style>
+				#bottomLeft {
+					display: flex;
+					flex-direction: column;
+					position: absolute;
+					top: 486px;
+					width: 474px;
+					height: 359px;
+				}
+
+				#runners {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					position: relative;
+					padding-left: 11px;
+				}
+
+				#sponsorsAndTwitter {
+					position: relative;
+					width: 451px;
+					flex-grow: 1;
+					margin:10px;
+				}
+
+				#lineone {
+					width: 474px;
+					height: 845px;
+					position: absolute;
+					top: 0;
+					left: 0;
+					border-right: 1px solid #ffffff;
+				}
+
+				#linetwo {
+					width: 474px;
+					height: 100px;
+					position: absolute;
+					left: 0;
+					top: 131px;
+					background-color: #000000;
+					border-bottom: 1px solid #ffffff;
+				}
+
+				gdq-runinfo {
+					left: 0;
+					top: 0;
+					width: 474px;
+					height: 197px;
+					--gdq-runinfo-misc-height: 47px;
+					--gdq-runinfo-name-padding: 8px 16px;
+				}
+
+				gdq-runner-nameplate {
+					position: relative;
+					margin-bottom: 9px;
+					font-size: 24px;
+					width: 451px;
+				}
+
+				gdq-timer {
+					position: relative;
+					height: 65px;
+					width: 451px;
+					font-size: 56px;
+					--gdq-timer-voffset: -1px;
+					margin-left: 11px;
+				}
+
+				gdq-tweet {
+					width: 100%;
+					height: 100%;
+					--gdq-tweet-name-font-size: 16px;
+					--gdq-tweet-body: {
+						font-size: 17px;
+					};
+				}
+
+				gdq-tweet,
+				gdq-sponsors {
+					top: 0;
+					left: 0;
+				}
+
+				atom-tronlines {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					border-top: 1px solid #ffffff;
+				}
+
+				atom-gridlines {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 474px;
+					height: 131px;
+				}
+
+				/* One runner */
+				:host([num-runners="1"]) gdq-runner-nameplate:not([index="0"]) {
+					display: none;
+				}
+
+				/* Two runners */
+				:host([num-runners="2"]) gdq-runner-nameplate[index="2"],
+				:host([num-runners="2"]) gdq-runner-nameplate[index="3"] {
+					display: none;
+				}
+
+				/* Four runners */
+				:host([num-runners="4"]) #runners {
+					margin-top: 45px;
+				}
+
+				:host([num-runners="4"]) #sponsorsAndTwitter {
+					display: none;
+				}
+
+				:host([num-runners="4"]) gdq-timer {
+					padding-top: 0;
+				}
+			</style>
+
+			<atom-gridlines></atom-gridlines>
+			<atom-tronlines width="474" height="345"></atom-tronlines>
+			<div id="lineone"></div>
+			<div id="linetwo"></div>
+			<gdq-runinfo max-name-size="42"></gdq-runinfo>
+			<div id="bottomLeft">
+				<div id="runners">
+					<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+					<gdq-runner-nameplate index="1" no-audio></gdq-runner-nameplate>
+					<gdq-runner-nameplate index="2" no-audio></gdq-runner-nameplate>
+					<gdq-runner-nameplate index="3" no-audio></gdq-runner-nameplate>
+				</div>
+				<gdq-timer></gdq-timer>
+				<div id="sponsorsAndTwitter">
+					<gdq-sponsors id="sponsors"></gdq-sponsors>
+					<gdq-tweet id="tweet"></gdq-tweet>
+				</div>
+			</div>
+		</template>
+
+		<script>
+			const currentRun = nodecg.Replicant('currentRun');
+
+			class StandardOne extends Polymer.Element {
+				static get is() {
+					return 'layout-app';
+				}
+
+				static get properties() {
+					return {
+						numRunners: {
+							type: Number,
+							reflectToAttribute: true,
+							value: 1
+						}
+					}
+				}
+
+				connectedCallback() {
+					super.connectedCallback();
+					Polymer.RenderStatus.beforeNextRender(this, () => {
+						currentRun.on('change', newVal => {
+							if (!newVal) {
+								return;
+							}
+
+							if (newVal.runners.length !== 3 && newVal.runners.length <= 4) {
+								this.numRunners = newVal.runners.length;
+								this.$.sponsors.resize();
+								this.$.tweet.resize();
+							}
+						});
+					});
+				}
+			}
+
+			customElements.define(StandardOne.is, StandardOne);
+		</script>
+	</dom-module>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

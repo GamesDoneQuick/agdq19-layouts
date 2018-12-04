@@ -1,0 +1,51 @@
+@import 'base.css';
+
+body {
+	font-family: 'Source Code Pro';
+}
+
+#container {
+	position: relative;
+	width: 1600px;
+	height: 845px;
+}
+
+#container > #background,
+#container > #foreground,
+#container > #addon {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#container > #background {
+	z-index: -10;
+}
+
+#container > #foreground {
+	pointer-events: none;
+	z-index: 10;
+}
+
+#container > #addon {
+	pointer-events: none;
+	z-index: -11;
+}
+
+/*
+For use in gathering viewport metrics.
+Dump this javascript into your console to make the measuring div appear:
+
+const measuringDiv = document.createElement('div');
+measuringDiv.id = 'measuring';
+measuringDiv.style.left = '0px';
+measuringDiv.style.top = '0px';
+document.body.appendChild(measuringDiv);
+ */
+#measuring {
+	position: absolute;
+	width: 200px;
+	height: 150px;
+	background-color: #464646;
+	z-index: -100;
+}

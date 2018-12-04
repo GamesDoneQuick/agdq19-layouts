@@ -1,0 +1,49 @@
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="atom-nameplate-twitch-logo">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				display: block;
+				width: 25px;
+				height: 25px;
+				fill: white;
+			}
+
+			#path {
+				fill: url("#gradient");
+				filter: url("#glowFilter");
+			}
+		</style>
+
+		<svg id="svg" viewBox="0 0 208 211">
+			<defs>
+				<filter id="glowFilter" x="-100%" y="-100%" width="300%" height="300%" >
+					<feGaussianBlur in="SourceAlpha" stdDeviation="16" result="blur"/>
+					<feFlood flood-color="#3AD8FF" flood-opacity="0.8" result="flood"/>
+					<feComposite in="flood" in2="blur" operator="in" result="comp"/>
+					<feMerge>
+						<feMergeNode in="SourceGraphic"></feMergeNode>
+						<feMergeNode in="comp"></feMergeNode>
+					</feMerge>
+				</filter>
+
+				<defs>
+					<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+						<stop offset="0%"   stop-color="#FFFFFF"/>
+						<stop offset="100%" stop-color="#CDCDCD"/>
+					</linearGradient>
+				</defs>
+			</defs>
+
+			<!--transform="translate(-80 -77)"-->
+			<path id="path"
+				  transform="translate(-40 -38.5)"
+				  d="M89,77l-9,23v94h32v17h18l17-17h26l35-35V77H89Zm107,76-20,20H144l-17,17V173H100V89h96v64Zm-20-41v35H164V112h12Zm-32,0v35H132V112h12Z"/>
+		</svg>
+	</template>
+
+	<script src="atom-nameplate-twitch-logo.js" type="module"></script>
+</dom-module>

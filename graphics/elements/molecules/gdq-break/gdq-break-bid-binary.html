@@ -1,0 +1,76 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="gdq-break-bid-binary">
+	<template>
+		<style>
+			:host {
+				display: block;
+				position: relative;
+				color: white;
+				margin-top: -8px;
+				height: 331px;
+			}
+
+			#chart {
+				position: absolute;
+				top: 9px;
+				left: 247px;
+				width: 321px;
+				height: 321px;
+				opacity: 0.8;
+			}
+
+			#winningOptionName {
+				top: 6px;
+				left: 35px;
+			}
+
+			#winningOptionAmount {
+				top: 36px;
+				left: 0;
+				height: 102px;
+				padding: 0 18px 0 28px;
+			}
+
+			#losingOptionAmount {
+				top: 206px;
+				right: 0;
+				height: 74px;
+				padding: 0 32px 0 20px;
+				font-size: 72px;
+			}
+
+			#losingOptionName {
+				top: 280px;
+				right: 46px;
+			}
+
+			.name {
+				position: absolute;
+				font-size: 24px;
+				font-weight: 400;
+				text-transform: uppercase;
+				z-index: 1;
+				will-change: opacity, transform;
+			}
+
+			.amount {
+				position: absolute;
+				background-color: rgba(145, 145, 145, 0.3);
+				font-size: 100px;
+				font-weight: 400;
+				line-height: 1;
+				z-index: 1;
+			}
+		</style>
+
+		<div id="chart"></div>
+
+		<div id="winningOptionName" class="name"></div>
+		<div id="winningOptionAmount" class="amount"></div>
+		<div id="losingOptionAmount" class="amount"></div>
+		<div id="losingOptionName" class="name"></div>
+	</template>
+
+	<script src="gdq-break-bid-binary.js" type="module"></script>
+</dom-module>

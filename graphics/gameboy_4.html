@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Game Boy, 4 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			gdq-runner-nameplate {
+				width: 330px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				top: 10px;
+				left: 446px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				top: 60px;
+				right: 446px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(3) {
+				top: 348px;
+				left: 446px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(4) {
+				top: 398px;
+				right: 446px;
+			}
+
+			gdq-runinfo {
+				left: 445px;
+				top: 109px;
+				width: 392px;
+				height: 170px;
+				--gdq-runinfo-misc-height: 58px;
+			}
+
+			gdq-timer {
+				left: 445px;
+				top: 277px;
+				height: 53px;
+				width: 392px;
+				--gdq-timer-voffset: -2px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img id="background" src="img/backgrounds/standard_4_bg.png">
+		<gdq-runinfo></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-runner-nameplate index="0" result-side="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" result-side="right"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="2" result-side="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="3" result-side="right"</gdq-runner-nameplate>
+		<img id="foreground" src="img/backgrounds/standard_4_fg.png">
+		<img id="addon" src="img/backgrounds/gb4_addon.png">
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

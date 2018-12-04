@@ -1,0 +1,173 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"type": "object",
+	"additonalProperties": false,
+	"properties": {
+		"cells": {
+			"type": "array",
+			"minItems": 25,
+			"maxItems": 25,
+			"additionalItems": false,
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"slot": {
+						"type": "string"
+					},
+					"colors": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": ["slot", "colors", "name"]
+			}
+		},
+		"selectedLine": {
+			"type": "string",
+			"enum": [
+				"none",
+				"col1",
+				"col2",
+				"col3",
+				"col4",
+				"col5",
+				"row1",
+				"row2",
+				"row3",
+				"row4",
+				"row5",
+				"tl-br",
+				"bl-tr"
+			]
+		},
+		"lineFocused": {
+			"type": "boolean"
+		},
+		"cardHidden": {
+			"type": "boolean"
+		},
+		"embiggen": {
+			"type": "boolean"
+		}
+	},
+
+	"required": [
+		"cells",
+		"selectedLine",
+		"lineFocused",
+		"cardHidden",
+		"embiggen"
+	],
+
+	"default": {
+		"selectedLine": "none",
+		"lineFocused": false,
+		"cardHidden": true,
+		"embiggen": false,
+		"cells": [{
+			"slot": "slot1",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot2",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot3",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot4",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot5",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot6",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot7",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot8",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot9",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot10",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot11",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot12",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot13",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot14",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot15",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot16",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot17",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot18",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot19",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot20",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot21",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot22",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot23",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot24",
+			"name": "?",
+			"colors": "blank"
+		}, {
+			"slot": "slot25",
+			"name": "?",
+			"colors": "blank"
+		}]
+	}
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GBA, 4 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			#lineone {
+				position: absolute;
+				box-sizing: border-box;
+				width: 466px;
+				height: 845px;
+				right: 0;
+				border-left: 1px solid #00ffff;
+			}
+
+			#linetwo {
+				background: #00ffff;
+				width: 3px;
+				height: 845px;
+				left: 565px;
+				position: absolute;
+			}
+
+			#leftPlate {
+				left: 0;
+				@apply --layout-end;
+			}
+
+			#leftPlate > gdq-runner-nameplate {
+				margin-right: -1px;
+			}
+
+			#rightPlate {
+				right: 466px;
+			}
+
+			#rightPlate > gdq-runner-nameplate {
+				margin-left: -1px;
+			}
+
+			.plate {
+				background-color: #051113;
+				border-top: 1px solid #00ffff;
+				border-bottom: 1px solid #00ffff;
+				position: absolute;
+				height: 93px;
+				width: 566px;
+				top: 375px;
+				@apply --layout-vertical;
+				@apply --layout-justified;
+			}
+
+			.plate > :first-child {
+				margin-top: -1px;
+			}
+
+			.plate > :last-child {
+				margin-bottom: -1px;
+			}
+
+			gdq-runner-nameplate {
+				position: relative;
+				width: 400px;
+			}
+
+			gdq-runner-nameplate[audio] {
+				z-index: 2;
+			}
+
+			gdq-runinfo {
+				right: 0;
+				top: 240px;
+				width: 466px;
+				height: 196px;
+				--gdq-runinfo-name-padding: 8px 16px;
+				--gdq-runinfo-misc-height: 45px;
+			}
+
+			gdq-timer {
+				right: 0;
+				top: 475px;
+				height: 81px;
+				width: 466px;
+				font-size: 56px;
+			}
+
+			atom-tronlines {
+				position: absolute;
+				right: 0;
+			}
+
+			atom-tronlines:nth-of-type(1) {
+				top: 384px;
+			}
+
+			atom-tronlines:nth-of-type(2) {
+				top: 556px;
+				border-bottom: 1px solid #00ffff;
+			}
+
+			atom-gridlines {
+				position: absolute;
+				top: 240px;
+				right: 0;
+				height: 145px;
+				width: 466px;
+				border-top: 1px solid #00ffff;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+<div id="container">
+	<div id="leftPlate" class="plate">
+		<gdq-runner-nameplate index="0" no-right-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="2" no-right-cap result-side="left" audio-vert-pos="top" audio-horiz-pos="left"></gdq-runner-nameplate>
+	</div>
+
+	<div id="rightPlate" class="plate">
+		<gdq-runner-nameplate index="1" no-left-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="3" no-left-cap result-side="right" audio-vert-pos="top" audio-horiz-pos="right"></gdq-runner-nameplate>
+	</div>
+
+	<atom-gridlines></atom-gridlines>
+	<atom-tronlines direction="down" width="466" height="102"></atom-tronlines>
+	<atom-tronlines width="466" height="49"></atom-tronlines>
+	<div id="lineone"></div>
+	<div id="linetwo"></div>
+	<gdq-runinfo></gdq-runinfo>
+	<gdq-timer></gdq-timer>
+</div>
+
+<script>
+	window.addEventListener('DOMContentLoaded', () => {
+		TweenLite.to(document.body, 0.333, {
+			opacity: 1,
+			ease: Power1.easeOut
+		});
+	});
+</script>
+</body>
+</html>

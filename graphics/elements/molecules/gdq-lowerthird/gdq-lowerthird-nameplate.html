@@ -1,0 +1,103 @@
+<link rel="import" href="../../../../bower_components/sc-fitted-text/sc-fitted-text.html">
+<link rel="import" href="../../atoms/atom-nameplate/atom-nameplate.html">
+
+<dom-module id="gdq-lowerthird-nameplate">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				@apply --layout-center;
+			}
+
+			#clipped {
+				@apply --layout-vertical;
+				@apply --layout-flex-none;
+				@apply --layout-self-stretch;
+				position: relative;
+				will-change: clip-path;
+				z-index: 1;
+			}
+
+			#nameplate {
+				height: var(--gdq-lowerthird-nameplate-height, 45px);
+				margin: 0;
+			}
+
+			#occluder-clip {
+				filter: drop-shadow(0 0 16px rgba(58, 216, 255, 0.8));
+				height: var(--gdq-lowerthird-nameplate-height, 45px);
+				left: 0;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: 2;
+			}
+
+			#occluder {
+				background-color: white;
+				height: 100%;
+				width: 40%;
+				will-change: transform;
+			}
+
+			#headerText {
+				position: absolute;
+				top: 7px;
+				left: 40px;
+			}
+
+			#title {
+				@apply --layout-center-center;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+				background: #00FFFF;
+				color: black;
+				font-size: 18px;
+				font-weight: 500;
+				height: 22px;
+				max-width: 380px;
+				text-align: center;
+				text-shadow: 0 0 12px #00FFFF;
+				width: calc(100% - 110px);
+				will-change: transform;
+			}
+
+			#title-text {
+				position: relative;
+				top: -1px;
+			}
+
+			:host(:not([header])) #headerText {
+				display: none;
+			}
+
+			:host([header]) #title {
+				display: none;
+			}
+
+			:host(:not([has-title])) #title {
+				visibility: hidden;
+			}
+		</style>
+
+		<div id="clipped">
+			<atom-nameplate id="nameplate" name-fade-duration="0"></atom-nameplate>
+			<img id="headerText" src="[[importPath]]img/header-text.png">
+		</div>
+
+		<div id="occluder-clip">
+			<div id="occluder"></div>
+		</div>
+
+		<div id="title">
+			<sc-fitted-text
+				id="title-text"
+				text="[[title]]"
+				align="center">
+			</sc-fitted-text>
+		</div>
+	</template>
+
+	<script src="gdq-lowerthird-nameplate.js" type="module"></script>
+</dom-module>

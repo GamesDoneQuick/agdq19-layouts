@@ -1,0 +1,6 @@
+{
+    "bitrate": 15000,
+    "crf": 15,
+    "preset": "medium",
+    "rate_control": "VBR"
+}

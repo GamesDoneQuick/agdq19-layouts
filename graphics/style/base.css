@@ -1,0 +1,12 @@
+@import '../../shared/fonts/montserrat/stylesheet.css';
+@import '../../shared/fonts/gdqpixel/stylesheet.css';
+
+body {
+	margin: 0;
+	opacity: 0;
+}
+
+#container {
+	position: absolute;
+	overflow: hidden;
+}

@@ -1,0 +1,49 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["adBreak"]
+		},
+		"ads": {
+			"type": "array",
+			"additionalItems": false,
+			"items": {
+				"$ref": "ad.json"
+			}
+		},
+		"id": {
+			"type": "number"
+		},
+		"state": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"canStart": {
+					"type": "boolean",
+					"default": false
+				},
+				"cantStartReason": {
+					"type": "string",
+					"default": ""
+				},
+				"started": {
+					"type": "boolean",
+					"default": false
+				},
+				"canComplete": {
+					"type": "boolean",
+					"default": false
+				},
+				"completed": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			"required": ["canStart", "cantStartReason", "started", "canComplete", "completed"]
+		}
+	},
+	"required": ["type", "ads", "id", "state"]
+}

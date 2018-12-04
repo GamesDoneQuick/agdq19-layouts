@@ -1,0 +1,72 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/imports/svgjs.html">
+<link rel="import" href="../../atoms/atom-text-greeble/atom-text-greeble.html">
+<link rel="import" href="gdq-break-bid-binary.html">
+<link rel="import" href="gdq-break-bid-challenge.html">
+<link rel="import" href="gdq-break-bid-many.html">
+<link rel="import" href="gdq-break-header.html">
+
+<dom-module id="gdq-break-bids">
+	<template>
+		<style>
+			:host {
+				width: 785px;
+				@apply --layout-vertical;
+			}
+
+			#header {
+				margin-bottom: 2px;
+				--gdq-break-header-text: {
+					padding-left: 17px
+				};
+			}
+
+			#description {
+				position: relative;
+				height: 72px;
+				padding: 5px 9px;
+				background-color: rgba(145, 145, 145, 0.3);
+				margin-bottom: 15px;
+			}
+
+			#description-actual {
+				font-weight: 400;
+				font-size: 30px;
+				color: #00FFFF;
+				text-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+			}
+
+			#description-greeble {
+				position: absolute;
+				top: 4px;
+				right: 8px;
+				font-size: 8px;
+			}
+
+			#content {
+				position: relative;
+			}
+
+			#content > :not(.iron-selected) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				opacity: 0 !important;
+			}
+		</style>
+
+		<gdq-break-header id="header" text="INCENTIVES_AND_CHALLENGES"></gdq-break-header>
+
+		<div id="description">
+			<div id="description-actual"></div>
+			<atom-text-greeble id="description-greeble" length="11"></atom-text-greeble>
+		</div>
+
+		<iron-selector id="content" selected="-1"></iron-selector>
+	</template>
+
+	<script src="gdq-break-bids.js" type="module"></script>
+</dom-module>

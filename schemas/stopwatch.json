@@ -1,0 +1,53 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"state": {
+			"type": "string",
+			"enum": ["not_started", "running", "paused", "finished"],
+			"default": "not_started"
+		},
+		"time": {
+			"$ref": "types/timeStruct.json"
+		},
+		"results": {
+			"type": "array",
+			"minItems": 4,
+			"maxItems": 4,
+			"additionalItems": false,
+			"items": {
+				"oneOf": [
+					{ "type": "null" },
+					{
+						"type": "object",
+						"additionalProperties": false,
+						"properties": {
+							"time": {
+								"$ref": "types/timeStruct.json"
+							},
+							"place": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 4,
+								"multipleOf": 1.0
+							},
+							"forfeit": {
+								"type": "boolean",
+								"default": false
+							}
+						},
+						"required": ["time", "place", "forfeit"]
+					}
+				]
+			},
+			"default": [null, null, null, null]
+		}
+	},
+	"required": [
+		"state",
+		"time",
+		"results"
+	]
+}

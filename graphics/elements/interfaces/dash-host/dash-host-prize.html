@@ -1,0 +1,55 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="dash-host-styles.html">
+
+<dom-module id="dash-host-prize">
+	<template>
+		<style include="dash-host-styles">
+			:host {
+				display: block;
+				font-size: 20px;
+				font-weight: 500;
+				padding-bottom: 10px;
+				@apply --layout-flex-none;
+			}
+
+			:host(:first-of-type) {
+				padding-top: 4px;
+			}
+
+			:host(:last-of-type) {
+				padding-bottom: 4px;
+			}
+
+			#material {
+				padding: 12px;
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+			}
+
+			#description {
+				word-wrap: break-word;
+				min-width: 1px;
+				@apply --layout-flex;
+			}
+
+			#bid {
+				margin-left: 16px;
+				text-align: right;
+				@apply --layout-flex-none;
+			}
+		</style>
+
+		<div id="material" class="material stroked">
+			<div id="description">[[prize.description]]</div>
+			<div id="bid">
+				[[prize.minimumbid]]
+				<template is="dom-if" if="[[prize.sumdonations]]">
+					<br/>
+					(Cumulative)
+				</template>
+			</div>
+		</div>
+	</template>
+
+	<script src="dash-host-prize.js" type="module"></script>
+</dom-module>

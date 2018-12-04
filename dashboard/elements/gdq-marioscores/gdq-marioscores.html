@@ -1,0 +1,55 @@
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/polymer-decorators/polymer-decorators.html">
+
+<dom-module id="gdq-marioscores">
+	<template>
+		<style>
+			:host {
+				@apply --layout-around-justified;
+				@apply --layout-center;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+			}
+
+			#label {
+				font-size: 18px;
+				margin-left: 32px;
+				margin-right: auto;
+				text-transform: uppercase;
+			}
+
+			.score-input {
+				padding: 0 10px;
+				width: 100px;
+			}
+		</style>
+
+		<div id="label">Mario Maker</div>
+
+		<paper-input
+			id="leftScore"
+			class="score-input"
+			label="Left Score"
+			data-team-index="0"
+			value="[[scores.0]]"
+			on-value-changed="_scoreInputChanged"
+			min="0"
+			max="9"
+			type="number">
+		</paper-input>
+
+		<paper-input
+			id="rightScore"
+			class="score-input"
+			label="Right Score"
+			data-team-index="1"
+			value="[[scores.1]]"
+			on-value-changed="_scoreInputChanged"
+			min="0"
+			max="9"
+			type="number">
+		</paper-input>
+	</template>
+
+	<script src="gdq-marioscores.js" type="module"></script>
+</dom-module>

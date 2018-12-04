@@ -1,0 +1,24 @@
+<svg id="bottomGreeble" width="101" height="17" viewBox="0 0 101 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g fill="none" transform="translate(0 17) scale(1 -1)">
+		<g>
+			<use xlink:href="#path0" fill="#fdd853" fill-opacity="0.1"/>
+			<use xlink:href="#path0" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+		</g>
+		<g mask="url(#path1_ins)" stroke-width="2">
+			<use xlink:href="#path1" stroke="#fdd853"/>
+		</g>
+	</g>
+
+	<defs>
+		<linearGradient id="paint0_linear" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 17 -101 0 101 0)">
+			<stop stop-color="white" stop-opacity="0"/>
+			<stop offset="1" stop-color="#fdd853"/>
+		</linearGradient>
+
+		<path id="path0" fill-rule="evenodd" clip-rule="evenodd" d="M 0 0L 0 17L 9.40991 17L 10.4099 17L 91.5901 17L 99.2334 17L 101 17C 100.82 17 100.326 16.6338 99.6062 16C 96.324 13.1084 88.35 4.64798 84.0621 0L 74.6522 0L 10.4099 0L 9.40991 0L 0 0ZM 75.5771 1L 83.6243 1C 86.2396 3.8299 90.0654 7.90634 93.3993 11.3234C 95.1316 13.0988 96.743 14.708 97.9808 15.8698C 98.0276 15.9138 98.0741 15.9572 98.1201 16L 90.1963 16C 87.1376 13.3054 80.0048 5.77481 75.5771 1Z"/>
+		<path id="path1" d="M 0 17L 0 0L 9.40991 0L 10.4099 0L 74.6522 0L 84.0621 0C 88.35 4.64798 96.324 13.1084 99.6062 16C 100.326 16.6338 100.82 17 101 17L 99.2334 17L 91.5901 17L 10.4099 17L 9.40991 17L 0 17ZM 83.6243 1L 75.5771 1C 80.0048 5.77481 87.1376 13.3054 90.1963 16L 98.1201 16C 98.0741 15.9572 98.0276 15.9138 97.9808 15.8698C 96.743 14.708 95.1316 13.0988 93.3993 11.3234C 90.0654 7.90634 86.2396 3.8299 83.6243 1Z"/>
+		<mask id="path1_ins" fill="white">
+			<use xlink:href="#path0"/>
+		</mask>
+	</defs>
+</svg>

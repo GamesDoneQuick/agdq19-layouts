@@ -1,0 +1,19 @@
+<link rel="import" href="gdq-omnibar-list-item.html">
+
+<dom-module id="gdq-omnibar-prize">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+		</style>
+
+		<gdq-omnibar-list-item
+			id="listItem"
+			first-line="[[prize.description]]"
+			second-line="[[calcBidAmountText(prize)]]">
+		</gdq-omnibar-list-item>
+	</template>
+
+	<script src="gdq-omnibar-prize.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,79 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="dash-host-adbreak-ad.html">
+
+<dom-module id="dash-host-adbreak">
+	<template>
+		<style>
+			:host {
+				display: block;
+				@apply --layout-vertical;
+				@apply --layout-center;
+				@apply --layout-flex-none;
+			}
+
+			#start,
+			#complete {
+				--paper-button: {
+					background-color: #5BA664;
+					color: white;
+				};
+			}
+
+			#cancel {
+				--paper-button: {
+					background-color: #C9513E;
+					color: white;
+				};
+			}
+
+			paper-button {
+				height: 64px;
+				width: 480px;
+				margin-left: 0;
+				margin-right: 0;
+				@apply --layout-flex-none;
+			}
+
+			dash-host-adbreak-ad {
+				@apply --layout-self-stretch;
+				@apply --layout-flex-none;
+			}
+		</style>
+
+
+		<paper-button
+			id="start"
+			hidden="[[adBreak.state.started]]"
+			disabled="[[!adBreak.state.canStart]]"
+			on-tap="start"
+			raised>
+			[[_calcStartButtonText(adBreak.state)]]
+		</paper-button>
+
+		<paper-button
+			id="cancel"
+			hidden="[[!adBreak.state.started]]"
+			disabled="[[any(adBreak.state.canComplete, adBreak.state.completed)]]"
+			on-tap="cancel"
+			raised>
+			Cancel Break
+		</paper-button>
+
+		<template is="dom-repeat" items="[[adBreak.ads]]" as="ad" mutable-data>
+			<dash-host-adbreak-ad ad-break="[[adBreak]]" ad="[[ad]]"></dash-host-adbreak-ad>
+		</template>
+
+		<paper-button
+			id="complete"
+			disabled="[[!adBreak.state.canComplete]]"
+			hidden="[[_calcCompleteButtonHidden(adBreak)]]"
+			on-tap="complete"
+			raised>
+			Finish Break
+		</paper-button>
+	</template>
+
+	<script src="dash-host-adbreak.js" type="module"></script>
+</dom-module>

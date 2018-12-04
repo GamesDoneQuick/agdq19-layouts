@@ -1,0 +1,80 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+
+<dom-module id="dash-host-name">
+	<template>
+		<style>
+			:host {
+				padding: 0 24px;
+				line-height: 1;
+				white-space: nowrap;
+				@apply --layout-vertical;
+				@apply --layout-center-justified;
+			}
+
+			#current {
+				font-weight: bold;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin-bottom: 4px;
+			}
+
+			#current-label {
+				color: black;
+				font-size: 18px;
+				margin-right: 4px;
+			}
+
+			#current-name {
+				color: #5BA664;
+				font-size: 36px;
+				min-width: 1px;
+			}
+
+			#controls {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#controls-input {
+				@apply --layout-flex;
+			}
+
+			#controls-button {
+				width: 129px;
+				height: 50px;
+				margin-left: 25px;
+				--paper-button: {
+					color: white;
+					background-color: #5BA664;
+				}
+			}
+		</style>
+
+		<div id="current">
+			<span id="current-label">Current Host:</span>
+			<span id="current-name" title="[[currentHost]]">[[currentHost]]</span>
+		</div>
+
+		<div id="controls">
+			<paper-input
+				id="controls-input"
+				no-label-float
+				placeholder="Your Name"
+				value="{{_enteredName}}">
+			</paper-input>
+
+			<paper-button
+				id="controls-button"
+				on-tap="take"
+				disabled="[[_falsey(_enteredName)]]"
+				raised>
+				Confirm
+			</paper-button>
+		</div>
+	</template>
+
+	<script src="dash-host-name.js" type="module"></script>
+</dom-module>

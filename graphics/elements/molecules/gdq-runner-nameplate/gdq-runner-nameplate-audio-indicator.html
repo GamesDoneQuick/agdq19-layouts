@@ -1,0 +1,70 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="gdq-runner-nameplate-audio-indicator">
+	<template>
+		<style>
+			:host {
+				position: absolute;
+				display: block;
+			}
+
+			:host([vert-pos="top"]) {
+				top: 0;
+			}
+
+			:host([vert-pos="bottom"]){
+				bottom: 0;
+			}
+
+			:host([horiz-pos="left"]) {
+				left: 0;
+			}
+
+			:host([horiz-pos="right"]) {
+				right: 0;
+			}
+
+			#body {
+				position: absolute;
+				width: 100px;
+				height: 14px;
+				background: white;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#text {
+				color: black;
+				font-size: 13px;
+				font-weight: 600;
+				letter-spacing: 0.75em;
+			}
+
+			.text-lastChar {
+				letter-spacing: 0;
+			}
+
+			:host([vert-pos="top"]) #body {
+				bottom: 0;
+			}
+
+			:host([vert-pos="bottom"]) #body {
+				top: 0;
+			}
+
+			:host([horiz-pos="left"]) #body {
+				left: 0;
+			}
+
+			:host([horiz-pos="right"]) #body {
+				right: 0;
+			}
+		</style>
+
+		<div id="body">
+			<div id="text">AUDI<span class="text-lastChar">O</span></div>
+		</div>
+	</template>
+
+	<script src="gdq-runner-nameplate-audio-indicator.js" type="module"></script>
+</dom-module>

@@ -1,0 +1,81 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/style/gdq-scroll-style.html">
+<link rel="import" href="../../atoms/atom-refresh-indicator/atom-refresh-indicator.html">
+<link rel="import" href="dash-host-prize.html">
+<link rel="import" href="dash-host-styles.html">
+
+<dom-module id="dash-host-prizes">
+	<template>
+		<style include="dash-host-styles gdq-scroll-style">
+			:host {
+				padding: 0 16px;
+				box-sizing: border-box;
+				@apply --layout-vertical;
+			}
+
+			#cooldown {
+				width: 100%;
+				margin-top: 14px;
+				@apply --layout-flex-none;
+			}
+
+			#filter {
+				@apply --layout-flex-none;
+
+				--paper-input-container-input: {
+					font-weight: 400;
+				};
+
+				--paper-input-container-label: {
+					font-weight: 400;
+				};
+
+				--paper-input-container-label-focus: {
+					color: #8560a8
+				};
+
+				--paper-input-container-underline: {
+					position: relative;
+					top: 2px;
+					border-bottom: 3px solid #8560a8;
+				};
+
+				--paper-input-container-underline-focus: {
+					top: 2px;
+					border-bottom: 3px solid #C693F2;
+				}
+			}
+
+			#list {
+				padding-right: 14px;
+				margin-top: 9px;
+				margin-bottom: 13px;
+				box-sizing: border-box;
+				min-height: 1px;
+				overflow-y: scroll;
+				overflow-x: hidden;
+				@apply --layout-flex;
+			}
+		</style>
+
+		<atom-refresh-indicator id="cooldown"></atom-refresh-indicator>
+
+		<paper-input
+			id="filter"
+			label="Filter"
+			placeholder="Type in filter here"
+			type="search"
+			value="{{prizeFilterString}}">
+		</paper-input>
+
+		<div id="list">
+			<template is="dom-repeat" items="[[prizes]]" as="prize" filter="{{computePrizesFilter(prizeFilterString)}}">
+				<dash-host-prize id="prize-[[prize.id]]" prize="[[prize]]"></dash-host-prize>
+			</template>
+		</div>
+	</template>
+
+	<script src="dash-host-prizes.js" type="module"></script>
+</dom-module>

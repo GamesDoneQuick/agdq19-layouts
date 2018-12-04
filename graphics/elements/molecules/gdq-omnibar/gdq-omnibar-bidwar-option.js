@@ -1,0 +1,122 @@
+import * as tslib_1 from "tslib";
+import { CustomEase } from '../../../../shared/lib/vendor/CustomEase';
+import { createMaybeRandomTween } from '../../../../shared/lib/maybe-random';
+import { TimelineLite, Sine, TweenLite, Linear, Power4 } from 'gsap';
+const { customElement, property } = Polymer.decorators;
+const RIGHT_TIME_PER_PIXEL = 0.00157;
+const LEFT_TIME_PER_PIXEL = 0.00157;
+const TAIL_CHEVRON_WIDTH = 6;
+CustomEase.create('BidwarOptionReveal', 'M0,0 C0.166,0.166 0.234,1 1,1');
+/**
+ * @customElement
+ * @polymer
+ */
+let GDQOmnibarBidwarOptionElement = class GDQOmnibarBidwarOptionElement extends Polymer.Element {
+    ready() {
+        super.ready();
+        TweenLite.set(this.$.tailChevron, { opacity: 0 });
+        TweenLite.set(this.$.body, { opacity: 0 });
+        TweenLite.set(this.$.total, { opacity: 0 });
+    }
+    enter() {
+        const tailChevronElem = this.$.tailChevron;
+        const totalBlockElem = this.$.totalBlock;
+        const tl = new TimelineLite();
+        const revealTweenWidth = this.$.body.clientWidth - tailChevronElem.clientWidth + TAIL_CHEVRON_WIDTH;
+        this._revealTweenWidth = revealTweenWidth;
+        tl.set(tailChevronElem, { opacity: 1 });
+        tl.call(() => {
+            totalBlockElem.arrowBlock.attr({ 'fill-opacity': 0 });
+        });
+        tl.fromTo(tailChevronElem.chevron.node, 0.334, {
+            drawSVG: '0%'
+        }, {
+            drawSVG: '100%',
+            ease: Linear.easeNone
+        });
+        tl.from(tailChevronElem.chevron.node, 0.2167, {
+            fill: 'transparent'
+        });
+        tl.addLabel('slideRight', `-=${1 / 60}`);
+        tl.to(tailChevronElem, revealTweenWidth * RIGHT_TIME_PER_PIXEL, {
+            x: revealTweenWidth,
+            ease: Sine.easeIn
+        }, 'slideRight');
+        tl.set(this.$.body, {
+            clipPath: `inset(0 -13px 0 ${revealTweenWidth}px)`,
+            opacity: 1
+        });
+        tl.addLabel('reveal', '+=0.1167');
+        tl.to(tailChevronElem, revealTweenWidth * LEFT_TIME_PER_PIXEL, {
+            x: 0,
+            ease: 'BidwarOptionReveal'
+        }, 'reveal');
+        tl.to(this.$.body, revealTweenWidth * LEFT_TIME_PER_PIXEL, {
+            clipPath: 'inset(0 -13px 0 0px)',
+            ease: 'BidwarOptionReveal'
+        }, 'reveal');
+        tl.addLabel('flickerTotal', '-=0.667');
+        tl.add(createMaybeRandomTween({
+            target: {},
+            propName: 'placeholder',
+            duration: 0.465,
+            ease: Power4.easeIn,
+            start: { probability: 1, normalValue: 0 },
+            end: { probability: 0, normalValue: 1 },
+            onUpdate: randomValue => {
+                this.$.total.style.opacity = String(randomValue);
+                totalBlockElem.arrowBlock.attr({ 'fill-opacity': randomValue });
+            }
+        }), 'flickerTotal');
+        return tl;
+    }
+    exit() {
+        const tl = new TimelineLite();
+        // The total seems to ignore the clip path when it has a will-change style.
+        tl.set(this.$.total, { willChange: 'unset' });
+        tl.addLabel('conceal', '+=0.1');
+        tl.to(this.$.tailChevron, this._revealTweenWidth * RIGHT_TIME_PER_PIXEL, {
+            x: this._revealTweenWidth,
+            ease: Sine.easeInOut
+        }, 'conceal');
+        tl.to(this.$.body, this._revealTweenWidth * RIGHT_TIME_PER_PIXEL, {
+            clipPath: `inset(0 -13px 0 ${this._revealTweenWidth}px)`,
+            ease: Sine.easeInOut
+        }, 'conceal');
+        tl.add(createMaybeRandomTween({
+            target: this.style,
+            propName: 'opacity',
+            duration: 0.465,
+            start: { probability: 1, normalValue: 1 },
+            end: { probability: 0, normalValue: 0 }
+        }));
+        return tl;
+    }
+    render() {
+        this.$.tailChevron.render();
+        this.$.labelBlock.render();
+        this.$.totalBlock.render();
+    }
+    formatOptionDescription(bid) {
+        const fallback = 'Be the first to bid!';
+        if (bid && !(bid.description || bid.name)) {
+            nodecg.log.error('Got weird bid war option:', JSON.stringify(bid, null, 2));
+            return fallback;
+        }
+        return bid ? (bid.description || bid.name) : fallback;
+    }
+};
+tslib_1.__decorate([
+    property({ type: Object })
+], GDQOmnibarBidwarOptionElement.prototype, "bid", void 0);
+tslib_1.__decorate([
+    property({ type: Boolean, reflectToAttribute: true })
+], GDQOmnibarBidwarOptionElement.prototype, "placeholder", void 0);
+tslib_1.__decorate([
+    property({ type: Boolean, reflectToAttribute: true })
+], GDQOmnibarBidwarOptionElement.prototype, "winning", void 0);
+GDQOmnibarBidwarOptionElement = tslib_1.__decorate([
+    customElement('gdq-omnibar-bidwar-option')
+], GDQOmnibarBidwarOptionElement);
+export default GDQOmnibarBidwarOptionElement;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2RxLW9tbmliYXItYmlkd2FyLW9wdGlvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImdkcS1vbW5pYmFyLWJpZHdhci1vcHRpb24udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBQyxVQUFVLEVBQUMsTUFBTSwwQ0FBMEMsQ0FBQztBQUNwRSxPQUFPLEVBQUMsc0JBQXNCLEVBQUMsTUFBTSxxQ0FBcUMsQ0FBQztBQUMzRSxPQUFPLEVBQUMsWUFBWSxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsTUFBTSxFQUFFLE1BQU0sRUFBQyxNQUFNLE1BQU0sQ0FBQztBQU1uRSxNQUFNLEVBQUMsYUFBYSxFQUFFLFFBQVEsRUFBQyxHQUFHLE9BQU8sQ0FBQyxVQUFVLENBQUM7QUFFckQsTUFBTSxvQkFBb0IsR0FBRyxPQUFPLENBQUM7QUFDckMsTUFBTSxtQkFBbUIsR0FBRyxPQUFPLENBQUM7QUFDcEMsTUFBTSxrQkFBa0IsR0FBRyxDQUFDLENBQUM7QUFFN0IsVUFBVSxDQUFDLE1BQU0sQ0FBQyxvQkFBb0IsRUFBRSwrQkFBK0IsQ0FBQyxDQUFDO0FBRXpFOzs7R0FHRztBQUVILElBQXFCLDZCQUE2QixHQUFsRCxNQUFxQiw2QkFBOEIsU0FBUSxPQUFPLENBQUMsT0FBTztJQVl6RSxLQUFLO1FBQ0osS0FBSyxDQUFDLEtBQUssRUFBRSxDQUFDO1FBQ2QsU0FBUyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLFdBQVcsRUFBRSxFQUFDLE9BQU8sRUFBRSxDQUFDLEVBQUMsQ0FBQyxDQUFDO1FBQ2hELFNBQVMsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxJQUFJLEVBQUUsRUFBQyxPQUFPLEVBQUUsQ0FBQyxFQUFDLENBQUMsQ0FBQztRQUN6QyxTQUFTLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsS0FBSyxFQUFFLEVBQUMsT0FBTyxFQUFFLENBQUMsRUFBQyxDQUFDLENBQUM7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

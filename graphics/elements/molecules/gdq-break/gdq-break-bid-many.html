@@ -1,0 +1,26 @@
+<link rel="import" href="gdq-break-bid-many-option.html">
+
+<dom-module id="gdq-break-bid-many">
+	<template>
+		<style>
+			:host {
+				height: 303px;
+				@apply --layout-vertical;
+			}
+
+			gdq-break-bid-many-option {
+				@apply --layout-flex;
+			}
+
+			gdq-break-bid-many-option:not(:last-child) {
+				margin-bottom: 22px;
+			}
+		</style>
+
+		<template id="optionRepeat" is="dom-repeat" items="[[_calcOptions(bid)]]" as="option">
+			<gdq-break-bid-many-option bid="[[bid]]" option="[[option]]"></gdq-break-bid-many-option>
+		</template>
+	</template>
+
+	<script src="gdq-break-bid-many.js" type="module"></script>
+</dom-module>

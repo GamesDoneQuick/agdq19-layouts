@@ -1,0 +1,120 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-styles/shadow.html">
+
+<dom-module id="dash-host-adbreak-ad">
+	<template>
+		<style include="iron-flex iron-flex-alignment">
+			:host {
+				display: block;
+				background-color: white;
+				border: 1px solid #E7E5E7;
+				color: black;
+				padding: 16px 13px;
+				margin: 6px 0;
+				white-space: nowrap;
+				@apply --shadow-transition;
+				@apply --shadow-elevation-2dp;
+			}
+
+			:host([completed]) {
+				background-color: #E7E5E7;
+				color: #B0B0B0;
+				@apply --shadow-none;
+			}
+
+			:host(:not([has-file])) {
+				background-color: #ff6d69;
+				color: white;
+			}
+
+			#filename {
+				font-size: 30px;
+				font-weight: bold;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				@apply --layout-flex;
+			}
+
+			#type {
+				font-size: 24px;
+				text-transform: capitalize;
+				@apply --layout-flex-none;
+			}
+
+			#progress {
+				position: relative;
+				height: 11px;
+				background-color: #D8D8D8;
+				@apply --layout-flex;
+			}
+
+			#progress-fill {
+				background-color: #8162A5;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				transform: scaleX(0);
+				transform-origin: left;
+				will-change: transform;
+			}
+
+			:host([completed]) #progress-fill {
+				display: none;
+			}
+
+			#advance {
+				--paper-button: {
+					background-color: #5BA664;
+					color: white;
+				}
+			}
+
+			#noFile {
+				font-weight: bold;
+			}
+
+			paper-button {
+				height: 64px;
+				width: 100%;
+				margin-left: 0;
+				margin-right: 0;
+				box-sizing: border-box;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div class="layout horizontal baseline">
+			<div id="filename" title="[[ad.filename]]">[[ad.filename]]</div>
+			<div id="type">&ensp;[[ad.adType]]</div>
+		</div>
+
+		<div class="layout horizontal center" hidden="[[!hasFile]]">
+			<div id="time">
+				[[frameNumberToTimeString(ad.state.fps, ad.state.frameNumber)]] / [[frameNumberToTimeString(ad.state.fps, ad.state.durationFrames)]]&ensp;
+			</div>
+
+			<div id="progress">
+				<div id="progress-fill"></div>
+			</div>
+		</div>
+
+		<div id="noFile" hidden="[[hasFile]]">FILE IS MISSING! CANNOT PLAY AD!</div>
+
+		<paper-button
+			id="advance"
+			hidden="[[_calcAdvanceHidden(ad, adBreak)]]"
+			disabled="[[!ad.state.canComplete]]"
+			on-tap="completeImageAd"
+			raised>
+			Advance To Next
+		</paper-button>
+	</template>
+
+	<script src="dash-host-adbreak-ad.js" type="module"></script>
+</dom-module>

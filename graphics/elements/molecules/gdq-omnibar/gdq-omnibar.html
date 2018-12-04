@@ -1,0 +1,92 @@
+<link rel="import" href="../../../../bower_components/polymer/lib/utils/render-status.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
+<link rel="import" href="../../../../shared/style/gdq-text-styles.html">
+<link rel="import" href="gdq-omnibar-bidwars.html">
+<link rel="import" href="gdq-omnibar-challenges.html">
+<link rel="import" href="gdq-omnibar-cta.html">
+<link rel="import" href="gdq-omnibar-label.html">
+<link rel="import" href="gdq-omnibar-left-divider.html">
+<link rel="import" href="gdq-omnibar-list.html">
+<link rel="import" href="gdq-omnibar-milestone-alert.html">
+<link rel="import" href="gdq-omnibar-milestone-tracker.html">
+<link rel="import" href="gdq-omnibar-prize.html">
+<link rel="import" href="gdq-omnibar-run.html">
+<link rel="import" href="gdq-omnibar-total.html">
+
+<dom-module id="gdq-omnibar">
+	<template>
+		<style include="gdq-text-styles">
+			:host {
+				display: flex;
+				width: 1600px;
+				height: 55px;
+				color: white;
+				background: linear-gradient(180deg, #0c1219 0%, #01070d 100%);
+				font-family: "Source Code Pro", monospace;
+			}
+
+			#gdqLogo {
+				z-index: 3;
+				flex-shrink: 0;
+			}
+
+			#body {
+				display: flex;
+				flex-grow: 1;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+
+			#content {
+				height: 100%;
+				line-height: 1;
+				white-space: nowrap;
+				z-index: 1;
+				min-width: 1px;
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+			}
+
+			#cta,
+			#milestoneAlert {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+			}
+
+			#cta {
+				font-size: 31px;
+			}
+
+			#milestoneAlert {
+				font-size: 33px;
+				z-index: 10;
+			}
+
+			#charityLogo {
+				z-index: 1;
+				@apply --layout-flex-none;
+			}
+		</style>
+
+		<video id="gdqLogo" src="[[importPath]]img/logo-gdq.webm" autoplay loop></video>
+		<gdq-omnibar-left-divider id="leftDivider"></gdq-omnibar-left-divider>
+		<div id="body">
+			<gdq-omnibar-label id="label"></gdq-omnibar-label>
+			<div id="content"></div>
+			<gdq-omnibar-cta id="cta"></gdq-omnibar-cta>
+			<gdq-omnibar-milestone-alert
+				id="milestoneAlert"
+				milestones="[[milestones]]">
+			</gdq-omnibar-milestone-alert>
+		</div>
+		<gdq-omnibar-total id="total"></gdq-omnibar-total>
+		<img id="charityLogo" src="[[importPath]]img/logo-charity.png">
+	</template>
+
+	<script src="gdq-omnibar.js" type="module"></script>
+</dom-module>

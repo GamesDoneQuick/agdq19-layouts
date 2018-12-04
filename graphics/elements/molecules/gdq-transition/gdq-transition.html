@@ -1,0 +1,92 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../gdq-break/gdq-break-bottom-frame.html">
+<link rel="import" href="../gdq-break/gdq-break-top-frame.html">
+
+<dom-module id="gdq-transition">
+	<template>
+		<style>
+			:host {
+				display: block;
+				font-family: "Source Code Pro", sans-serif;
+				height: 900px;
+				width: 1600px;
+				opacity: 0; /* Start hidden to hide flash of content on page load. */
+			}
+
+			:host > img,
+			:host > div {
+				position: absolute;
+				will-change: transform;
+			}
+
+			:host > div {
+				display: flex;
+			}
+
+			video {
+				position: absolute;
+			}
+
+			.bottom {
+				bottom: 0;
+			}
+
+			.top {
+				top: 0;
+			}
+
+			.left {
+				left: 0;
+			}
+
+			.right {
+				right: 0;
+			}
+
+			#genericAnimation {
+				left: 513px;
+			}
+
+			#topFrameContent,
+			#bottomFrameContent {
+				position: absolute;
+				opacity: 0;
+				will-change: opacity;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<img id="bottomBackRect" class="bottom left" src="[[importPath]]img/bottomBackRect.png">
+		<img id="bottomBackTrapezoid" class="bottom left" src="[[importPath]]img/bottomBackTrapezoid.png">
+		<div id="bottomFrontRect" class="bottom left">
+			<img src="[[importPath]]img/bottomFrontRect.png">
+			<video id="bottomRectAnimation" class="bottom right" preload="auto" muted src="[[importPath]]vid/transition_exit_botright.webm"></video>
+		</div>
+		<div id="bottomFrontTrapezoid" class="bottom left">
+			<img src="[[importPath]]img/bottomFrontTrapezoid.png">
+			<video id="bottomTrapAnimation-exit" class="bottom left" preload="auto" muted src="[[importPath]]vid/transition_exit_botleft.webm"></video>
+			<video id="bottomTrapAnimation-enter" class="bottom left" preload="auto" muted src="[[importPath]]vid/transition_enter_botleft.webm"></video>
+		</div>
+
+		<img id="topBackRect" class="top right" src="[[importPath]]img/topBackRect.png">
+		<img id="topBackTrapezoid" class="top right" src="[[importPath]]img/topBackTrapezoid.png">
+		<div id="topFrontRect" class="top right">
+			<img src="[[importPath]]img/topFrontRect.png">
+			<video id="topRectAnimation" class="top left" preload="auto" muted src="[[importPath]]vid/transition_exit_topleft.webm"></video>
+		</div>
+		<div id="topFrontTrapezoid" class="top right">
+			<img src="[[importPath]]img/topFrontTrapezoid.png">
+			<video id="topTrapAnimation" class="top right" preload="auto" muted src="[[importPath]]vid/transition_exit_topright.webm"></video>
+		</div>
+
+		<gdq-break-top-frame id="topFrameContent" class="top left"></gdq-break-top-frame>
+		<gdq-break-bottom-frame id="bottomFrameContent" class="bottom left"></gdq-break-bottom-frame>
+
+		<video id="genericAnimation" preload="auto" muted src="[[importPath]]vid/transition_generic.webm"></video>
+	</template>
+
+	<script src="gdq-transition.js" type="module"></script>
+</dom-module>

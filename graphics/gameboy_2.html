@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 2 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			gdq-runner-nameplate {
+				top: 493px;
+				width: 349px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				right: 855px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				left: 855px;
+			}
+
+			gdq-runinfo {
+				bottom: 38px;
+				width: 425px;
+				height: 100px;
+				--gdq-runinfo-misc-height: 29px;
+			}
+
+			gdq-timer {
+				left: 0;
+				bottom: 0;
+				height: 38px;
+				width: 425px;
+				font-size: 33px;
+				--gdq-timer-voffset: -2px;
+			}
+
+			gdq-tweet {
+				bottom: 0;
+				right: 0;
+				width: 426px;
+				height: 180px;
+				padding-right: 12px;
+
+				--gdq-tweet-body: {
+					font-size: 25px;
+					padding-top: 50px;
+				};
+			}
+
+			gdq-sponsors {
+				bottom: 0;
+				right: 0;
+				width: 426px;
+				height: 140px;
+				padding-right: 12px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img id="addon" src="img/backgrounds/gb2_addon.png">
+		<img id="background" src="img/backgrounds/standard_2_bg.png">
+		<gdq-runinfo max-name-size="28" force-single-line-name></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+		<gdq-runner-nameplate index="0" attach-right></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" attach-left></gdq-runner-nameplate>
+		<img id="foreground" src="img/backgrounds/standard_2_fg.png">
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../../../../bower_components/polymer-decorators/polymer-decorators.html">
+
+<dom-module id="ui-toast">
+	<template>
+		<style>
+			:host {
+				position: absolute;
+			}
+
+			#errorToast iron-icon {
+				color: #C9513E;
+			}
+
+			#successToast iron-icon {
+				color: #5BA664;
+			}
+
+			paper-toast iron-icon:first-child {
+				margin-right: 6px;
+			}
+
+			paper-toast {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+		</style>
+
+		<paper-toast id="errorToast">
+			<iron-icon icon="error-outline"></iron-icon>
+			[[_errorToastText]]
+		</paper-toast>
+
+		<paper-toast id="successToast">
+			<iron-icon icon="done"></iron-icon>
+			[[_successToastText]]
+		</paper-toast>
+	</template>
+
+	<script src="ui-toast.js" type="module"></script>
+</dom-module>

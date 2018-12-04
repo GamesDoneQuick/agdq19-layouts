@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Game Boy, 3 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			gdq-runner-nameplate {
+				width: 330px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				top: 232px;
+				left: 446px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				top: 286px;
+				right: 446px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(3) {
+				top: 340px;
+				left: 446px;
+			}
+
+			gdq-runinfo {
+				left: 445px;
+				top: 10px;
+				width: 392px;
+				height: 153px;
+				--gdq-runinfo-misc-height: 40px;
+			}
+
+			gdq-timer {
+				left: 445px;
+				top: 163px;
+				height: 53px;
+				width: 392px;
+				--gdq-timer-voffset: -2px;
+			}
+
+			gdq-tweet {
+				--gdq-tweet-body: {
+					font-size: 21px;
+					padding-top: 50px;
+				};
+			}
+
+			gdq-tweet,
+			gdq-sponsors {
+				bottom: 0;
+				left: 443px;
+				width: 395px;
+				height: 270px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<img id="addon" src="img/backgrounds/gb3_addon.png">
+		<img id="background" src="img/backgrounds/standard_3_bg.png">
+		<gdq-runinfo></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+		<gdq-runner-nameplate index="0" attach-left></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" attach-right></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="2" attach-left></gdq-runner-nameplate>
+		<img id="foreground" src="img/backgrounds/standard_3_fg.png">
+
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

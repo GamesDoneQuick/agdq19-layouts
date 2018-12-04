@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 4 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			#lineone {
+				width: 474px;
+				height: 845px;
+				left: 563px;
+				border-left: 1px solid #ffffff;
+				border-right: 1px solid #ffffff;
+			}
+
+			#linetwo,
+			#linethree {
+				width: 563px;
+				height: 423px;
+				border-bottom: 1px solid #ffffff;
+				top: 0;
+			}
+
+			#linetwo {
+				left: 0;
+			}
+
+			#linethree {
+				right: 0;
+			}
+
+			.line {
+				position: absolute;
+				box-sizing: border-box;
+			}
+
+			gdq-runner-nameplate {
+				width: 330px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				top: 245px;
+				left: 563px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				top: 316px;
+				right: 563px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(3) {
+				top: 492px;
+				left: 563px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(4) {
+				top: 563px;
+				right: 563px;
+			}
+
+			gdq-runinfo {
+				left: 563px;
+				top: 0;
+				width: 474px;
+				height: 210px;
+				--gdq-runinfo-misc-height: 47px;
+				--gdq-runinfo-name-padding: 8px 16px;
+			}
+
+			gdq-timer {
+				left: 563px;
+				top: 390px;
+				height: 64px;
+				width: 474px;
+				font-size: 56px;
+			}
+
+			atom-tronlines {
+				position: absolute;
+				left: 563px;
+			}
+
+			atom-tronlines:nth-of-type(1) {
+				top: 159px;
+			}
+
+			atom-tronlines:nth-of-type(2) {
+				top: 454px;
+				border-bottom: 1px solid #ffffff;
+			}
+
+			atom-gridlines {
+				position: absolute;
+				top: 0;
+				left: 563px;
+				width: 474px;
+				height: 159px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<atom-gridlines></atom-gridlines>
+		<atom-tronlines direction="down" width="474" height="238"></atom-tronlines>
+		<atom-tronlines width="474" height="184"></atom-tronlines>
+		<div id="lineone" class="line"></div>
+		<div id="linetwo" class="line"></div>
+		<div id="linethree" class="line"></div>
+		<gdq-runinfo></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-runner-nameplate index="0" no-left-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" no-right-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="2" no-left-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="3" no-right-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

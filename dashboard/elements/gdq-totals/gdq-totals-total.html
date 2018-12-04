@@ -1,0 +1,53 @@
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="gdq-totals-total">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				width: 380px;
+				height: 46px;
+				border: 1px solid black;
+				border-radius: 5px;
+				box-sizing: border-box;
+				font-size: 36px;
+				line-height: 1;
+				background-color: white;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#value {
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#edit {
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				transition: 200ms opacity ease;
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				margin: 0;
+				font-size: 32px;
+				padding: 0;
+				--paper-button: {
+					background-color: #A50074;
+					color: white;
+				};
+			}
+
+			:host(:hover) #edit {
+				opacity: 1;
+			}
+		</style>
+
+		<div id="value">[[value]]</div>
+		<paper-button id="edit" on-tap="edit" raised>Edit</paper-button>
+	</template>
+
+	<script src="gdq-totals-total.js" type="module"></script>
+</dom-module>

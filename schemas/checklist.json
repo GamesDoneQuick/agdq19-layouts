@@ -1,0 +1,83 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"definitions": {
+		"checklistGroup": {
+			"type": "array",
+			"additionalItems": false,
+			"items": {
+				"$ref": "#/definitions/checklistTask"
+			}
+		},
+		"checklistTask": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"shortName": {
+					"type": "string"
+				},
+				"complete": {
+					"type": "boolean"
+				}
+			},
+			"required": ["name", "complete"]
+		}
+	},
+
+	"type": "object",
+	"title": "checklist",
+	"additionalProperties": false,
+	"properties": {
+		"extraContent": {
+			"$ref": "#/definitions/checklistGroup"
+		},
+		"techStationDuties": {
+			"$ref": "#/definitions/checklistGroup"
+		},
+		"stageTechDuties": {
+			"$ref": "#/definitions/checklistGroup"
+		},
+		"audioEngineerDuties": {
+			"$ref": "#/definitions/checklistGroup"
+		},
+		"special": {
+			"$ref": "#/definitions/checklistGroup"
+		}
+	},
+	"required": [
+		"extraContent",
+		"techStationDuties",
+		"stageTechDuties",
+		"audioEngineerDuties",
+		"special"
+	],
+
+	"default": {
+		"extraContent": [
+			{"name": "Check for Sent segment", "complete": false}
+		],
+		"techStationDuties": [
+			{"name": "Check Tech Notes", "complete": false},
+			{"name": "Stream Layout", "complete": false},
+			{"name": "Runner Info/Position", "complete": false},
+			{"name": "Camera", "complete": false}
+		],
+		"stageTechDuties": [
+			{"name": "Wipe Down Headsets", "shortName": "Wipe Headsets", "complete": false},
+			{"name": "TVs have Video", "complete": false},
+			{"name": "Steam Notifications Off", "shortName": "Steam Notifications", "complete": false},
+			{"name": "Restart Elgato Recording", "shortName": "Restart Elgato Rec.", "complete": false},
+			{"name": "Remove Excess Chairs", "shortName": "Remove Chairs", "complete": false}
+		],
+		"audioEngineerDuties": [
+			{"name": "Runner Game Audio", "complete": false},
+			{"name": "Stream Audio", "complete": false}
+		],
+		"special": [
+			{"name": "Cycle Recordings", "complete": false}
+		]
+	}
+}

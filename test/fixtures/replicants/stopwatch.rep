@@ -1,0 +1,19 @@
+{
+	"state": "not_started",
+	"time": {
+		"days": 0,
+		"hours": 0,
+		"minutes": 0,
+		"seconds": 0,
+		"milliseconds": 0,
+		"formatted": "00:00.0",
+		"raw": 0,
+		"timestamp": 1526531543450
+	},
+	"results": [
+		null,
+		null,
+		null,
+		null
+	]
+}

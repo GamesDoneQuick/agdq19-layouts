@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DS, Vertical, 1 Player</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			#lineone {
+				width: 541px;
+				height: 845px;
+				top: 0;
+				left: 0;
+				border-right: 1px solid #00ffff;
+			}
+
+			#linetwo {
+				width: 541px;
+				height: 70px;
+				top: 110px;
+				left: 0;
+				border-bottom: 1px solid #00ffff;
+				background-color: #051113;
+			}
+
+			.line {
+				position: absolute;
+			}
+
+			gdq-runner-nameplate {
+				top: 453px;
+				left: 20px;
+				z-index: 11;
+				width: 500px;
+			}
+
+			gdq-runinfo {
+				left: 0;
+				top: 0;
+				width: 542px;
+				height: 161px;
+				--gdq-runinfo-name-padding: 1px 16px 4px 16px;
+				--gdq-runinfo-misc-height: 47px;
+			}
+
+			gdq-timer {
+				left: 20px;
+				top: 505px;
+				height: 57px;
+				width: 500px;
+				font-size: 56px;
+				--gdq-timer-voffset: -2px;
+			}
+
+			gdq-tweet, gdq-sponsors {
+				bottom: 10px;
+				left: 10px;
+				width: 521px;
+				height: 262px;
+			}
+
+			gdq-tweet {
+				--gdq-tweet-body: {
+					font-size: 20px;
+				};
+			}
+
+			atom-tronlines {
+				position: absolute;
+				width: 541px;
+				height: 370px;
+				bottom: 0;
+				left: 0;
+				border-top: 1px solid #00ffff;
+			}
+
+			atom-gridlines {
+				position: absolute;
+				width: 541px;
+				height: 110px;
+				top: 0;
+				left: 0;
+			}
+
+			.box {
+				width: 535px;
+				height: 402px;
+				position: absolute;
+				border: 1px solid #00ffff;
+				right: 261px;
+			}
+
+			#boxone {
+				top: -1px;
+			}
+
+			#boxtwo {
+				bottom: -1px;
+			}
+
+			.fill {
+				background-color: #051113;
+				position: absolute;
+			}
+
+			#fillone, #filltwo {
+				height: 845px;
+				top: 0;
+			}
+
+			#fillone {
+				right: 0;
+				width: 261px;
+			}
+
+			#filltwo {
+				right: 798px;
+				width: 260px;
+			}
+
+			#fillthree {
+				height: 41px;
+				width: 537px;
+				right: 261px;
+				top: 402px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<atom-gridlines></atom-gridlines>
+		<atom-tronlines width="541" height="370"></atom-tronlines>
+		<div id="lineone" class="line"></div>
+		<div id="linetwo" class="line"></div>
+		<div id="fillone" class="fill"></div>
+		<div id="filltwo" class="fill"></div>
+		<div id="fillthree" class="fill"></div>
+		<div id="boxone" class="box"></div>
+		<div id="boxtwo" class="box"></div>
+		<gdq-runinfo max-name-size="36"></gdq-runinfo>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+		<gdq-runner-nameplate index="0" no-audio></gdq-runner-nameplate>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>

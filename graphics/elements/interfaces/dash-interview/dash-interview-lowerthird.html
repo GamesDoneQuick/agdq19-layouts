@@ -1,0 +1,134 @@
+<link rel="import" href="../../../../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../../../../shared/style/gdq-input-style.html">
+<link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="../../molecules/gdq-lowerthird/gdq-lowerthird.html">
+<link rel="import" href="../ui-sortable-list/ui-sortable-list.html">
+<link rel="import" href="dash-interview-lowerthird-refill-option.html">
+<link rel="import" href="dash-lowerthird-name-input.html">
+
+<dom-module id="dash-interview-lowerthird">
+	<template>
+		<style include="gdq-input-style gdq-ui-theme">
+			:host {
+				@apply --layout-vertical;
+				box-sizing: border-box;
+			}
+
+			#specialButtons {
+				@apply --layout-horizontal;
+				@apply --layout-flex-none;
+				padding-bottom: 22px;
+			}
+
+			#specialButtons > :first-child {
+				margin-left: 0;
+			}
+
+			#specialButtons > :last-child {
+				margin-right: 0;
+			}
+
+			#specialButtons paper-button {
+				@apply --layout-flex;
+			}
+
+			#nameInputs {
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			#lowerthirdRefillDialog {
+				--paper-dialog-scrollable: {
+					@apply --layout-horizontal;
+				}
+			}
+
+			#lowerthirdRefillDialog-close {
+				position: absolute;
+				top: 12px;
+				right: 12px;
+				margin: 0;
+				padding: 0;
+				width: 52px;
+				height: 52px;
+			}
+
+			#lowerthirdPreviewDialog {
+				background: transparent;
+				box-shadow: none;
+			}
+
+			#lowerthirdPreview {
+				position: relative;
+			}
+
+			paper-button {
+				color: white;
+				font-weight: bold;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="specialButtons">
+			<paper-button id="openPreview" class="purple" on-tap="openPreview" raised>
+				<iron-icon icon="image:remove-red-eye" style="margin-right: 8px"></iron-icon>
+				Preview
+			</paper-button>
+
+			<paper-button id="autoFillNames" class="purple" on-tap="openRefillDialog" raised>
+				<iron-icon icon="refresh" style="margin-right: 8px"></iron-icon>
+				Refill
+			</paper-button>
+		</div>
+
+		<ui-sortable-list id="nameInputs" replicant-name="interview:names">
+			<template slot="item-body">
+				<dash-lowerthird-name-input
+					items="[[_typeaheadCandidates]]"
+					on-change="_handleNameInputChange"
+					name="[[item.name]]"
+					title="[[item.title]]">
+				</dash-lowerthird-name-input>
+			</template>
+		</ui-sortable-list>
+
+		<paper-dialog id="lowerthirdRefillDialog" with-backdrop>
+			<h2 style="text-align: center; margin-bottom: 36px; font-size: 24px; font-weight: bold;">
+				REFILL LOWER THIRD NAMES
+			</h2>
+			<paper-icon-button
+				id="lowerthirdRefillDialog-close"
+				icon="close"
+				on-tap="closeRefillDialog">
+			</paper-icon-button>
+
+			<paper-dialog-scrollable>
+				<dash-interview-lowerthird-refill-option
+					id="currentLowerthirdRefillOption"
+					on-accepted="_handleRefillOptionAccepted"
+					type="current">
+				</dash-interview-lowerthird-refill-option>
+
+				<dash-interview-lowerthird-refill-option
+					id="nextLowerthirdRefillOption"
+					on-accepted="_handleRefillOptionAccepted"
+					type="next">
+				</dash-interview-lowerthird-refill-option>
+			</paper-dialog-scrollable>
+		</paper-dialog>
+
+		<paper-dialog id="lowerthirdPreviewDialog" with-backdrop>
+			<gdq-lowerthird id="lowerthirdPreview" preview></gdq-lowerthird>
+		</paper-dialog>
+	</template>
+
+	<script src="dash-interview-lowerthird.js" type="module"></script>
+</dom-module>

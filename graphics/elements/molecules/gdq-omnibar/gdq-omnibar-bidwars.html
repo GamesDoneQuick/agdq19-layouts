@@ -1,0 +1,50 @@
+<link rel="import" href="../../../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="gdq-omnibar-bidwar-option.html">
+<link rel="import" href="gdq-omnibar-content-label.html">
+<link rel="import" href="gdq-omnibar-list.html">
+
+<dom-module id="gdq-omnibar-bidwars">
+	<template>
+		<style>
+			:host {
+				min-width: 1px;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --layout-flex;
+			}
+
+			#label {
+				z-index: 10;
+				--gdq-omnibar-content-label-fg-color: #FF4D4D;
+				--gdq-omnibar-content-label-glow-color: rgba(255, 0, 0, 0.74);
+				--gdq-omnibar-content-label-bg-color: rgba(255, 140, 140, 0.2);
+				@apply --layout-flex-none;
+			}
+
+			#lists {
+				position: relative;
+				min-width: 1px;
+				height: 100%;
+				@apply --layout-flex;
+			}
+
+			.list {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.list:not(.iron-selected) {
+				opacity: 0;
+				z-index: -10;
+			}
+		</style>
+
+		<gdq-omnibar-content-label id="label"></gdq-omnibar-content-label>
+		<iron-selector id="lists"></iron-selector>
+	</template>
+
+	<script src="gdq-omnibar-bidwars.js" type="module"></script>
+</dom-module>

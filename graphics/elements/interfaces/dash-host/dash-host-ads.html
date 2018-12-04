@@ -1,0 +1,164 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../../shared/style/gdq-scroll-style.html">
+<link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="dash-host-adbreak.html">
+<link rel="import" href="dash-host-styles.html">
+
+<dom-module id="dash-host-ads">
+	<template>
+		<style include="dash-host-styles gdq-scroll-style gdq-ui-theme iron-flex iron-flex-alignment">
+			:host {
+				position: relative;
+				grid-column: 3;
+				grid-row: 2;
+				box-sizing: border-box;
+				@apply --layout-vertical;
+			}
+
+			#list {
+				padding: 0 14px;
+				margin-top: 13px;
+				margin-right: 11px;
+				margin-bottom: 13px;
+				box-sizing: border-box;
+				overflow-y: scroll;
+				overflow-x: hidden;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			#list > * {
+				@apply --layout-flex-none;
+			}
+
+			.interview {
+				font-size: 30px;
+				font-weight: bold;
+				text-transform: uppercase;
+				background-color: #C88787;
+				height: 46px;
+				margin: 26px 0;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+				@apply --shadow-elevation-2dp;
+			}
+
+			dash-host-adbreak:first-of-type:not([hidden]),
+			.interview:first-of-type:not([hidden]){
+				margin-top: 4px;
+			}
+
+			#cover {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.85);
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				font-size: 22px;
+				padding: 1em;
+				box-sizing: border-box;
+				user-select: none;
+			}
+
+			paper-dialog {
+				font-family: Roboto;
+				font-size: 24px;
+				font-style: normal;
+				font-weight: normal;
+				line-height: normal;
+				text-align: center;
+			}
+
+			paper-dialog .buttons {
+				margin: 8px 0;
+			}
+
+			paper-dialog paper-button {
+				height: 46px;
+				margin: 0 8px;
+				width: 396px;
+			}
+
+			paper-dialog h2 {
+				font-size: 24px;
+				font-weight: bold;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			paper-dialog small {
+				font-size: 18px;
+				text-align: center;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div class="header" style="background-color: #CED4FF;">Intermissions & Ad Breaks</div>
+
+		<div id="list">
+			<template is="dom-repeat" items="[[content]]" mutable-data>
+				<template is="dom-if" if="[[equal(item.type, 'adBreak')]]">
+					<dash-host-adbreak
+						on-start="_confirmStartAdBreak"
+						on-cancel="_confirmCancelAdBreak"
+						on-complete="completeAdBreak"
+						ad-break="[[item]]">
+					</dash-host-adbreak>
+				</template>
+
+				<template is="dom-if" if="[[equal(item.type, 'interview')]]">
+					<div class="interview">Interview</div>
+				</template>
+			</template>
+		</div>
+
+		<div id="cover"></div>
+
+		<paper-dialog
+			id="confirmStartDialog"
+			on-iron-overlay-closed="_handleConfirmStartDialogClosed"
+			with-backdrop>
+			<h2>Confirm Ad Break</h2>
+			<small>Are you sure you want to start this ad break?</small>
+
+			<div>
+				Have you been given the go-ahead by the producer?<br/>
+				Is the audio engineer ready?
+			</div>
+
+			<div class="buttons">
+				<paper-button class="red" dialog-dismiss autofocus raised>No, Cancel</paper-button>
+				<paper-button class="green" dialog-confirm raised>Yes, Everyone Is Ready</paper-button>
+			</div>
+		</paper-dialog>
+
+		<paper-dialog
+			id="confirmCancelDialog"
+			on-iron-overlay-closed="_handleConfirmCancelDialogClosed"
+			with-backdrop>
+			<h2>Cancel Ad Break</h2>
+			<small>Are you sure you wish to cancel this ad break?</small>
+
+			<div>Only do this if the producer has told you to!</div>
+
+			<div class="buttons">
+				<paper-button class="red" dialog-dismiss autofocus raised>No, Do Not Cancel</paper-button>
+				<paper-button class="green" dialog-confirm raised>Yes, Cancel It</paper-button>
+			</div>
+		</paper-dialog>
+	</template>
+
+	<script src="dash-host-ads.js" type="module"></script>
+</dom-module>

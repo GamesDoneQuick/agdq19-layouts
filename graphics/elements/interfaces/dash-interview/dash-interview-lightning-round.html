@@ -1,0 +1,99 @@
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../ui-sortable-list/ui-sortable-list.html">
+<link rel="import" href="dash-interview-lightning-round-tweet.html">
+
+<dom-module id="dash-interview-lightning-round">
+	<template>
+		<style include="gdq-ui-theme iron-flex iron-flex-alignment">
+			:host {
+				box-sizing: border-box;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			#endInterview {
+				@apply --layout-flex;
+				font-size: 20px;
+				height: 50px;
+				margin: 0;
+				max-width: 314px;
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			#placeholder {
+				margin-top: 32px;
+				padding-left: 10px;
+				font-size: 32px;
+				text-align: center;
+			}
+
+			#list {
+				padding: 0 8px 0 0;
+				margin-top: 26px;
+				box-sizing: border-box;
+				overflow-y: auto;
+				overflow-x: hidden;
+				-webkit-overflow-scrolling: touch;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			#endInterviewDialog paper-button {
+				color: #00bebe;
+			}
+
+			paper-button {
+				color: white;
+				font-weight: bold;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div class="layout horizontal center-center flex-none">
+			<paper-button
+				id="endInterview"
+				class="red"
+				on-tap="openEndInterviewDialog"
+				raised>
+				End Interview (Clear Q's)
+			</paper-button>
+		</div>
+
+		<div id="placeholder" hidden="[[replies.length]]">
+			There are no Twitter questions currently approved for use.
+		</div>
+
+		<ui-sortable-list
+			id="list"
+			items="[[replies]]"
+			item-id-field="id_str"
+			replicant-name="interview:questionSortMap"
+			use-sort-map>
+			<template slot="item-body">
+				<dash-interview-lightning-round-tweet
+					tweet="[[item]]">
+				</dash-interview-lightning-round-tweet>
+			</template>
+		</ui-sortable-list>
+
+		<paper-dialog id="endInterviewDialog" with-backdrop>
+			<h2>End Interview</h2>
+			<p>Are you sure you wish to end this interview?</p>
+			<p>This will clear the current "prompt" tweet and prepare the interface for the next set of questions.</p>
+			<div class="buttons">
+				<paper-button dialog-dismiss>Cancel</paper-button>
+				<paper-button dialog-confirm autofocus on-tap="endInterview">Accept</paper-button>
+			</div>
+		</paper-dialog>
+	</template>
+
+	<script src="dash-interview-lightning-round.js" type="module"></script>
+</dom-module>

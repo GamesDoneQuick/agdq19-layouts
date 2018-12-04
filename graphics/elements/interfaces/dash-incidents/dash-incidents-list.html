@@ -1,0 +1,52 @@
+<link rel="import" href="../../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+<link rel="import" href="../../../../shared/style/gdq-scroll-style.html">
+<link rel="import" href="../dash-host/dash-host-styles.html">
+<link rel="import" href="dash-incidents-incident.html">
+
+<dom-module id="dash-incidents-list">
+	<template>
+		<style include="dash-host-styles gdq-scroll-style">
+			:host {
+				box-sizing: border-box;
+				padding: 0 11px;
+				@apply --layout-vertical;
+			}
+
+			#title {
+				font-size: 24px;
+				font-weight: 500;
+				margin-top: 16px;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			#list {
+				@apply --layout-flex;
+				box-sizing: border-box;
+				margin-bottom: 13px;
+				margin-top: 9px;
+				min-height: 1px;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				padding-right: 14px;
+			}
+
+			dash-incidents-incident {
+				margin-bottom: 10px;
+			}
+		</style>
+
+		<nodecg-replicant replicant-name="victorOps:incidents" value="{{incidents}}"></nodecg-replicant>
+
+		<div id="title">Incidents</div>
+
+		<div id="list">
+			<template is="dom-repeat" items="[[incidents]]" as="incident" mutable-data>
+				<dash-incidents-incident incident="[[incident]]"></dash-incidents-incident>
+			</template>
+		</div>
+	</template>
+
+	<script src="dash-incidents-list.js" type="module"></script>
+</dom-module>

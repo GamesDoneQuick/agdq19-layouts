@@ -1,0 +1,68 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../bower_components/nodecg-toast/nodecg-toast.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="gdq-totals-total.html">
+
+<dom-module id="gdq-totals">
+	<template>
+		<style include="iron-flex iron-flex-alignment">
+			:host {
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			#cashTotal {
+				margin-right: 13px;
+			}
+
+			.toggle {
+				@apply --layout-vertical;
+				@apply --layout-center;
+				@apply --layout-flex-none;
+				margin-right: 24px;
+			}
+
+			.toggle-label {
+				text-transform: uppercase;
+				font-size: 12px;
+				font-weight: bold;
+				margin-bottom: 4px;
+				pointer-events: none;
+				user-select: none;
+				white-space: nowrap;
+			}
+		</style>
+
+		<div id="toggles">
+			<div class="toggle">
+				<div class="toggle-label">Auto Update</div>
+				<paper-toggle-button
+					on-change="_handleAutoUpdateToggleChange"
+					checked="[[autoUpdateTotal]]">
+				</paper-toggle-button>
+			</div>
+		</div>
+
+		<gdq-totals-total
+			id="cashTotal"
+			value="[[cashTotal]]"
+			currency="cash"
+			on-edit="editCashTotal"></gdq-totals-total>
+
+		<paper-dialog id="editDialog" with-backdrop>
+			<h2>Edit Donation Total</h2>
+			<paper-input id="editTotalInput" label="Donation Total" type="number"></paper-input>
+			<div class="buttons">
+				<paper-button dialog-confirm on-tap="_handleEditDialogConfirmed">Accept</paper-button>
+				<paper-button dialog-dismiss autofocus>Cancel</paper-button>
+			</div>
+		</paper-dialog>
+
+		<nodecg-toast id="toast"></nodecg-toast>
+	</template>
+
+	<script src="gdq-totals.js" type="module"></script>
+</dom-module>

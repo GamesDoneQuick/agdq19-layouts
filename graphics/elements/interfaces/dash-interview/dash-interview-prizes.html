@@ -1,0 +1,224 @@
+<link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="../ui-sortable-list/ui-sortable-list.html">
+<link rel="import" href="dash-interview-prize-playlist-item.html">
+
+<dom-module id="dash-interview-prizes">
+	<template>
+		<style include="gdq-ui-theme">
+			:host {
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+			}
+
+			#leftColumn {
+				width: 274px;
+				margin-right: 9px;
+			}
+
+			#rightColumn {
+				@apply --layout-flex;
+			}
+
+			.column {
+				@apply --layout-vertical;
+			}
+
+			#search {
+				width: 100%;
+				height: 41px;
+				border: 1px solid black;
+				box-sizing: border-box;
+				background: white;
+				margin-bottom: 7px;
+				--paper-input-container: {
+					padding: 0;
+				};
+				--paper-input-container-input: {
+					line-height: 38px;
+					font-size: 24px;
+				};
+			}
+
+			#searchIcon,
+			#clearIcon {
+				width: 32px;
+				height: 32px;
+			}
+
+			#searchIcon {
+				margin-left: 3px;
+				margin-top: 1px;
+				color: #888888;
+			}
+
+			#clearIcon {
+				margin-left: 8px;
+				margin-right: 3px;
+				color: #C9513E;
+				cursor: pointer;
+			}
+
+			#allPrizesList {
+				border: 1px solid black;
+				box-sizing: border-box;
+				background: white;
+				@apply --layout-flex;
+				@apply --layout-vertical;
+			}
+
+			#allPrizesList-actual {
+				@apply --layout-flex;
+			}
+
+			#rightColumn-buttons {
+				@apply --layout-horizontal;
+				@apply --layout-flex-none;
+			}
+
+			#rightColumn-buttons > paper-button {
+				height: 50px;
+				font-weight: bold;
+			}
+
+			#clearPlaylist {
+				margin: 0;
+				@apply --layout-flex;
+			}
+
+			#playlist {
+				margin-top: 14px;
+				padding-right: 6px;
+				box-sizing: border-box;
+				overflow-y: auto;
+				overflow-x: hidden;
+				-webkit-overflow-scrolling: touch;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			.spacer {
+				height: 9px;
+				background-color: #F2F2F2;
+			}
+
+			.prizeListing {
+				height: 64px;
+				padding: 0 7px;
+				white-space: nowrap;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			.prizeListing:nth-child(odd) {
+				background-color: #F2F2F2;
+			}
+
+			.prizeListing-name {
+				font-weight: 500;
+				font-size: 16px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin-right: auto;
+			}
+
+			.prizeListing-add,
+			.prizeListing-remove {
+				@apply --layout-center-center;
+				@apply --layout-flex-none;
+				@apply --layout-horizontal;
+				color: white;
+				height: 40px;
+				margin-left: 10px;
+				min-width: 0;
+				padding: 0;
+				width: 40px;
+			}
+
+			.prizeListing-add-icon,
+			.prizeListing-remove-icon {
+				width: 32px;
+				height: 32px;
+			}
+
+			paper-button {
+				text-align: center;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+
+		<div id="leftColumn" class="column">
+			<paper-input id="search" value="{{searchString}}" no-label-float>
+				<iron-icon id="searchIcon" icon="search" slot="prefix"></iron-icon>
+				<iron-icon
+					id="clearIcon"
+					icon="clear"
+					slot="suffix"
+					on-tap="clearFilter"
+					hidden="[[_calcClearIconHidden(searchString)]]">
+				</iron-icon>
+			</paper-input>
+
+			<div id="allPrizesList">
+				<div id="allPrizesList-topSpacer" class="spacer"></div>
+				<iron-list id="allPrizesList-actual" items="[[_calcPrizesToList(allPrizes, searchString)]]" as="prize" mutable-data>
+					<template>
+						<div class="prizeListing">
+							<div class="prizeListing-name" title="[[prize.description]]">
+								[[prize.description]]
+							</div>
+							<paper-button
+								class="prizeListing-add green"
+								hidden="[[_isPrizeInPlaylist(prize, prizePlaylist)]]"
+								on-tap="_handlePrizeListingAddTap"
+								raised>
+								<iron-icon class="prizeListing-add-icon" icon="add"></iron-icon>
+							</paper-button>
+							<paper-button
+								class="prizeListing-remove red"
+								hidden="[[!_isPrizeInPlaylist(prize, prizePlaylist)]]"
+								on-tap="_handlePrizeListingRemoveTap"
+								raised>
+								<iron-icon class="prizeListing-remove-icon" icon="remove"></iron-icon>
+							</paper-button>
+						</div>
+					</template>
+				</iron-list>
+				<div id="allPrizesList-bottomSpacer" class="spacer"></div>
+			</div>
+		</div>
+
+		<div id="rightColumn" class="column">
+			<div id="rightColumn-buttons">
+				<paper-button
+					id="clearPlaylist"
+					class="indigo"
+					on-tap="clearPlaylist"
+					disabled="[[_calcClearPlaylistDisabled(prizePlaylist)]]"
+					raised>
+					Clear List
+				</paper-button>
+			</div>
+
+			<ui-sortable-list
+				id="playlist"
+				items="[[_calcPrizesInPlaylist(allPrizes, prizePlaylist)]]"
+				replicant-name="interview:prizePlaylist">
+				<template slot="item-body">
+					<dash-interview-prize-playlist-item
+						prize="[[item]]">
+					</dash-interview-prize-playlist-item>
+				</template>
+			</ui-sortable-list>
+		</div>
+	</template>
+
+	<script src="dash-interview-prizes.js" type="module"></script>
+</dom-module>

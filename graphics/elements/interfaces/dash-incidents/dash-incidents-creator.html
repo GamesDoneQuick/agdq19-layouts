@@ -1,0 +1,148 @@
+<link rel="import" href="../../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
+
+<dom-module id="dash-incidents-creator">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				padding: 16px;
+				min-height: 261px;
+			}
+
+			#title {
+				font-size: 20px;
+				font-weight: 500;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			#send {
+				margin-left: 0;
+				width: 160px;
+				height: 44px;
+				--paper-button: {
+					color: white;
+					background-color: #5BA664;
+				}
+			}
+
+			#bottom {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#details-label {
+				margin-top: 12px;
+			}
+
+			#status {
+				font-size: 18px;
+				margin-left: auto;
+			}
+
+			#status > div {
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+
+			#status [data-status="failure"] {
+				color: #FF9494
+			}
+
+			#status.fade-out {
+				transition: opacity 500ms linear;
+				opacity: 0;
+			}
+
+			textarea {
+				@apply --layout-flex;
+				margin-top: 3px;
+				margin-bottom: 16px;
+				resize: none;
+			}
+
+			label {
+				font-size: 12px;
+				color: rgb(115, 115, 115);
+			}
+
+			paper-item {
+				cursor: pointer;
+			}
+
+			paper-spinner {
+				margin-left: 0.5em;
+				--paper-spinner-stroke-width: 5px;
+				--paper-spinner-layer-1-color: #645BA6;
+				--paper-spinner-layer-2-color: #A50074;
+				--paper-spinner-layer-3-color: #5BA664;
+				--paper-spinner-layer-4-color: #C9513E;
+			}
+		</style>
+
+		<nodecg-replicant replicant-name="victorOps:routingKeys" value="{{routingKeys}}"></nodecg-replicant>
+
+		<div id="title">Create Incident</div>
+
+		<paper-dropdown-menu
+			no-animations
+			label="Incident Category/Team"
+			always-float-label
+			disabled="[[sending]]">
+			<paper-listbox
+				slot="dropdown-content"
+				attr-for-selected="data-routing-key"
+				selected="{{_routingKey}}">
+				<template is="dom-repeat" items="[[routingKeys]]" as="routingKey">
+					<paper-item data-routing-key$="[[routingKey.routingKey]]">
+						[[routingKey.routingKey]]
+					</paper-item>
+				</template>
+			</paper-listbox>
+		</paper-dropdown-menu>
+
+		<paper-input
+			label="Incident Subject"
+			always-float-label
+			value="{{_subject}}"
+		 	disabled="[[sending]]">
+		</paper-input>
+
+		<label id="details-label" for="details">Details (Optional)</label>
+		<textarea id="details" rows="6" max-rows="6" disabled="[[sending]]"></textarea>
+
+		<div id="bottom">
+			<paper-button
+				id="send"
+				on-tap="send"
+				disabled="[[_calcSendDisabled(sending, _routingKey, _subject)]]"
+				raised>
+				Send
+			</paper-button>
+
+			<iron-pages id="status" attr-for-selected="data-status" selected="[[_requestStatus]]">
+				<div data-status="ready">Ready.</div>
+
+				<div data-status="sending">
+					Sending...
+					<paper-spinner active="[[sending]]"></paper-spinner>
+				</div>
+
+				<div data-status="success">Success!</div>
+
+				<div data-status="failure">Send Failed. Correct errors or try again.</div>
+			</iron-pages>
+		</div>
+	</template>
+
+	<script src="dash-incidents-creator.js" type="module"></script>
+</dom-module>

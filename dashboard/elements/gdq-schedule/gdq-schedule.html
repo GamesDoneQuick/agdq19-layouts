@@ -1,0 +1,157 @@
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/nodecg-toast/nodecg-toast.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../gdq-run-editor/gdq-run-editor.html">
+<link rel="import" href="gdq-schedule-runinfo.html">
+
+<dom-module id="gdq-schedule">
+	<template>
+		<style>
+			:host {
+				padding: 22px 21px;
+				@apply --layout-vertical;
+			}
+
+			#selection-ctrls {
+				@apply --layout-horizontal;
+				@apply --layout-start;
+				margin-bottom: 16px;
+			}
+
+			#selection-ctrls > paper-button {
+				@apply --layout-flex;
+			}
+
+			#typeahead-container {
+				@apply --layout-vertical;
+				@apply --layout-end;
+			}
+
+			#typeahead {
+				width: 240px;
+				margin-top: -26px;
+			}
+
+			#take {
+				font-size: 14px;
+				height: 24px;
+				padding-right: 0;
+				--paper-button: {
+					background-color: #5BA664;
+					color: white;
+				};
+			}
+
+			#runs {
+				@apply --layout-horizontal;
+			}
+
+			#runs-spacer {
+				width: 18px;
+			}
+
+			#edit-ctrls {
+				@apply --layout-horizontal;
+				margin-top: 32px;
+			}
+
+			#previous,
+			#next {
+				--paper-button: {
+					background-color: #645BA6;
+					color: white;
+				};
+			}
+
+			#previous,
+			#editCurrent {
+				margin-left: 0;
+			}
+
+			#next,
+			#editNext {
+				margin-right: 0;
+			}
+
+			#editCurrent,
+			#editNext {
+				--paper-button: {
+					background-color: #A50074;
+					color: white;
+				};
+				@apply --layout-flex-3;
+			}
+
+			#fetchLatestSchedule {
+				@apply --layout-flex-6;
+			}
+
+			paper-button {
+				white-space: nowrap;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+			}
+
+			gdq-schedule-runinfo {
+				/* lol */
+				width: 211px;
+			}
+
+			gdq-schedule-runinfo:last-of-type {
+				--gdq-schedule-runinfo-color: #5f5f5f;
+			}
+		</style>
+
+		<nodecg-toast id="toast"></nodecg-toast>
+
+		<div id="selection-ctrls">
+			<paper-button id="previous" on-tap="previous" raised>
+				<iron-icon icon="arrow-back"></iron-icon>
+				Prev
+			</paper-button>
+
+			<div id="typeahead-container">
+				<vaadin-combo-box
+					id="typeahead"
+					placeholder="Search"
+					on-keyup="_typeaheadKeyup"
+					on-change="_checkButtons">
+				</vaadin-combo-box>
+
+				<paper-button id="take" on-tap="takeTypeahead" raised>
+					<span>Take</span>
+					<iron-icon icon="chevron-right"></iron-icon>
+				</paper-button>
+			</div>
+
+			<paper-button id="next" on-tap="next" raised>
+				Next
+				<iron-icon icon="arrow-forward"></iron-icon>
+			</paper-button>
+		</div>
+
+		<div id="runs">
+			<gdq-schedule-runinfo id="currentRun" label="Current Run"></gdq-schedule-runinfo>
+			<div id="runs-spacer"></div>
+			<gdq-schedule-runinfo id="nextRun" label="Next Run"></gdq-schedule-runinfo>
+		</div>
+
+		<div id="edit-ctrls">
+			<paper-button id="editCurrent" raised on-tap="editCurrent">EDIT CURRENT</paper-button>
+			<paper-button id="fetchLatestSchedule" raised on-tap="fetchLatestSchedule">FETCH SCHEDULE</paper-button>
+			<paper-button id="editNext" raised on-tap="editNext">EDIT NEXT</paper-button>
+		</div>
+
+		<paper-dialog id="editDialog" with-backdrop>
+			<gdq-run-editor id="editor"></gdq-run-editor>
+			<div class="buttons">
+				<paper-button dialog-dismiss autofocus>Cancel</paper-button>
+			</div>
+		</paper-dialog>
+	</template>
+
+	<script src="gdq-schedule.js" type="module"></script>
+</dom-module>
