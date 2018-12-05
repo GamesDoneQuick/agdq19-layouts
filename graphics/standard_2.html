@@ -7,15 +7,32 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
+			#port1, #port2 {
+				position: absolute;
+				background-color: #880e4f;
+				width: 957px;
+				height: 718px;
+				border: 1px solid #ff0000;
+				box-sizing: border-box;
+				top: 0;
+			}
+
+			#port1 {
+				left: 0;
+			}
+
+			#port2 {
+				right: 0;
+			}
 			#lineone {
 				position: absolute;
 				width: 3px;
-				height: 599px;
-				left: 798px;
+				height: 720px;
+				left: 957px;
 				top: 0;
-				background-color: #ffffff;
-				border-left: 1px solid #ffffff;
-				border-right: 1px solid #ffffff;
+				background-color: #00ffff;
+				border-left: 1px solid #00ffff;
+				border-right: 1px solid #00ffff;
 			}
 
 			.tronleft {
@@ -29,31 +46,31 @@
 			}
 
 			gdq-runner-nameplate {
-				top: 600px;
-				width: 400px;
+				top: 718px;
+				width: 500px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 1026px;
+				right: 1250px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 1026px;
+				left: 1250px;
 			}
 
 			gdq-runinfo {
 				bottom: 18px;
-				width: 550px;
-				height: 175px;
+				width: 670px;
+				height: 245px;
 				--gdq-runinfo-name-padding: 0 16px 8px 16px;
 				--gdq-runinfo-misc-height: 47px;
 			}
 
 			gdq-timer {
-				left: 572px;
-				bottom: 191px;
+				left: 660px;
+				bottom: 257px;
 				height: 65px;
-				width: 456px;
+				width: 600px;
 				font-size: 56px;
 				--gdq-timer-voffset: -2px;
 				z-index: 2;
@@ -62,8 +79,8 @@
 			gdq-tweet {
 				bottom: 14px;
 				right: 11px;
-				width: 528px;
-				height: 176px;
+				width: 650px;
+				height: 235px;
 
 				--gdq-tweet-name-font-size: 16px;
 				--gdq-tweet-body: {
@@ -74,23 +91,25 @@
 			gdq-sponsors {
 				bottom: 14px;
 				right: 11px;
-				width: 528px;
-				height: 176px;
+				width: 650px;
+				height: 235px;
 			}
 
 			atom-tronlines {
 				position: absolute;
 				bottom: 0;
-				border-top: 1px solid #ffffff;
+				border-top: 1px solid #00ffff;
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
+		<div id="port1"></div>
+		<div id="port2"></div>
 		<div id="lineone"></div>
-		<atom-tronlines height="244" width="550" class="tronleft"></atom-tronlines>
-		<atom-tronlines height="244" width="550" class="tronright"></atom-tronlines>
+		<atom-tronlines height="306" width="670" class="tronleft"></atom-tronlines>
+		<atom-tronlines height="306" width="670" class="tronright"></atom-tronlines>
 		<gdq-runinfo max-name-size="45"></gdq-runinfo>
 		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
