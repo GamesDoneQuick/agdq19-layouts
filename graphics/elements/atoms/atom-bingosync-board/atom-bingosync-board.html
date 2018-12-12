@@ -4,7 +4,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
 
-<dom-module id="atom-ootbingo-board">
+<dom-module id="atom-bingosync-board">
 	<template>
 		<style>
 			:host {
@@ -29,12 +29,12 @@
 				@apply --layout-vertical;
 				background: #1D0013;
 				box-shadow: inset 0 0 25px rgba(95, 95, 95, 0.75);
-				padding: var(--atom-ootbingo-board-cell-padding, 8px);
+				padding: var(--atom-bingosync-board-cell-padding, 8px);
 			}
 
 			.cell-text {
 				-webkit-box-orient: vertical;
-				-webkit-line-clamp: var(--atom-ootbingo-board-cell-line-clamp, 7);
+				-webkit-line-clamp: var(--atom-bingosync-board-cell-line-clamp, 7);
 				color: white;
 				display: -webkit-box;
 				font-family: 'Source Code Pro', monospace;
@@ -53,7 +53,7 @@
 			}
 		</style>
 
-		<nodecg-replicant id="boardRep" replicant-name="ootBingo:board" value="{{board}}"></nodecg-replicant>
+		<nodecg-replicant id="boardRep" replicant-name="bingosync:board" value="{{board}}"></nodecg-replicant>
 
 		<template is="dom-repeat" items="[[_calcCells(board.cells, board.selectedLine, board.lineFocused)]]" as="cell" mutable-data>
 			<div class="cell" complete$="[[_calcComplete(cell)]]" title="[[cell.name]]">
@@ -64,5 +64,5 @@
 		</template>
 	</template>
 
-	<script src="atom-ootbingo-board.js" type="module"></script>
+	<script src="atom-bingosync-board.js" type="module"></script>
 </dom-module>

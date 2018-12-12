@@ -11,8 +11,8 @@ interface BoardCell {
  * @polymer
  * @appliesMixin Polymer.MutableData
  */
-@customElement('atom-ootbingo-board')
-export default class AtomOotbingoBoardElement extends Polymer.MutableData(Polymer.Element) {
+@customElement('atom-bingosync-board')
+export default class AtomBingosyncBoardElement extends Polymer.MutableData(Polymer.Element) {
 	@property({type: Boolean, reflectToAttribute: true, computed: '_computeLineFocused(board.lineFocused)'})
 	lineFocused = true;
 

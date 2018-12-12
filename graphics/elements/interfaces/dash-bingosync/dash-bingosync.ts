@@ -1,18 +1,18 @@
-import {OotBingo3Aboard} from '../../../../src/types/schemas/ootBingo%3Aboard';
-import {OotBingo3Asocket} from '../../../../src/types/schemas/ootBingo%3Asocket';
+import {Bingosync3Aboard} from '../../../../src/types/schemas/bingosync%3Aboard';
+import {Bingosync3Asocket} from '../../../../src/types/schemas/bingosync%3Asocket';
 
 const {customElement, property} = Polymer.decorators;
-const boardRep = nodecg.Replicant<OotBingo3Aboard>('ootBingo:board');
+const boardRep = nodecg.Replicant<Bingosync3Aboard>('bingosync:board');
 
 /**
  * @customElement
  * @polymer
  * @appliesMixin Polymer.MutableData
  */
-@customElement('dash-ootbingo')
-export default class DashOotbingoElement extends Polymer.MutableData(Polymer.Element) {
+@customElement('dash-bingosync')
+export default class DashBingosyncElement extends Polymer.MutableData(Polymer.Element) {
 	@property({type: String})
-	socket: OotBingo3Asocket;
+	socket: Bingosync3Asocket;
 
 	@property({type: String, reflectToAttribute: true, computed: '_computeStatus(socket)'})
 	status: string;
@@ -25,7 +25,7 @@ export default class DashOotbingoElement extends Polymer.MutableData(Polymer.Ele
 		this._$lineSelectors = Array.from(this.shadowRoot!.querySelectorAll('.lineSelector')) as PaperButtonElement[];
 		this._$lineSelectors.forEach(button => {
 			button.addEventListener('click', (event: Event) => {
-				nodecg.sendMessage('ootBingo:selectLine', (event.target as PaperButtonElement).innerText.toLowerCase());
+				nodecg.sendMessage('bingosync:selectLine', (event.target as PaperButtonElement).innerText.toLowerCase());
 			});
 		});
 
@@ -45,20 +45,20 @@ export default class DashOotbingoElement extends Polymer.MutableData(Polymer.Ele
 	}
 
 	toggleLineFocus() {
-		nodecg.sendMessage('ootBingo:toggleLineFocus');
+		nodecg.sendMessage('bingosync:toggleLineFocus');
 	}
 
 	toggleCard() {
-		nodecg.sendMessage('ootBingo:toggleCard');
+		nodecg.sendMessage('bingosync:toggleCard');
 	}
 
 	toggleEmbiggen() {
-		nodecg.sendMessage('ootBingo:toggleEmbiggen');
+		nodecg.sendMessage('bingosync:toggleEmbiggen');
 	}
 
 	async submit() {
 		this._submitting = true;
-		await nodecg.sendMessage('ootBingo:joinRoom', {
+		await nodecg.sendMessage('bingosync:joinRoom', {
 			siteUrl: (this.$.siteUrl as PaperInputElement).value,
 			socketUrl: (this.$.socketUrl as PaperInputElement).value,
 			playerName: (this.$.playerName as PaperInputElement).value,
@@ -74,7 +74,7 @@ export default class DashOotbingoElement extends Polymer.MutableData(Polymer.Ele
 		(this.$.playerName as PaperInputElement).value = 'NodeCG';
 	}
 
-	_computeStatus(socket?: OotBingo3Asocket) {
+	_computeStatus(socket?: Bingosync3Asocket) {
 		if (!socket) {
 			return 'disconnected';
 		}
