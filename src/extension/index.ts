@@ -40,7 +40,7 @@ async function init() {
 	require('./nowplaying');
 	require('./countdown');
 	require('./sortable-list');
-	require('./oot-bingo');
+	require('./bingosync');
 	require('./caspar');
 	require('./intermissions');
 

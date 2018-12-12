@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bingosync Graphic</title>
+
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/mixins/mutable-data.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<script>
+		{
+			let links = [
+				'elements/molecules/gdq-bingosync-board/gdq-bingosync-board.html'
+			];
+
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+
+	<custom-style>
+		<style include="iron-flex iron-positioning">
+			body {
+				overflow: hidden;
+			}
+
+			gdq-bingosync-board {
+				@apply --layout-flex;
+			}
+		</style>
+	</custom-style>
+</head>
+	<body class="fullbleed vertical layout">
+		<gdq-bingosync-board></gdq-bingosync-board>
+	</body>
+</html>

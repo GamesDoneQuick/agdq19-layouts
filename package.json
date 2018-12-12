@@ -282,12 +282,12 @@
         "height": 1080
       },
       {
-        "file": "oot_bingo.html",
+        "file": "bingosync.html",
         "width": 474,
         "height": 355
       },
       {
-        "file": "oot_bingo_dashboard.html",
+        "file": "bingosync_dashboard.html",
         "width": 1920,
         "height": 1080
       },
@@ -409,6 +409,6 @@
     "generate-fixture-screenshots": "generate-fixture-screenshots",
     "debug-fixture-screenshots": "generate-fixture-screenshots --debug",
     "mock-donations": "node ./scripts/test_donation_server",
-    "schema-types": "node scripts/schema-types.js"
+    "schema-types": "nodecg schema-types"
   }
 }

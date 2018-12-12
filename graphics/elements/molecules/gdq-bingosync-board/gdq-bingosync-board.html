@@ -1,7 +1,7 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../atoms/atom-ootbingo-board/atom-ootbingo-board.html">
+<link rel="import" href="../../atoms/atom-bingosync-board/atom-bingosync-board.html">
 
-<dom-module id="gdq-ootbingo-board">
+<dom-module id="gdq-bingosync-board">
 	<template>
 		<style>
 			:host {
@@ -48,22 +48,22 @@
 			:host(:not([embiggened])) {
 				padding: 5px 6px;
 				font-size: 12px;
-				--atom-ootbingo-board-cell-line-clamp: 6;
+				--atom-bingosync-board-cell-line-clamp: 6;
 			}
 
 			:host(:not([embiggened])) #board {
 				font-size: 13px;
 				grid-gap: 1px;
-				--atom-ootbingo-board-cell-line-clamp: 3;
-				--atom-ootbingo-board-cell-padding: 4px;
+				--atom-bingosync-board-cell-line-clamp: 3;
+				--atom-bingosync-board-cell-padding: 4px;
 			}
 		</style>
 
 		<div id="content">
-			<atom-ootbingo-board id="board"></atom-ootbingo-board>
+			<atom-bingosync-board id="board"></atom-bingosync-board>
 			<div id="cover">BOARD HIDDEN</div>
 		</div>
 	</template>
 
-	<script src="gdq-ootbingo-board.js" type="module"></script>
+	<script src="gdq-bingosync-board.js" type="module"></script>
 </dom-module>

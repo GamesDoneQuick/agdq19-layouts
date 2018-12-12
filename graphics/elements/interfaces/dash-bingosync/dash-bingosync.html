@@ -8,9 +8,9 @@
 <link rel="import" href="../../../../shared/elements/interfaces/ui-toast/ui-toast.html">
 <link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
 <link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
-<link rel="import" href="../../atoms/atom-ootbingo-board/atom-ootbingo-board.html">
+<link rel="import" href="../../atoms/atom-bingosync-board/atom-bingosync-board.html">
 
-<dom-module id="dash-ootbingo">
+<dom-module id="dash-bingosync">
 	<template>
 		<style include="gdq-ui-theme">
 			:host {
@@ -99,8 +99,8 @@
 			}
 		</style>
 
-		<nodecg-replicant id="boardRep" replicant-name="ootBingo:board" value="{{board}}"></nodecg-replicant>
-		<nodecg-replicant replicant-name="ootBingo:socket" value="{{socket}}"></nodecg-replicant>
+		<nodecg-replicant id="boardRep" replicant-name="bingosync:board" value="{{board}}"></nodecg-replicant>
+		<nodecg-replicant replicant-name="bingosync:socket" value="{{socket}}"></nodecg-replicant>
 
 		<div id="board-wrapper">
 			<paper-button style="grid-row: 1; grid-column: 1" class="lineSelector" raised>TL-BR</paper-button>
@@ -124,10 +124,10 @@
 				[[_calcFocusToggleText(board.lineFocused)]]
 			</paper-button>
 
-			<atom-ootbingo-board
+			<atom-bingosync-board
 				id="board"
 				style="grid-row: 2 / 7; grid-column: 2 / 7">
-			</atom-ootbingo-board>
+			</atom-bingosync-board>
 		</div>
 
 		<div id="form">
@@ -214,5 +214,5 @@
 		<ui-toast id="toast"></ui-toast>
 	</template>
 
-	<script src="dash-ootbingo.js" type="module"></script>
+	<script src="dash-bingosync.js" type="module"></script>
 </dom-module>

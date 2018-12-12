@@ -1,8 +1,8 @@
-import {OotBingo3Aboard} from '../../../../src/types/schemas/ootBingo%3Aboard';
+import {Bingosync3Aboard} from '../../../../src/types/schemas/bingosync%3Aboard';
 import {TweenLite, Sine, Power2} from 'gsap';
 
 const {customElement, property} = Polymer.decorators;
-const boardRep = nodecg.Replicant<OotBingo3Aboard>('ootBingo:board');
+const boardRep = nodecg.Replicant<Bingosync3Aboard>('bingosync:board');
 const urlParams = new URLSearchParams(window.location.search);
 const embiggenUrlParam = urlParams.get('embiggen');
 let EMBIGGEN: boolean | null;
@@ -20,15 +20,15 @@ if (embiggenUrlParam === 'true') {
  * @customElement
  * @polymer
  */
-@customElement('gdq-ootbingo-board')
-export default class GDQOotbingoBoardElement extends Polymer.Element {
+@customElement('gdq-bingosync-board')
+export default class GDQBingosyncBoardElement extends Polymer.Element {
 	@property({type: Boolean, reflectToAttribute: true})
 	embiggened: boolean = Boolean(EMBIGGEN);
 
-	@property({type: Boolean, observer: GDQOotbingoBoardElement.prototype._embiggenStateChanged})
+	@property({type: Boolean, observer: GDQBingosyncBoardElement.prototype._embiggenStateChanged})
 	_embiggenState = false;
 
-	@property({type: Boolean, observer: GDQOotbingoBoardElement.prototype._hiddenStateChanged})
+	@property({type: Boolean, observer: GDQBingosyncBoardElement.prototype._hiddenStateChanged})
 	_hiddenState = false;
 
 	ready() {

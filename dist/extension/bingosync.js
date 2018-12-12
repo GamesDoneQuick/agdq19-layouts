@@ -11,11 +11,11 @@ const SOCKET_KEY_REGEX = /temporarySocketKey\s+=\s+"(\S+)"/;
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:oot-bingo`);
 const request = RequestPromise.defaults({ jar: true }); // <= Automatically saves and re-uses cookies.
-const boardRep = nodecg.Replicant('ootBingo:board');
-const socketRep = nodecg.Replicant('ootBingo:socket');
+const boardRep = nodecg.Replicant('bingosync:board');
+const socketRep = nodecg.Replicant('bingosync:socket');
 let fullUpdateInterval;
 let websocket = null;
-nodecg.listenFor('ootBingo:joinRoom', async (data, callback) => {
+nodecg.listenFor('bingosync:joinRoom', async (data, callback) => {
     try {
         socketRep.value = Object.assign({}, socketRep.value, data);
         await joinRoom({
@@ -38,7 +38,7 @@ nodecg.listenFor('ootBingo:joinRoom', async (data, callback) => {
         }
     }
 });
-nodecg.listenFor('ootBingo:leaveRoom', (_data, callback) => {
+nodecg.listenFor('bingosync:leaveRoom', (_data, callback) => {
     try {
         clearInterval(fullUpdateInterval);
         destroyWebsocket();
@@ -54,7 +54,7 @@ nodecg.listenFor('ootBingo:leaveRoom', (_data, callback) => {
         }
     }
 });
-nodecg.listenFor('ootBingo:selectLine', (lineString, callback) => {
+nodecg.listenFor('bingosync:selectLine', (lineString, callback) => {
     try {
         boardRep.value.selectedLine = lineString;
         if (callback && !callback.handled) {
@@ -67,7 +67,7 @@ nodecg.listenFor('ootBingo:selectLine', (lineString, callback) => {
         }
     }
 });
-nodecg.listenFor('ootBingo:toggleLineFocus', (_data, callback) => {
+nodecg.listenFor('bingosync:toggleLineFocus', (_data, callback) => {
     try {
         boardRep.value.lineFocused = !boardRep.value.lineFocused;
         if (callback && !callback.handled) {
@@ -80,7 +80,7 @@ nodecg.listenFor('ootBingo:toggleLineFocus', (_data, callback) => {
         }
     }
 });
-nodecg.listenFor('ootBingo:toggleCard', (_data, callback) => {
+nodecg.listenFor('bingosync:toggleCard', (_data, callback) => {
     try {
         boardRep.value.cardHidden = !boardRep.value.cardHidden;
         if (callback && !callback.handled) {
@@ -93,7 +93,7 @@ nodecg.listenFor('ootBingo:toggleCard', (_data, callback) => {
         }
     }
 });
-nodecg.listenFor('ootBingo:toggleEmbiggen', (_data, callback) => {
+nodecg.listenFor('bingosync:toggleEmbiggen', (_data, callback) => {
     try {
         boardRep.value.embiggen = !boardRep.value.embiggen;
         if (callback && !callback.handled) {
@@ -268,4 +268,4 @@ function destroyWebsocket() {
     }
     websocket = null;
 }
-//# sourceMappingURL=oot-bingo.js.map
+//# sourceMappingURL=bingosync.js.map
