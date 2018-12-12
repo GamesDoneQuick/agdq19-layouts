@@ -5,7 +5,26 @@
 	<title>OoT Bingo Dashboard</title>
 	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-	<link rel="import" href="elements/interfaces/dash-ootbingo/dash-ootbingo.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../bower_components/polymer-decorators/polymer-decorators.html">
+	<link rel="import" href="../bower_components/polymer/lib/mixins/mutable-data.html">
+	<link rel="import" href="../bower_components/polymer/lib/utils/debounce.html">
+	<link rel="import" href="../bower_components/polymer/polymer-element.html">
+	<script>
+		{
+			let links = [
+				'elements/interfaces/dash-ootbingo/dash-ootbingo.html'
+			];
+
+			for (const link of links) {
+				const linkElem = document.createElement('link');
+				linkElem.rel = 'import';
+				linkElem.href = link;
+				document.head.appendChild(linkElem);
+			}
+		}
+	</script>
+
 	<custom-style>
 		<style include="iron-flex iron-positioning">
 			body {
