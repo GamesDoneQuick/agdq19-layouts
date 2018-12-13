@@ -31,7 +31,7 @@ before_build:
   - cd ..
   - git clone https://github.com/nodecg/nodecg.git
   - cd nodecg
-  - git checkout rewrite-bare-module-specifiers
+  - git checkout v1.3.0
 
   # Move our bundle into the expected path, and cd back into that dir.
   - 'move %APPVEYOR_BUILD_FOLDER% bundles\%APPVEYOR_PROJECT_SLUG%'
