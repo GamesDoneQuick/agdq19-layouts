@@ -2,83 +2,129 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Standard, 2 Player</title>
+	<title>Game Boy, 2 Player</title>
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
+			#lineone {
+				position: absolute;
+				width: 3px;
+				height: 720px;
+				left: 957px;
+				top: 0;
+				background-color: #00ffff;
+				border-left: 1px solid #00ffff;
+				border-right: 1px solid #00ffff;
+			}
+
+			.tronleft {
+				left: 0;
+				border-right: 1px solid #00ffff;
+			}
+
+			.tronright {
+				right: 0;
+				border-left: 1px solid #00ffff;
+			}
+
+			.plate {
+				width: 164px;
+				height: 720px;
+				border: 1px solid #00ffff;
+				background-color: #051113;
+				position: absolute;
+				top: -1px;
+			}
+
+			.plate-left {
+				left: -1px;
+			}
+
+			.plate-right {
+				right: -1px;
+			}
+
 			gdq-runner-nameplate {
-				top: 493px;
-				width: 349px;
+				top: 708px;
+				width: 450px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 855px;
+				right: 1250px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 855px;
+				left: 1250px;
 			}
 
 			gdq-runinfo {
-				bottom: 38px;
-				width: 425px;
-				height: 100px;
-				--gdq-runinfo-misc-height: 29px;
+				bottom: 18px;
+				width: 670px;
+				height: 245px;
+				--gdq-runinfo-name-padding: 0 16px 8px 16px;
+				--gdq-runinfo-misc-height: 47px;
 			}
 
 			gdq-timer {
-				left: 0;
-				bottom: 0;
-				height: 38px;
-				width: 425px;
-				font-size: 33px;
+				left: 670px;
+				bottom: 247px;
+				height: 75px;
+				width: 580px;
+				font-size: 56px;
 				--gdq-timer-voffset: -2px;
+				z-index: 2;
 			}
 
 			gdq-tweet {
-				bottom: 0;
-				right: 0;
-				width: 426px;
-				height: 180px;
-				padding-right: 12px;
+				bottom: 14px;
+				right: 11px;
+				width: 650px;
+				height: 235px;
 
+				--gdq-tweet-name-font-size: 16px;
 				--gdq-tweet-body: {
-					font-size: 25px;
-					padding-top: 50px;
+					font-size: 16px;
 				};
 			}
 
 			gdq-sponsors {
+				bottom: 14px;
+				right: 11px;
+				width: 650px;
+				height: 235px;
+			}
+
+			atom-tronlines {
+				position: absolute;
 				bottom: 0;
-				right: 0;
-				width: 426px;
-				height: 140px;
-				padding-right: 12px;
+				border-top: 1px solid #00ffff;
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
-	<div id="container">
-		<img id="addon" src="img/backgrounds/gb2_addon.png">
-		<img id="background" src="img/backgrounds/standard_2_bg.png">
-		<gdq-runinfo max-name-size="28" force-single-line-name></gdq-runinfo>
-		<gdq-timer></gdq-timer>
-		<gdq-sponsors></gdq-sponsors>
-		<gdq-tweet></gdq-tweet>
-		<gdq-runner-nameplate index="0" attach-right></gdq-runner-nameplate>
-		<gdq-runner-nameplate index="1" attach-left></gdq-runner-nameplate>
-		<img id="foreground" src="img/backgrounds/standard_2_fg.png">
-	</div>
+<div id="container">
+	<div class="plate plate-left"></div>
+	<div class="plate plate-right"></div>
+	<div id="lineone"></div>
+	<atom-tronlines height="306" width="670" class="tronleft"></atom-tronlines>
+	<atom-tronlines height="306" width="670" class="tronright"></atom-tronlines>
+	<gdq-runinfo max-name-size="58"></gdq-runinfo>
+	<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
+	<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
+	<gdq-timer></gdq-timer>
+	<gdq-sponsors></gdq-sponsors>
+	<gdq-tweet></gdq-tweet>
+</div>
 
-	<script>
-		window.addEventListener('DOMContentLoaded', () => {
-			TweenLite.to(document.body, 0.333, {
-				opacity: 1,
-				ease: Power1.easeOut
-			});
+<script>
+	window.addEventListener('DOMContentLoaded', () => {
+		TweenLite.to(document.body, 0.333, {
+			opacity: 1,
+			ease: Power1.easeOut
 		});
-	</script>
+	});
+</script>
 </body>
 </html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Standard, 2 Player (Mario Sunshine Bingo)</title>
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="import" href="../shared/imports/bootstrap-layout.html">
+	<custom-style>
+		<style>
+			.port {
+				position: absolute;
+				width: 700px;
+				height: 520px;
+				top: 60px;
+				border: 1px solid #00ffff;
+			}
+
+			.portleft {
+				left: -1px;
+			}
+
+			.portright {
+				right: -1px;
+			}
+
+			.bingo {
+				position: absolute;
+				height: 520px;
+				width: 518px;
+				left: 700px;
+				border: 1px solid #00ffff;
+				top: 60px;
+			}
+
+			.tronleft {
+				left: 0;
+				border-right: 1px solid #00ffff;
+			}
+
+			.tronright {
+				right: 0;
+				border-left: 1px solid #00ffff;
+			}
+
+			.bingo-label {
+				position: absolute;
+				width: 100%;
+				top: 20px;
+				text-align: center;
+				color: #ffffff;
+				text-transform: uppercase;
+				font-size: 18px;
+				font-weight: 700;
+			}
+
+			.lineone {
+				width: 100%;
+				position: absolute;
+				height: 306px;
+				bottom: 0;
+				border-top: 1px solid #00ffff;
+			}
+
+			gdq-runner-nameplate {
+				top: 623px;
+				width: 500px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				right: 1220px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				left: 1220px;
+			}
+
+			gdq-runinfo {
+				bottom: 18px;
+				width: 670px;
+				height: 306px;
+				--gdq-runinfo-name-padding: 0 16px 8px 16px;
+				--gdq-runinfo-misc-height: 47px;
+			}
+
+			gdq-timer {
+				left: 670px;
+				bottom: 337px;
+				height: 75px;
+				width: 580px;
+				font-size: 56px;
+				--gdq-timer-voffset: -2px;
+				z-index: 2;
+			}
+
+			gdq-tweet {
+				bottom: 10px;
+				right: 10px;
+				width: 650px;
+				height: 286px;
+
+				--gdq-tweet-name-font-size: 16px;
+				--gdq-tweet-body: {
+					font-size: 16px;
+				};
+			}
+
+			gdq-sponsors {
+				bottom: 10px;
+				right: 10px;
+				width: 650px;
+				height: 286px;
+			}
+
+			atom-tronlines {
+				position: absolute;
+				bottom: 0;
+				border-top: 1px solid #00ffff;
+			}
+		</style>
+	</custom-style>
+</head>
+<body>
+	<div id="container">
+		<div class="port portleft"></div>
+		<div class="port portright"></div>
+		<div class="bingo"></div>
+		<div class="bingo-label">First to 13 squares wins</div>
+		<div class="lineone"></div>
+		<atom-tronlines height="306" width="670" class="tronleft"></atom-tronlines>
+		<atom-tronlines height="306" width="670" class="tronright"></atom-tronlines>
+		<gdq-runinfo max-name-size="58"></gdq-runinfo>
+		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
+		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
+		<gdq-tweet></gdq-tweet>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			TweenLite.to(document.body, 0.333, {
+				opacity: 1,
+				ease: Power1.easeOut
+			});
+		});
+	</script>
+</body>
+</html>
