@@ -159,17 +159,17 @@
 		</div>
 
 		<div id="grid">
-			<template is="dom-repeat" items="[[itemsAndPrizes]]">
-				<div class$="[[_calcCellClass(item, index)]]">
+			<template is="dom-repeat" items="[[goals]]" as="goal" mutable-data>
+				<div class$="[[_calcCellClass(goal, index)]]">
 					<iron-image
-						hidden="[[!_hasMedallion(item)]]"
+						hidden="[[!_hasMedallion(goal)]]"
 						class="boss-medallion"
-						src="[[importPath]]img/[[_calcCellMedallionSrc(item)]].png"
+						src="[[importPath]]img/[[_calcCellMedallionSrc(goal)]].png"
 						sizing="contain">
 					</iron-image>
 
 					<iron-image
-						src="[[importPath]]img/[[_calcCellSrc(item)]].png"
+						src="[[importPath]]img/[[_calcCellSrc(goal)]].png"
 						sizing="contain">
 					</iron-image>
 				</div>

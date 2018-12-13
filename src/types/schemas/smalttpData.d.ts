@@ -5,10 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type SmalttpData = {
+export type SmalttpData = Goal[];
+
+export interface Goal {
 	name: string;
 	state: number;
 	maxState: number;
-	boss: boolean;
+	isBoss: boolean;
 	highlight?: boolean;
-}[];
+}
