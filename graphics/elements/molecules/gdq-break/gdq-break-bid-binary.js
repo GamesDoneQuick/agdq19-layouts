@@ -86,7 +86,7 @@ let GDQBreakBidBinaryElement = class GDQBreakBidBinaryElement extends Polymer.El
         const svgDoc = SVG(this.$.chart);
         svgDoc.viewbox(-1, -1, 2, 2);
         this._svgDoc = svgDoc;
-        svgDoc.circle(2).fill({ color: '#ffee54', opacity: 0.25 }).move(-1, -1);
+        svgDoc.circle(2).fill({ color: '#03F0FF', opacity: 0.25 }).move(-1, -1);
         const anglePI = (ROTATION_FACTOR * 360) * (Math.PI / 180);
         const gradientCoords = {
             x1: Math.round((Math.sin(anglePI) * 50) + 50) + '%',
@@ -96,8 +96,8 @@ let GDQBreakBidBinaryElement = class GDQBreakBidBinaryElement extends Polymer.El
         };
         const gradient = svgDoc
             .gradient('linear', stop => {
-            stop.at(0, '#57c7ef');
-            stop.at(1, '#63f1fd');
+            stop.at(0, '#cf0367');
+            stop.at(1, '#ff5bac');
         })
             .from(gradientCoords.x1, gradientCoords.y1)
             .to(gradientCoords.x2, gradientCoords.y2);
