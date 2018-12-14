@@ -109,7 +109,7 @@ export default class GDQBreakBidBinaryElement extends Polymer.Element implements
 		svgDoc.viewbox(-1, -1, 2, 2);
 		this._svgDoc = svgDoc;
 
-		svgDoc.circle(2).fill({color: '#ffee54', opacity: 0.25}).move(-1, -1);
+		svgDoc.circle(2).fill({color: '#03F0FF', opacity: 0.25}).move(-1, -1);
 
 		const anglePI = (ROTATION_FACTOR * 360) * (Math.PI / 180);
 		const gradientCoords = {
@@ -121,8 +121,8 @@ export default class GDQBreakBidBinaryElement extends Polymer.Element implements
 
 		const gradient = svgDoc
 			.gradient('linear', stop => {
-				stop.at(0, '#57c7ef');
-				stop.at(1, '#63f1fd');
+				stop.at(0, '#cf0367');
+				stop.at(1, '#ff5bac');
 			})
 			.from(gradientCoords.x1 as any, gradientCoords.y1 as any)
 			.to(gradientCoords.x2 as any, gradientCoords.y2 as any);

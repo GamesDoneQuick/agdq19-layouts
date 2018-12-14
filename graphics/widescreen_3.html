@@ -17,6 +17,18 @@
 				border-right: 1px solid #00ffff;
 			}
 
+			.plate {
+				background-color: #051113;
+				border-top: 1px solid #00ffff;
+				border-bottom: 1px solid #00ffff;
+				position: absolute;
+				height: 137px;
+				width: 788px;
+				top: 444px;
+				@apply --layout-vertical;
+				@apply --layout-justified;
+			}
+
 			#leftPlate {
 				left: 0;
 				@apply --layout-end;
@@ -28,22 +40,11 @@
 
 			#rightPlate {
 				right: 0;
+				height: 67px;
 			}
 
 			#rightPlate > gdq-runner-nameplate {
 				margin-left: -1px;
-			}
-
-			.plate {
-				background-color: #051113;
-				border-top: 1px solid #00ffff;
-				border-bottom: 1px solid #00ffff;
-				position: absolute;
-				height: 137px;
-				width: 788px;
-				top: 444px;
-				@apply --layout-vertical;
-				@apply --layout-justified;
 			}
 
 			.plate > :first-child {
@@ -110,7 +111,6 @@
 
 		<div id="rightPlate" class="plate">
 			<gdq-runner-nameplate index="1" no-left-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
-			<gdq-runner-nameplate index="3" no-left-cap result-side="right" audio-vert-pos="top" audio-horiz-pos="left"></gdq-runner-nameplate>
 		</div>
 
 		<atom-gridlines></atom-gridlines>

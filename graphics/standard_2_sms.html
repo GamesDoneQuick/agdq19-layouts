@@ -2,20 +2,34 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Standard, 2 Player</title>
+	<title>Standard, 2 Player (Mario Sunshine Bingo)</title>
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
-			#lineone {
+			.port {
 				position: absolute;
-				width: 3px;
-				height: 720px;
-				left: 957px;
-				top: 0;
-				background-color: #00ffff;
-				border-left: 1px solid #00ffff;
-				border-right: 1px solid #00ffff;
+				width: 700px;
+				height: 520px;
+				top: 60px;
+				border: 1px solid #00ffff;
+			}
+
+			.portleft {
+				left: -1px;
+			}
+
+			.portright {
+				right: -1px;
+			}
+
+			.bingo {
+				position: absolute;
+				height: 520px;
+				width: 518px;
+				left: 700px;
+				border: 1px solid #00ffff;
+				top: 60px;
 			}
 
 			.tronleft {
@@ -28,30 +42,49 @@
 				border-left: 1px solid #00ffff;
 			}
 
+			.bingo-label {
+				position: absolute;
+				width: 100%;
+				top: 20px;
+				text-align: center;
+				color: #ffffff;
+				text-transform: uppercase;
+				font-size: 18px;
+				font-weight: 700;
+			}
+
+			.lineone {
+				width: 100%;
+				position: absolute;
+				height: 306px;
+				bottom: 0;
+				border-top: 1px solid #00ffff;
+			}
+
 			gdq-runner-nameplate {
-				top: 708px;
+				top: 623px;
 				width: 500px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 1250px;
+				right: 1220px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 1250px;
+				left: 1220px;
 			}
 
 			gdq-runinfo {
 				bottom: 18px;
 				width: 670px;
-				height: 245px;
+				height: 306px;
 				--gdq-runinfo-name-padding: 0 16px 8px 16px;
 				--gdq-runinfo-misc-height: 47px;
 			}
 
 			gdq-timer {
 				left: 670px;
-				bottom: 247px;
+				bottom: 337px;
 				height: 75px;
 				width: 580px;
 				font-size: 56px;
@@ -60,10 +93,10 @@
 			}
 
 			gdq-tweet {
-				bottom: 14px;
-				right: 11px;
+				bottom: 10px;
+				right: 10px;
 				width: 650px;
-				height: 235px;
+				height: 286px;
 
 				--gdq-tweet-name-font-size: 16px;
 				--gdq-tweet-body: {
@@ -72,10 +105,10 @@
 			}
 
 			gdq-sponsors {
-				bottom: 14px;
-				right: 11px;
+				bottom: 10px;
+				right: 10px;
 				width: 650px;
-				height: 235px;
+				height: 286px;
 			}
 
 			atom-tronlines {
@@ -88,9 +121,11 @@
 </head>
 <body>
 	<div id="container">
-		<div id="port1"></div>
-		<div id="port2"></div>
-		<div id="lineone"></div>
+		<div class="port portleft"></div>
+		<div class="port portright"></div>
+		<div class="bingo"></div>
+		<div class="bingo-label">First to 13 squares wins</div>
+		<div class="lineone"></div>
 		<atom-tronlines height="306" width="670" class="tronleft"></atom-tronlines>
 		<atom-tronlines height="306" width="670" class="tronright"></atom-tronlines>
 		<gdq-runinfo max-name-size="58"></gdq-runinfo>

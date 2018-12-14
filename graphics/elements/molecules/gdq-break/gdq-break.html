@@ -14,79 +14,81 @@
 		<style>
 			:host {
 				display: block;
-				width: 1600px;
-				height: 900px;
+				width: 1920px;
+				height: 1080px;
 				background: url("img/lines_bg.png") no-repeat;
 				font-family: "Source Code Pro";
 			}
 
 			#bids {
 				position: absolute;
-				top: 85px;
+				top: 102px;
 				left: 0;
 			}
 
 			#fanart {
 				position: absolute;
-				top: 100px;
+				top: 120px;
 				left: -1px;
 			}
 
 			#tweet {
 				position: absolute;
-				top: 548px;
+				top: 657px;
 				left: -1px;
-				width: 816px;
-				height: 231px;
+				width: 980px;
+				height: 278px;
 			}
 
 			#prizes {
 				position: absolute;
-				top: 538px;
+				top: 646px;
 				left: 0;
 			}
 
 			#schedule {
 				position: absolute;
-				top: 383px;
+				top: 460px;
 				right: 0;
 			}
 
 			atom-text-greeble {
 				position: absolute;
-				bottom: 70px;
+				bottom: 84px;
 			}
 
 			#crowd-cam {
-				width: 689px;
-				height: 236px;
+				width: 827px;
+				height: 283px;
 				position: absolute;
-				right: 40px;
-				top: 120px;
+				right: 48px;
+				top: 144px;
 				box-sizing: border-box;
 				border-top: 1px solid #e9d75e;
 				border-right: 1px solid #e9d75e;
 				border-bottom: 1px solid #e9d75e;
-				border-left: 49px solid #e9d75e;
+				border-left: 60px solid #e9d75e;
 				border-image: linear-gradient(
 					to bottom,
 					#aef5ff 10%,
-					#5ecfff 100%
+					#00ffff 100%
 				) 1;
-				box-shadow: 0 0 75px rgba(110, 245, 255, 0.26);
+				box-shadow: 0 0 90px rgba(40, 252, 255, 0.26);
 			}
 
 			#crowd-cam-label {
-				width: 272px;
-				height: 26px;
+				width: 326px;
+				height: 32px;
 				position: absolute;
-				right: 51px;
-				top: 340px;
-				background-color: #ffffff;
+				right: 61px;
+				top: 408px;
+				background-color: #00ffff;
 				text-align: center;
-				font-size: 14px;
+				font-size: 18px;
 				box-sizing: border-box;
 				padding-top: 3px;
+				border: 1px solid #000000;
+				outline: 1px solid #00ffff;
 			}
 		</style>
 
@@ -97,11 +99,11 @@
 		<gdq-break-schedule id="schedule"></gdq-break-schedule>
 
 		<div id="crowd-cam"></div>
-		<div id="crowd-cam-label">San Jose Convention Center</div>
+		<div id="crowd-cam-label">THE FORTRESS OF SOLITUDE</div>
 
-		<atom-text-greeble style="left: 348px;" length="15"></atom-text-greeble>
-		<atom-text-greeble style="left: 532px;" length="11"></atom-text-greeble>
-		<atom-text-greeble style="left: 719px; color: #00FFFF;" length="15"></atom-text-greeble>
+		<atom-text-greeble style="left: 418px;" length="15"></atom-text-greeble>
+		<atom-text-greeble style="left: 638px;" length="11"></atom-text-greeble>
+		<atom-text-greeble style="left: 863px; color: #00FFFF;" length="15"></atom-text-greeble>
 	</template>
 
 	<script src="gdq-break.js" type="module"></script>

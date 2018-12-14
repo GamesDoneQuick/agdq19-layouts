@@ -236,14 +236,14 @@ export default class GDQTransitionElement extends Polymer.Element {
 
 	fromClosedToOpen({fadeOutVideos = false} = {}) {
 		return this.openGeometry({
-			bottomFrontRect: {x: 26, y: 413},
-			topFrontRect: {x: -10, y: -418},
-			bottomFrontTrapezoid: {x: -667, y: 488},
-			topFrontTrapezoid: {x: 14, y: -521},
-			bottomBackRect: {x: 0, y: 421},
-			topBackRect: {x: -10, y: -437},
-			bottomBackTrapezoid: {x: -666, y: 510},
-			topBackTrapezoid: {x: 0, y: -543},
+			bottomFrontRect: {x: 31, y: 493},
+			topFrontRect: {x: -12, y: -498},
+			bottomFrontTrapezoid: {x: -800, y: 585},
+			topFrontTrapezoid: {x: 17, y: -625},
+			bottomBackRect: {x: 0, y: 505},
+			topBackRect: {x: -12, y: -524},
+			bottomBackTrapezoid: {x: -800, y: 612},
+			topBackTrapezoid: {x: 0, y: -651.6},
 			fadeOutVideos,
 			fadeOutAll: true
 		});
@@ -269,14 +269,14 @@ export default class GDQTransitionElement extends Polymer.Element {
 		const tl = new TimelineLite();
 
 		tl.add(this.openGeometry({
-			bottomFrontRect: {x: 26, y: 321},
-			topFrontRect: {x: -10, y: -349},
-			bottomFrontTrapezoid: {x: -503, y: 364},
-			topFrontTrapezoid: {x: 8, y: -417},
-			bottomBackRect: {x: 0, y: 323},
-			topBackRect: {x: 0, y: -351},
-			bottomBackTrapezoid: {x: -490, y: 374},
-			topBackTrapezoid: {x: 0, y: -426},
+			bottomFrontRect: {x: 31, y: 385},
+			topFrontRect: {x: -10, y: -419},
+			bottomFrontTrapezoid: {x: -603, y: 437},
+			topFrontTrapezoid: {x: 10, y: -500},
+			bottomBackRect: {x: 0, y: 388},
+			topBackRect: {x: 0, y: -421},
+			bottomBackTrapezoid: {x: -588, y: 449},
+			topBackTrapezoid: {x: 0, y: -511},
 			fadeOutVideos
 		}));
 

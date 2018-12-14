@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Widescreen, 4 Player</title>
+	<title>Standard, 4 Player, FF4FE</title>
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
@@ -10,9 +10,9 @@
 			#lineone {
 				position: absolute;
 				box-sizing: border-box;
-				width: 344px;
+				width: 404px;
 				height: 1025px;
-				left: 788px;
+				left: 758px;
 				border-left: 1px solid #00ffff;
 				border-right: 1px solid #00ffff;
 			}
@@ -40,7 +40,7 @@
 				border-bottom: 1px solid #00ffff;
 				position: absolute;
 				height: 137px;
-				width: 788px;
+				width: 758px;
 				top: 444px;
 				@apply --layout-vertical;
 				@apply --layout-justified;
@@ -60,25 +60,25 @@
 			}
 
 			gdq-runinfo {
-				left: 788px;
+				left: 758px;
 				top: 240px;
-				width: 344px;
+				width: 404px;
 				height: 196px;
 				--gdq-runinfo-name-padding: 8px 16px;
 				--gdq-runinfo-misc-height: 45px;
 			}
 
 			gdq-timer {
-				left: 788px;
+				left: 758px;
 				top: 475px;
 				height: 81px;
-				width: 344px;
+				width: 404px;
 				font-size: 56px;
 			}
 
 			atom-tronlines {
 				position: absolute;
-				left: 788px;
+				left: 758px;
 			}
 
 			atom-tronlines:nth-of-type(1) {
@@ -93,9 +93,9 @@
 			atom-gridlines {
 				position: absolute;
 				top: 240px;
-				left: 788px;
+				left: 758px;
 				height: 145px;
-				width: 342px;
+				width: 404px;
 				border-top: 1px solid #00ffff;
 			}
 		</style>
@@ -114,8 +114,8 @@
 		</div>
 
 		<atom-gridlines></atom-gridlines>
-		<atom-tronlines direction="down" width="342" height="102"></atom-tronlines>
-		<atom-tronlines width="342" height="49"></atom-tronlines>
+		<atom-tronlines direction="down" width="404" height="102"></atom-tronlines>
+		<atom-tronlines width="404" height="49"></atom-tronlines>
 		<div id="lineone"></div>
 		<gdq-runinfo></gdq-runinfo>
 		<gdq-timer></gdq-timer>
