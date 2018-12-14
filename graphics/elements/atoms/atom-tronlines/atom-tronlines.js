@@ -27,7 +27,7 @@ let AtomTronlinesElement = AtomTronlinesElement_1 = class AtomTronlinesElement e
         /**
          * The solid background color of the canvas.
          */
-        this.backgroundColor = '#050505';
+        this.backgroundColor = '#051113';
         /**
          * The direction of travel for the nodes.
          * Can be one of "up", "down", "left", or "right".
@@ -72,15 +72,15 @@ let AtomTronlinesElement = AtomTronlinesElement_1 = class AtomTronlinesElement e
         /**
          * The color of the head of each node.
          */
-        this.nodeColor = '#6082d6';
+        this.nodeColor = '#abd3e9';
         /**
          * The starting color of the tail of each node.
          */
-        this.tailStartColor = '#02a6ff';
+        this.tailStartColor = '#abd3e9';
         /**
          * The ending color of the tail of each node.
          */
-        this.tailEndColor = '#0079ff';
+        this.tailEndColor = '#12383c';
         this.debug = false;
         /**
          * An array containing all nodes currently being drawn to the stage.
