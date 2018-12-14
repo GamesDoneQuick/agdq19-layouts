@@ -10,8 +10,8 @@
 			#lineone {
 				position: absolute;
 				width: 3px;
-				height: 559px;
-				left: 798px;
+				height: 720px;
+				left: 958px;
 				top: 0;
 				background-color: #00ffff;
 				border-left: 1px solid #051113;
@@ -29,16 +29,16 @@
 			}
 
 			gdq-runner-nameplate {
-				top: 540px;
-				width: 375px;
+				top: 720px;
+				width: 425px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				right: 1028px;
+				right: 1233px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				left: 1028px;
+				left: 1233px;
 			}
 
 			gdq-runinfo {
@@ -50,12 +50,13 @@
 			}
 
 			gdq-timer {
-				left: 572px;
+				left: 682px;
 				bottom: 251px;
 				height: 65px;
-				width: 456px;
+				width: 556px;
 				font-size: 56px;
 				--gdq-timer-voffset: -2px;
+				z-index: 2;
 			}
 
 			gdq-tweet {
@@ -89,7 +90,7 @@
 
 			atom-gridlines {
 				position: absolute;
-				width: 1600px;
+				width: 1920px;
 				height: 71px;
 				top: 0;
 				left: 0;
@@ -107,11 +108,12 @@
 		<atom-tronlines height="304" width="550" class="tronleft"></atom-tronlines>
 		<atom-tronlines height="304" width="550" class="tronright"></atom-tronlines>
 		<gdq-runinfo max-name-size="45"></gdq-runinfo>
-		<gdq-timer></gdq-timer>
 		<gdq-sponsors></gdq-sponsors>
 		<gdq-tweet></gdq-tweet>
 		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
+		<gdq-timer></gdq-timer>
+
 	</div>
 
 	<script>

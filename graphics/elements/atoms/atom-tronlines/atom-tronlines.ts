@@ -34,7 +34,7 @@ export default class AtomTronlinesElement extends Polymer.Element {
 	 * The solid background color of the canvas.
 	 */
 	@property({type: String, observer: AtomTronlinesElement.prototype._backgroundColorChanged})
-	backgroundColor = '#050505';
+	backgroundColor = '#051113';
 
 	/**
 	 * The direction of travel for the nodes.
@@ -99,19 +99,19 @@ export default class AtomTronlinesElement extends Polymer.Element {
 	 * The color of the head of each node.
 	 */
 	@property({type: String})
-	nodeColor = '#6082d6';
+	nodeColor = '#abd3e9';
 
 	/**
 	 * The starting color of the tail of each node.
 	 */
 	@property({type: String})
-	tailStartColor = '#02a6ff';
+	tailStartColor = '#abd3e9';
 
 	/**
 	 * The ending color of the tail of each node.
 	 */
 	@property({type: String})
-	tailEndColor = '#0079ff';
+	tailEndColor = '#12383c';
 
 	@property({type: Boolean, reflectToAttribute: true})
 	debug = false;

@@ -24,12 +24,12 @@
 
 			#center {
 				margin: 0 1px;
-				background-color: #1D1D1D;
 				@apply --layout-horizontal;
 			}
 
 			#center-content {
-				border: 1px solid #FFFFFF;
+				background-color: #1D1020;
+				border: 1px solid #EE0693;
 				border-left: none;
 				border-right: none;
 				@apply --layout-flex;
@@ -62,10 +62,10 @@
 
 			.wingBody {
 				height: 100%;
-				border: 1px solid #FFFFFF;
+				border: 1px solid #EE0693;
 				border-left: 0;
 				border-right: 0;
-				background: #1D1D1D;
+				background: #1D1020;
 				box-sizing: border-box;
 				@apply --layout-flex;
 				@apply --layout-horizontal;
@@ -75,17 +75,18 @@
 			atom-chevron {
 				width: 16px;
 				height: 100%;
-				--atom-chevron-background: #1D1D1D;
-				--atom-chevron-fill-color: #76aad6;
-				--atom-chevron-stroke-color: #FFFFFF;
+				--atom-chevron-background: #1D1020;
+				--atom-chevron-fill-color: #6B0E41;
+				--atom-chevron-stroke-color: #EE0693;
 				@apply --layout-flex-none;
 			}
 
 			atom-greeble {
+				background-color: #1D1020;
 				height: 100%;
 				z-index: 1;
-				--atom-greeble-fill-color: #FFDF79;
-				--atom-greeble-stroke-color: #FFFFFF;
+				--atom-greeble-fill-color: #FF64C0;
+				--atom-greeble-stroke-color: #EE0693;
 			}
 
 			atom-gradient-text {
@@ -97,16 +98,17 @@
 			}
 
 			.label {
+				font-family: 'Dosis', sans-serif;
 				font-style: normal;
-				font-weight: 600;
+				font-weight: 900;
 				line-height: normal;
-				font-size: 10px;
+				font-size: 11px;
 				text-align: center;
 				color: transparent;
 				background-image: linear-gradient(
 					to bottom,
-					#FFFFFF 0%,
-					#FFFFFF 100%
+					#E6E6E6 0%,
+					#CF70D3 100%
 				);
 				-webkit-background-clip: text;
 			}

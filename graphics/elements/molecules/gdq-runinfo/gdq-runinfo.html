@@ -5,6 +5,7 @@
 <link rel="import" href="../../../../shared/style/gdq-text-styles.html">
 <link rel="import" href="gdq-runinfo-category.html">
 <link rel="import" href="gdq-runinfo-misc.html">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
 
 <dom-module id="gdq-runinfo">
 	<template>
@@ -18,7 +19,7 @@
 				color: white;
 				font-family: "Source Code Pro", monospace;
 				text-transform: uppercase;
-				font-weight: 600;
+				font-weight: 900;
 			}
 
 			#category,
@@ -28,7 +29,8 @@
 			}
 
 			#name {
-				line-height: 1;
+				font-family: 'Dosis', sans-serif;
+				line-height: 0.85;
 				text-transform: uppercase;
 				text-align: center;
 				flex-grow: 1;
@@ -55,16 +57,16 @@
 				color: transparent;
 				background-image: var(--atom-gradient-text-gradient, linear-gradient(
 					180deg,
-					#FFFFFF 0%,
-					#FFFFFF 100%
+					#93FFe4 0%,
+					#5AE0F0 90%
 				));
 				-webkit-background-clip: text;
 				--atom-gradient-text-shadow: 0 0 25px rgba(13, 143, 255, 0.68);
 			}
 
 			small {
-				font-size: 66%;
-				font-weight: 500;
+				font-size: 80%;
+				font-weight: 600;
 			}
 		</style>
 

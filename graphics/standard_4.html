@@ -8,18 +8,18 @@
 	<custom-style>
 		<style>
 			#lineone {
-				width: 474px;
-				height: 845px;
-				left: 563px;
-				border-left: 1px solid #ffffff;
-				border-right: 1px solid #ffffff;
+				width: 554px;
+				height: 1025px;
+				left: 683px;
+				border-left: 1px solid #00ffff;
+				border-right: 1px solid #00ffff;
 			}
 
 			#linetwo,
 			#linethree {
-				width: 563px;
-				height: 423px;
-				border-bottom: 1px solid #ffffff;
+				width: 683px;
+				height: 512px;
+				border-bottom: 1px solid #00ffff;
 				top: 0;
 			}
 
@@ -41,71 +41,66 @@
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
-				top: 245px;
-				left: 563px;
+				top: 256px;
+				left: 683px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(2) {
-				top: 316px;
-				right: 563px;
+				top: 317px;
+				right: 683px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(3) {
-				top: 492px;
-				left: 563px;
+				top: 593px;
+				left: 683px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(4) {
-				top: 563px;
-				right: 563px;
+				top: 654px;
+				right: 683px;
 			}
 
 			gdq-runinfo {
-				left: 563px;
-				top: 0;
-				width: 474px;
-				height: 210px;
+				left: 683px;
+				top: 368px;
+				width: 554px;
+				height: 200px;
 				--gdq-runinfo-misc-height: 47px;
-				--gdq-runinfo-name-padding: 8px 16px;
+				--gdq-runinfo-name-padding: 12px 16px;
+				padding-top: 10px;
 			}
 
 			gdq-timer {
-				left: 563px;
-				top: 390px;
+				left: 683px;
+				bottom: 0;
 				height: 64px;
-				width: 474px;
+				width: 554px;
 				font-size: 56px;
 			}
 
 			atom-tronlines {
 				position: absolute;
-				left: 563px;
-			}
-
-			atom-tronlines:nth-of-type(1) {
-				top: 159px;
-			}
-
-			atom-tronlines:nth-of-type(2) {
-				top: 454px;
-				border-bottom: 1px solid #ffffff;
+				left: 683px;
+				bottom: 302px;
+				border-bottom: 1px solid #00ffff;
+				border-top: 1px solid #00ffff;
 			}
 
 			atom-gridlines {
 				position: absolute;
-				top: 0;
-				left: 563px;
-				width: 474px;
-				height: 159px;
+				top: 378px;
+				left: 683px;
+				width: 554px;
+				height: 139px;
+				border-top: 1px solid #00ffff;
 			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
+		<atom-tronlines width="554" height="475"></atom-tronlines>
 		<atom-gridlines></atom-gridlines>
-		<atom-tronlines direction="down" width="474" height="238"></atom-tronlines>
-		<atom-tronlines width="474" height="184"></atom-tronlines>
 		<div id="lineone" class="line"></div>
 		<div id="linetwo" class="line"></div>
 		<div id="linethree" class="line"></div>

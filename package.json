@@ -128,128 +128,143 @@
       },
       {
         "file": "countdown.html",
-        "width": 1600,
-        "height": 900
+        "width": 1920,
+        "height": 1080
       },
       {
         "file": "countdown-foreground-anim.html",
-        "width": 1600,
-        "height": 900
+        "width": 1920,
+        "height": 1080
       },
       {
         "file": "break.html",
-        "width": 1600,
-        "height": 900
+        "width": 1920,
+        "height": 1080
       },
       {
         "file": "transition.html",
-        "width": 1600,
-        "height": 900
+        "width": 1920,
+        "height": 1080
       },
       {
         "file": "interview.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "standard_1.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "standard_1_smalttp.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "standard_2.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
+      },
+      {
+        "file": "standard_2_sms.html",
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "standard_3.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "standard_4.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
+      },
+      {
+        "file": "standard_4_ff4fe.html",
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "widescreen_1.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "widescreen_2.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "widescreen_2_mario.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
+      },
+      {
+        "file": "widescreen_3.html",
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "widescreen_4.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "widescreen_4_2.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gba_1.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gba_2.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gba_4.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gameboy_1.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gameboy_2.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gameboy_3.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "gameboy_4.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "3ds.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "ds.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "ds_vertical.html",
-        "width": 1600,
-        "height": 845
+        "width": 1920,
+        "height": 1025
       },
       {
         "file": "lttp_tracker.html",
@@ -263,7 +278,7 @@
       },
       {
         "file": "omnibar.html",
-        "width": 1600,
+        "width": 1920,
         "height": 55
       },
       {
