@@ -11,6 +11,12 @@ export default class DashProducerElement extends Polymer.MutableData(Polymer.Ele
 	@property({type: Number})
 	selectedBidsAndPrizesTab = 0;
 
+	@property({type: String})
+	volunteerScheduleURL = nodecg.bundleConfig.volunteerScheduleURL;
+
+	@property({type: String})
+	volunteerEvaluationsURL = nodecg.bundleConfig.volunteerEvaluationsURL;
+
 	connectedCallback() {
 		super.connectedCallback();
 		this.updateCurrentTime = this.updateCurrentTime.bind(this);
