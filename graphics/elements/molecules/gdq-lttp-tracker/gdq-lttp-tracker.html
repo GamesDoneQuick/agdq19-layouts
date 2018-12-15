@@ -3,42 +3,27 @@
 <link rel="import" href="../../../../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../../../../bower_components/polymerfire/firebase-auth.html">
 <link rel="import" href="../../../../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="../../../style/gdq-rando-style.html">
 
 <dom-module id="gdq-lttp-tracker">
 	<template>
-		<style>
+		<style include="gdq-rando-style">
 			:host {
-				position: relative;
-				padding-left: 1px;
-				box-sizing: border-box;
-				image-rendering: pixelated;
 				--cell-size: calc(10vh - 0.9px);
-				--grid-gap: 1px;
 				--prize-cell-size: 17px;
-			}
-
-			:host([mirrored]) {
-				transform: scaleX(-1);
+				padding-left: 1px;
 			}
 
 			#grid {
-				position: relative;
-				width: 100%;
-				height: 100%;
-				display: grid;
 				grid-template-columns:
 					repeat(3, var(--cell-size))
 					0
 					var(--cell-size)
 					var(--prize-cell-size);
 				grid-template-rows: repeat(10, var(--cell-size));
-				grid-gap: var(--grid-gap);
-				grid-auto-flow: row;
-				z-index: 1;
 			}
 
 			#tealBackground {
-				position: absolute;
 				left: 0;
 				top: 0;
 				height: 100%;
@@ -50,7 +35,6 @@
 			}
 
 			#whiteBackground {
-				position: absolute;
 				left: calc(
 					(var(--cell-size) + var(--grid-gap)) *
 					3
@@ -65,7 +49,6 @@
 			}
 
 			#purpleBackground {
-				position: absolute;
 				top: 0;
 				left: calc(
 					(var(--cell-size) * 4) +
@@ -83,36 +66,9 @@
 				background-color: #AE00FF;
 			}
 
-			.cell {
-				background-color: black;
-				padding: 7px;
-				@apply --layout-vertical;
-			}
-
-			:host([mirrored]) iron-image {
-				transform: scaleX(-1);
-			}
-
-			.cell--dimmed iron-image {
-				opacity: 0.25;
-			}
-
 			.cell--prize {
 				padding: 0;
 				background-color: #3C0D52;
-			}
-
-			.cell--zeroWidth {
-				padding: 0;
-			}
-
-			iron-image {
-				width: 100%;
-				height: 100%;
-			}
-
-			[hidden] {
-				display: none !important;
 			}
 		</style>
 
@@ -143,9 +99,9 @@
 			data="{{medallions}}">
 		</firebase-document>
 
-		<div id="tealBackground"></div>
-		<div id="whiteBackground"></div>
-		<div id="purpleBackground">
+		<div id="tealBackground" class="background"></div>
+		<div id="whiteBackground" class="background"></div>
+		<div id="purpleBackground" class="background">
 			<div class="purpleBackground-cell"></div>
 			<div class="purpleBackground-cell"></div>
 			<div class="purpleBackground-cell"></div>
