@@ -193,7 +193,7 @@
 		<paper-tabs id="contentTabs" selected="{{selectedContentTab}}">
 			<paper-tab>Dashboard</paper-tab>
 			<paper-tab>Volunteer Schedule</paper-tab>
-			<!--<paper-tab>Volunteer Evals</paper-tab>-->
+			<paper-tab>Volunteer Evals</paper-tab>
 			<paper-tab>Incidents</paper-tab>
 			<paper-tab>Full Schedule</paper-tab>
 		</paper-tabs>
@@ -238,14 +238,14 @@
 			</div>
 
 			<iframe
-				src="https://docs.google.com/spreadsheets/d/1dptp4DPhoIf1gPtTdO1wTIyVZiDnSUtu_WmxAgjD-14/edit"
+				src="[[volunteerScheduleURL]]"
 				frameBorder="0">
 			</iframe>
 
-			<!--<iframe-->
-				<!--src="https://docs.google.com/spreadsheets/d/1HPjKWS3Rujf0O7YloG-VAo-bwGfyzfpYNTm-1F-7L3w/edit"-->
-				<!--frameBorder="0">-->
-			<!--</iframe>-->
+			<iframe
+				src="[[volunteerEvaluationsURL]]"
+				frameBorder="0">
+			</iframe>
 
 			<dash-incidents></dash-incidents>
 

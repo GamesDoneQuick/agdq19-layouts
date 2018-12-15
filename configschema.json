@@ -239,6 +239,14 @@
 			"description": "API credentials for the optional VictorOps integration..",
 			"required": ["enabled", "apiId", "apiKey", "restEndpoint"],
 			"default": null
+		},
+		"volunteerScheduleURL": {
+			"type": "string",
+			"description": "The URL to the volunteer schedule. Is embedded as an IFrame on the Producer Dashboard."
+		},
+		"volunteerEvaluationsURL": {
+			"type": "string",
+			"description": "The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard."
 		}
 	},
 
