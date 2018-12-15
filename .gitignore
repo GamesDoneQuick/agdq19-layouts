@@ -9,11 +9,7 @@ coverage
 !.empty_directory
 
 # JetBrains IDEs (IntelliJ/WebStorm)
-/.idea/compiler.xml
-/.idea/encodings.xml
-/.idea/copyright/profiles_settings.xml
-/.idea/workspace.xml
-/.idea/shelf/
+/.idea
 
 firebase-credentials.json
 

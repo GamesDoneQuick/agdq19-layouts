@@ -424,6 +424,7 @@
     "generate-fixture-screenshots": "generate-fixture-screenshots",
     "debug-fixture-screenshots": "generate-fixture-screenshots --debug",
     "mock-donations": "node ./scripts/test_donation_server",
-    "schema-types": "nodecg schema-types"
+    "schema-types": "nodecg schema-types",
+    "start": "node ../.. --bundlesEnabled=agdq19-layouts"
   }
 }
