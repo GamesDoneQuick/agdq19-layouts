@@ -51,12 +51,62 @@
 				background: #005B1A;
 				box-shadow: inset 0 0 25px rgba(0, 199, 163, 0.75);
 			}
+
+			.cell--orange {
+				background: #D0800F;
+				box-shadow: inset 0 0 25px rgba(255, 156, 18, 0.75);
+			}
+
+			.cell--red {
+				background: #CE302C;
+				box-shadow: inset 0 0 25px rgba(255, 73, 68, 0.75);
+			}
+
+			.cell--blue {
+				background: #088CBD;
+				box-shadow: inset 0 0 25px rgba(64, 156, 255, 0.75);
+			}
+
+			.cell--green {
+				background: #20A00A;
+				box-shadow: inset 0 0 25px rgba(49, 216, 20, 0.75);
+			}
+
+			.cell--purple {
+				background: #7120ab;
+				box-shadow: inset 0 0 25px rgba(130, 45, 191, 0.75);
+			}
+
+			.cell--navy {
+				background: #022b75;
+				box-shadow: inset 0 0 25px rgba(13, 72, 181, 0.75);
+			}
+
+			.cell--teal {
+				background: #2e7372;
+				box-shadow: inset 0 0 25px rgba(65, 150, 149, 0.75);
+			}
+
+			.cell--brown {
+				background: #6d3811;
+				box-shadow: inset 0 0 25px rgba(171, 92, 35, 0.75);
+			}
+
+			.cell--pink {
+				background: #cc6e8f;
+				box-shadow: inset 0 0 25px rgba(237, 134, 170, 0.75);
+			}
+
+			.cell--yellow {
+				background: #c1ba0b;
+				box-shadow: inset 0 0 25px rgba(216, 208, 20, 0.75);
+			}
 		</style>
 
 		<nodecg-replicant id="boardRep" replicant-name="bingosync:board" value="{{board}}"></nodecg-replicant>
 
 		<template is="dom-repeat" items="[[_calcCells(board.cells, board.selectedLine, board.lineFocused)]]" as="cell" mutable-data>
-			<div class="cell" complete$="[[_calcComplete(cell)]]" title="[[cell.name]]">
+			<div class$="cell [[_calcColorClasses(cell)]]" title="[[cell.name]]">
 				<div class="cell-text">
 					[[cell.name]]
 				</div>

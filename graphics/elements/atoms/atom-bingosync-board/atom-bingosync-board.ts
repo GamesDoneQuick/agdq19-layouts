@@ -72,11 +72,12 @@ export default class AtomBingosyncBoardElement extends Polymer.MutableData(Polym
 		}
 	}
 
-	_calcComplete(cell?: BoardCell) {
-		if (!cell || !cell.colors) {
-			return false;
+	_calcColorClasses(cell?: BoardCell) {
+		if (!cell || !cell.colors || cell.colors === 'none' || cell.colors === 'blank' || cell.colors.length <= 0) {
+			return '';
 		}
 
-		return cell.colors.length > 0 && cell.colors !== 'none' && cell.colors !== 'blank';
+		const firstColor = cell.colors.split(' ').pop();
+		return `cell--${firstColor}`;
 	}
 }
