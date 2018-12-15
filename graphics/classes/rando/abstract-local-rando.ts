@@ -9,7 +9,7 @@ export interface AbstractGoal {
 
 export abstract class AbstractLocalRando<Goal extends AbstractGoal> extends AbstractRando<Goal> {
 	protected _advance(e: any) {
-		const updated = e.model.item;
+		const updated = e.model.goal;
 		if (updated.state === updated.maxState) {
 			updated.state = 0;
 		} else {
@@ -18,7 +18,8 @@ export abstract class AbstractLocalRando<Goal extends AbstractGoal> extends Abst
 	}
 
 	protected _highlight(e: any) {
-		e.model.item.highlight = !e.model.item.highlight;
+		console.log('_highlight:', e.model.goal);
+		e.model.goal.highlight = !e.model.goal.highlight;
 	}
 
 	protected _calcCellClass(goal: Goal) {
