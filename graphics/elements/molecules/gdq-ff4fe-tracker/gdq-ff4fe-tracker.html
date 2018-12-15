@@ -1,0 +1,44 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../style/gdq-rando-style.html">
+<dom-module id="gdq-ff4fe-tracker">
+	<template>
+		<style include="gdq-rando-style">
+			:host {
+				--cell-size: 44px;
+				display: flex;
+				padding: 1px;
+			}
+
+			#grid {
+				grid-template-columns: repeat(3, var(--cell-size));
+				grid-template-rows: repeat(6, var(--cell-size));
+			}
+
+			#tealBackground {
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				background-color: #00FFFF;
+			}
+		</style>
+
+		<div id="tealBackground" class="background"></div>
+
+		<div id="admin"></div>
+
+		<div id="grid">
+			<template is="dom-repeat" mutable-data items="[[goals]]" as="goal">
+				<div class$="[[_calcCellClass(goal, index)]]" on-click="_advance">
+					<iron-image
+						src="[[importPath]]img/[[_calcCellSrc(goal)]].png"
+						sizing="contain">
+					</iron-image>
+				</div>
+			</template>
+		</div>
+	</template>
+
+	<script src="gdq-ff4fe-tracker.js" type="module"></script>
+</dom-module>

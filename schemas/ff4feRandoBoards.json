@@ -1,0 +1,61 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"definitions": {
+		"Board": {
+			"type": "array",
+			"additionalItems": false,
+			"items": {
+				"$ref": "#/definitions/Goal"
+			},
+			"default": [
+				{"name": "baron-key", "state": 0, "maxState": 1},
+				{"name": "pass", "state": 0, "maxState": 1},
+				{"name": "the-crystal", "state": 0, "maxState": 1},
+				{"name": "magma-key", "state": 0, "maxState": 1},
+				{"name": "legend-sword", "state": 0, "maxState": 1},
+				{"name": "earth-crystal", "state": 0, "maxState": 1},
+				{"name": "tower-key", "state": 0, "maxState": 1},
+				{"name": "sand-ruby", "state": 0, "maxState": 1},
+				{"name": "dark-crystal", "state": 0, "maxState": 1},
+				{"name": "luca-key", "state": 0, "maxState": 1},
+				{"name": "pan", "state": 0, "maxState": 1},
+				{"name": "spoon", "state": 0, "maxState": 1},
+				{"name": "rat-tail", "state": 0, "maxState": 1},
+				{"name": "pink-tail", "state": 0, "maxState": 1},
+				{"name": "adamant", "state": 0, "maxState": 1},
+				{"name": "twin-harp", "state": 0, "maxState": 1},
+				{"name": "package", "state": 0, "maxState": 1},
+				{"name": "hook", "state": 0, "maxState": 1}
+			]
+		},
+		"Goal": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"state": {
+					"type": "number",
+					"minimum": 0
+				},
+				"maxState": {
+					"type": "number",
+					"minimum": 1,
+					"maximum": 1
+				}
+			},
+			"required": ["name", "state", "maxState"]
+		}
+	},
+
+	"type": "array",
+	"title": "ff4feRandoBoards",
+	"additionalItems": false,
+	"items": {
+		"$ref": "#/definitions/Board"
+	},
+	"minItems": 4,
+	"maxItems": 4
+}
