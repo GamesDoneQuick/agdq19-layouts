@@ -9,13 +9,16 @@ const cyclingRecordingsRep = nodecg.Replicant<Obs3AcyclingRecordings>('obs:cycli
  * @polymer
  * @appliesMixin Polymer.MutableData
  */
-@customElement('ui-obs-status-item')
-export default class UiObsStatusItemElement extends Polymer.MutableData(Polymer.Element) {
+@customElement('ui-system-status-obs')
+export default class UiSystemStatusObsElement extends Polymer.MutableData(Polymer.Element) {
 	@property({type: String})
 	namespace: string;
 
 	@property({type: String, reflectToAttribute: true})
 	status: string;
+
+	@property({type: String})
+	label: string;
 
 	_websocket: WebsocketStatus;
 	_cyclingRecordings: boolean;

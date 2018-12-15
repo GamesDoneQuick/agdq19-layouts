@@ -2,7 +2,7 @@
 <link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="ui-obs-status-item">
+<dom-module id="ui-system-status-obs">
 	<template>
 		<style>
 			:host {
@@ -45,11 +45,11 @@
 		<nodecg-replicant replicant-name="[[namespace]]:websocket" value="{{_websocket}}"></nodecg-replicant>
 
 		<span id="name">
-			[[_transformsNamespace(namespace)]]:
+			[[label]]:
 		</span>
 
 		<span id="status" title="[[status]]">[[status]]</span>
 	</template>
 
-	<script src="ui-obs-status-item.js" type="module"></script>
+	<script src="ui-system-status-obs.js" type="module"></script>
 </dom-module>
