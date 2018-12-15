@@ -16,6 +16,7 @@ const autoUpdateTotal = nodecg.Replicant<boolean>('autoUpdateTotal');
 const bitsTotal = nodecg.Replicant<Bits3Atotal>('bits:total');
 const recordTrackerEnabled = nodecg.Replicant<boolean>('recordTrackerEnabled');
 const total = nodecg.Replicant<Total>('total');
+let disconnectWarningTimeout: NodeJS.Timer | null;
 
 autoUpdateTotal.on('change', (newVal: boolean) => {
 	if (newVal) {
@@ -41,6 +42,10 @@ if (nodecg.bundleConfig && nodecg.bundleConfig.donationSocketUrl) {
 
 	socket.on('connect', () => {
 		nodecg.log.info('Connected to donation socket', nodecg.bundleConfig.donationSocketUrl);
+		if (disconnectWarningTimeout) {
+			clearTimeout(disconnectWarningTimeout);
+			disconnectWarningTimeout = null;
+		}
 		loggedXhrPollError = false;
 	});
 
@@ -76,7 +81,11 @@ if (nodecg.bundleConfig && nodecg.bundleConfig.donationSocketUrl) {
 	});
 
 	socket.on('disconnect', () => {
-		nodecg.log.error('Disconnected from donation socket, can not receive donations!');
+		if (!disconnectWarningTimeout) {
+			disconnectWarningTimeout = setTimeout(() => {
+				nodecg.log.error('Disconnected from donation socket, can not receive donations!');
+			}, 30000);
+		}
 	});
 
 	socket.on('error', (err: Error) => {
