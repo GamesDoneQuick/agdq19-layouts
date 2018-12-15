@@ -1,0 +1,66 @@
+<dom-module id="gdq-rando-style">
+	<template>
+		<style>
+			:host {
+				--grid-gap: 1px;
+				box-sizing: border-box;
+				image-rendering: pixelated;
+				position: relative;
+			}
+
+			:host([mirrored]) {
+				transform: scaleX(-1);
+			}
+
+			:host([mirrored]) iron-image {
+				transform: scaleX(-1);
+			}
+
+			iron-image {
+				height: 100%;
+				pointer-events: none;
+				width: 100%;
+			}
+
+			.cell {
+				@apply --layout-vertical;
+				background-color: black;
+				color: #ffffff;
+				font-family: sans-serif;
+				font-size: 12px;
+				padding: 7px;
+				text-align: center;
+			}
+
+			.cell--highlight {
+				background-color: #0e3a60;
+			}
+
+			.cell--dimmed iron-image {
+				opacity: 0.25;
+			}
+
+			.cell--zeroWidth {
+				padding: 0;
+			}
+
+			.background {
+				position: absolute;
+			}
+
+			#grid {
+				display: grid;
+				grid-auto-flow: row;
+				grid-gap: var(--grid-gap);
+				height: 100%;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+		</style>
+	</template>
+</dom-module>

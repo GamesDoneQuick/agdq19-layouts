@@ -4,9 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Standard, 4 Player, FF4FE</title>
 	<link rel="stylesheet" href="style/layout.css">
+	<script>
+		window.extraImports = [
+			'elements/molecules/gdq-ff4fe-tracker/gdq-ff4fe-tracker.html'
+		];
+	</script>
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
+			body {
+				--board-vertical-offset: 86px;
+				--board-horizontal-offset: 57px;
+			}
+
 			#lineone {
 				position: absolute;
 				box-sizing: border-box;
@@ -98,6 +108,30 @@
 				width: 404px;
 				border-top: 1px solid #00ffff;
 			}
+
+			gdq-ff4fe-tracker {
+				position: absolute;
+			}
+
+			gdq-ff4fe-tracker[index="0"] {
+				top: var(--board-vertical-offset);
+				left: var(--board-horizontal-offset);
+			}
+
+			gdq-ff4fe-tracker[index="1"] {
+				top: var(--board-vertical-offset);
+				right: var(--board-horizontal-offset);
+			}
+
+			gdq-ff4fe-tracker[index="2"] {
+				bottom: var(--board-vertical-offset);
+				left: var(--board-horizontal-offset);
+			}
+
+			gdq-ff4fe-tracker[index="3"] {
+				bottom: var(--board-vertical-offset);
+				right: var(--board-horizontal-offset);
+			}
 		</style>
 	</custom-style>
 </head>
@@ -112,6 +146,11 @@
 			<gdq-runner-nameplate index="1" no-left-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
 			<gdq-runner-nameplate index="3" no-left-cap result-side="right" audio-vert-pos="top" audio-horiz-pos="left"></gdq-runner-nameplate>
 		</div>
+
+		<gdq-ff4fe-tracker index="0"></gdq-ff4fe-tracker>
+		<gdq-ff4fe-tracker index="1"></gdq-ff4fe-tracker>
+		<gdq-ff4fe-tracker index="2"></gdq-ff4fe-tracker>
+		<gdq-ff4fe-tracker index="3"></gdq-ff4fe-tracker>
 
 		<atom-gridlines></atom-gridlines>
 		<atom-tronlines direction="down" width="404" height="102"></atom-tronlines>

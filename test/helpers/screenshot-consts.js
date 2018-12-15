@@ -166,6 +166,11 @@ const gameplayLayoutTestCases = [{
 		smalttpData: undefined
 	}
 }, {
+	route: `bundles/${BUNDLE_NAME}/graphics/standard_4_ff4fe.html`,
+	replicantPrefills: {
+		ff4feRandoBoards: undefined
+	}
+}, {
 	route: `bundles/${BUNDLE_NAME}/graphics/standard_2.html`,
 	additionalDelay: STANDARD_DELAY,
 	replicantPrefills: STANDARD_REPLICANT_PREFILLS

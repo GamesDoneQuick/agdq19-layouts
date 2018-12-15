@@ -1,3 +1,5 @@
+import {AbstractRando} from '../../../classes/rando/abstract-rando';
+
 const urlParams = new URLSearchParams(window.location.search);
 const MIRROR_MODE = getBooleanUrlParam(urlParams, 'mirrored');
 const GAME_ID = urlParams.has('game_id') ? urlParams.get('game_id') : 'supportclass';
@@ -10,7 +12,7 @@ function getBooleanUrlParam(params: URLSearchParams, paramName: string) {
 	return params.has(paramName) && params.get(paramName) !== 'false' && params.get(paramName) !== '0';
 }
 
-interface CellData {
+interface Goal {
 	name: keyof ITEMS | 'dungeon';
 	hasLevels?: boolean;
 	level?: boolean | number;
@@ -68,7 +70,7 @@ const ITEM_ROWS = [[
 	{name: 'boomerang', hasLevels: true}, // can be 0-3
 	{name: 'boss10'},
 	{name: 'boss9'}
-]] as CellData[][];
+]] as Goal[][];
 
 interface ITEMS {
 	agahnim: number;
@@ -125,7 +127,10 @@ interface ITEMS {
  * @polymer
  */
 @customElement('gdq-lttp-tracker')
-export default class GDQLttpTrackerElement extends Polymer.Element {
+export default class GDQLttpTrackerElement extends AbstractRando<Goal> {
+	@property({type: Array})
+	goals: Goal[];
+
 	@property({type: Array})
 	items: ITEMS;
 
@@ -135,9 +140,6 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 	@property({type: Array})
 	medallions: number[];
 
-	@property({type: Array})
-	itemsAndPrizes: CellData[];
-
 	@property({type: String})
 	gameId: string = GAME_ID as string;
 
@@ -146,7 +148,7 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 
 	static get observers() {
 		return [
-			'_computeItemsAndPrizes(items.*, prizes.*, medallions.*)'
+			'_computeGoals(items.*, prizes.*, medallions.*)'
 		];
 	}
 
@@ -160,8 +162,8 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 		});
 	}
 
-	_computeItemsAndPrizes() {
-		const finalArray: CellData[] = [];
+	_computeGoals() {
+		const finalArray: Goal[] = [];
 		const items = this.items;
 		const prizes = this.prizes;
 		const medallions = this.medallions;
@@ -169,7 +171,7 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 		if (!items || Object.keys(items).length <= 0 ||
 			!prizes || prizes.length <= 0 ||
 			!medallions || medallions.length <= 0) {
-			this.itemsAndPrizes = finalArray;
+			this.goals = finalArray;
 			return;
 		}
 
@@ -179,7 +181,7 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 
 				if (itemIndex === 3) {
 					// Empty placeholder for the 4th column, which is blank.
-					finalArray.push({} as CellData);
+					finalArray.push({} as Goal);
 				}
 
 				finalArray.push({
@@ -199,7 +201,7 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 				level: prizes[rowIndex],
 				dimmed: false,
 				medallionLevel: undefined
-			} as CellData;
+			} as Goal;
 
 			// Only these two bosses have medallion info.
 			if (rowIndex === 8 || rowIndex === 9) {
@@ -209,10 +211,10 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 			finalArray.push(dungeonInfo);
 		});
 
-		this.itemsAndPrizes = finalArray;
+		this.goals = finalArray;
 	}
 
-	_calcCellClass(itemOrPrize: CellData, index: number) {
+	_calcCellClass(itemOrPrize: Goal, index: number) {
 		const classes = new Set(['cell']);
 		const sixesRemainder = (index + 1) % 6;
 
@@ -229,7 +231,7 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 		return Array.from(classes).join(' ');
 	}
 
-	_calcCellSrc(itemOrPrize: CellData) {
+	_calcCellSrc(itemOrPrize: Goal) {
 		let src = itemOrPrize.name;
 		if (itemOrPrize.hasLevels) {
 			if (typeof itemOrPrize.level === 'number') {
@@ -239,10 +241,10 @@ export default class GDQLttpTrackerElement extends Polymer.Element {
 			}
 		}
 
-		return src ? src : 'blank-pixel';
+		return src ? String(src) : 'blank-pixel';
 	}
 
-	_hasMedallion(itemOrPrize: CellData) {
+	_hasMedallion(itemOrPrize: Goal) {
 		return 'medallionLevel' in itemOrPrize && itemOrPrize.medallionLevel !== undefined;
 	}
 
