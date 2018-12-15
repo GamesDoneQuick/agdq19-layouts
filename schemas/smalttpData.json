@@ -1,82 +1,89 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
+
+	"definitions": {
+		"Goal": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"state": {
+					"type": "number",
+					"minimum": 0
+				},
+				"maxState": {
+					"type": "number",
+					"minimum": 0
+				},
+				"isBoss": {
+					"type": "boolean"
+				},
+				"highlight": {
+					"type": "boolean"
+				}
+			},
+			"required": ["name", "state", "maxState", "isBoss"]
+		}
+	},
+
 	"type": "array",
 	"title": "smalttpData",
 	"additionalItems": false,
 	"items": {
-		"type": "object",
-		"additionalProperties": false,
-		"properties": {
-			"name": {
-				"type": "string"
-			},
-			"state": {
-				"type": "number",
-				"minimum": 0
-			},
-			"maxState": {
-				"type": "number",
-				"minimum": 0
-			},
-			"boss": {
-				"type": "boolean"
-			},
-			"highlight": {
-				"type": "boolean"
-			}
-		},
-		"required": ["name", "state", "maxState", "boss"]
+		"$ref": "#/definitions/Goal"
 	},
 	"default": [
-		{"name": "boss0", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss1", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss2", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss3", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss4", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss5", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss6", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss7", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss8", "state": 0, "maxState": 1, "boss": true},
-		{"name": "boss9", "state": 0, "maxState": 1, "boss": true},
-		{"name": "bow", "state": 0, "maxState": 1, "boss": false},
-		{"name": "hammer", "state": 0, "maxState": 1, "boss": false},
-		{"name": "flute", "state": 0, "maxState": 1, "boss": false},
-		{"name": "bombos", "state": 0, "maxState": 1, "boss": false},
-		{"name": "glove", "state": 0, "maxState": 2, "boss": false},
-		{"name": "lantern", "state": 0, "maxState": 1, "boss": false},
-		{"name": "bottle", "state": 0, "maxState": 4, "boss": false},
-		{"name": "net", "state": 0, "maxState": 1, "boss": false},
-		{"name": "sword", "state": 0, "maxState": 4, "boss": false},
-		{"name": "boss10", "state": 0, "maxState": 1, "boss": false},
-		{"name": "silvers", "state": 0, "maxState": 1, "boss": false},
-		{"name": "somaria", "state": 0, "maxState": 1, "boss": false},
-		{"name": "byrna", "state": 0, "maxState": 1, "boss": false},
-		{"name": "ether", "state": 0, "maxState": 1, "boss": false},
-		{"name": "moonpearl", "state": 0, "maxState": 1, "boss": false},
-		{"name": "mirror", "state": 0, "maxState": 1, "boss": false},
-		{"name": "book", "state": 0, "maxState": 1, "boss": false},
-		{"name": "shovel", "state": 0, "maxState": 1, "boss": false},
-		{"name": "shield", "state": 0, "maxState": 3, "boss": false},
-		{"name": "boomerang", "state": 0, "maxState": 3, "boss": false},
-		{"name": "hookshot", "state": 0, "maxState": 1, "boss": false},
-		{"name": "firerod", "state": 0, "maxState": 1, "boss": false},
-		{"name": "icerod", "state": 0, "maxState": 1, "boss": false},
-		{"name": "quake", "state": 0, "maxState": 1, "boss": false},
-		{"name": "boots", "state": 0, "maxState": 1, "boss": false},
-		{"name": "flippers", "state": 0, "maxState": 1, "boss": false},
-		{"name": "powder", "state": 0, "maxState": 1, "boss": false},
-		{"name": "mushroom", "state": 0, "maxState": 1, "boss": false},
-		{"name": "tunic", "state": 0, "maxState": 3, "boss": false},
-		{"name": "cape", "state": 0, "maxState": 1, "boss": false},
-		{"name": "supermissile", "state": 0, "maxState": 1, "boss": false},
-		{"name": "powerbomb", "state": 0, "maxState": 1, "boss": false},
-		{"name": "grappling", "state": 0, "maxState": 1, "boss": false},
-		{"name": "ice", "state": 0, "maxState": 1, "boss": false},
-		{"name": "varia", "state": 0, "maxState": 1, "boss": false},
-		{"name": "morph", "state": 0, "maxState": 1, "boss": false},
-		{"name": "bombs", "state": 0, "maxState": 1, "boss": false},
-		{"name": "hijump", "state": 0, "maxState": 1, "boss": false},
-		{"name": "speed", "state": 0, "maxState": 1, "boss": false},
-		{"name": "gravity", "state": 0, "maxState": 1, "boss": false}
+		{"name": "boss0", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss1", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss2", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss3", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss4", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss5", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss6", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss7", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss8", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "boss9", "state": 0, "maxState": 1, "isBoss": true},
+		{"name": "bow", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "hammer", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "flute", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "bombos", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "glove", "state": 0, "maxState": 2, "isBoss": false},
+		{"name": "lantern", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "bottle", "state": 0, "maxState": 4, "isBoss": false},
+		{"name": "net", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "sword", "state": 0, "maxState": 4, "isBoss": false},
+		{"name": "boss10", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "silvers", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "somaria", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "byrna", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "ether", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "moonpearl", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "mirror", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "book", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "shovel", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "shield", "state": 0, "maxState": 3, "isBoss": false},
+		{"name": "boomerang", "state": 0, "maxState": 3, "isBoss": false},
+		{"name": "hookshot", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "firerod", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "icerod", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "quake", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "boots", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "flippers", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "powder", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "mushroom", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "tunic", "state": 0, "maxState": 3, "isBoss": false},
+		{"name": "cape", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "supermissile", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "powerbomb", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "grappling", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "ice", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "varia", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "morph", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "bombs", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "hijump", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "speed", "state": 0, "maxState": 1, "isBoss": false},
+		{"name": "gravity", "state": 0, "maxState": 1, "isBoss": false}
 	]
 }

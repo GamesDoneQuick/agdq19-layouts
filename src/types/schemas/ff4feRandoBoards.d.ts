@@ -5,12 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type SmalttpData = Goal[];
+export type Board = Goal[];
+export type Ff4FeRandoBoards = Board[];
 
 export interface Goal {
 	name: string;
 	state: number;
 	maxState: number;
-	isBoss: boolean;
-	highlight?: boolean;
 }
