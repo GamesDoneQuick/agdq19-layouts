@@ -9,12 +9,6 @@ const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:twitter`);
 const tweets = nodecg.Replicant('tweets');
 const fanartTweets = nodecg.Replicant('fanartTweets');
-// Clear queue of tweets when currentRun changes
-nodecg.Replicant('currentRun').on('change', (newVal, oldVal) => {
-    if (oldVal && newVal.pk !== oldVal.pk) {
-        tweets.value = [];
-    }
-});
 nodecg.listenFor('acceptTweet', (tweet) => {
     if (!nodecg.bundleConfig.twitter.debug) {
         removeTweetById(tweet.id_str);

@@ -8,7 +8,7 @@ export declare function clear(doResetState?: boolean): Promise<void>;
 export declare function stop(): Promise<void>;
 export declare function resetState(): void;
 export declare const replicants: {
-    files: import("../../../../types/lib/replicant").ReplicantServer<{
+    files: import("../types/nodecg").ReplicantServer<{
         name: string;
         nameWithExt: string;
         type: string;
