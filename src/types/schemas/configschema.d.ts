@@ -66,4 +66,12 @@ export interface Configschema {
 	victorOps?: {
 		[k: string]: any;
 	} | null;
+	/**
+	 * The URL to the volunteer schedule. Is embedded as an IFrame on the Producer Dashboard.
+	 */
+	volunteerScheduleURL?: string;
+	/**
+	 * The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard.
+	 */
+	volunteerEvaluationsURL?: string;
 }
