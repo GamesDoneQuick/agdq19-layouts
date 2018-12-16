@@ -238,12 +238,19 @@ export default class GDQOmnibarElement extends Polymer.Element {
 		}
 
 		const upcomingRuns = [upNextRun];
+
+		// Use the nextRun replicant instead of just pulling the next run from the schedule replicant.
+		// This ensures that any local edits will be shown.
+		if (upNextRun === currentRun.value) {
+			upcomingRuns.push(nextRun.value!);
+		}
+
 		schedule.value.some(item => {
 			if (item.type !== 'run') {
 				return false;
 			}
 
-			if (item.order <= upNextRun!.order) {
+			if (item.order <= upcomingRuns[upcomingRuns.length - 1].order) {
 				return false;
 			}
 

@@ -5,6 +5,7 @@ import GDQBreakScheduleRunElement from './gdq-break-schedule-run';
 const {customElement, property} = Polymer.decorators;
 
 const currentRun = nodecg.Replicant<Run>('currentRun');
+const nextRun = nodecg.Replicant<Run>('nextRun');
 const schedule = nodecg.Replicant<ScheduleItem[]>('schedule');
 
 /**
@@ -64,13 +65,13 @@ export default class GDQBreakScheduleElement extends Polymer.MutableData(Polymer
 		tl.call(() => {
 			this.upNext = currentRun.value!;
 
-			const onDeckRuns: Run[] = [];
+			const onDeckRuns: Run[] = [nextRun.value!];
 			schedule.value!.some(item => {
-				if (item.type !== 'run') {
+				if (item.type !== 'run' || !nextRun.value) {
 					return false;
 				}
 
-				if (item.order <= currentRun.value!.order) {
+				if (item.order <= nextRun.value!.order) {
 					return false;
 				}
 
