@@ -65,7 +65,7 @@ export default class GDQBreakScheduleElement extends Polymer.MutableData(Polymer
 		tl.call(() => {
 			this.upNext = currentRun.value!;
 
-			const onDeckRuns: Run[] = [nextRun.value!];
+			const onDeckRuns = [nextRun.value!];
 			schedule.value!.some(item => {
 				if (item.type !== 'run' || !nextRun.value) {
 					return false;
