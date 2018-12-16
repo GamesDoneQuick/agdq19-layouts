@@ -59,7 +59,7 @@ export default class DashHostAdsElement extends Polymer.MutableData(Polymer.Elem
 
 	_confirmCancelAdBreak(e: any) {
 		this._adBreakIdBeingConfirmed = e.detail.adBreakId;
-		(this.$.confirmStartDialog as PaperDialogElement).open();
+		(this.$.confirmCancelDialog as PaperDialogElement).open();
 	}
 
 	_handleConfirmStartDialogClosed(e: any) {
