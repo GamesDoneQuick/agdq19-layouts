@@ -88,7 +88,11 @@ export default class GDQOmnibarElement extends Polymer.Element {
 
 				// Start the loop once all replicants are declared;
 				if (numDeclared >= replicants.length) {
-					Polymer.RenderStatus.beforeNextRender(this, this.run);
+					Polymer.RenderStatus.beforeNextRender(this, () => {
+						setTimeout(() => {
+							this.run();
+						}, 500);
+					});
 				}
 			});
 		});
