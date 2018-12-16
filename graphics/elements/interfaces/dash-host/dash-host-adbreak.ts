@@ -46,7 +46,7 @@ export default class DashHostAdbreakElement extends Polymer.MutableData(Polymer.
 			return adBreakState.cantStartReason;
 		}
 
-		return 'Prequisites unmet';
+		return 'Prerequisites unmet';
 	}
 
 	_calcCompleteButtonHidden(adBreak: AdBreak) {
