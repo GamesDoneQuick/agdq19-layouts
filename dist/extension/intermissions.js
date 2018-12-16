@@ -24,6 +24,7 @@ const canSeekSchedule = nodecg.Replicant('canSeekSchedule');
 const currentRun = nodecg.Replicant('currentRun');
 const schedule = nodecg.Replicant('schedule');
 const stopwatch = nodecg.Replicant('stopwatch');
+const missingFilesRep = nodecg.Replicant('caspar:missingFiles', { persistent: false });
 const schemasPath = path.resolve(__dirname, '../../schemas/');
 const adBreakSchema = JSON.parse(fs.readFileSync(path.join(schemasPath, 'types/adBreak.json'), 'utf8'));
 const adSchema = JSON.parse(fs.readFileSync(path.join(schemasPath, 'types/ad.json'), 'utf8'));
@@ -482,6 +483,7 @@ function _warnForMissingFiles() {
             }
         });
     });
+    missingFilesRep.value = Array.from(warnedFiles);
 }
 async function sleep(milliseconds) {
     return new Promise(resolve => {
