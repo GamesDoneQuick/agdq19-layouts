@@ -29,7 +29,7 @@ export default class AtomScoreDisplayElement extends Polymer.Element {
 
 		// Workaround for: https://bugs.chromium.org/p/chromium/issues/detail?id=844880
 		this.shadowRoot!.querySelectorAll('sc-fitted-text').forEach((node: Polymer.Element) => {
-			(node.$.fittedContent as HTMLDivElement).style.webkitBackgroundClip = 'text';
+			(node.$.fittedContent as any).style.webkitBackgroundClip = 'text';
 		});
 
 		Polymer.RenderStatus.afterNextRender(this, () => {
