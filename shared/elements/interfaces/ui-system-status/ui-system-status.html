@@ -1,4 +1,5 @@
 <link rel="import" href="../ui-panel-label/ui-panel-label.html">
+<link rel="import" href="ui-system-status-caspar.html">
 <link rel="import" href="ui-system-status-obs.html">
 
 <dom-module id="ui-system-status">
@@ -6,6 +7,9 @@
 		<style>
 			:host {
 				@apply --layout-vertical;
+				--obs-system-status-nominal-color: #2fd600;
+				--obs-system-status-warning-color: #e7d500;
+				--obs-system-status-error-color: #D45B5B
 			}
 
 			#body {
@@ -23,6 +27,7 @@
 			<ui-system-status-obs namespace="compositingOBS" label="Comp. OBS"></ui-system-status-obs>
 			<ui-system-status-obs namespace="recordingOBS" label="Rec. OBS"></ui-system-status-obs>
 			<ui-system-status-obs namespace="encodingOBS" label="Enc. OBS"></ui-system-status-obs>
+			<ui-system-status-caspar></ui-system-status-caspar>
 		</div>
 	</template>
 

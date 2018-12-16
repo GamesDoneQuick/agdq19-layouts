@@ -1,0 +1,47 @@
+<dom-module id="ui-system-status-caspar">
+	<template>
+		<style>
+			:host {
+				@apply --layout-horizontal;
+				@apply --layout-justified;
+				@apply --layout-baseline;
+				white-space: nowrap;
+			}
+
+
+			#name {
+				@apply --layout-flex-none;
+				margin-right: 8px;
+				text-transform: capitalize;
+			}
+
+			#status {
+				font-weight: bold;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-transform: uppercase;
+				text-align: right;
+			}
+
+			:host([status="CONNECTED"]) #status {
+				color: var(--obs-system-status-nominal-color);
+			}
+
+			:host([status="DISCONNECTED"]) #status,
+			:host([status="MISSING_FILES"]) #status {
+				color: var(--obs-system-status-error-color);
+			}
+		</style>
+
+		<nodecg-replicant replicant-name="caspar:connected" value="{{_connected}}"></nodecg-replicant>
+		<nodecg-replicant replicant-name="caspar:missingFiles" value="{{_missingFiles}}"></nodecg-replicant>
+
+		<span id="name">
+			Caspar:
+		</span>
+
+		<span id="status" title="[[status]]">[[status]]</span>
+	</template>
+
+	<script src="ui-system-status-caspar.js"></script>
+</dom-module>

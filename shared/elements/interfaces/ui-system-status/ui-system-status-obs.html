@@ -29,16 +29,16 @@
 
 			:host([status="connected"]) #status,
 			:host([status="cycling"]) #status {
-				color: #2fd600;
+				color: var(--obs-system-status-nominal-color);
 			}
 
 			:host([status="disconnected"]) #status,
 			:host([status="error"]) #status {
-				color: #FF9393;
+				color: var(--obs-system-status-error-color);
 			}
 
 			:host([status="connecting"]) #status {
-				color: #e7d500;
+				color: var(--obs-system-status-warning-color);
 			}
 		</style>
 
