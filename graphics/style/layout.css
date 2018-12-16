@@ -6,6 +6,10 @@ body {
 
 #container {
 	position: relative;
+}
+
+#container,
+#measuring-background {
 	width: 1920px;
 	height: 1025px;
 }
@@ -40,12 +44,24 @@ const measuringDiv = document.createElement('div');
 measuringDiv.id = 'measuring';
 measuringDiv.style.left = '0px';
 measuringDiv.style.top = '0px';
+measuringDiv.style.width = '200px';
+measuringDiv.style.height = '150px';
 document.body.appendChild(measuringDiv);
+
+const measuringBackground = document.createElement('div');
+measuringBackground.id = 'measuring-background';
+document.body.appendChild(measuringBackground);
  */
 #measuring {
 	position: absolute;
-	width: 200px;
-	height: 150px;
 	background-color: #464646;
 	z-index: -100;
+}
+
+#measuring-background {
+	background-color: red;
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: -101;
 }
