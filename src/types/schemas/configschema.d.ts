@@ -56,7 +56,6 @@ export interface Configschema {
 		port: number;
 		lockSecret: string;
 		localOscPort: number;
-		adsPath: string;
 		debug?: boolean;
 	};
 	nowPlayingKey?: string;

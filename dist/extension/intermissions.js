@@ -30,7 +30,7 @@ const adBreakSchema = JSON.parse(fs.readFileSync(path.join(schemasPath, 'types/a
 const adSchema = JSON.parse(fs.readFileSync(path.join(schemasPath, 'types/ad.json'), 'utf8'));
 const debouncedUpdateCurrentIntermissionContent = debounce(_updateCurrentIntermissionContent, 33);
 const debouncedUpdateCurrentIntermissionState = debounce(_updateCurrentIntermissionState, 33);
-const debounceWarnForMissingFiles = debounce(_warnForMissingFiles, 33);
+const debounceWarnForMissingFiles = debounce(_warnForMissingFiles, 1000);
 const clearableTimeouts = new Set();
 const clearableIntervals = new Set();
 currentRun.on('change', (newVal, oldVal) => {
@@ -167,7 +167,10 @@ caspar.oscEvents.on('foregroundChanged', filename => {
     }
     let indexOfAdThatJustStarted = -1;
     const adThatJustStarted = currentAdBreak.ads.find((ad, index) => {
-        if (ad.filename.toLowerCase() === filename.toLowerCase() && ad.state.completed === false) {
+        const filenameNoExt = filename.split('.').slice(0, -1).join('.');
+        const regexp = new RegExp(`^${filenameNoExt}`, 'i');
+        const match = regexp.test(ad.filename);
+        if (match && ad.state.completed === false) {
             indexOfAdThatJustStarted = index;
             return true;
         }
@@ -346,8 +349,9 @@ function _updateCurrentIntermissionState() {
         }
         let oneOrMoreAdsMissingFile = false;
         item.ads.forEach(ad => {
-            const casparFile = caspar.replicants.files.value.find((file) => {
-                return file.nameWithExt.toLowerCase() === ad.filename.toLowerCase();
+            const casparFile = caspar.replicants.files.value.find(file => {
+                const regexp = new RegExp(`^${file.name}`, 'i');
+                return regexp.test(ad.filename);
             });
             if (!casparFile) {
                 ad.state.hasFile = false;
@@ -474,8 +478,9 @@ function _warnForMissingFiles() {
             return;
         }
         item.ads.forEach((ad) => {
-            const casparFile = caspar.replicants.files.value.find((file) => {
-                return file.nameWithExt.toLowerCase() === ad.filename.toLowerCase();
+            const casparFile = caspar.replicants.files.value.find(file => {
+                const regexp = new RegExp(`^${file.name}`, 'i');
+                return regexp.test(ad.filename);
             });
             if (!casparFile && !warnedFiles.has(ad.filename)) {
                 log.error(`Ad points to file that does not exist in CasparCG: ${ad.filename}`);
