@@ -35,7 +35,7 @@ export default class AtomNameplateElement extends Polymer.Element {
 		Polymer.RenderStatus.beforeNextRender(this, () => {
 			// Workaround for: https://bugs.chromium.org/p/chromium/issues/detail?id=844880
 			this.shadowRoot!.querySelectorAll('sc-fitted-text').forEach((node: Polymer.Element) => {
-				(node.$.fittedContent as HTMLDivElement).style.webkitBackgroundClip = 'text';
+				(node.$.fittedContent as any).style.webkitBackgroundClip = 'text';
 			});
 
 			// Create looping anim for main nameplate.
