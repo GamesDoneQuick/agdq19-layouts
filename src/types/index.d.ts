@@ -1,5 +1,4 @@
 export * from './Bid';
-export * from './Caspar';
 export * from './Checklist';
 export * from './Intermission';
 export * from './Prize';

@@ -2,8 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // Native
 const events_1 = require("events");
-const fs = require("fs");
-const path = require("path");
 // Packages
 const equals = require("deep-equal");
 const osc = require("osc");
@@ -146,63 +144,26 @@ function updateFiles() {
     if (!connected.value) {
         return;
     }
-    fs.readdir(nodecg.bundleConfig.casparcg.adsPath, (err, items) => {
-        if (err) {
-            log.error('Error updating files:', err);
+    connection.cls().then(reply => {
+        // Filter out invalid responses.
+        const remapped = reply.response.data.filter((data) => {
+            if (typeof data !== 'object' || data === null) {
+                return false;
+            }
+            return data.hasOwnProperty('name');
+        });
+        // Don't update the replicant if nothing has changed.
+        if (equals(remapped, files.value)) {
             return;
         }
-        let hadError = false;
-        const foundFiles = [];
-        items.forEach(item => {
-            const fullPath = path.join(nodecg.bundleConfig.casparcg.adsPath, item);
-            const stats = fs.lstatSync(fullPath);
-            // If this isn't a file, we don't care.
-            if (!stats.isFile()) {
-                return;
-            }
-            // If another file with the same name already exists, something is wrong.
-            const foundAnotherFileWithSameName = foundFiles.find(foundFile => {
-                return path.parse(foundFile).name === path.parse(item).name;
-            });
-            if (foundAnotherFileWithSameName) {
-                log.error('Found two files with the same name (%s) in the adsPath!', path.parse(item).name);
-                return;
-            }
-            foundFiles.push(item);
-        });
-        if (hadError) {
-            return;
+        // Update the replicant.
+        files.value = remapped;
+        if (isFirstFilesUpdate) {
+            exports.oscEvents.emit('initialized');
+            isFirstFilesUpdate = false;
         }
-        connection.cls().then(reply => {
-            const remapped = reply.response.data.filter((data) => {
-                if (typeof data !== 'object' || data === null) {
-                    return false;
-                }
-                return data.hasOwnProperty('name');
-            }).map((data) => {
-                const nameWithExt = foundFiles.find(foundFile => {
-                    return path.parse(foundFile).name.toLowerCase() === data.name.toLowerCase();
-                });
-                if (!nameWithExt) {
-                    log.error('A file reported by Caspar was not found in adsPath:', data.name);
-                    hadError = true;
-                    return null;
-                }
-                return Object.assign({}, data, { nameWithExt });
-            });
-            if (!hadError) {
-                if (equals(remapped, files.value)) {
-                    return;
-                }
-                files.value = remapped;
-                if (isFirstFilesUpdate) {
-                    exports.oscEvents.emit('initialized');
-                    isFirstFilesUpdate = false;
-                }
-            }
-        }).catch(e => {
-            log.error('Error updating files:', e);
-        });
+    }).catch(e => {
+        log.error('Error updating files:', e);
     });
 }
 //# sourceMappingURL=caspar.js.map

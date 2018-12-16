@@ -5,9 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Caspar3Afiles = {
+export type Caspar3Afiles = CasparFile[];
+
+export interface CasparFile {
 	name: string;
-	nameWithExt: string;
 	type: string;
 	size: number;
 	changed: number;
@@ -15,4 +16,4 @@ export type Caspar3Afiles = {
 	frameTime: string;
 	frameRate: number;
 	duration: number;
-}[];
+}
