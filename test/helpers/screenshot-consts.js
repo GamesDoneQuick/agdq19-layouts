@@ -166,6 +166,11 @@ const gameplayLayoutTestCases = [{
 		smalttpData: undefined
 	}
 }, {
+	route: `bundles/${BUNDLE_NAME}/graphics/standard_2_sms.html`,
+	replicantPrefills: {
+		'bingosync:board': undefined
+	}
+}, {
 	route: `bundles/${BUNDLE_NAME}/graphics/standard_4_ff4fe.html`,
 	replicantPrefills: {
 		ff4feRandoBoards: undefined
