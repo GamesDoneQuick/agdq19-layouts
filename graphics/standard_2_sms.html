@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Standard, 2 Player (Mario Sunshine Bingo)</title>
 	<link rel="stylesheet" href="style/layout.css">
+	<script>
+		window.extraImports = [
+			'elements/molecules/gdq-bingosync-board/gdq-bingosync-board.html'
+		];
+	</script>
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
@@ -64,6 +69,7 @@
 			gdq-runner-nameplate {
 				top: 623px;
 				width: 500px;
+				--gdq-runner-nameplate-audio-indicator-horiz-offset: 30px;
 			}
 
 			gdq-runner-nameplate:nth-of-type(1) {
@@ -116,6 +122,14 @@
 				bottom: 0;
 				border-top: 1px solid #00ffff;
 			}
+
+			gdq-bingosync-board {
+				height: 510px;
+				left: 701px;
+				position: absolute;
+				top: 61px;
+				width: 506px;
+			}
 		</style>
 	</custom-style>
 </head>
@@ -129,6 +143,7 @@
 		<atom-tronlines height="306" width="670" class="tronleft"></atom-tronlines>
 		<atom-tronlines height="306" width="670" class="tronright"></atom-tronlines>
 		<gdq-runinfo max-name-size="58"></gdq-runinfo>
+		<gdq-bingosync-board></gdq-bingosync-board>
 		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
 		<gdq-timer></gdq-timer>
