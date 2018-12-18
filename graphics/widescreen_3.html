@@ -7,96 +7,134 @@
 	<link rel="import" href="../shared/imports/bootstrap-layout.html">
 	<custom-style>
 		<style>
-			#lineone {
+
+			.game {
+				border: 1px solid #00ffff;
 				position: absolute;
-				box-sizing: border-box;
-				width: 344px;
-				height: 1025px;
-				left: 788px;
-				border-left: 1px solid #00ffff;
-				border-right: 1px solid #00ffff;
+				width: 774px;
+				height: 436px;
+			}
+
+			.camera {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 572px;
+				height: 372px;
+				border-top: 1px solid #00ffff;
+			}
+
+			#game1 {
+				top: -1px;
+				left: 174px;
+			}
+
+			#game2 {
+				top: -1px;
+				right: 174px;
+			}
+
+			#game3 {
+				bottom: -1px;
+				left: 573px;
 			}
 
 			.plate {
 				background-color: #051113;
-				border-top: 1px solid #00ffff;
-				border-bottom: 1px solid #00ffff;
 				position: absolute;
-				height: 137px;
-				width: 788px;
-				top: 444px;
-				@apply --layout-vertical;
-				@apply --layout-justified;
 			}
 
-			#leftPlate {
+			.plate1 {
 				left: 0;
-				@apply --layout-end;
+				top: 0;
+				height: 653px;
+				width: 174px;
 			}
 
-			#leftPlate > gdq-runner-nameplate {
-				margin-right: -1px;
-			}
-
-			#rightPlate {
+			.plate2 {
 				right: 0;
-				height: 67px;
+				top: 0;
+				height: 653px;
+				width: 174px;
 			}
 
-			#rightPlate > gdq-runner-nameplate {
-				margin-left: -1px;
+			.plate3 {
+				left: 0;
+				top: 436px;
+				width: 573px;
+				height: 217px;
 			}
 
-			.plate > :first-child {
-				margin-top: -1px;
+			.plate4 {
+				right: 0;
+				top: 436px;
+				width: 572px;
+				height: 217px;
 			}
 
-			.plate > :last-child {
-				margin-bottom: -1px;
+			.plate5 {
+				left: 0;
+				width: 100%;
+				height: 153px;
+				top: 436px;
+			}
+
+			.plate6 {
+				width: 20px;
+				left: 950px;
+				top: 0;
+				height: 437px;
 			}
 
 			gdq-runner-nameplate {
-				position: relative;
-				width: 450px;
+				position: absolute;
+				width: 538px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(1) {
+				top: 436px;
+				right: 970px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(2) {
+				top: 436px;
+				left: 970px;
+			}
+
+			gdq-runner-nameplate:nth-of-type(3) {
+				bottom: 436px;
+				right: 691px;
 			}
 
 			gdq-runinfo {
-				left: 788px;
-				top: 240px;
-				width: 344px;
-				height: 196px;
+				left: 0;
+				bottom: 120px;
+				width: 573px;
+				height: 256px;
 				--gdq-runinfo-name-padding: 8px 16px;
 				--gdq-runinfo-misc-height: 45px;
 			}
 
 			gdq-timer {
-				left: 788px;
-				top: 475px;
+				left: 20px;
+				bottom: 20px;
 				height: 81px;
-				width: 344px;
+				width: 533px;
 				font-size: 56px;
 			}
 
 			atom-tronlines {
 				position: absolute;
-				left: 788px;
-			}
-
-			atom-tronlines:nth-of-type(1) {
-				top: 384px;
-			}
-
-			atom-tronlines:nth-of-type(2) {
-				top: 556px;
-				border-bottom: 1px solid #00ffff;
+				left: 0;
+				bottom: 0;
 			}
 
 			atom-gridlines {
 				position: absolute;
-				top: 240px;
-				left: 788px;
-				height: 145px;
-				width: 342px;
+				bottom: 185px;
+				left: 0;
+				height: 187px;
+				width: 573px;
 				border-top: 1px solid #00ffff;
 			}
 		</style>
@@ -104,21 +142,23 @@
 </head>
 <body>
 	<div id="container">
-		<div id="leftPlate" class="plate">
-			<gdq-runner-nameplate index="0" no-right-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
-			<gdq-runner-nameplate index="2" no-right-cap result-side="left" audio-vert-pos="top" audio-horiz-pos="right"></gdq-runner-nameplate>
-		</div>
-
-		<div id="rightPlate" class="plate">
-			<gdq-runner-nameplate index="1" no-left-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
-		</div>
-
+		<div class="plate plate1"></div>
+		<div class="plate plate2"></div>
+		<div class="plate plate3"></div>
+		<div class="plate plate4"></div>
+		<div class="plate plate5"></div>
+		<div class="plate plate6"></div>
+		<gdq-runner-nameplate index="0" no-right-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="1" no-left-cap result-side="right" audio-vert-pos="bottom" audio-horiz-pos="left"></gdq-runner-nameplate>
+		<gdq-runner-nameplate index="2" result-side="left" audio-vert-pos="top" audio-horiz-pos="left"></gdq-runner-nameplate>
+		<atom-tronlines direction="up" width="573" height="190"></atom-tronlines>
 		<atom-gridlines></atom-gridlines>
-		<atom-tronlines direction="down" width="342" height="102"></atom-tronlines>
-		<atom-tronlines width="342" height="49"></atom-tronlines>
-		<div id="lineone"></div>
 		<gdq-runinfo></gdq-runinfo>
 		<gdq-timer></gdq-timer>
+		<div class="camera"></div>
+		<div id="game1" class="game"></div>
+		<div id="game2" class="game"></div>
+		<div id="game3" class="game"></div>
 	</div>
 
 	<script>

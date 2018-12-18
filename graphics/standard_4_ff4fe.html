@@ -71,7 +71,7 @@
 
 			gdq-runinfo {
 				left: 758px;
-				top: 240px;
+				top: 259px;
 				width: 404px;
 				height: 196px;
 				--gdq-runinfo-name-padding: 8px 16px;
@@ -80,10 +80,18 @@
 
 			gdq-timer {
 				left: 758px;
-				top: 475px;
+				top: 464px;
 				height: 81px;
 				width: 404px;
 				font-size: 56px;
+			}
+
+			gdq-sponsors {
+				width: 384px;
+				position: absolute;
+				bottom: 269px;
+				height: 199px;
+				left: 768px;
 			}
 
 			atom-tronlines {
@@ -92,17 +100,17 @@
 			}
 
 			atom-tronlines:nth-of-type(1) {
-				top: 384px;
+				top: 403px;
 			}
 
 			atom-tronlines:nth-of-type(2) {
-				top: 556px;
+				bottom: 259px;
 				border-bottom: 1px solid #00ffff;
 			}
 
 			atom-gridlines {
 				position: absolute;
-				top: 240px;
+				top: 259px;
 				left: 758px;
 				height: 145px;
 				width: 404px;
@@ -153,11 +161,12 @@
 		<gdq-ff4fe-tracker index="3"></gdq-ff4fe-tracker>
 
 		<atom-gridlines></atom-gridlines>
-		<atom-tronlines direction="down" width="404" height="102"></atom-tronlines>
-		<atom-tronlines width="404" height="49"></atom-tronlines>
+		<atom-tronlines direction="down" width="404" height="60"></atom-tronlines>
+		<atom-tronlines width="404" height="249"></atom-tronlines>
 		<div id="lineone"></div>
 		<gdq-runinfo></gdq-runinfo>
 		<gdq-timer></gdq-timer>
+		<gdq-sponsors></gdq-sponsors>
 	</div>
 
 	<script>
