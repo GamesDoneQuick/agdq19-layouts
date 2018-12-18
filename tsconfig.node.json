@@ -14,7 +14,10 @@
 		"sourceMap": true,
 		"inlineSourceMap": false
 	},
-	"include": ["src/extension/**/*.ts"],
+	"include": [
+		"src/extension/**/*.ts",
+		"node_modules/obs-websocket-js-types/index.d.ts"
+	],
 	"exclude": ["src/extension/**/*spec.ts"],
 	"references": [{"path": "shared/tsconfig.node.json"}]
 }

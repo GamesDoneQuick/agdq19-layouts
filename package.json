@@ -28,7 +28,7 @@
     "lodash.merge": "^4.4.0",
     "milliseconds": "^1.0.3",
     "moment": "github:dfahlander/moment#patch-1",
-    "nodecg-utility-obs": "^4.4.0",
+    "nodecg-utility-obs": "^5.0.5",
     "numeral": "^2.0.6",
     "object-path": "^0.11.3",
     "osc": "^2.2.1",

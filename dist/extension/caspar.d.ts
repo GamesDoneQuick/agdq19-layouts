@@ -8,7 +8,7 @@ export declare function clear(doResetState?: boolean): Promise<void>;
 export declare function stop(): Promise<void>;
 export declare function resetState(): void;
 export declare const replicants: {
-    files: import("../types/nodecg").ReplicantServer<import("../types/schemas/caspar%3Afiles").CasparFile[]>;
+    files: import("../../../../types/lib/replicant").ReplicantServer<import("../types/schemas/caspar%3Afiles").CasparFile[]>;
 };
 export declare const oscEvents: EventEmitter;
 //# sourceMappingURL=caspar.d.ts.map

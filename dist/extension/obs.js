@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const child_process_1 = require("child_process");
 // Packages
-const OBSUtility = require("nodecg-utility-obs");
+const nodecg_utility_obs_1 = require("nodecg-utility-obs");
 // Ours
 const nodecgApiContext = require("./util/nodecg-api-context");
 const gdqUtils = require("../../dist/shared/lib/gdq-utils");
@@ -15,9 +15,9 @@ const nodecg = nodecgApiContext.get();
 const currentLayout = nodecg.Replicant('gdq:currentLayout');
 const autoUploadRecordings = nodecg.Replicant('autoUploadRecordings');
 const cyclingRecordingsRep = nodecg.Replicant('obs:cyclingRecordings', { persistent: false });
-const compositingOBS = new OBSUtility(nodecg, { namespace: 'compositingOBS' });
-const recordingOBS = new OBSUtility(nodecg, { namespace: 'recordingOBS' });
-const encodingOBS = new OBSUtility(nodecg, { namespace: 'encodingOBS' });
+const compositingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'compositingOBS' });
+const recordingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'recordingOBS' });
+const encodingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'encodingOBS' });
 const uploadScriptPath = nodecg.bundleConfig.youtubeUploadScriptPath;
 let uploadScriptRunning = false;
 if (uploadScriptPath) {
@@ -65,7 +65,7 @@ compositingOBS.replicants.previewScene.on('change', (newVal) => {
         if (newVal.name === compositingOBS.replicants.programScene.value.name) {
             return;
         }
-        compositingOBS.setSceneItemRender({
+        compositingOBS.send('SetSceneItemRender', {
             'scene-name': newVal.name,
             source: 'Transition Graphic',
             render: false
@@ -74,18 +74,18 @@ compositingOBS.replicants.previewScene.on('change', (newVal) => {
         });
     }
 });
-compositingOBS.on('TransitionBegin', (data) => {
+compositingOBS.on('TransitionBegin', data => {
     if (data.name !== 'Blank Stinger') {
         return;
     }
-    if (data.toScene) {
+    if (data['to-scene']) {
         // Show the Transition Graphic on the scene which is being transitioned to.
-        compositingOBS.setSceneItemRender({
-            'scene-name': data.toScene,
+        compositingOBS.send('SetSceneItemRender', {
+            'scene-name': data['to-scene'],
             source: 'Transition Graphic',
             render: true
         }).catch((error) => {
-            nodecg.log.error(`Failed to show Transition Graphic on scene "${data.toScene}":`, error);
+            nodecg.log.error(`Failed to show Transition Graphic on scene "${data['to-scene']}":`, error);
         });
     }
 });
@@ -103,7 +103,7 @@ compositingOBS.on('SwitchScenes', (data) => {
     }
     // Hide the transition graphic on gameplay scenes when they are in preview.
     if (gdqUtils.isGameScene(actualPvwSceneName)) {
-        compositingOBS.setSceneItemRender({
+        compositingOBS.send('SetSceneItemRender', {
             'scene-name': actualPvwSceneName,
             source: 'Transition Graphic',
             render: false
@@ -151,7 +151,7 @@ function resetCropping() {
 }
 exports.resetCropping = resetCropping;
 function setCurrentScene(sceneName) {
-    return compositingOBS.setCurrentScene({
+    return compositingOBS.send('SetCurrentScene', {
         'scene-name': sceneName
     });
 }
