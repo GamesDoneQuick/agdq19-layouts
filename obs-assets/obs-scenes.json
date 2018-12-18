@@ -56,7 +56,7 @@
         },
         "scripts-tool": []
     },
-    "name": "AGDQ2018 - Localhost",
+    "name": "AGDQ2019 - Localhost",
     "preview_locked": false,
     "quick_transitions": [
         {
@@ -180,11 +180,11 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 900,
+                "height": 1080,
                 "restart_when_active": true,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/countdown-foreground-anim.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -214,7 +214,7 @@
                         "b_offset_x": -8.0,
                         "from_file": true,
                         "r_offset_x": 8.0,
-                        "shader_file_name": "C:/Users/GDQ Stream/Documents/AGDQ 2018/obs-assets/naive_chromatic_aberration_shader.effect"
+                        "shader_file_name": "C:/Users/GDQ Stream/Documents/AGDQ 2019/obs-assets/naive_chromatic_aberration_shader.effect"
                     },
                     "sync": 0,
                     "volume": 1.0
@@ -270,8 +270,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -705,7 +705,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -734,7 +734,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -763,7 +763,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -792,7 +792,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -864,7 +864,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -907,8 +907,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -956,10 +956,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/ds_vertical.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -1260,7 +1260,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -1303,8 +1303,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -1385,8 +1385,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -2089,10 +2089,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gameboy_3.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -2393,7 +2393,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -2485,10 +2485,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/ds.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -2572,7 +2572,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -2630,7 +2630,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -2789,7 +2789,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -2832,8 +2832,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -2881,10 +2881,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/3ds.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -3185,7 +3185,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -3228,8 +3228,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -3277,10 +3277,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gameboy_1.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -3335,7 +3335,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 936.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -3364,7 +3364,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 936.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -3393,7 +3393,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 936.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -3422,7 +3422,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 936.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -3581,7 +3581,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -3624,8 +3624,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -3673,10 +3673,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gba_2.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -3977,7 +3977,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -4069,11 +4069,11 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "is_local_file": false,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/standard_2.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -4374,7 +4374,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -4417,8 +4417,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -4466,10 +4466,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/standard_1.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -4524,7 +4524,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -4553,7 +4553,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -4582,7 +4582,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -4611,7 +4611,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -4770,7 +4770,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -4813,8 +4813,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -4862,10 +4862,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/widescreen_1.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -5166,7 +5166,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -5209,8 +5209,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -5258,10 +5258,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/widescreen_2.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -5566,7 +5566,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -5667,8 +5667,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -5718,7 +5718,7 @@
                 "fps": 120,
                 "height": 55,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/omnibar.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -6019,7 +6019,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -6062,8 +6062,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -6111,10 +6111,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/standard_3.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -6415,7 +6415,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -6458,8 +6458,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -6507,11 +6507,11 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "hwaccel": true,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/standard_4.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -6566,7 +6566,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1266.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -6595,7 +6595,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1266.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -6624,7 +6624,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1266.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -6653,7 +6653,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1266.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -6812,7 +6812,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -6904,10 +6904,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gba_1.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -6955,8 +6955,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7129,8 +7129,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7158,8 +7158,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7208,10 +7208,10 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 900,
+                "height": 1080,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/break.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -7512,7 +7512,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -7604,10 +7604,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gameboy_4.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -7653,8 +7653,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7682,8 +7682,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7711,8 +7711,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7740,8 +7740,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7784,7 +7784,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -7827,8 +7827,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -7876,10 +7876,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/interview.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -8023,8 +8023,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -8052,8 +8052,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -8101,10 +8101,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gameboy_2.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -8405,7 +8405,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -8953,7 +8953,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -9371,7 +9371,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9400,7 +9400,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9429,7 +9429,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9458,7 +9458,7 @@
                         "align": 5,
                         "bounds": {
                             "x": 1125.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9501,7 +9501,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -9544,8 +9544,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9592,7 +9592,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "C:/Users/GDQ Stream/Documents/AGDQ 2018/obs-assets/break_gradient.png"
+                "file": "C:/Users/GDQ Stream/Documents/AGDQ 2019/obs-assets/break_gradient.png"
             },
             "sync": 0,
             "volume": 1.0
@@ -9640,8 +9640,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9669,8 +9669,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9698,8 +9698,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9756,8 +9756,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9843,8 +9843,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -9893,10 +9893,10 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 900,
+                "height": 1080,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/countdown.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -10415,7 +10415,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -10508,10 +10508,10 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/widescreen_4.html?key=5406d56c-ab5e-4587-8e72-89a955a32bbf",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -10816,7 +10816,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -10917,8 +10917,8 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 1600.0,
-                            "y": 900.0
+                            "x": 1920.0,
+                            "y": 1080.0
                         },
                         "bounds_align": 0,
                         "bounds_type": 2,
@@ -11021,9 +11021,9 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 900,
+                "height": 1080,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/transition.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -11047,7 +11047,7 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/oot_bingo.html?embiggen=true",
                 "width": 1125
@@ -11351,7 +11351,7 @@
                         "name": "Omnibar",
                         "pos": {
                             "x": 0.0,
-                            "y": 845.0
+                            "y": 1025.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -11443,10 +11443,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/gba_4.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -11501,10 +11501,10 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "fps": 60,
-                "height": 845,
+                "height": 1025,
                 "shutdown": true,
                 "url": "http://localhost:9090/bundles/agdq19-layouts/graphics/widescreen_2_mario.html",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
@@ -11528,10 +11528,10 @@
             "settings": {
                 "css": "",
                 "fps": 60,
-                "height": 900,
+                "height": 1080,
                 "shutdown": true,
                 "url": "http://warp.world/warp-bar2?streamer=gamesdonequick&key=ff3604516a8df96c&custom=aHR0cHM6Ly9zdXBwb3J0Y2xhc3MubmV0L2ltZy93YXJwLWJhci5jc3M=",
-                "width": 1600
+                "width": 1920
             },
             "sync": 0,
             "volume": 1.0
