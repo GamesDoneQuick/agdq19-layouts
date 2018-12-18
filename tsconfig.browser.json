@@ -16,11 +16,12 @@
 	},
 	"include": [
 		"../../types/browser.d.ts",
-		"src/types/easeljs.d.ts",
 		"bower_components/**/*.d.ts",
 		"bower_components/svg.js/svg.js.d.ts",
 		"dashboard/**/*.ts",
 		"graphics/**/*.ts",
-		"shared/**/*.ts"
+		"node_modules/obs-websocket-js-types/index.d.ts",
+		"shared/**/*.ts",
+		"src/types/easeljs.d.ts"
 	]
 }

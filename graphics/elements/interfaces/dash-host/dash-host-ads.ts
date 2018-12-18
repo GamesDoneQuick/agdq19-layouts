@@ -1,6 +1,6 @@
 import {IntermissionContentItem} from '../../../../src/types';
 import {CurrentIntermission} from '../../../../src/types/schemas/currentIntermission';
-import {WebsocketStatus} from '../../../../src/types/nodecg-obs';
+import {Websocket as WebsocketStatus} from 'nodecg-utility-obs/types/schemas/websocket';
 
 const {customElement, property} = Polymer.decorators;
 const currentIntermission = nodecg.Replicant<CurrentIntermission>('currentIntermission');

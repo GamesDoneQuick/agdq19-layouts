@@ -6,7 +6,7 @@ import * as path from 'path';
 import {exec} from 'child_process';
 
 // Packages
-import OBSUtility = require('nodecg-utility-obs');
+import {OBSUtility} from 'nodecg-utility-obs';
 
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
@@ -83,7 +83,7 @@ compositingOBS.replicants.previewScene.on('change', (newVal: any) => {
 			return;
 		}
 
-		compositingOBS.setSceneItemRender({
+		compositingOBS.send('SetSceneItemRender', {
 			'scene-name': newVal.name,
 			source: 'Transition Graphic',
 			render: false
@@ -93,26 +93,19 @@ compositingOBS.replicants.previewScene.on('change', (newVal: any) => {
 	}
 });
 
-compositingOBS.on('TransitionBegin', (
-	data: {
-		duration: number;
-		name: string;
-		fromScene: string;
-		toScene: string;
-	}
-) => {
+compositingOBS.on('TransitionBegin', data => {
 	if (data.name !== 'Blank Stinger') {
 		return;
 	}
 
-	if (data.toScene) {
+	if (data['to-scene']) {
 		// Show the Transition Graphic on the scene which is being transitioned to.
-		compositingOBS.setSceneItemRender({
-			'scene-name': data.toScene,
+		compositingOBS.send('SetSceneItemRender', {
+			'scene-name': data['to-scene'],
 			source: 'Transition Graphic',
 			render: true
 		}).catch((error: Error) => {
-			nodecg.log.error(`Failed to show Transition Graphic on scene "${data.toScene}":`, error);
+			nodecg.log.error(`Failed to show Transition Graphic on scene "${data['to-scene']}":`, error);
 		});
 	}
 });
@@ -134,7 +127,7 @@ compositingOBS.on('SwitchScenes', (data: any) => {
 
 	// Hide the transition graphic on gameplay scenes when they are in preview.
 	if (gdqUtils.isGameScene(actualPvwSceneName)) {
-		compositingOBS.setSceneItemRender({
+		compositingOBS.send('SetSceneItemRender', {
 			'scene-name': actualPvwSceneName,
 			source: 'Transition Graphic',
 			render: false
@@ -181,13 +174,13 @@ async function cycleRecording(obs: any) {
 }
 
 export function resetCropping() {
-	return compositingOBS.send('ResetCropping').catch((error: Error) => {
+	return (compositingOBS as any).send('ResetCropping').catch((error: Error) => {
 		nodecg.log.error('resetCropping error:', error);
 	});
 }
 
 export function setCurrentScene(sceneName: string) {
-	return compositingOBS.setCurrentScene({
+	return compositingOBS.send('SetCurrentScene', {
 		'scene-name': sceneName
 	});
 }
@@ -198,19 +191,19 @@ export async function cycleRecordings() {
 
 	try {
 		const cycleRecordingPromises = [];
-		if (recordingOBS._connected) {
+		if ((recordingOBS as any)._connected) {
 			cycleRecordingPromises.push(cycleRecording(recordingOBS));
 		} else {
 			nodecg.log.error('Recording OBS is disconnected! Not cycling its recording.');
 		}
 
-		if (compositingOBS._connected) {
+		if ((compositingOBS as any)._connected) {
 			cycleRecordingPromises.push(cycleRecording(compositingOBS));
 		} else {
 			nodecg.log.error('Compositing OBS is disconnected! Not cycling its recording.');
 		}
 
-		if (encodingOBS._connected) {
+		if ((encodingOBS as any)._connected) {
 			cycleRecordingPromises.push(cycleRecording(encodingOBS));
 		} else {
 			nodecg.log.error('Encoding OBS is disconnected! Not cycling its recording.');
@@ -260,5 +253,5 @@ export async function cycleRecordings() {
 }
 
 export function compositingOBSConnected() {
-	return compositingOBS._connected;
+	return (compositingOBS as any)._connected;
 }
