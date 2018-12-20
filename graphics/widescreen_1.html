@@ -16,22 +16,13 @@
 				border-bottom: 1px solid #00ffff;
 			}
 
-			#linetwo {
-				width: 784px;
-				height: 162px;
-				right: 750px;
-				bottom: 0;
-				background-color: #05090c;
-				border-right: 1px solid #00ffff;
-			}
-
 			.line {
 				position: absolute;
 			}
 
 			gdq-runner-nameplate {
 				left: 502px;
-				bottom: 90px;
+				bottom: 110px;
 				width: 640px;
 			}
 
@@ -46,7 +37,7 @@
 
 			gdq-timer {
 				left: 502px;
-				bottom: 28px;
+				bottom: 48px;
 				height: 57px;
 				width: 640px;
 				font-size: 45px;
@@ -84,13 +75,23 @@
 				height: 215px;
 				border-left: 1px solid #00ffff;
 			}
+
+			#plate {
+				position: absolute;
+				bottom: 0;
+				right: 750px;
+				height: 215px;
+				width: 691px;
+				background-color: #051113;
+				background-image: url('images/circuit-board.svg');
+			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
+		<div id="plate"></div>
 		<atom-gridlines></atom-gridlines>
-		<div id="linetwo" class="line"></div>
 		<atom-tronlines width="479" height="550"></atom-tronlines>
 		<div id="lineone" class="line"></div>
 		<gdq-runinfo max-name-size="35"></gdq-runinfo>
