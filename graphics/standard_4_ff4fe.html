@@ -140,11 +140,32 @@
 				bottom: var(--board-vertical-offset);
 				right: var(--board-horizontal-offset);
 			}
+
+			.tracker-bg {
+				background-color: #051113;
+				background-image: url('images/circuit-board.svg');
+				position: absolute;
+				border-right: 1px solid #00ffff;
+				border-left: 1px solid #00ffff;
+				height: 100%;
+				width: 250px;
+				top: 0;
+			}
+
+			.tracker-bg:nth-of-type(1) {
+				left: -1px;
+			}
+
+			.tracker-bg:nth-of-type(2) {
+				right: -1px;
+			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
+		<div class="tracker-bg"></div>
+		<div class="tracker-bg"></div>
 		<div id="leftPlate" class="plate">
 			<gdq-runner-nameplate index="0" no-right-cap result-side="left" audio-vert-pos="bottom" audio-horiz-pos="right"></gdq-runner-nameplate>
 			<gdq-runner-nameplate index="2" no-right-cap result-side="left" audio-vert-pos="top" audio-horiz-pos="right"></gdq-runner-nameplate>

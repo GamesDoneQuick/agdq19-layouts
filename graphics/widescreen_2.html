@@ -88,13 +88,14 @@
 				border-top: 1px solid #00ffff;
 			}
 
-			atom-gridlines {
+			#plate {
 				position: absolute;
 				width: 1920px;
 				height: 71px;
 				top: 0;
 				left: 0;
 				background-color: #051113;
+				background-image: url('images/circuit-board.svg');
 				border-bottom: 1px solid #00ffff;
 				box-sizing: border-box;
 			}
@@ -104,7 +105,7 @@
 <body>
 	<div id="container">
 		<div id="lineone"></div>
-		<atom-gridlines></atom-gridlines>
+		<div id="plate"></div>
 		<atom-tronlines height="304" width="650" class="tronleft"></atom-tronlines>
 		<atom-tronlines height="304" width="650" class="tronright"></atom-tronlines>
 		<gdq-runinfo max-name-size="45"></gdq-runinfo>
