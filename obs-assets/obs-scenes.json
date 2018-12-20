@@ -5919,7 +5919,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -7138,7 +7138,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -10334,7 +10334,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -10768,7 +10768,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -11202,7 +11202,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -12193,7 +12193,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
