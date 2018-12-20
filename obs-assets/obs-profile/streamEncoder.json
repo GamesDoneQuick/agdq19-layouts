@@ -1,4 +1,5 @@
 {
-    "bitrate": 6000,
+    "bitrate": 8000,
+    "keyint_sec": 2,
     "preset": "medium"
 }
