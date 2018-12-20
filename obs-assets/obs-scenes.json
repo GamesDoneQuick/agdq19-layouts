@@ -27,7 +27,7 @@
         "volume": 1.0
     },
     "current_program_scene": "Widescreen 3",
-    "current_scene": "DS Vertical",
+    "current_scene": "GBA 1",
     "current_transition": "Blank Stinger",
     "groups": [
         {
@@ -75,7 +75,7 @@
                         "crop_top": 0,
                         "group_item_backup": false,
                         "id": 1,
-                        "locked": false,
+                        "locked": true,
                         "name": "Interview ATEM PGM",
                         "pos": {
                             "x": 0.0,
@@ -104,7 +104,7 @@
                         "crop_top": 0,
                         "group_item_backup": false,
                         "id": 2,
-                        "locked": false,
+                        "locked": true,
                         "name": "Crowd Camera",
                         "pos": {
                             "x": 0.0,
@@ -133,7 +133,7 @@
                         "crop_top": 0,
                         "group_item_backup": false,
                         "id": 3,
-                        "locked": false,
+                        "locked": true,
                         "name": "PC Camera",
                         "pos": {
                             "x": 0.0,
@@ -162,7 +162,7 @@
                         "crop_top": 0,
                         "group_item_backup": false,
                         "id": 4,
-                        "locked": false,
+                        "locked": true,
                         "name": "Main Camera",
                         "pos": {
                             "x": 0.0,
@@ -3373,6 +3373,158 @@
             },
             "sync": 0,
             "volume": 1.0
+        },
+        {
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {
+                "libobs.hide_scene_item.Crowd Camera": [],
+                "libobs.hide_scene_item.Interview ATEM PGM": [],
+                "libobs.hide_scene_item.Main Camera": [],
+                "libobs.hide_scene_item.PC Camera": [],
+                "libobs.show_scene_item.Crowd Camera": [],
+                "libobs.show_scene_item.Interview ATEM PGM": [],
+                "libobs.show_scene_item.Main Camera": [],
+                "libobs.show_scene_item.PC Camera": []
+            },
+            "id": "group",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "Camera (Interview)",
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "custom_size": true,
+                "cx": 1920,
+                "cy": 1080,
+                "id_counter": 0,
+                "items": [
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 2,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 1,
+                        "locked": true,
+                        "name": "Interview ATEM PGM",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "lanczos",
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 2,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 2,
+                        "locked": true,
+                        "name": "Crowd Camera",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "lanczos",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 2,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 3,
+                        "locked": true,
+                        "name": "PC Camera",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "lanczos",
+                        "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 2,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 4,
+                        "locked": true,
+                        "name": "Main Camera",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "lanczos",
+                        "visible": false
+                    }
+                ]
+            },
+            "sync": 0,
+            "volume": 1.0
         }
     ],
     "modules": {
@@ -3417,13 +3569,7 @@
             "name": "Cut"
         }
     ],
-    "saved_projectors": [
-        {
-            "geometry": "AdnQywACAAAAAAoAAAAA8gAAEX8AAAUpAAAKAAAAAPIAABF/AAAFKQAAAAEAAAAAB4A=",
-            "monitor": 1,
-            "type": 2
-        }
-    ],
+    "saved_projectors": [],
     "scaling_enabled": false,
     "scaling_level": 0,
     "scaling_off_x": 0.0,
@@ -3646,12 +3792,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 785.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -3672,12 +3821,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 785.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -3698,12 +3850,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 785.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -3724,12 +3879,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 785.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -3782,12 +3940,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -3808,12 +3969,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -3834,12 +3998,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -3860,12 +4027,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 788.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.2222222238779068,
+                            "y": 0.2222222238779068
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -6188,19 +6358,13 @@
             "flags": 0,
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.Crowd Camera": [],
-                "libobs.hide_scene_item.Interview ATEM PGM": [],
+                "libobs.hide_scene_item.Camera (Interview)": [],
                 "libobs.hide_scene_item.Layout Interview": [],
-                "libobs.hide_scene_item.Main Camera": [],
                 "libobs.hide_scene_item.Omnibar": [],
-                "libobs.hide_scene_item.PC Camera": [],
                 "libobs.hide_scene_item.Transition Graphic": [],
-                "libobs.show_scene_item.Crowd Camera": [],
-                "libobs.show_scene_item.Interview ATEM PGM": [],
+                "libobs.show_scene_item.Camera (Interview)": [],
                 "libobs.show_scene_item.Layout Interview": [],
-                "libobs.show_scene_item.Main Camera": [],
                 "libobs.show_scene_item.Omnibar": [],
-                "libobs.show_scene_item.PC Camera": [],
                 "libobs.show_scene_item.Transition Graphic": []
             },
             "id": "scene",
@@ -6217,7 +6381,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "custom_size": false,
-                "id_counter": 11,
+                "id_counter": 12,
                 "items": [
                     {
                         "align": 5,
@@ -6231,7 +6395,7 @@
                         "crop_left": 0,
                         "crop_right": 0,
                         "crop_top": 0,
-                        "group_item_backup": false,
+                        "group_item_backup": true,
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
@@ -6260,7 +6424,7 @@
                         "crop_left": 0,
                         "crop_right": 0,
                         "crop_top": 0,
-                        "group_item_backup": false,
+                        "group_item_backup": true,
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
@@ -6289,7 +6453,7 @@
                         "crop_left": 0,
                         "crop_right": 0,
                         "crop_top": 0,
-                        "group_item_backup": false,
+                        "group_item_backup": true,
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
@@ -6318,7 +6482,7 @@
                         "crop_left": 0,
                         "crop_right": 0,
                         "crop_top": 0,
-                        "group_item_backup": false,
+                        "group_item_backup": true,
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
@@ -6334,6 +6498,38 @@
                         },
                         "scale_filter": "lanczos",
                         "visible": false
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 12,
+                        "locked": true,
+                        "name": "Camera (Interview)",
+                        "pos": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "private_settings": {
+                            "color": "",
+                            "color-preset": 4
+                        },
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "lanczos",
+                        "visible": true
                     },
                     {
                         "align": 5,
@@ -7250,12 +7446,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": 677.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7276,12 +7475,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": 677.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7302,12 +7504,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": 677.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -7328,12 +7533,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": 677.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7387,12 +7595,15 @@
                         "id": 5,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": -22.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7413,12 +7624,15 @@
                         "id": 6,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": -22.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7439,12 +7653,15 @@
                         "id": 7,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": -22.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7465,12 +7682,15 @@
                         "id": 8,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 684.0,
+                            "y": -22.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.28749999403953552,
+                            "y": 0.28749999403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -7813,12 +8033,15 @@
                         "id": 5,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 1124.0,
+                            "y": 513.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.47407406568527222,
+                            "y": 0.47407406568527222
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7839,12 +8062,15 @@
                         "id": 6,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 1124.0,
+                            "y": 513.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.71111106872558594,
+                            "y": 0.71111106872558594
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7865,12 +8091,15 @@
                         "id": 7,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 1124.0,
+                            "y": 513.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.47407406568527222,
+                            "y": 0.47407406568527222
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -7891,12 +8120,15 @@
                         "id": 8,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 1124.0,
+                            "y": 513.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.47407406568527222,
+                            "y": 0.47407406568527222
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -7930,7 +8162,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -8234,12 +8466,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 652.0,
+                            "y": 726.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.32135418057441711,
+                            "y": 0.32135418057441711
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -8260,12 +8495,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 652.0,
+                            "y": 726.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.48203128576278687,
+                            "y": 0.48203128576278687
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -8286,12 +8524,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 652.0,
+                            "y": 726.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.32135418057441711,
+                            "y": 0.32135418057441711
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -8312,12 +8553,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 652.0,
+                            "y": 726.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.32135418057441711,
+                            "y": 0.32135418057441711
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -8351,7 +8595,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -8785,7 +9029,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -9090,12 +9334,15 @@
                         "id": 5,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": -2.0,
+                            "y": 260.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.33240741491317749,
+                            "y": 0.33240741491317749
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -9116,12 +9363,15 @@
                         "id": 6,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": -2.0,
+                            "y": 260.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.49861112236976624,
+                            "y": 0.49861112236976624
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -9142,12 +9392,15 @@
                         "id": 7,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": -2.0,
+                            "y": 260.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.33240741491317749,
+                            "y": 0.33240741491317749
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -9168,12 +9421,15 @@
                         "id": 8,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": -2.0,
+                            "y": 260.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.33240741491317749,
+                            "y": 0.33240741491317749
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -9208,7 +9464,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -9513,12 +9769,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 734.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.30104166269302368,
+                            "y": 0.31044921278953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -9539,12 +9798,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 734.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.45156249403953552,
+                            "y": 0.46567380428314209
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -9565,12 +9827,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 734.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.30104166269302368,
+                            "y": 0.31044921278953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -9591,12 +9856,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 734.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.30104166269302368,
+                            "y": 0.31044921278953552
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -9631,7 +9899,7 @@
                             "x": 0.96969699859619141,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -11794,17 +12062,17 @@
                         "crop_top": 0,
                         "group_item_backup": true,
                         "id": 1,
-                        "locked": false,
+                        "locked": true,
                         "name": "Interview ATEM PGM",
                         "pos": {
                             "x": 0.0,
-                            "y": 233.0
+                            "y": 242.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.40677082538604736,
-                            "y": 0.40677082538604736
+                            "x": 0.390625,
+                            "y": 0.390625
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -11823,17 +12091,17 @@
                         "crop_top": 0,
                         "group_item_backup": true,
                         "id": 2,
-                        "locked": false,
+                        "locked": true,
                         "name": "Crowd Camera",
                         "pos": {
                             "x": 0.0,
-                            "y": 233.0
+                            "y": 242.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.61015623807907104,
-                            "y": 0.61015623807907104
+                            "x": 0.5859375,
+                            "y": 0.5859375
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -11852,17 +12120,17 @@
                         "crop_top": 0,
                         "group_item_backup": true,
                         "id": 3,
-                        "locked": false,
+                        "locked": true,
                         "name": "PC Camera",
                         "pos": {
                             "x": 0.0,
-                            "y": 233.0
+                            "y": 242.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.40677082538604736,
-                            "y": 0.40677082538604736
+                            "x": 0.390625,
+                            "y": 0.390625
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -11881,17 +12149,17 @@
                         "crop_top": 0,
                         "group_item_backup": true,
                         "id": 4,
-                        "locked": false,
+                        "locked": true,
                         "name": "Main Camera",
                         "pos": {
                             "x": 0.0,
-                            "y": 233.0
+                            "y": 242.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.40677082538604736,
-                            "y": 0.40677082538604736
+                            "x": 0.390625,
+                            "y": 0.390625
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -11899,7 +12167,7 @@
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 781.0,
+                            "x": 750.0,
                             "y": 403.0
                         },
                         "bounds_align": 0,
@@ -11910,13 +12178,16 @@
                         "crop_top": 0,
                         "group_item_backup": false,
                         "id": 14,
-                        "locked": false,
+                        "locked": true,
                         "name": "Camera (DS Vertical)",
                         "pos": {
                             "x": 0.0,
                             "y": 251.0
                         },
-                        "private_settings": {},
+                        "private_settings": {
+                            "color": "",
+                            "color-preset": 4
+                        },
                         "rot": 0.0,
                         "scale": {
                             "x": 1.0,
@@ -12367,12 +12638,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 710.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.30104166269302368,
+                            "y": 0.30104166269302368
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12393,12 +12667,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 710.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.45156249403953552,
+                            "y": 0.45156249403953552
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12419,12 +12696,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 710.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.30104166269302368,
+                            "y": 0.30104166269302368
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12445,12 +12725,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 671.0,
+                            "y": 710.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.30104166269302368,
+                            "y": 0.30104166269302368
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -12484,7 +12767,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
@@ -12791,12 +13074,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 766.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.23981481790542603,
+                            "y": 0.23981481790542603
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12817,12 +13103,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 766.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.35972222685813904,
+                            "y": 0.35972222685813904
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12843,12 +13132,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 766.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.23981481790542603,
+                            "y": 0.23981481790542603
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12869,12 +13161,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 766.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.23981481790542603,
+                            "y": 0.23981481790542603
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -12927,12 +13222,15 @@
                         "id": 1,
                         "locked": true,
                         "name": "Interview ATEM PGM",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.23981481790542603,
+                            "y": 0.23981481790542603
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12953,12 +13251,15 @@
                         "id": 2,
                         "locked": true,
                         "name": "Crowd Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.35972222685813904,
+                            "y": 0.35972222685813904
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -12979,12 +13280,15 @@
                         "id": 3,
                         "locked": true,
                         "name": "PC Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.23981481790542603,
+                            "y": 0.23981481790542603
                         },
                         "scale_filter": "lanczos",
                         "visible": false
@@ -13005,12 +13309,15 @@
                         "id": 4,
                         "locked": true,
                         "name": "Main Camera",
-                        "pos": {},
+                        "pos": {
+                            "x": 758.0,
+                            "y": 0.0
+                        },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 0.23981481790542603,
+                            "y": 0.23981481790542603
                         },
                         "scale_filter": "lanczos",
                         "visible": true
@@ -13478,7 +13785,7 @@
                             "x": 1.0,
                             "y": 1.0
                         },
-                        "scale_filter": "disable",
+                        "scale_filter": "lanczos",
                         "visible": true
                     },
                     {
