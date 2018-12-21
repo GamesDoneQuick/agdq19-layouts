@@ -59,11 +59,11 @@ If you have [nodecg-cli](https://github.com/nodecg/nodecg-cli) installed, you ca
 ### Setting up OBS
 `agdq19-layouts` has a deep, complex integration with OBS Studio. As such, it expects your OBS to be fairly precisely configured.
 
-1. Download and extract [this custom build of OBS](https://www.dropbox.com/s/zemdmloh2yvwh0t/AGDQ-OBS-02050b7-websocket-events.zip?dl=1), which includes all the plugins we use.  
+1. Download and extract [this custom build of OBS](https://www.dropbox.com/s/l6cfzjgdytvdfx7/AGDQ-2019-OBS-1.zip?dl=1), which includes all the plugins we use.  
    	- Once extracted, OBS can be launched via `bin/64bit/obs64.exe`.
 	- The source code for this build can be viewed [here](https://github.com/GamesDoneQuick/obs-studio/tree/agdq2019).
-2. Go to "Profile > Import", and import the `obs-assets/obs-profile` directory from this repository. Then, ensure that the "AGDQ2018" profile is selected in OBS.  
-3. Go to "Scene Collection > Import", and import the `obs-assets/obs-scenes.json` file from this repository. Then, ensure that the "AGDQ2018 - Localhost" scene collection is selected in OBS.  
+2. Go to "Profile > Import", and import the `obs-assets/obs-profile` directory from this repository. Then, ensure that the "AGDQ 2019" profile is selected in OBS.  
+3. Go to "Scene Collection > Import", and import the `obs-assets/obs-scenes.json` file from this repository. Then, ensure that the "AGDQ2019 - Localhost" scene collection is selected in OBS.  
 4. Locate the "Scene Transitions" dropdown menu in the main interface of OBS (it will be near the bottom right by default). Select "Blank Stinger". Click the gear icon below the dropdown, and select "Properties". Update the "Video File" path to point to your `agdq19-layouts/obs-assets/BlankTransition.mov` path.
 5. Ensure OBS is in Studio Mode.
 6. Click the gear icon to the right of the center "Transition" button.
@@ -143,7 +143,7 @@ In production, you'd use [TipoftheHats/donation-socket-repeater](https://github.
 ### Lightning Round
 [Lightning Round](https://github.com/GamesDoneQuick/lightning-round) is GDQ's system for gathering interview questions from Twitter. It exists in two parts: one part running "in the cloud" as a Firebase app, and one part running locally as part of this NodeCG bundle.
 
-Lightning Round is pretty weird and kind of difficult to set up. You can watch these videos for more information but please bear in mind that they are outdated, as they were made for AGDQ 2017, not AGDQ 2018:
+Lightning Round is pretty weird and kind of difficult to set up. You can watch these videos for more information but please bear in mind that they are outdated, as they were made for AGDQ 2017, not AGDQ 2019:
 - [Lightning Round Overview](https://www.youtube.com/watch?v=-qzIfS7KxCQ&index=4&list=PLTEhlYdONYxv1wk2FsIpEz92X3x2E7bSx)
 - [Lightning Round Setup Guide](https://www.youtube.com/watch?v=Uz_99-bJzyc&index=12&list=PLTEhlYdONYxv1wk2FsIpEz92X3x2E7bSx)
 
