@@ -172,7 +172,7 @@
 				},
 				"eventId": {
 					"type": "number",
-					"default": 24
+					"default": 25
 				}
 			},
 			"description": "Login information for the private areas of the tracker API.",
