@@ -58,7 +58,7 @@ after_build:
   - rmdir /s/q test bundles\%APPVEYOR_PROJECT_SLUG%\test
 
   # Some real bullshit
-  - ps: '$env:GOD_DAMNIT = ./node_modules/@babel/core/lib/config/files/plugins.js'
+  - ps: '$env:GOD_DAMNIT = "./node_modules/@babel/core/lib/config/files/plugins.js"'
   - ps: (Get-Content -path $env:GOD_DAMNIT -Raw).replace('function resolveStandardizedName(type, name, dirname = process.cwd())','function resolveStandardizedName(type, name, dirname = "/snapshot/")') | Set-Content -Path $env:GOD_DAMNIT
 
   # Create our exe using Zeit pkg.
