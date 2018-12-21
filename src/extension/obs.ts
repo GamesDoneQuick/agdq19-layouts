@@ -173,13 +173,13 @@ async function cycleRecording(obs: any) {
 	});
 }
 
-export function resetCropping() {
+export async function resetCropping() {
 	return (compositingOBS as any).send('ResetCropping').catch((error: Error) => {
 		nodecg.log.error('resetCropping error:', error);
 	});
 }
 
-export function setCurrentScene(sceneName: string) {
+export async function setCurrentScene(sceneName: string) {
 	return compositingOBS.send('SetCurrentScene', {
 		'scene-name': sceneName
 	});
