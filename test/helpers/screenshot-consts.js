@@ -196,6 +196,10 @@ const gameplayLayoutTestCases = [{
 	additionalDelay: STANDARD_DELAY,
 	replicantPrefills: STANDARD_REPLICANT_PREFILLS
 }, {
+	route: `bundles/${BUNDLE_NAME}/graphics/widescreen_3.html`,
+	additionalDelay: STANDARD_DELAY,
+	replicantPrefills: STANDARD_REPLICANT_PREFILLS
+}, {
 	route: `bundles/${BUNDLE_NAME}/graphics/widescreen_4.html`,
 	additionalDelay: STANDARD_DELAY,
 	replicantPrefills: STANDARD_REPLICANT_PREFILLS

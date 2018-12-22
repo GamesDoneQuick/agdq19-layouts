@@ -6,6 +6,7 @@
 			:host {
 				position: absolute;
 				display: block;
+				--gdq-runner-nameplate-audio-indicator-width: 100px;
 			}
 
 			:host([vert-pos="top"]) {
@@ -20,13 +21,17 @@
 				left: var(--gdq-runner-nameplate-audio-indicator-horiz-offset, 0);
 			}
 
+			:host([horiz-pos="center"]) {
+				left: calc(50% - calc(var(--gdq-runner-nameplate-audio-indicator-width) / 2));
+			}
+
 			:host([horiz-pos="right"]) {
 				right: var(--gdq-runner-nameplate-audio-indicator-horiz-offset, 0);
 			}
 
 			#body {
 				position: absolute;
-				width: 100px;
+				width: var(--gdq-runner-nameplate-audio-indicator-width);
 				height: 14px;
 				background: white;
 				@apply --layout-horizontal;
