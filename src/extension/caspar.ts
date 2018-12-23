@@ -11,9 +11,9 @@ import debounce = require('lodash.debounce');
 
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
-import {CurrentRun} from '../types/schemas/currentRun';
 import {CasparFiles} from '../types/schemas/caspar_files';
 import {CasparConnected} from '../types/schemas/caspar_connected';
+import {Run} from '../types';
 
 let foregroundFileName = '';
 let currentFrame = 0;
@@ -24,7 +24,7 @@ let ignoreForegroundUntilNextPlay = false;
 
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:caspar`);
-const currentRun = nodecg.Replicant<CurrentRun>('currentRun');
+const currentRun = nodecg.Replicant<Run>('currentRun');
 const files = nodecg.Replicant<CasparFiles>('caspar_files', {persistent: false});
 const connected = nodecg.Replicant<CasparConnected>('caspar_connected');
 const connection = new CasparCG.CasparCG({

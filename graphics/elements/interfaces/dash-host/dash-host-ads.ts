@@ -85,20 +85,16 @@ export default class DashHostAdsElement extends Polymer.MutableData(Polymer.Elem
 		const compositingOBSWebsocketIsConnected = compositingOBSWebsocket.value!.status === 'connected';
 		if (!this._connectedToNodeCG) {
 			this.$.cover.innerHTML = 'Disconnected from NodeCG!<br/>' +
-				'Ads cannot be played until we reconnect.' +
-				'<br/><br/>Tell the producer immediately!';
+				'Ads cannot be played until we reconnect.';
 		} else if (!casparIsConnected && !compositingOBSWebsocketIsConnected) {
 			this.$.cover.innerHTML = 'CasparCG and the compositing OBS are both disconnected!<br/>' +
-				'Ads cannot be played until both of them are connected.' +
-				'<br/><br/>Tell the producer immediately!';
+				'Ads cannot be played until both of them are connected.';
 		} else if (!casparIsConnected) {
 			this.$.cover.innerHTML = 'CasparCG is disconnected!<br/>' +
-				'Ads cannot be played until it is connected.' +
-				'<br/><br/>Tell the producer immediately!';
+				'Ads cannot be played until it is connected.';
 		} else if (!compositingOBSWebsocketIsConnected) { // eslint-disable-line no-negated-condition
 			this.$.cover.innerHTML = 'The compositing OBS is disconnected!<br/>' +
-				'Ads cannot be played until it is connected.' +
-				'<br/><br/>Tell the producer immediately!';
+				'Ads cannot be played until it is connected.';
 		} else {
 			(this.$.cover as HTMLDivElement).hidden = true;
 		}

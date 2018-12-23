@@ -25,31 +25,40 @@
 				}
 			}
 		},
-		"osc": {
-			"type": ["object", "null"],
-			"properties": {
-				"address": {
-					"type": "string",
-					"description": "The IP address or hostname of a Behringer X32 digital mixer."
-				},
-				"gameAudioChannels": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"sd": {
-								"type": ["integer", "null"]
+		"mixer": {
+			"oneOf": [
+				{"type":  "null"},
+				{
+					"type": "object",
+					"properties": {
+						"address": {
+							"type": "string",
+							"description": "The IP address or hostname of a Behringer X32 digital mixer."
+						},
+						"gameAudioChannels": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"sd": {
+										"type": ["integer", "null"]
+									},
+									"hd": {
+										"type": ["integer", "null"]
+									}
+								}
 							},
-							"hd": {
-								"type": ["integer", "null"]
-							}
+							"minItems": 4,
+							"maxItems": 4
+						},
+						"adsChannel": {
+							"type": "number",
+							"default": 29
 						}
 					},
-					"minItems": 4,
-					"maxItems": 4
+					"required": ["address", "gameAudioChannels", "adsChannel"]
 				}
-			},
-			"required": ["address", "gameAudioChannels"],
+			],
 			"default": null
 		},
 		"twitter": {

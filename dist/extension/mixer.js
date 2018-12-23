@@ -11,29 +11,35 @@ const nodecgApiContext = require("./util/nodecg-api-context");
 const nodecg = nodecgApiContext.get();
 const X32_UDP_PORT = 10023;
 const FADE_THRESHOLD = 0.1;
-const gameAudioChannels = nodecg.Replicant('gameAudioChannels', { persistent: false });
+const gameAudioChannelsRep = nodecg.Replicant('mixer_gameAudioChannels', { persistent: false });
+const adsChannelRep = nodecg.Replicant('mixer_adsChannel', { persistent: false });
+exports.replicants = {
+    gameAudioChannels: gameAudioChannelsRep,
+    adsChannel: adsChannelRep
+};
 const channelToReplicantMap = {};
-nodecg.bundleConfig.osc.gameAudioChannels.forEach((item, index) => {
-    if (!gameAudioChannels.value[index]) {
+const mixerConfig = nodecg.bundleConfig.mixer;
+mixerConfig.gameAudioChannels.forEach((item, index) => {
+    if (!gameAudioChannelsRep.value[index]) {
         return;
     }
     if (typeof item.sd === 'number') {
-        channelToReplicantMap[item.sd] = gameAudioChannels.value[index].sd;
+        channelToReplicantMap[item.sd] = gameAudioChannelsRep.value[index].sd;
     }
     if (typeof item.hd === 'number') {
-        channelToReplicantMap[item.hd] = gameAudioChannels.value[index].hd;
+        channelToReplicantMap[item.hd] = gameAudioChannelsRep.value[index].hd;
     }
 });
+channelToReplicantMap[mixerConfig.adsChannel] = adsChannelRep.value;
 const udpPort = new osc.UDPPort({
     localAddress: '0.0.0.0',
     localPort: 52361,
-    remoteAddress: nodecg.bundleConfig.osc.address,
+    remoteAddress: mixerConfig.address,
     remotePort: X32_UDP_PORT,
     metadata: true
 });
 udpPort.on('raw', (buf) => {
     const str = buf.toString('ascii');
-    const valueArray = [];
     let channelNumber = 0;
     let valueBytes;
     let replicantObject;
@@ -42,7 +48,6 @@ udpPort.on('raw', (buf) => {
         valueBytes = buf.slice(22, -2);
         for (let i = 0; i < valueBytes.length; i += 4) {
             const muted = !valueBytes.readFloatBE(i);
-            valueArray.push(muted);
             replicantObject = channelToReplicantMap[String(channelNumber + 1)];
             if (replicantObject) {
                 replicantObject.muted = muted;
@@ -55,7 +60,6 @@ udpPort.on('raw', (buf) => {
         valueBytes = buf.slice(24);
         for (let i = 0; i < valueBytes.length; i += 4) {
             const fadedBelowThreshold = valueBytes.readFloatLE(i) < FADE_THRESHOLD;
-            valueArray.push(fadedBelowThreshold);
             replicantObject = channelToReplicantMap[String(channelNumber + 1)];
             if (replicantObject) {
                 replicantObject.fadedBelowThreshold = fadedBelowThreshold;
