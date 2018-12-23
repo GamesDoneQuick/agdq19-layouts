@@ -1,0 +1,16 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"muted": {
+			"type": "boolean",
+			"default": true
+		},
+		"fadedBelowThreshold": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"required": ["muted", "fadedBelowThreshold"]
+}

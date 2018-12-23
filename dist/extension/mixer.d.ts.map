@@ -1,1 +1,1 @@
-{"version":3,"file":"mixer.d.ts","sourceRoot":"","sources":["../../src/extension/mixer.ts"],"names":[],"mappings":""}
+{"version":3,"file":"mixer.d.ts","sourceRoot":"","sources":["../../src/extension/mixer.ts"],"names":[],"mappings":"AAwBA,UAAU,aAAa;IACtB,KAAK,EAAE,OAAO,CAAC;IACf,mBAAmB,EAAE,OAAO,CAAC;CAC7B;AAKD,eAAO,MAAM,UAAU;;;CAGtB,CAAC"}

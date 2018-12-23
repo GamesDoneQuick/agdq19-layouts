@@ -20,9 +20,19 @@ export interface Configschema {
 		 */
 		scrollHoldDuration?: number;
 	};
-	osc?: {
+	mixer?: null | {
+		/**
+		 * The IP address or hostname of a Behringer X32 digital mixer.
+		 */
+		address: string;
+		gameAudioChannels: {
+			sd?: number | null;
+			hd?: number | null;
+			[k: string]: any;
+		}[];
+		adsChannel: number;
 		[k: string]: any;
-	} | null;
+	};
 	twitter?: {
 		[k: string]: any;
 	} | null;

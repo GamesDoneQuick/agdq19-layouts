@@ -55,5 +55,7 @@ export const enum CantStartReasonsEnum {
 	RUN_ACTIVE = 'run in progress',
 	PRIOR_BREAK_INCOMPLETE = 'a prior ad break is not complete',
 	MUST_ADVANCE_SCHEDULE = 'stream tech must go to next run',
-	MISSING_FILES = 'one or more ad files are missing'
+	MISSING_FILES = 'one or more ad files are missing',
+	MIXER_MUTED = 'ads are muted on mixer',
+	MIXER_FADED = 'ads are faded down on mixer'
 }

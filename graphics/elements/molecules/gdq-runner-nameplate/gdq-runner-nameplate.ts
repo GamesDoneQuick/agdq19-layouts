@@ -1,12 +1,13 @@
 import {Run, Runner} from '../../../../src/types';
 import {Stopwatch} from '../../../../src/types/schemas/stopwatch';
-import {GameAudioChannels} from '../../../../src/types/schemas/gameAudioChannels';
+import {MixerGameAudioChannels} from '../../../../src/types/schemas/mixer_gameAudioChannels';
+
 import AtomNameplateElement from '../../atoms/atom-nameplate/atom-nameplate';
 
 const {customElement, property} = Polymer.decorators;
 const currentRun = nodecg.Replicant<Run>('currentRun');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
-const gameAudioChannels = nodecg.Replicant<GameAudioChannels>('gameAudioChannels');
+const gameAudioChannels = nodecg.Replicant<MixerGameAudioChannels>('mixer:gameAudioChannels');
 
 /**
  * @customElement
@@ -139,7 +140,7 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 		}
 	}
 
-	gameAudioChannelsChanged(newVal: GameAudioChannels) {
+	gameAudioChannelsChanged(newVal: MixerGameAudioChannels) {
 		if (this.noAudio) {
 			return;
 		}

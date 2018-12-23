@@ -11,6 +11,7 @@ const schemaDefaults = require("json-schema-defaults");
 const caspar = require("./caspar");
 const nodecgApiContext = require("./util/nodecg-api-context");
 const obs = require("./obs");
+const mixer = require("./mixer");
 const TimeUtils = require("./lib/time");
 const AD_LOG_PATH = 'logs/ad_log.csv';
 let currentAdBreak = null;
@@ -57,6 +58,9 @@ stopwatch.on('change', (newVal, oldVal) => {
 caspar.replicants.files.on('change', () => {
     debouncedUpdateCurrentIntermissionState();
     debounceWarnForMissingFiles();
+});
+mixer.replicants.adsChannel.on('change', () => {
+    debouncedUpdateCurrentIntermissionState();
 });
 nodecg.listenFor('intermissions:startAdBreak', async (adBreakId) => {
     const adBreak = currentIntermission.value.content.find((item) => {
@@ -324,6 +328,14 @@ function _updateCurrentIntermissionState() {
         }
         item.state.canStart = true;
         item.state.cantStartReason = '';
+        if (mixer.replicants.adsChannel.value.fadedBelowThreshold) {
+            item.state.canStart = false;
+            item.state.cantStartReason = "ads are faded down on mixer" /* MIXER_FADED */;
+        }
+        else if (mixer.replicants.adsChannel.value.muted) {
+            item.state.canStart = false;
+            item.state.cantStartReason = "ads are muted on mixer" /* MIXER_MUTED */;
+        }
         if (item.state.started) {
             item.state.canStart = false;
             item.state.cantStartReason = "already started" /* ALREADY_STARTED */;

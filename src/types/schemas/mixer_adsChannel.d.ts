@@ -5,13 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type GameAudioChannels = RunnerAudioObject[];
-
-export interface RunnerAudioObject {
-	sd: ChannelObject;
-	hd: ChannelObject;
-}
-export interface ChannelObject {
-	muted: boolean;
-	fadedBelowThreshold: boolean;
+export interface MixerAdsChannel {
+	muted?: boolean;
+	fadedBelowThreshold?: boolean;
+	[k: string]: any;
 }

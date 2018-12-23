@@ -94,10 +94,10 @@ async function init() {
 			'VictorOps integration will be disabled.');
 	}
 
-	if (nodecg.bundleConfig.osc && nodecg.bundleConfig.osc.address) {
+	if (nodecg.bundleConfig.mixer && nodecg.bundleConfig.mixer.address) {
 		require('./mixer');
 	} else {
-		nodecg.log.warn('"osc" is not defined in cfg/agdq19-layouts.json! ' +
+		nodecg.log.warn('"mixer" is not defined in cfg/agdq19-layouts.json! ' +
 			'Behringer X32 OSC integration will be disabled.');
 	}
 

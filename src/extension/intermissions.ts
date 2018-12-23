@@ -13,11 +13,11 @@ import schemaDefaults = require('json-schema-defaults');
 import * as caspar from './caspar';
 import * as nodecgApiContext from './util/nodecg-api-context';
 import * as obs from './obs';
+import * as mixer from './mixer';
 import * as TimeUtils from './lib/time';
 import * as GDQTypes from '../types';
 import {CurrentIntermission} from '../types/schemas/currentIntermission';
 import {CanSeekSchedule} from '../types/schemas/canSeekSchedule';
-import {CurrentRun} from '../types/schemas/currentRun';
 import {Stopwatch} from '../types/schemas/stopwatch';
 import {CasparMissingFiles} from '../types/schemas/caspar_missingFiles';
 
@@ -31,7 +31,7 @@ const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:intermission`);
 const currentIntermission = nodecg.Replicant<CurrentIntermission>('currentIntermission');
 const canSeekSchedule = nodecg.Replicant<CanSeekSchedule>('canSeekSchedule');
-const currentRun = nodecg.Replicant<CurrentRun>('currentRun');
+const currentRun = nodecg.Replicant<GDQTypes.Run>('currentRun');
 const schedule = nodecg.Replicant<GDQTypes.ScheduleItem[]>('schedule');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
 const missingFilesRep = nodecg.Replicant<CasparMissingFiles>('caspar_missingFiles', {persistent: false});
@@ -74,6 +74,10 @@ stopwatch.on('change', (newVal, oldVal) => {
 caspar.replicants.files.on('change', () => {
 	debouncedUpdateCurrentIntermissionState();
 	debounceWarnForMissingFiles();
+});
+
+mixer.replicants.adsChannel.on('change', () => {
+	debouncedUpdateCurrentIntermissionState();
 });
 
 nodecg.listenFor('intermissions:startAdBreak', async (adBreakId: number) => {
@@ -391,6 +395,14 @@ function _updateCurrentIntermissionState() {
 
 		item.state.canStart = true;
 		item.state.cantStartReason = '';
+
+		if (mixer.replicants.adsChannel.value.fadedBelowThreshold) {
+			item.state.canStart = false;
+			item.state.cantStartReason = GDQTypes.CantStartReasonsEnum.MIXER_FADED;
+		} else if (mixer.replicants.adsChannel.value.muted) {
+			item.state.canStart = false;
+			item.state.cantStartReason = GDQTypes.CantStartReasonsEnum.MIXER_MUTED;
+		}
 
 		if (item.state.started) {
 			item.state.canStart = false;
