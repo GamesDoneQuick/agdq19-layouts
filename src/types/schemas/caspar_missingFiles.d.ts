@@ -5,6 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Twitch3AcanPlayAd {
-	[k: string]: any;
-}
+export type CasparMissingFiles = string[];

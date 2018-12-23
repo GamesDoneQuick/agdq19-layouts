@@ -2,7 +2,7 @@ import * as tslib_1 from "tslib";
 const { customElement, property, observe } = Polymer.decorators;
 const checklistRep = nodecg.Replicant('checklist');
 const stopwatchRep = nodecg.Replicant('stopwatch');
-const cyclingRecordingsRep = nodecg.Replicant('obs:cyclingRecordings');
+const cyclingRecordingsRep = nodecg.Replicant('obs_cyclingRecordings');
 /**
  * @customElement
  * @polymer

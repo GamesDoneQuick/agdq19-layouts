@@ -5,6 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type VictorOps3AroutingKeys = {
-	[k: string]: any;
-}[];
+export type BitsTotal = number;

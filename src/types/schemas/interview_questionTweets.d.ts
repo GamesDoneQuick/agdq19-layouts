@@ -5,4 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Caspar3AmissingFiles = string[];
+export type InterviewQuestionTweets = {
+	[k: string]: any;
+}[];

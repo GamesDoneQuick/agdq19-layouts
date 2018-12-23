@@ -9,13 +9,13 @@ import * as request from 'request-promise-native';
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {GDQUrls} from './urls';
 import {TrackerObject, ChildBid, ParentBid} from '../types';
-import {Bits3Atotal} from '../types/schemas/bits%3Atotal';
+import {BitsTotal} from '../types/schemas/bits_total';
 
 const nodecg = nodecgApiContext.get();
 const POLL_INTERVAL = 60 * 1000;
 const currentBidsRep = nodecg.Replicant<ParentBid[]>('currentBids', {defaultValue: []});
 const allBidsRep = nodecg.Replicant<ParentBid[]>('allBids', {defaultValue: []});
-const bitsTotal = nodecg.Replicant<Bits3Atotal>('bits:total');
+const bitsTotal = nodecg.Replicant<BitsTotal>('bits_total');
 
 // Get latest bid data every POLL_INTERVAL milliseconds
 update();

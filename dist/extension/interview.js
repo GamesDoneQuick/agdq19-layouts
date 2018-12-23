@@ -13,15 +13,15 @@ firebase.initializeApp({
 const database = firebase.database();
 const lowerthirdPulseTimeRemaining = nodecg.Replicant('interview:lowerthirdTimeRemaining', { defaultValue: 0, persistent: false });
 const lowerthirdShowing = nodecg.Replicant('interview:lowerthirdShowing', { defaultValue: false, persistent: false });
-const throwIncoming = nodecg.Replicant('interview:throwIncoming');
+const throwIncoming = nodecg.Replicant('interview_throwIncoming');
 const questionPulseTimeRemaining = nodecg.Replicant('interview:questionTimeRemaining', { defaultValue: 0, persistent: false });
-const questionShowing = nodecg.Replicant('interview:questionShowing', { defaultValue: false, persistent: false });
-const questionSortMap = nodecg.Replicant('interview:questionSortMap');
-const questionTweetsRep = nodecg.Replicant('interview:questionTweets');
-const interviewStopwatch = nodecg.Replicant('interview:stopwatch');
-const currentLayout = nodecg.Replicant('gdq:currentLayout');
-const prizePlaylist = nodecg.Replicant('interview:prizePlaylist');
-const showPrizesOnMonitor = nodecg.Replicant('interview:showPrizesOnMonitor');
+const questionShowing = nodecg.Replicant('interview_questionShowing', { defaultValue: false, persistent: false });
+const questionSortMap = nodecg.Replicant('interview_questionSortMap');
+const questionTweetsRep = nodecg.Replicant('interview_questionTweets');
+const interviewStopwatch = nodecg.Replicant('interview_stopwatch');
+const currentLayout = nodecg.Replicant('currentLayout');
+const prizePlaylist = nodecg.Replicant('interview_prizePlaylist');
+const showPrizesOnMonitor = nodecg.Replicant('interview_showPrizesOnMonitor');
 const allPrizes = nodecg.Replicant('allPrizes');
 const pulseIntervalMap = new Map();
 const pulseTimeoutMap = new Map();
@@ -36,7 +36,7 @@ if (interviewStopwatch.value.running) {
     interviewStopwatch.value.running = false;
     startInterviewTimer(offset);
 }
-nodecg.Replicant('interview:names');
+nodecg.Replicant('interview_names');
 lowerthirdShowing.on('change', (newVal) => {
     if (!newVal) {
         clearTimerFromMap(lowerthirdShowing, pulseIntervalMap);

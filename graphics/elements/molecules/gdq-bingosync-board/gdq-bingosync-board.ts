@@ -1,8 +1,8 @@
-import {Bingosync3Aboard} from '../../../../src/types/schemas/bingosync%3Aboard';
+import {BingosyncBoard} from '../../../../src/types/schemas/bingosync_board';
 import {TweenLite, Sine, Power2} from 'gsap';
 
 const {customElement, property} = Polymer.decorators;
-const boardRep = nodecg.Replicant<Bingosync3Aboard>('bingosync:board');
+const boardRep = nodecg.Replicant<BingosyncBoard>('bingosync_board');
 const urlParams = new URLSearchParams(window.location.search);
 const embiggenUrlParam = urlParams.get('embiggen');
 let EMBIGGEN: boolean | null;

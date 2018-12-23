@@ -1,8 +1,8 @@
-import {Obs3AcyclingRecordings} from '../../../../src/types/schemas/obs%3AcyclingRecordings';
+import {ObsCyclingRecordings} from '../../../../src/types/schemas/obs_cyclingRecordings';
 import {Status as CONNECTION_STATUS, Websocket as WebsocketStatus} from 'nodecg-utility-obs/types/schemas/websocket';
 
 const {customElement, property} = Polymer.decorators;
-const cyclingRecordingsRep = nodecg.Replicant<Obs3AcyclingRecordings>('obs:cyclingRecordings');
+const cyclingRecordingsRep = nodecg.Replicant<ObsCyclingRecordings>('obs_cyclingRecordings');
 
 /**
  * @customElement

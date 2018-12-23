@@ -8,13 +8,13 @@ import * as nodecgApiContext from './util/nodecg-api-context';
 import * as TimeUtils from './lib/time';
 import * as GDQTypes from '../types';
 import {ListenForCb, Replicant} from '../types/nodecg';
-import {Interview3AthrowIncoming} from '../types/schemas/interview%3AthrowIncoming';
-import {Interview3AquestionSortMap} from '../types/schemas/interview%3AquestionSortMap';
-import {Interview3AquestionTweets} from '../types/schemas/interview%3AquestionTweets';
-import {Interview3Astopwatch} from '../types/schemas/interview%3Astopwatch';
-import {Gdq3AcurrentLayout} from '../types/schemas/gdq%3AcurrentLayout';
-import {Interview3AprizePlaylist} from '../types/schemas/interview%3AprizePlaylist';
-import {Interview3AshowPrizesOnMonitor} from '../types/schemas/interview%3AshowPrizesOnMonitor';
+import {InterviewThrowIncoming} from '../types/schemas/interview_throwIncoming';
+import {InterviewQuestionSortMap} from '../types/schemas/interview_questionSortMap';
+import {InterviewQuestionTweets} from '../types/schemas/interview_questionTweets';
+import {InterviewStopwatch} from '../types/schemas/interview_stopwatch';
+import {CurrentLayout} from '../types/schemas/currentLayout';
+import {InterviewPrizePlaylist} from '../types/schemas/interview_prizePlaylist';
+import {InterviewShowPrizesOnMonitor} from '../types/schemas/interview_showPrizesOnMonitor';
 
 const nodecg = nodecgApiContext.get();
 
@@ -26,15 +26,15 @@ firebase.initializeApp({
 const database = firebase.database();
 const lowerthirdPulseTimeRemaining = nodecg.Replicant<number>('interview:lowerthirdTimeRemaining', {defaultValue: 0, persistent: false});
 const lowerthirdShowing = nodecg.Replicant<boolean>('interview:lowerthirdShowing', {defaultValue: false, persistent: false});
-const throwIncoming = nodecg.Replicant<Interview3AthrowIncoming>('interview:throwIncoming');
+const throwIncoming = nodecg.Replicant<InterviewThrowIncoming>('interview_throwIncoming');
 const questionPulseTimeRemaining = nodecg.Replicant<number>('interview:questionTimeRemaining', {defaultValue: 0, persistent: false});
-const questionShowing = nodecg.Replicant<boolean>('interview:questionShowing', {defaultValue: false, persistent: false});
-const questionSortMap = nodecg.Replicant<Interview3AquestionSortMap>('interview:questionSortMap');
-const questionTweetsRep = nodecg.Replicant<Interview3AquestionTweets>('interview:questionTweets');
-const interviewStopwatch = nodecg.Replicant<Interview3Astopwatch>('interview:stopwatch');
-const currentLayout = nodecg.Replicant<Gdq3AcurrentLayout>('gdq:currentLayout');
-const prizePlaylist = nodecg.Replicant<Interview3AprizePlaylist>('interview:prizePlaylist');
-const showPrizesOnMonitor = nodecg.Replicant<Interview3AshowPrizesOnMonitor>('interview:showPrizesOnMonitor');
+const questionShowing = nodecg.Replicant<boolean>('interview_questionShowing', {defaultValue: false, persistent: false});
+const questionSortMap = nodecg.Replicant<InterviewQuestionSortMap>('interview_questionSortMap');
+const questionTweetsRep = nodecg.Replicant<InterviewQuestionTweets>('interview_questionTweets');
+const interviewStopwatch = nodecg.Replicant<InterviewStopwatch>('interview_stopwatch');
+const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
+const prizePlaylist = nodecg.Replicant<InterviewPrizePlaylist>('interview_prizePlaylist');
+const showPrizesOnMonitor = nodecg.Replicant<InterviewShowPrizesOnMonitor>('interview_showPrizesOnMonitor');
 const allPrizes = nodecg.Replicant<GDQTypes.Prize[]>('allPrizes');
 const pulseIntervalMap = new Map();
 const pulseTimeoutMap = new Map();
@@ -51,7 +51,7 @@ if (interviewStopwatch.value.running) {
 	startInterviewTimer(offset);
 }
 
-nodecg.Replicant('interview:names');
+nodecg.Replicant('interview_names');
 
 lowerthirdShowing.on('change', (newVal: boolean) => {
 	if (!newVal) {

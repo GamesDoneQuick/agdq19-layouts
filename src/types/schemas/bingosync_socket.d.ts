@@ -5,4 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Interview3AquestionSortMap = string[];
+export interface BingosyncSocket {
+	status: 'connected' | 'connecting' | 'disconnected' | 'error';
+	siteUrl: string;
+	socketUrl: string;
+	playerName: string;
+	roomCode: string;
+	passphrase: string;
+}

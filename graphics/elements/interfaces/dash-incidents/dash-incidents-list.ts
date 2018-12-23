@@ -1,4 +1,4 @@
-import {Incident} from '../../../../src/types/schemas/victorOps%3Aincidents';
+import {Incident} from '../../../../src/types/schemas/victorOps_incidents';
 
 const {customElement, property} = Polymer.decorators;
 

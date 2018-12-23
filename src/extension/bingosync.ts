@@ -8,16 +8,16 @@ import equal = require('deep-equal');
 
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
-import {Bingosync3Aboard} from '../types/schemas/bingosync%3Aboard';
-import {Bingosync3Asocket} from '../types/schemas/bingosync%3Asocket';
+import {BingosyncBoard} from '../types/schemas/bingosync_board';
+import {BingosyncSocket} from '../types/schemas/bingosync_socket';
 
 const SOCKET_KEY_REGEX = /temporarySocketKey\s+=\s+"(\S+)"/;
 
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:oot-bingo`);
 const request = RequestPromise.defaults({jar: true}); // <= Automatically saves and re-uses cookies.
-const boardRep = nodecg.Replicant<Bingosync3Aboard>('bingosync:board');
-const socketRep = nodecg.Replicant<Bingosync3Asocket>('bingosync:socket');
+const boardRep = nodecg.Replicant<BingosyncBoard>('bingosync_board');
+const socketRep = nodecg.Replicant<BingosyncSocket>('bingosync_socket');
 let fullUpdateInterval: NodeJS.Timer;
 let websocket: WebSocket | null = null;
 

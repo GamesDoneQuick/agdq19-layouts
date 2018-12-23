@@ -18,8 +18,8 @@ let ignoreForegroundUntilNextPlay = false;
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:caspar`);
 const currentRun = nodecg.Replicant('currentRun');
-const files = nodecg.Replicant('caspar:files', { persistent: false });
-const connected = nodecg.Replicant('caspar:connected');
+const files = nodecg.Replicant('caspar_files', { persistent: false });
+const connected = nodecg.Replicant('caspar_connected');
 const connection = new CasparCG.CasparCG({
     host: nodecg.bundleConfig.casparcg.host,
     port: nodecg.bundleConfig.casparcg.port,
@@ -138,7 +138,7 @@ udpPort.on('close', () => {
 udpPort.open();
 let isFirstFilesUpdate = true;
 /**
- * Updates the caspar:files replicant.
+ * Updates the caspar_files replicant.
  */
 function updateFiles() {
     if (!connected.value) {

@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
 const { customElement, property } = Polymer.decorators;
 const currentIntermission = nodecg.Replicant('currentIntermission');
-const casparConnected = nodecg.Replicant('caspar:connected');
+const casparConnected = nodecg.Replicant('caspar_connected');
 const compositingOBSWebsocket = nodecg.Replicant('compositingOBS:websocket');
 let DashHostAdsElement = class DashHostAdsElement extends Polymer.MutableData(Polymer.Element) {
     constructor() {

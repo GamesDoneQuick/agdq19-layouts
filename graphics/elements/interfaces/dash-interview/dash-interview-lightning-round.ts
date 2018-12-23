@@ -1,8 +1,8 @@
 import {Tweet} from '../../../../src/types';
 
 const {customElement, property} = Polymer.decorators;
-const questions = nodecg.Replicant<Tweet[]>('interview:questionTweets');
-const questionShowing = nodecg.Replicant<boolean>('interview:questionShowing');
+const questions = nodecg.Replicant<Tweet[]>('interview_questionTweets');
+const questionShowing = nodecg.Replicant<boolean>('interview_questionShowing');
 
 /**
  * @customElement

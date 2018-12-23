@@ -19,7 +19,7 @@ import {CurrentIntermission} from '../types/schemas/currentIntermission';
 import {CanSeekSchedule} from '../types/schemas/canSeekSchedule';
 import {CurrentRun} from '../types/schemas/currentRun';
 import {Stopwatch} from '../types/schemas/stopwatch';
-import {Caspar3AmissingFiles} from '../types/schemas/caspar%3AmissingFiles';
+import {CasparMissingFiles} from '../types/schemas/caspar_missingFiles';
 
 const AD_LOG_PATH = 'logs/ad_log.csv';
 
@@ -34,7 +34,7 @@ const canSeekSchedule = nodecg.Replicant<CanSeekSchedule>('canSeekSchedule');
 const currentRun = nodecg.Replicant<CurrentRun>('currentRun');
 const schedule = nodecg.Replicant<GDQTypes.ScheduleItem[]>('schedule');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
-const missingFilesRep = nodecg.Replicant<Caspar3AmissingFiles>('caspar:missingFiles', {persistent: false});
+const missingFilesRep = nodecg.Replicant<CasparMissingFiles>('caspar_missingFiles', {persistent: false});
 const schemasPath = path.resolve(__dirname, '../../schemas/');
 const adBreakSchema = JSON.parse(fs.readFileSync(path.join(schemasPath, 'types/adBreak.json'), 'utf8'));
 const adSchema = JSON.parse(fs.readFileSync(path.join(schemasPath, 'types/ad.json'), 'utf8'));

@@ -5,4 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Interview3AquestionShowing = boolean;
+export interface InterviewStopwatch {
+	running: boolean;
+	time: {
+		days: number;
+		hours: number;
+		minutes: number;
+		seconds: number;
+		milliseconds: number;
+		formatted: string;
+		raw: number;
+		timestamp: number;
+	};
+}

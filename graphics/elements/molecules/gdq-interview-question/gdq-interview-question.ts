@@ -1,15 +1,15 @@
 import {TimelineLite} from 'gsap';
 import {Tweet} from '../../../../src/types/index';
-import {Interview3AquestionTweets} from '../../../../src/types/schemas/interview%3AquestionTweets';
-import {Interview3AquestionSortMap} from '../../../../src/types/schemas/interview%3AquestionSortMap';
-import {Interview3AquestionShowing} from '../../../../src/types/schemas/interview%3AquestionShowing';
+import {InterviewQuestionTweets} from '../../../../src/types/schemas/interview_questionTweets';
+import {InterviewQuestionSortMap} from '../../../../src/types/schemas/interview_questionSortMap';
+import {InterviewQuestionShowing} from '../../../../src/types/schemas/interview_questionShowing';
 import GDQTweetElement from '../gdq-tweet/gdq-tweet';
 
 const {customElement, property} = Polymer.decorators;
 
-const questions = nodecg.Replicant<Interview3AquestionTweets>('interview:questionTweets');
-const questionSortMap = nodecg.Replicant<Interview3AquestionSortMap>('interview:questionSortMap');
-const questionShowing = nodecg.Replicant<Interview3AquestionShowing>('interview:questionShowing');
+const questions = nodecg.Replicant<InterviewQuestionTweets>('interview_questionTweets');
+const questionSortMap = nodecg.Replicant<InterviewQuestionSortMap>('interview_questionSortMap');
+const questionShowing = nodecg.Replicant<InterviewQuestionShowing>('interview_questionShowing');
 
 @customElement('gdq-interview-question')
 export default class GDQInterviewQuestionElement extends Polymer.Element {
@@ -17,8 +17,8 @@ export default class GDQInterviewQuestionElement extends Polymer.Element {
 	onScreenTweet: Tweet | null = null;
 
 	_timeline = new TimelineLite({autoRemoveChildren: true});
-	_questionsVal?: Interview3AquestionTweets;
-	_sortMapVal?: Interview3AquestionSortMap;
+	_questionsVal?: InterviewQuestionTweets;
+	_sortMapVal?: InterviewQuestionSortMap;
 	_initialized = false;
 
 	ready() {
@@ -64,7 +64,7 @@ export default class GDQInterviewQuestionElement extends Polymer.Element {
 		}, undefined, null, '+=0.5');
 	}
 
-	calcOnScreenTweet(_questionsVal?: Interview3AquestionTweets, _sortMapVal?: Interview3AquestionSortMap) {
+	calcOnScreenTweet(_questionsVal?: InterviewQuestionTweets, _sortMapVal?: InterviewQuestionSortMap) {
 		if (!_questionsVal || !_sortMapVal) {
 			return;
 		}

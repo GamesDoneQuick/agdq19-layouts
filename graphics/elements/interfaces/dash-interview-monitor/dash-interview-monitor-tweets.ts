@@ -1,11 +1,11 @@
 import {Tweet} from '../../../../src/types';
 import MapSortMixin from '../../../mixins/map-sort-mixin';
-import {Interview3AquestionSortMap} from '../../../../src/types/schemas/interview%3AquestionSortMap';
+import {InterviewQuestionSortMap} from '../../../../src/types/schemas/interview_questionSortMap';
 import DashInterviewMonitorTweetElement from './dash-interview-monitor-tweet';
 
 const {customElement, property} = Polymer.decorators;
-const questionTweetsRep = nodecg.Replicant<Tweet[]>('interview:questionTweets');
-const questionSortMapRep = nodecg.Replicant<Interview3AquestionSortMap>('interview:questionSortMap');
+const questionTweetsRep = nodecg.Replicant<Tweet[]>('interview_questionTweets');
+const questionSortMapRep = nodecg.Replicant<InterviewQuestionSortMap>('interview_questionSortMap');
 
 /**
  * @customElement
@@ -60,7 +60,7 @@ export default class DashInterviewMonitorTweetsElement extends MapSortMixin(Poly
 		return !questionTweets || questionTweets.length <= 0;
 	}
 
-	_calcPgmTweet(questionTweets?: Tweet[], _sortMapVal?: Interview3AquestionSortMap) {
+	_calcPgmTweet(questionTweets?: Tweet[], _sortMapVal?: InterviewQuestionSortMap) {
 		if (!questionTweets || !_sortMapVal) {
 			return;
 		}

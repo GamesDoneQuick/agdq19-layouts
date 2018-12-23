@@ -5,4 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Interview3AshowPrizesOnMonitor = boolean;
+export type CurrentLayout = string;

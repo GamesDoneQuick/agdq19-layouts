@@ -9,7 +9,7 @@ const DEBUG = nodecg.bundleConfig.twitch.debug;
 const BITS_TOTAL_UPDATE_INTERVAL = 10 * 1000;
 const log = new nodecg.Logger(`${nodecg.bundleName}:twitch-pubsub`);
 const autoUpdateTotal = nodecg.Replicant('autoUpdateTotal');
-const bitsTotal = nodecg.Replicant('bits:total');
+const bitsTotal = nodecg.Replicant('bits_total');
 autoUpdateTotal.on('change', (newVal) => {
     if (newVal) {
         updateBitsTotal();

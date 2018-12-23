@@ -7,14 +7,14 @@ import * as request from 'request-promise-native';
 import * as nodecgApiContext from './util/nodecg-api-context';
 import * as TimeUtils from './lib/time';
 import * as GDQTypes from '../types';
-import {Twitch3AcanPlayAd} from '../types/schemas/twitch%3AcanPlayAd';
+import {TwitchCanPlayAd} from '../types/schemas/twitch_canPlayAd';
 import {Stopwatch} from '../types/schemas/stopwatch';
 
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:twitch`);
 const timeSince = nodecg.Replicant<GDQTypes.TimeStruct>('twitch:timeSinceLastAd', {defaultValue: TimeUtils.createTimeStruct()});
 const timeLeft = nodecg.Replicant<GDQTypes.TimeStruct>('twitch:timeLeftInAd', {defaultValue: TimeUtils.createTimeStruct()});
-const canPlayTwitchAd = nodecg.Replicant<Twitch3AcanPlayAd>('twitch:canPlayAd');
+const canPlayTwitchAd = nodecg.Replicant<TwitchCanPlayAd>('twitch_canPlayAd');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
 const CANT_PLAY_REASONS = {
 	AD_IN_PROGRESS: 'ad in progress',

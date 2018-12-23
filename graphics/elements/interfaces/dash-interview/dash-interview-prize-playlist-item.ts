@@ -1,8 +1,8 @@
 import {Prize} from '../../../../src/types';
-import {Interview3AprizePlaylist} from '../../../../src/types/schemas/interview%3AprizePlaylist';
+import {InterviewPrizePlaylist} from '../../../../src/types/schemas/interview_prizePlaylist';
 
 const {customElement, property} = Polymer.decorators;
-const prizePlaylistRep = nodecg.Replicant<Interview3AprizePlaylist>('interview:prizePlaylist');
+const prizePlaylistRep = nodecg.Replicant<InterviewPrizePlaylist>('interview_prizePlaylist');
 
 /**
  * @customElement
@@ -29,7 +29,7 @@ export default class DashInterviewPrizePlaylistItemElement extends Polymer.Mutab
 	complete: boolean;
 
 	@property({type: Array})
-	_prizePlaylist: Interview3AprizePlaylist;
+	_prizePlaylist: InterviewPrizePlaylist;
 
 	private _initialized: boolean;
 	private _handledFirstCheckboxChange: boolean;
@@ -70,7 +70,7 @@ export default class DashInterviewPrizePlaylistItemElement extends Polymer.Mutab
 		return prizeId;
 	}
 
-	_computeComplete(prize?: Prize, prizePlaylist?: Interview3AprizePlaylist) {
+	_computeComplete(prize?: Prize, prizePlaylist?: InterviewPrizePlaylist) {
 		if (!prize || !Array.isArray(prizePlaylist)) {
 			return;
 		}

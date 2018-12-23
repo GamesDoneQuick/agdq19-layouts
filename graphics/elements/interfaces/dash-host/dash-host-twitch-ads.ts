@@ -1,8 +1,8 @@
-import {Twitch3AcanPlayAd} from '../../../../src/types/schemas/twitch%3AcanPlayAd';
+import {TwitchCanPlayAd} from '../../../../src/types/schemas/twitch_canPlayAd';
 import {TimeStruct} from '../../../../src/types';
 
 const {customElement, property} = Polymer.decorators;
-const canPlayTwitchAd = nodecg.Replicant<Twitch3AcanPlayAd>('twitch:canPlayAd');
+const canPlayTwitchAd = nodecg.Replicant<TwitchCanPlayAd>('twitch_canPlayAd');
 const timeLeft = nodecg.Replicant<TimeStruct>('twitch:timeLeftInAd');
 const timeSince = nodecg.Replicant<TimeStruct>('twitch:timeSinceLastAd');
 

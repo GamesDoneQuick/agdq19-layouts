@@ -6,13 +6,13 @@ import equals = require('deep-equal');
 
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
-import {VictorOps3Aincidents} from '../types/schemas/victorOps%3Aincidents';
-import {VictorOps3AroutingKeys} from '../types/schemas/victorOps%3AroutingKeys';
+import {VictorOpsIncidents} from '../types/schemas/victorOps_incidents';
+import {VictorOpsRoutingKeys} from '../types/schemas/victorOps_routingKeys';
 
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:victorOps`);
-const incidentsReplicant = nodecg.Replicant<VictorOps3Aincidents>('victorOps:incidents');
-const routingKeysReplicant = nodecg.Replicant<VictorOps3AroutingKeys>('victorOps:routingKeys');
+const incidentsReplicant = nodecg.Replicant<VictorOpsIncidents>('victorOps_incidents');
+const routingKeysReplicant = nodecg.Replicant<VictorOpsRoutingKeys>('victorOps_routingKeys');
 
 log.info('VictorOps integration enabled.');
 

@@ -5,7 +5,7 @@ import UiToastElement from '../../../shared/elements/interfaces/ui-toast/ui-toas
 const {customElement, property, observe} = Polymer.decorators;
 const checklistRep = nodecg.Replicant<Checklist>('checklist');
 const stopwatchRep = nodecg.Replicant<Stopwatch>('stopwatch');
-const cyclingRecordingsRep = nodecg.Replicant<boolean>('obs:cyclingRecordings');
+const cyclingRecordingsRep = nodecg.Replicant<boolean>('obs_cyclingRecordings');
 
 /**
  * @customElement

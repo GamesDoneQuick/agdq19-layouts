@@ -1,5 +1,5 @@
 import {Stopwatch} from '../../../../src/types/schemas/stopwatch';
-import {Interview3AquestionSortMap} from '../../../../src/types/schemas/interview%3AquestionSortMap';
+import {InterviewQuestionSortMap} from '../../../../src/types/schemas/interview_questionSortMap';
 import {Websocket as WebsocketStatus} from 'nodecg-utility-obs/types/schemas/websocket';
 import UiToastElement from '../../../../shared/elements/interfaces/ui-toast/ui-toast';
 import DashInterviewLowerthirdElement from './dash-interview-lowerthird';
@@ -8,13 +8,13 @@ import * as OBSWebSocket from 'obs-websocket-js'; // tslint:disable-line:no-impl
 const {customElement, property} = Polymer.decorators;
 const compositingOBSStatus = nodecg.Replicant<WebsocketStatus>('compositingOBS:websocket');
 const compositingOBSTransitioning = nodecg.Replicant<boolean>('compositingOBS:transitioning');
-const interviewStopwatch = nodecg.Replicant<Stopwatch>('interview:stopwatch');
+const interviewStopwatch = nodecg.Replicant<Stopwatch>('interview_stopwatch');
 const lowerthirdTimeRemaining = nodecg.Replicant<number>('interview:lowerthirdTimeRemaining');
 const programScene = nodecg.Replicant<OBSWebSocket.Scene>('compositingOBS:programScene');
-const questionShowing = nodecg.Replicant<boolean>('interview:questionShowing');
-const questionSortMap = nodecg.Replicant<Interview3AquestionSortMap>('interview:questionSortMap');
+const questionShowing = nodecg.Replicant<boolean>('interview_questionShowing');
+const questionSortMap = nodecg.Replicant<InterviewQuestionSortMap>('interview_questionSortMap');
 const questionTimeRemaining = nodecg.Replicant<number>('interview:questionTimeRemaining');
-const showPrizesOnMonitorRep = nodecg.Replicant<boolean>('interview:showPrizesOnMonitor');
+const showPrizesOnMonitorRep = nodecg.Replicant<boolean>('interview_showPrizesOnMonitor');
 const baseClass = (Polymer as any).SCDataBindingHelpers(Polymer.MutableData(Polymer.Element)) as (new() => Polymer.Element);
 
 /**

@@ -5,4 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Obs3AcyclingRecordings = boolean;
+export type CasparFiles = CasparFile[];
+
+export interface CasparFile {
+	name: string;
+	type: string;
+	size: number;
+	changed: number;
+	frames: number;
+	frameTime: string;
+	frameRate: number;
+	duration: number;
+}

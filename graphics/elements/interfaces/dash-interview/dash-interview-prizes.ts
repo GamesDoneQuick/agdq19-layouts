@@ -1,9 +1,9 @@
 import {Prize} from '../../../../src/types';
-import {Interview3AprizePlaylist} from '../../../../src/types/schemas/interview%3AprizePlaylist';
+import {InterviewPrizePlaylist} from '../../../../src/types/schemas/interview_prizePlaylist';
 
 const {customElement, property} = Polymer.decorators;
 const allPrizesRep = nodecg.Replicant<Prize[]>('allPrizes');
-const prizePlaylistRep = nodecg.Replicant<Interview3AprizePlaylist>('interview:prizePlaylist');
+const prizePlaylistRep = nodecg.Replicant<InterviewPrizePlaylist>('interview_prizePlaylist');
 
 /**
  * @customElement
@@ -16,7 +16,7 @@ export default class DashInterviewPrizesElement extends Polymer.MutableData(Poly
 	allPrizes: Prize[];
 
 	@property({type: Array})
-	prizePlaylist: Interview3AprizePlaylist;
+	prizePlaylist: InterviewPrizePlaylist;
 
 	@property({type: String})
 	searchString = '';
@@ -69,7 +69,7 @@ export default class DashInterviewPrizesElement extends Polymer.MutableData(Poly
 		});
 	}
 
-	_isPrizeInPlaylist(prizeOrPrizeId: Prize | number, prizePlaylist: Interview3AprizePlaylist) {
+	_isPrizeInPlaylist(prizeOrPrizeId: Prize | number, prizePlaylist: InterviewPrizePlaylist) {
 		if (!prizePlaylist) {
 			return false;
 		}
@@ -78,7 +78,7 @@ export default class DashInterviewPrizesElement extends Polymer.MutableData(Poly
 		return prizePlaylist.findIndex(({id}) => id === prizeId) >= 0;
 	}
 
-	_calcClearPlaylistDisabled(prizePlaylist: Interview3AprizePlaylist) {
+	_calcClearPlaylistDisabled(prizePlaylist: InterviewPrizePlaylist) {
 		return !prizePlaylist || prizePlaylist.length <= 0;
 	}
 
@@ -90,7 +90,7 @@ export default class DashInterviewPrizesElement extends Polymer.MutableData(Poly
 		this.removePrizeFromPlaylist(e.model.prize);
 	}
 
-	_calcPrizesInPlaylist(allPrizes?: Prize[], prizePlaylist?: Interview3AprizePlaylist) {
+	_calcPrizesInPlaylist(allPrizes?: Prize[], prizePlaylist?: InterviewPrizePlaylist) {
 		if (!allPrizes || allPrizes.length === 0 ||
 			!prizePlaylist || prizePlaylist.length === 0) {
 			return [];
@@ -103,7 +103,7 @@ export default class DashInterviewPrizesElement extends Polymer.MutableData(Poly
 		});
 	}
 
-	_calcPlaylistPrizeChecked(prize?: Prize, prizePlaylist?: Interview3AprizePlaylist) {
+	_calcPlaylistPrizeChecked(prize?: Prize, prizePlaylist?: InterviewPrizePlaylist) {
 		if (!prize || !prizePlaylist || prizePlaylist.length <= 0) {
 			return false;
 		}

@@ -11,8 +11,8 @@ const SOCKET_KEY_REGEX = /temporarySocketKey\s+=\s+"(\S+)"/;
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:oot-bingo`);
 const request = RequestPromise.defaults({ jar: true }); // <= Automatically saves and re-uses cookies.
-const boardRep = nodecg.Replicant('bingosync:board');
-const socketRep = nodecg.Replicant('bingosync:socket');
+const boardRep = nodecg.Replicant('bingosync_board');
+const socketRep = nodecg.Replicant('bingosync_socket');
 let fullUpdateInterval;
 let websocket = null;
 nodecg.listenFor('bingosync:joinRoom', async (data, callback) => {
