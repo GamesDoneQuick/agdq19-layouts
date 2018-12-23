@@ -1,7 +1,5 @@
 'use strict';
 
-import {CurrentRun} from '../types/schemas/currentRun';
-
 const LS_TIMER_PHASE = {
 	NotRunning: 0,
 	Running: 1,
@@ -28,7 +26,7 @@ const timer = liveSplitCore.Timer.new(lsRun);
 
 const nodecg = nodecgApiContext.get();
 const checklistComplete = nodecg.Replicant<boolean>('checklistComplete');
-const currentRun = nodecg.Replicant<CurrentRun>('currentRun');
+const currentRun = nodecg.Replicant<GDQTypes.Run>('currentRun');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
 
 // Load the existing time and start the stopwatch at that.
