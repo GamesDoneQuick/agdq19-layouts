@@ -8,7 +8,7 @@ const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:twitch`);
 const currentRun = nodecg.Replicant('currentRun');
 let lastLongName;
-currentRun.on('change', (newVal) => {
+currentRun.on('change', newVal => {
     if (newVal.longName === lastLongName) {
         return;
     }
