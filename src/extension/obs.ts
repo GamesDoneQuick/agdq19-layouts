@@ -7,6 +7,7 @@ import {exec} from 'child_process';
 
 // Packages
 import {OBSUtility} from 'nodecg-utility-obs';
+import * as ObsWebsocketJs from 'obs-websocket-js'; // tslint:disable-line:no-implicit-dependencies
 
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
@@ -51,12 +52,12 @@ autoUploadRecordings.on('change', (newVal: boolean) => {
 	nodecg.log.info('Automatic uploading of recordings %s.', newVal ? 'ENABLED' : 'DISABLED');
 });
 
-compositingOBS.replicants.programScene.on('change', (newVal: any) => {
+compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scene) => {
 	if (!newVal) {
 		return;
 	}
 
-	newVal.sources.some((source: any) => {
+	newVal.sources.some(source => {
 		if (!source.name) {
 			return false;
 		}
@@ -137,7 +138,7 @@ compositingOBS.on('SwitchScenes', (data: any) => {
 	}
 });
 
-async function cycleRecording(obs: any) {
+async function cycleRecording(obs: OBSUtility) {
 	return new Promise((resolve, reject) => {
 		let rejected = false;
 		const timeout = setTimeout(() => {
@@ -159,8 +160,8 @@ async function cycleRecording(obs: any) {
 		};
 
 		obs.once('RecordingStopped', recordingStoppedListener);
-		obs.stopRecording().catch((error: Error) => {
-			if ((error as any).error === 'recording not active') {
+		obs.send('StopRecording').catch(error => {
+			if (error.error === 'recording not active') {
 				obs.removeListener('RecordingStopped', recordingStoppedListener);
 				resolve();
 			} else {
@@ -169,7 +170,7 @@ async function cycleRecording(obs: any) {
 			}
 		});
 	}).then(() => {
-		return obs.startRecording();
+		return obs.send('StartRecording');
 	});
 }
 

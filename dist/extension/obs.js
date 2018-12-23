@@ -43,7 +43,7 @@ compositingOBS.replicants.programScene.on('change', (newVal) => {
     if (!newVal) {
         return;
     }
-    newVal.sources.some((source) => {
+    newVal.sources.some(source => {
         if (!source.name) {
             return false;
         }
@@ -130,7 +130,7 @@ async function cycleRecording(obs) {
             }, 2500);
         };
         obs.once('RecordingStopped', recordingStoppedListener);
-        obs.stopRecording().catch((error) => {
+        obs.send('StopRecording').catch(error => {
             if (error.error === 'recording not active') {
                 obs.removeListener('RecordingStopped', recordingStoppedListener);
                 resolve();
@@ -141,7 +141,7 @@ async function cycleRecording(obs) {
             }
         });
     }).then(() => {
-        return obs.startRecording();
+        return obs.send('StartRecording');
     });
 }
 async function resetCropping() {

@@ -1,1 +1,1 @@
-{"version":3,"file":"obs.d.ts","sourceRoot":"","sources":["../../src/extension/obs.ts"],"names":[],"mappings":"AA+KA,wBAAsB,aAAa,iBAIlC;AAED,wBAAsB,eAAe,CAAC,SAAS,EAAE,MAAM,iBAItD;AAED,wBAAsB,eAAe,kBAiEpC;AAED,wBAAgB,uBAAuB,QAEtC"}
+{"version":3,"file":"obs.d.ts","sourceRoot":"","sources":["../../src/extension/obs.ts"],"names":[],"mappings":"AAgLA,wBAAsB,aAAa,iBAIlC;AAED,wBAAsB,eAAe,CAAC,SAAS,EAAE,MAAM,iBAItD;AAED,wBAAsB,eAAe,kBAiEpC;AAED,wBAAgB,uBAAuB,QAEtC"}
