@@ -7,8 +7,8 @@ const equals = require("deep-equal");
 const nodecgApiContext = require("./util/nodecg-api-context");
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:victorOps`);
-const incidentsReplicant = nodecg.Replicant('victorOps:incidents');
-const routingKeysReplicant = nodecg.Replicant('victorOps:routingKeys');
+const incidentsReplicant = nodecg.Replicant('victorOps_incidents');
+const routingKeysReplicant = nodecg.Replicant('victorOps_routingKeys');
 log.info('VictorOps integration enabled.');
 nodecg.listenFor('victorOps:createIncident', (body, cb) => {
     log.info('Creating incident:', body);

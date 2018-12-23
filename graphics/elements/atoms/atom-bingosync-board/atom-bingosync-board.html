@@ -103,7 +103,7 @@
 			}
 		</style>
 
-		<nodecg-replicant id="boardRep" replicant-name="bingosync:board" value="{{board}}"></nodecg-replicant>
+		<nodecg-replicant id="boardRep" replicant-name="bingosync_board" value="{{board}}"></nodecg-replicant>
 
 		<template is="dom-repeat" items="[[_calcCells(board.cells, board.selectedLine, board.lineFocused)]]" as="cell" mutable-data>
 			<div class$="cell [[_calcColorClasses(cell)]]" title="[[cell.name]]">

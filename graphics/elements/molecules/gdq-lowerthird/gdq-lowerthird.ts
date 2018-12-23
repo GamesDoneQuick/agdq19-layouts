@@ -1,11 +1,11 @@
 import {TimelineLite, Power4, Power3, TweenLite} from 'gsap';
-import {Interview3Anames} from '../../../../src/types/schemas/interview%3Anames';
+import {InterviewNames} from '../../../../src/types/schemas/interview_names';
 import Random from '../../../../shared/lib/vendor/random';
 import GDQLowerthirdNameplateElement from './gdq-lowerthird-nameplate';
 
 const {customElement, property} = Polymer.decorators;
 const NAME_ELEMENT_ENTRANCE_STAGGER = 0.15;
-const interviewNames = nodecg.Replicant<Interview3Anames>('interview:names');
+const interviewNames = nodecg.Replicant<InterviewNames>('interview_names');
 const lowerthirdShowing = nodecg.Replicant<boolean>('interview:lowerthirdShowing');
 
 /**
@@ -46,11 +46,11 @@ export default class GDQLowerthirdElement extends Polymer.MutableData(Polymer.El
 		});
 	}
 
-	updatePreview(names: Interview3Anames) {
+	updatePreview(names: InterviewNames) {
 		this.show(names).progress(1);
 	}
 
-	show(prefilledNames?: Interview3Anames) {
+	show(prefilledNames?: InterviewNames) {
 		const tl = new TimelineLite();
 		const names = prefilledNames ?
 			prefilledNames :

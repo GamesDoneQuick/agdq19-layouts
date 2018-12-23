@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
 const { customElement, property } = Polymer.decorators;
-const questions = nodecg.Replicant('interview:questionTweets');
-const questionShowing = nodecg.Replicant('interview:questionShowing');
+const questions = nodecg.Replicant('interview_questionTweets');
+const questionShowing = nodecg.Replicant('interview_questionShowing');
 /**
  * @customElement
  * @polymer

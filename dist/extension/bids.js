@@ -11,7 +11,7 @@ const nodecg = nodecgApiContext.get();
 const POLL_INTERVAL = 60 * 1000;
 const currentBidsRep = nodecg.Replicant('currentBids', { defaultValue: [] });
 const allBidsRep = nodecg.Replicant('allBids', { defaultValue: [] });
-const bitsTotal = nodecg.Replicant('bits:total');
+const bitsTotal = nodecg.Replicant('bits_total');
 // Get latest bid data every POLL_INTERVAL milliseconds
 update();
 /**

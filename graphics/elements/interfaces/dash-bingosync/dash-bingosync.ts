@@ -1,8 +1,8 @@
-import {Bingosync3Aboard} from '../../../../src/types/schemas/bingosync%3Aboard';
-import {Bingosync3Asocket} from '../../../../src/types/schemas/bingosync%3Asocket';
+import {BingosyncBoard} from '../../../../src/types/schemas/bingosync_board';
+import {BingosyncSocket} from '../../../../src/types/schemas/bingosync_socket';
 
 const {customElement, property} = Polymer.decorators;
-const boardRep = nodecg.Replicant<Bingosync3Aboard>('bingosync:board');
+const boardRep = nodecg.Replicant<BingosyncBoard>('bingosync_board');
 
 /**
  * @customElement
@@ -12,7 +12,7 @@ const boardRep = nodecg.Replicant<Bingosync3Aboard>('bingosync:board');
 @customElement('dash-bingosync')
 export default class DashBingosyncElement extends Polymer.MutableData(Polymer.Element) {
 	@property({type: String})
-	socket: Bingosync3Asocket;
+	socket: BingosyncSocket;
 
 	@property({type: String, reflectToAttribute: true, computed: '_computeStatus(socket)'})
 	status: string;
@@ -74,7 +74,7 @@ export default class DashBingosyncElement extends Polymer.MutableData(Polymer.El
 		(this.$.playerName as PaperInputElement).value = 'NodeCG';
 	}
 
-	_computeStatus(socket?: Bingosync3Asocket) {
+	_computeStatus(socket?: BingosyncSocket) {
 		if (!socket) {
 			return 'disconnected';
 		}

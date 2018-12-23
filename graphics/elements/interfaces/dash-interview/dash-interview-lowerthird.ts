@@ -1,6 +1,6 @@
 import {CurrentIntermission} from '../../../../src/types/schemas/currentIntermission';
 import {Interview, Run, Runner, ScheduleItem} from '../../../../src/types';
-import {Interview3Anames} from '../../../../src/types/schemas/interview%3Anames';
+import {InterviewNames} from '../../../../src/types/schemas/interview_names';
 import DashLowerthirdNameInputElement from './dash-lowerthird-name-input';
 import GDQLowerthirdElement from '../../molecules/gdq-lowerthird/gdq-lowerthird';
 import DashInterviewLowerthirdRefillOptionElement from './dash-interview-lowerthird-refill-option';
@@ -8,7 +8,7 @@ import DashInterviewLowerthirdRefillOptionElement from './dash-interview-lowerth
 const {customElement, property} = Polymer.decorators;
 const currentIntermissionRep = nodecg.Replicant<CurrentIntermission>('currentIntermission');
 const currentRunRep = nodecg.Replicant<Run>('currentRun');
-const interviewNamesRep = nodecg.Replicant<Interview3Anames>('interview:names');
+const interviewNamesRep = nodecg.Replicant<InterviewNames>('interview_names');
 const lowerthirdShowingRep = nodecg.Replicant<boolean>('interview:lowerthirdShowing');
 const runnersRep = nodecg.Replicant<Runner[]>('runners');
 const scheduleRep = nodecg.Replicant<ScheduleItem[]>('schedule');

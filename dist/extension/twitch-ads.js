@@ -9,7 +9,7 @@ const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:twitch`);
 const timeSince = nodecg.Replicant('twitch:timeSinceLastAd', { defaultValue: TimeUtils.createTimeStruct() });
 const timeLeft = nodecg.Replicant('twitch:timeLeftInAd', { defaultValue: TimeUtils.createTimeStruct() });
-const canPlayTwitchAd = nodecg.Replicant('twitch:canPlayAd');
+const canPlayTwitchAd = nodecg.Replicant('twitch_canPlayAd');
 const stopwatch = nodecg.Replicant('stopwatch');
 const CANT_PLAY_REASONS = {
     AD_IN_PROGRESS: 'ad in progress',

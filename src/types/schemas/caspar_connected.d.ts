@@ -5,11 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Bingosync3Asocket {
-	status: 'connected' | 'connecting' | 'disconnected' | 'error';
-	siteUrl: string;
-	socketUrl: string;
-	playerName: string;
-	roomCode: string;
-	passphrase: string;
-}
+export type CasparConnected = boolean;

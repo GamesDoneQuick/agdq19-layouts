@@ -1,9 +1,9 @@
 import {Total} from '../../../../src/types/schemas/total';
-import {Bits3Atotal} from '../../../../src/types/schemas/bits%3Atotal';
+import {BitsTotal} from '../../../../src/types/schemas/bits_total';
 
 const {customElement, property} = Polymer.decorators;
 const cashTotal = nodecg.Replicant<Total>('total');
-const bitsTotal = nodecg.Replicant<Bits3Atotal>('bits:total');
+const bitsTotal = nodecg.Replicant<BitsTotal>('bits_total');
 
 @customElement('dash-host-totals')
 export default class DashHostTotalsElement extends Polymer.Element {

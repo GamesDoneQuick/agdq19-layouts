@@ -1,9 +1,9 @@
-import {Gdq3AcurrentLayout} from '../../../src/types/schemas/gdq%3AcurrentLayout';
+import {CurrentLayout} from '../../../src/types/schemas/currentLayout';
 import {Tweets} from '../../../src/types/schemas/tweets';
 import {Tweet} from '../../../src/types/Twitter';
 
 const {customElement, property} = Polymer.decorators;
-const currentLayout = nodecg.Replicant<Gdq3AcurrentLayout>('gdq:currentLayout');
+const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
 const tweets = nodecg.Replicant<Tweets>('tweets');
 
 /**

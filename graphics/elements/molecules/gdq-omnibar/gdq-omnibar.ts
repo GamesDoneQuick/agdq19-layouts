@@ -2,7 +2,7 @@ import {TimelineLite} from 'gsap';
 import GDQOmnibarLabelElement from './gdq-omnibar-label';
 import GDQOmnibarCtaElement from './gdq-omnibar-cta';
 import {ParentBid, Prize, Run, ScheduleItem} from '../../../../src/types';
-import {Gdq3AcurrentLayout} from '../../../../src/types/schemas/gdq%3AcurrentLayout';
+import {CurrentLayout} from '../../../../src/types/schemas/currentLayout';
 import {RecordTrackerEnabled} from '../../../../src/types/schemas/recordTrackerEnabled';
 import {Total} from '../../../../src/types/schemas/total';
 import GDQOmnibarRunElement from './gdq-omnibar-run';
@@ -48,7 +48,7 @@ const SCROLL_HOLD_DURATION = nodecg.bundleConfig.omnibar.scrollHoldDuration;
 
 // Replicants.
 const currentBids = nodecg.Replicant<ParentBid[]>('currentBids');
-const currentLayout = nodecg.Replicant<Gdq3AcurrentLayout>('gdq:currentLayout');
+const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
 const currentPrizes = nodecg.Replicant<Prize[]>('currentPrizes');
 const currentRun = nodecg.Replicant<Run>('currentRun');
 const nextRun = nodecg.Replicant<Run>('nextRun');

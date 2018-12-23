@@ -1,6 +1,6 @@
 import AtomTweeningNumberElement from '../../atoms/atom-tweening-number/atom-tweening-number';
-import {Interview3Astopwatch} from '../../../../src/types/schemas/interview%3Astopwatch';
-import {Gdq3AcurrentLayout} from '../../../../src/types/schemas/gdq%3AcurrentLayout';
+import {InterviewStopwatch} from '../../../../src/types/schemas/interview_stopwatch';
+import {CurrentLayout} from '../../../../src/types/schemas/currentLayout';
 import {Run} from '../../../../src/types';
 import {Total} from '../../../../src/types/schemas/total';
 
@@ -8,11 +8,11 @@ const {customElement, property} = Polymer.decorators;
 const total = nodecg.Replicant<Total>('total');
 const currentRun = nodecg.Replicant<Run>('currentRun');
 const nextRun = nodecg.Replicant<Run>('nextRun');
-const currentLayout = nodecg.Replicant<Gdq3AcurrentLayout>('gdq:currentLayout');
-const throwIncoming = nodecg.Replicant<boolean>('interview:throwIncoming');
-const interviewStopwatch = nodecg.Replicant<Interview3Astopwatch>('interview:stopwatch');
+const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
+const throwIncoming = nodecg.Replicant<boolean>('interview_throwIncoming');
+const interviewStopwatch = nodecg.Replicant<InterviewStopwatch>('interview_stopwatch');
 const checklistComplete = nodecg.Replicant<boolean>('checklistComplete');
-const prizeModeRep = nodecg.Replicant<boolean>('interview:showPrizesOnMonitor');
+const prizeModeRep = nodecg.Replicant<boolean>('interview_showPrizesOnMonitor');
 
 @customElement('dash-interview-monitor')
 export default class DashInterviewMonitorElement extends Polymer.MutableData(Polymer.Element) {

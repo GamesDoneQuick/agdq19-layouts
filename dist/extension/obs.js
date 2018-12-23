@@ -12,9 +12,9 @@ const gdqUtils = require("../../dist/shared/lib/gdq-utils");
 const nodecg = nodecgApiContext.get();
 // We track what _layout_ is active, not necessarily what _scene_ is active.
 // A given layout can be on multiple scenes.
-const currentLayout = nodecg.Replicant('gdq:currentLayout');
+const currentLayout = nodecg.Replicant('currentLayout');
 const autoUploadRecordings = nodecg.Replicant('autoUploadRecordings');
-const cyclingRecordingsRep = nodecg.Replicant('obs:cyclingRecordings', { persistent: false });
+const cyclingRecordingsRep = nodecg.Replicant('obs_cyclingRecordings', { persistent: false });
 const compositingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'compositingOBS' });
 const recordingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'recordingOBS' });
 const encodingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'encodingOBS' });
@@ -144,13 +144,13 @@ async function cycleRecording(obs) {
         return obs.startRecording();
     });
 }
-function resetCropping() {
+async function resetCropping() {
     return compositingOBS.send('ResetCropping').catch((error) => {
         nodecg.log.error('resetCropping error:', error);
     });
 }
 exports.resetCropping = resetCropping;
-function setCurrentScene(sceneName) {
+async function setCurrentScene(sceneName) {
     return compositingOBS.send('SetCurrentScene', {
         'scene-name': sceneName
     });

@@ -1,11 +1,11 @@
 import {Prize} from '../../../../src/types';
-import {Interview3AprizePlaylist} from '../../../../src/types/schemas/interview%3AprizePlaylist';
+import {InterviewPrizePlaylist} from '../../../../src/types/schemas/interview_prizePlaylist';
 import MapSortMixin from '../../../mixins/map-sort-mixin';
 
 const {customElement, property} = Polymer.decorators;
 const allPrizesRep = nodecg.Replicant<Prize[]>('allPrizes');
-const prizePlaylistRep = nodecg.Replicant<Interview3AprizePlaylist>('interview:prizePlaylist');
-const prizePlaylistSortMapRep = nodecg.Replicant<string[]>('interview:prizePlaylistSortMap');
+const prizePlaylistRep = nodecg.Replicant<InterviewPrizePlaylist>('interview_prizePlaylist');
+const prizePlaylistSortMapRep = nodecg.Replicant<string[]>('interview_prizePlaylistSortMap');
 
 /**
  * @customElement
@@ -18,7 +18,7 @@ export default class DashInterviewMonitorPrizesElement extends MapSortMixin(Poly
 	allPrizes: Prize[];
 
 	@property({type: Array})
-	prizePlaylist: Interview3AprizePlaylist;
+	prizePlaylist: InterviewPrizePlaylist;
 
 	@property({type: Array, computed: '_computePlaylistPrizes(allPrizes, prizePlaylist)'})
 	playlistPrizes: Prize[];
@@ -60,7 +60,7 @@ export default class DashInterviewMonitorPrizesElement extends MapSortMixin(Poly
 		});
 	}
 
-	_computePlaylistPrizes(allPrizes?: Prize[], prizePlaylist?: Interview3AprizePlaylist) {
+	_computePlaylistPrizes(allPrizes?: Prize[], prizePlaylist?: InterviewPrizePlaylist) {
 		if (!allPrizes || allPrizes.length === 0 ||
 			!prizePlaylist || prizePlaylist.length === 0) {
 			return [];

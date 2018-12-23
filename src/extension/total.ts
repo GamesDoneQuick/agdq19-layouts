@@ -8,12 +8,12 @@ import {formatDollars} from './util';
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {GDQUrls} from './urls';
 import {ListenForCb} from '../types/nodecg';
-import {Bits3Atotal} from '../types/schemas/bits%3Atotal';
+import {BitsTotal} from '../types/schemas/bits_total';
 import {Total} from '../types/schemas/total';
 
 const nodecg = nodecgApiContext.get();
 const autoUpdateTotal = nodecg.Replicant<boolean>('autoUpdateTotal');
-const bitsTotal = nodecg.Replicant<Bits3Atotal>('bits:total');
+const bitsTotal = nodecg.Replicant<BitsTotal>('bits_total');
 const recordTrackerEnabled = nodecg.Replicant<boolean>('recordTrackerEnabled');
 const total = nodecg.Replicant<Total>('total');
 let disconnectWarningTimeout: NodeJS.Timer | null;

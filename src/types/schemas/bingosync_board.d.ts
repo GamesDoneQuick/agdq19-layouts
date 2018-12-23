@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Bingosync3Aboard {
+export interface BingosyncBoard {
 	cells: {
 		slot: string;
 		colors: string;

@@ -1,10 +1,10 @@
 import {Tweet} from '../../../src/types/Twitter';
-import {Gdq3AcurrentLayout} from '../../../src/types/schemas/gdq%3AcurrentLayout';
+import {CurrentLayout} from '../../../src/types/schemas/currentLayout';
 import {FanartTweets} from '../../../src/types/schemas/fanartTweets';
 import GDQFanartPreviewElement from './gdq-fanart-preview';
 
 const {customElement, property} = Polymer.decorators;
-const currentLayout = nodecg.Replicant<Gdq3AcurrentLayout>('gdq:currentLayout');
+const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
 const fanartTweetsRep = nodecg.Replicant<FanartTweets>('fanartTweets');
 
 /**

@@ -4,7 +4,7 @@ import {Websocket as WebsocketStatus} from 'nodecg-utility-obs/types/schemas/web
 
 const {customElement, property} = Polymer.decorators;
 const currentIntermission = nodecg.Replicant<CurrentIntermission>('currentIntermission');
-const casparConnected = nodecg.Replicant<boolean>('caspar:connected');
+const casparConnected = nodecg.Replicant<boolean>('caspar_connected');
 const compositingOBSWebsocket = nodecg.Replicant<WebsocketStatus>('compositingOBS:websocket');
 
 @customElement('dash-host-ads')

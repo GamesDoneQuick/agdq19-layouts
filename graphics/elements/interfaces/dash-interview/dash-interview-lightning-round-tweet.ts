@@ -1,8 +1,8 @@
 import {Tweet} from '../../../../src/types';
-import {Interview3AquestionSortMap} from '../../../../src/types/schemas/interview%3AquestionSortMap';
+import {InterviewQuestionSortMap} from '../../../../src/types/schemas/interview_questionSortMap';
 
 const {customElement, property} = Polymer.decorators;
-const questionSortMapRep = nodecg.Replicant<Interview3AquestionSortMap>('interview:questionSortMap');
+const questionSortMapRep = nodecg.Replicant<InterviewQuestionSortMap>('interview_questionSortMap');
 
 /**
  * @customElement
@@ -26,7 +26,7 @@ export default class DashInterviewLightningRoundTweetElement extends Polymer.Mut
 	first: boolean;
 
 	@property({type: Array})
-	_questionSortMap: Interview3AquestionSortMap;
+	_questionSortMap: InterviewQuestionSortMap;
 
 	private _initialized = false;
 
@@ -87,7 +87,7 @@ export default class DashInterviewLightningRoundTweetElement extends Polymer.Mut
 		return prizeId;
 	}
 
-	_computeFirst(tweet?: Tweet, questionSortMap?: Interview3AquestionSortMap) {
+	_computeFirst(tweet?: Tweet, questionSortMap?: InterviewQuestionSortMap) {
 		if (!tweet || !Array.isArray(questionSortMap)) {
 			return;
 		}

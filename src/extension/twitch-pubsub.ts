@@ -4,14 +4,14 @@ import TwitchPubSub = require('twitchps');
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {AutoUpdateTotal} from '../types/schemas/autoUpdateTotal';
-import {Bits3Atotal} from '../types/schemas/bits%3Atotal';
+import {BitsTotal} from '../types/schemas/bits_total';
 
 const nodecg = nodecgApiContext.get();
 const DEBUG = nodecg.bundleConfig.twitch.debug;
 const BITS_TOTAL_UPDATE_INTERVAL = 10 * 1000;
 const log = new nodecg.Logger(`${nodecg.bundleName}:twitch-pubsub`);
 const autoUpdateTotal = nodecg.Replicant<AutoUpdateTotal>('autoUpdateTotal');
-const bitsTotal = nodecg.Replicant<Bits3Atotal>('bits:total');
+const bitsTotal = nodecg.Replicant<BitsTotal>('bits_total');
 
 autoUpdateTotal.on('change', (newVal: boolean) => {
 	if (newVal) {

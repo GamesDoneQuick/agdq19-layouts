@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type VictorOps3Aincidents = Incident[];
+export type VictorOpsIncidents = Incident[];
 
 export interface Incident {
 	incidentNumber: string;

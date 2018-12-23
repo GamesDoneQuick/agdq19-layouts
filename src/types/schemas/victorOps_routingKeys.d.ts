@@ -5,4 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Gdq3AcurrentLayout = string;
+export type VictorOpsRoutingKeys = {
+	[k: string]: any;
+}[];

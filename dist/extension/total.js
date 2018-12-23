@@ -8,7 +8,7 @@ const nodecgApiContext = require("./util/nodecg-api-context");
 const urls_1 = require("./urls");
 const nodecg = nodecgApiContext.get();
 const autoUpdateTotal = nodecg.Replicant('autoUpdateTotal');
-const bitsTotal = nodecg.Replicant('bits:total');
+const bitsTotal = nodecg.Replicant('bits_total');
 const recordTrackerEnabled = nodecg.Replicant('recordTrackerEnabled');
 const total = nodecg.Replicant('total');
 let disconnectWarningTimeout;

@@ -5,7 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Interview3AprizePlaylist = {
-	id?: number;
-	complete?: boolean;
-}[];
+export type ObsCyclingRecordings = boolean;

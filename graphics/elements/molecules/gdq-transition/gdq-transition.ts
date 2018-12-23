@@ -1,6 +1,6 @@
 import {TimelineLite, TweenLite, Sine} from 'gsap';
 import * as gdqUtils from '../../../../shared/lib/gdq-utils';
-import {Gdq3AcurrentLayout} from '../../../../src/types/schemas/gdq%3AcurrentLayout';
+import {CurrentLayout} from '../../../../src/types/schemas/currentLayout';
 import CustomEase from '../../../../shared/lib/vendor/CustomEase';
 
 const {customElement} = Polymer.decorators;
@@ -15,7 +15,7 @@ const MEDIA_READY_STATES = {
 	HAVE_ENOUGH_DATA: 4
 };
 
-const currentLayoutRep = nodecg.Replicant<Gdq3AcurrentLayout>('gdq:currentLayout');
+const currentLayoutRep = nodecg.Replicant<CurrentLayout>('currentLayout');
 interface Point {
 	x: number;
 	y: number;

@@ -5,4 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Bits3Atotal = number;
+export type InterviewQuestionSortMap = string[];

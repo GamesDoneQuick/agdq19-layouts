@@ -5,16 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Interview3Astopwatch {
-	running: boolean;
-	time: {
-		days: number;
-		hours: number;
-		minutes: number;
-		seconds: number;
-		milliseconds: number;
-		formatted: string;
-		raw: number;
-		timestamp: number;
-	};
+export interface TwitchCanPlayAd {
+	[k: string]: any;
 }
