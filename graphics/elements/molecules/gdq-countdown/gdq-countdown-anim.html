@@ -1,0 +1,34 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="gdq-countdown-square.html">
+<dom-module id="gdq-countdown-anim">
+	<template>
+		<style>
+			:host {
+				width: 880px;
+				height: 880px;
+				padding: 1px;
+			}
+
+			#grid {
+				width: 100%;
+				height: 100%;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		</style>
+
+		<div id="grid">
+			<gdq-countdown-square active="[[active]]" index="1" caption="spikevegeta" cast="spike"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="2" caption="jhobz" cast="jhobz"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="3" caption="feasel" cast="feasel"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="4" caption="kungfufruitcup" cast="kungfu"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="5" caption="gdq" cast="gdq"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="6" caption="keizaron" cast="keizaron"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="7" caption="darkman78" cast="darkman"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="8" caption="blechy" cast="blechy"></gdq-countdown-square>
+			<gdq-countdown-square active="[[active]]" index="9" caption="sent" cast="sent"></gdq-countdown-square>
+		</div>
+	</template>
+
+	<script src="gdq-countdown-anim.js" type="module"></script>
+</dom-module>

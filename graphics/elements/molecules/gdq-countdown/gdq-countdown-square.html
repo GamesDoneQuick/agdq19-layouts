@@ -1,0 +1,89 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/iron-image/iron-image.html">
+<dom-module id="gdq-countdown-square">
+	<template>
+		<style>
+			:host {
+				position: relative;
+				width: 250px;
+				height: 305px;
+				display: flex;
+				padding: 1px;
+			}
+
+			img {
+				image-rendering: pixelated;
+			}
+
+			.frame {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 250px;
+				height: 250px;
+			}
+
+			.face {
+				position: absolute;
+				top: 35px;
+				left: 35px;
+				height: 180px;
+				width: 180px;
+			}
+
+			#white {
+				position: absolute;
+				top: 35px;
+				left: 35px;
+				height: 180px;
+				width: 180px;
+				background-color: #ffffff;
+				opacity: 0;
+			}
+
+			.text-content {
+				color: #ffffff;
+				font-size: 22px;
+				position: absolute;
+				bottom: 25px;
+				left: 0;
+				width: 100%;
+				text-align: center;
+			}
+
+			.frame_blink {
+				animation: blinker 0.4s linear infinite;
+			}
+
+			.blink_me {
+				animation: blinker 1s linear infinite;
+			}
+
+			@keyframes blinker {
+				0% {
+					opacity: 0;
+				}
+				49% {
+					opacity: 0;
+				}
+				50% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+		<img src="[[importPath]]img/mike1.png" class="face">
+		<img src="[[importPath]]img/mike2.png" class="face blink_me">
+		<img src="[[importPath]]img/[[cast]].png" id="main-face" class="face">
+		<div id="white"></div>
+		<img src="[[importPath]]img/frameon.png" id="on" class="frame">
+		<img src="[[importPath]]img/frameoff.png" id="off" class$="[[_computeFrame(active)]]">
+		<div class="text-content">[[caption]]</div>
+
+
+	</template>
+
+	<script src="gdq-countdown-square.js" type="module"></script>
+</dom-module>

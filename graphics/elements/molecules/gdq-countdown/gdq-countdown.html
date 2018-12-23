@@ -2,6 +2,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../shared/fonts/source-code-pro/import.html">
 <link rel="import" href="../../atoms/atom-sub-alerts/atom-sub-alerts.html">
+<link rel="import" href="gdq-countdown-anim.html">
 
 <dom-module id="gdq-countdown">
 	<template>
@@ -13,19 +14,25 @@
 				font-family: gdqpixel, monospace;
 			}
 
-			#gdqlogo {
+			gdq-countdown-anim {
 				position: absolute;
-				top: 643px;
-				left: 35px;
+				top: 100px;
+				left: 100px;
 			}
 
-			#leftLine {
+			#logobox {
 				position: absolute;
-				top: 899px;
-				left: 0;
-				width: 594px;
-				height: 1px;
-				background: white;
+				top: 303px;
+				right: 175px;
+				width: 591px;
+				height: 261px;
+				border: 1px solid #ffffff;
+			}
+
+			#gdqlogo {
+				position: absolute;
+				top: 343px;
+				right: 215px;
 			}
 
 			#rightLine {
@@ -44,8 +51,8 @@
 			#countdown,
 			#pressStart {
 				position: absolute;
-				top: 912px;
-				right: 1326px;
+				bottom: 190px;
+				left: 1013px;
 				text-align: right;
 				color: #85f8ff;
 				text-transform: uppercase;
@@ -95,8 +102,9 @@
 				50% { opacity: 0; }
 			}
 		</style>
-
+		<gdq-countdown-anim></gdq-countdown-anim>
 		<img id="gdqlogo" src="[[importPath]]img/gdqlogo.png">
+		<div id="logobox"></div>
 		<div id="leftLine"></div>
 		<div id="rightLine"></div>
 
