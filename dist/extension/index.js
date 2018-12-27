@@ -95,6 +95,9 @@ async function init() {
         nodecg.log.warn('"firebase" is not defined in cfg/agdq19-layouts.json! ' +
             'The interview question system (Lightning Round) will be disabled.');
     }
+    if (nodecg.bundleConfig.zabbix && nodecg.bundleConfig.zabbix.enabled) {
+        require('./zabbix');
+    }
 }
 // Fetch the login page, and run the response body through cheerio
 // so we can extract the CSRF token from the hidden input field.

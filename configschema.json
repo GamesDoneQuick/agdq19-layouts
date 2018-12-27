@@ -249,6 +249,17 @@
 		"volunteerEvaluationsURL": {
 			"type": "string",
 			"description": "The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard."
+		},
+		"zabbix": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"default": true
+				}
+			},
+			"required": ["enabled"]
 		}
 	},
 

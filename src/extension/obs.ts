@@ -9,6 +9,7 @@ import * as nodecgApiContext from './util/nodecg-api-context';
 import {CurrentLayout} from '../types/schemas/currentLayout';
 import {ObsCyclingRecordings} from '../types/schemas/obs_cyclingRecordings';
 import * as gdqUtils from '../../dist/shared/lib/gdq-utils';
+import {StreamStatus} from '../types/schemas/streamStatus';
 
 const nodecg = nodecgApiContext.get();
 
@@ -37,6 +38,31 @@ compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scen
 		}
 
 		return false;
+	});
+});
+
+// This should probably be in nodecg-utility-obs.
+// For now, leaving it here.
+// Come back and refactor this eventually.
+[compositingOBS, recordingOBS, encodingOBS].forEach(obs => {
+	const replicant = nodecg.Replicant<StreamStatus>(`${obs.namespace}:streamStatus`);
+	obs.on('StreamStatus', data => {
+		replicant.value = {
+			'bytes-per-sec': data['bytes-per-sec'],
+			'encode-skipped': (data as any)['encode-skipped'] as number,
+			'encode-total': (data as any)['encode-total'] as number,
+			fps: data.fps,
+			'kbits-per-sec': data['kbits-per-sec'],
+			'num-dropped-frames': data['num-dropped-frames'],
+			'num-total-frames': data['num-total-frames'],
+			recording: data.recording,
+			'render-skipped': (data as any)['render-skipped'] as number,
+			'render-total': (data as any)['render-total'] as number,
+			strain: data.strain,
+			'stream-timecode': (data as any)['stream-timecode'] as string,
+			streaming: data.streaming,
+			'total-stream-time': data['total-stream-time']
+		};
 	});
 });
 
