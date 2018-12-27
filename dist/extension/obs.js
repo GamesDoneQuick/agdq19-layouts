@@ -33,7 +33,7 @@ compositingOBS.replicants.programScene.on('change', (newVal) => {
 // For now, leaving it here.
 // Come back and refactor this eventually.
 [compositingOBS, recordingOBS, encodingOBS].forEach(obs => {
-    const replicant = nodecg.Replicant(`${obs.namespace}:streamStatus`);
+    const replicant = nodecg.Replicant(`${obs.namespace}:streamStatus`, { persistent: false });
     obs.on('StreamStatus', data => {
         replicant.value = {
             'bytes-per-sec': data['bytes-per-sec'],
