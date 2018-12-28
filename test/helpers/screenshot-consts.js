@@ -13,7 +13,7 @@ const STANDARD_REPLICANT_PREFILLS = {
 	currentIntermission: undefined,
 	currentPrizes: undefined,
 	currentRun: undefined,
-	'interview_names': undefined,
+	interview_names: undefined,
 	recordTrackerEnabled: undefined,
 	scores: undefined,
 	stopwatch: undefined,
@@ -168,7 +168,7 @@ const gameplayLayoutTestCases = [{
 }, {
 	route: `bundles/${BUNDLE_NAME}/graphics/standard_2_sms.html`,
 	replicantPrefills: {
-		'bingosync_board': undefined
+		bingosync_board: undefined
 	}
 }, {
 	route: `bundles/${BUNDLE_NAME}/graphics/standard_4_ff4fe.html`,
