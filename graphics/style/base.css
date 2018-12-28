@@ -5,6 +5,7 @@ body {
 	margin: 0;
 	opacity: 0;
 	--gdq-primary-color: #00FFFF;
+	--gdq-secondary-color: #FF0099;
 }
 
 #container {
