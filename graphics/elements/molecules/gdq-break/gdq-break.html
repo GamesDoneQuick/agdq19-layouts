@@ -16,7 +16,8 @@
 				display: block;
 				width: 1920px;
 				height: 1080px;
-				background: url("img/lines_bg.png") no-repeat;
+				background-image: radial-gradient(rgba(255, 255, 255, 0.15) 2%, transparent 0);
+				background-size: 50px 50px;
 				font-family: "Source Code Pro";
 			}
 
@@ -90,7 +91,22 @@
 				border: 1px solid #000000;
 				outline: 1px solid #00ffff;
 			}
+
+			#bg1 {
+				position: absolute;
+				left: 150px;
+				top: 200px;
+			}
+
+			#bg2 {
+				position: absolute;
+				left: 960px;
+				top: 135px;
+			}
 		</style>
+
+		<video id="bg1" autoplay loop preload="auto" muted src="[[importPath]]vid/break_bg_1.webm"></video>
+		<video id="bg2" autoplay loop preload="auto" muted src="[[importPath]]vid/break_bg_2.webm"></video>
 
 		<gdq-break-bids id="bids"></gdq-break-bids>
 		<gdq-break-prizes id="prizes"></gdq-break-prizes>
@@ -99,7 +115,7 @@
 		<gdq-break-schedule id="schedule"></gdq-break-schedule>
 
 		<div id="crowd-cam"></div>
-		<div id="crowd-cam-label">THE FORTRESS OF SOLITUDE</div>
+		<div id="crowd-cam-label">ROCKVILLE, MD</div>
 
 		<atom-text-greeble style="left: 418px;" length="15"></atom-text-greeble>
 		<atom-text-greeble style="left: 638px;" length="11"></atom-text-greeble>
