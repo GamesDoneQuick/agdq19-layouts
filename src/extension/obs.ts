@@ -1,10 +1,5 @@
 'use strict';
 
-// Native
-import * as fs from 'fs';
-import * as path from 'path';
-import {exec} from 'child_process';
-
 // Packages
 import {OBSUtility} from 'nodecg-utility-obs';
 import * as ObsWebsocketJs from 'obs-websocket-js'; // tslint:disable-line:no-implicit-dependencies
@@ -12,7 +7,6 @@ import * as ObsWebsocketJs from 'obs-websocket-js'; // tslint:disable-line:no-im
 // Ours
 import * as nodecgApiContext from './util/nodecg-api-context';
 import {CurrentLayout} from '../types/schemas/currentLayout';
-import {AutoUploadRecordings} from '../types/schemas/autoUploadRecordings';
 import {ObsCyclingRecordings} from '../types/schemas/obs_cyclingRecordings';
 import * as gdqUtils from '../../dist/shared/lib/gdq-utils';
 
@@ -21,36 +15,10 @@ const nodecg = nodecgApiContext.get();
 // We track what _layout_ is active, not necessarily what _scene_ is active.
 // A given layout can be on multiple scenes.
 const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
-const autoUploadRecordings = nodecg.Replicant<AutoUploadRecordings>('autoUploadRecordings');
 const cyclingRecordingsRep = nodecg.Replicant<ObsCyclingRecordings>('obs_cyclingRecordings', {persistent: false});
 const compositingOBS = new OBSUtility(nodecg, {namespace: 'compositingOBS'});
 const recordingOBS = new OBSUtility(nodecg, {namespace: 'recordingOBS'});
 const encodingOBS = new OBSUtility(nodecg, {namespace: 'encodingOBS'});
-const uploadScriptPath = nodecg.bundleConfig.youtubeUploadScriptPath;
-let uploadScriptRunning = false;
-
-if (uploadScriptPath) {
-	let stats;
-	try {
-		stats = fs.lstatSync(uploadScriptPath);
-	} catch (e) {
-		if (e.code === 'ENOENT') {
-			throw new Error(`Configured youtubeUploadScriptPath (${uploadScriptPath}) does not exist.`);
-		}
-
-		throw e;
-	}
-
-	if (!stats.isFile()) {
-		throw new Error(`Configured youtubeUploadScriptPath (${uploadScriptPath}) is not a file.`);
-	}
-
-	nodecg.log.info('Automatic VOD uploading enabled.');
-}
-
-autoUploadRecordings.on('change', (newVal: boolean) => {
-	nodecg.log.info('Automatic uploading of recordings %s.', newVal ? 'ENABLED' : 'DISABLED');
-});
 
 compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scene) => {
 	if (!newVal) {
@@ -220,32 +188,6 @@ export async function cycleRecordings() {
 		nodecg.log.info('Recordings successfully cycled.');
 		cyclingRecordingsRep.value = false;
 		nodecg.sendMessage('obs:recordingsCycled');
-
-		if (uploadScriptPath && autoUploadRecordings.value && !uploadScriptRunning) {
-			uploadScriptRunning = true;
-			nodecg.log.info('Executing upload script...');
-			exec(`python "${uploadScriptPath}"`, {
-				cwd: path.parse(uploadScriptPath).dir
-			}, (error, stdout, stderr) => {
-				uploadScriptRunning = false;
-
-				if (error) {
-					nodecg.log.error('Upload script failed:', error);
-					return;
-				}
-
-				if (stderr) {
-					nodecg.log.error('Upload script failed:', stderr);
-					return;
-				}
-
-				if (stdout.trim().length > 0) {
-					nodecg.log.info('Upload script ran successfully:', stdout.trim());
-				} else {
-					nodecg.log.info('Upload script ran successfully.');
-				}
-			});
-		}
 	} catch (error) {
 		cyclingRecordingsRep.value = false;
 		nodecg.sendMessage('obs:recordingsCycled', error);

@@ -59,7 +59,6 @@ export interface Configschema {
 		eventId: number;
 		[k: string]: any;
 	};
-	youtubeUploadScriptPath?: string;
 	donationSocketUrl?: string;
 	casparcg?: {
 		host: string;
