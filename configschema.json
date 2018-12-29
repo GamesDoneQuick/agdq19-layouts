@@ -187,9 +187,6 @@
 			"description": "Login information for the private areas of the tracker API.",
 			"required": ["username", "password", "eventId"]
 		},
-		"youtubeUploadScriptPath": {
-			"type": "string"
-		},
 		"donationSocketUrl": {
 			"type": "string"
 		},

@@ -1,9 +1,5 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-// Native
-const fs = require("fs");
-const path = require("path");
-const child_process_1 = require("child_process");
 // Packages
 const nodecg_utility_obs_1 = require("nodecg-utility-obs");
 // Ours
@@ -13,32 +9,10 @@ const nodecg = nodecgApiContext.get();
 // We track what _layout_ is active, not necessarily what _scene_ is active.
 // A given layout can be on multiple scenes.
 const currentLayout = nodecg.Replicant('currentLayout');
-const autoUploadRecordings = nodecg.Replicant('autoUploadRecordings');
 const cyclingRecordingsRep = nodecg.Replicant('obs_cyclingRecordings', { persistent: false });
 const compositingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'compositingOBS' });
 const recordingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'recordingOBS' });
 const encodingOBS = new nodecg_utility_obs_1.OBSUtility(nodecg, { namespace: 'encodingOBS' });
-const uploadScriptPath = nodecg.bundleConfig.youtubeUploadScriptPath;
-let uploadScriptRunning = false;
-if (uploadScriptPath) {
-    let stats;
-    try {
-        stats = fs.lstatSync(uploadScriptPath);
-    }
-    catch (e) {
-        if (e.code === 'ENOENT') {
-            throw new Error(`Configured youtubeUploadScriptPath (${uploadScriptPath}) does not exist.`);
-        }
-        throw e;
-    }
-    if (!stats.isFile()) {
-        throw new Error(`Configured youtubeUploadScriptPath (${uploadScriptPath}) is not a file.`);
-    }
-    nodecg.log.info('Automatic VOD uploading enabled.');
-}
-autoUploadRecordings.on('change', (newVal) => {
-    nodecg.log.info('Automatic uploading of recordings %s.', newVal ? 'ENABLED' : 'DISABLED');
-});
 compositingOBS.replicants.programScene.on('change', (newVal) => {
     if (!newVal) {
         return;
@@ -187,29 +161,6 @@ async function cycleRecordings() {
         nodecg.log.info('Recordings successfully cycled.');
         cyclingRecordingsRep.value = false;
         nodecg.sendMessage('obs:recordingsCycled');
-        if (uploadScriptPath && autoUploadRecordings.value && !uploadScriptRunning) {
-            uploadScriptRunning = true;
-            nodecg.log.info('Executing upload script...');
-            child_process_1.exec(`python "${uploadScriptPath}"`, {
-                cwd: path.parse(uploadScriptPath).dir
-            }, (error, stdout, stderr) => {
-                uploadScriptRunning = false;
-                if (error) {
-                    nodecg.log.error('Upload script failed:', error);
-                    return;
-                }
-                if (stderr) {
-                    nodecg.log.error('Upload script failed:', stderr);
-                    return;
-                }
-                if (stdout.trim().length > 0) {
-                    nodecg.log.info('Upload script ran successfully:', stdout.trim());
-                }
-                else {
-                    nodecg.log.info('Upload script ran successfully.');
-                }
-            });
-        }
     }
     catch (error) {
         cyclingRecordingsRep.value = false;
