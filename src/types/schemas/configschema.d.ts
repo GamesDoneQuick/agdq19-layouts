@@ -82,4 +82,7 @@ export interface Configschema {
 	 * The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard.
 	 */
 	volunteerEvaluationsURL?: string;
+	zabbix?: {
+		enabled: boolean;
+	};
 }
