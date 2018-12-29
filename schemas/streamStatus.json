@@ -1,0 +1,61 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"bytes-per-sec": {
+			"type": "number"
+		},
+		"encode-skipped": {
+			"type": "number"
+		},
+		"encode-total": {
+			"type": "number"
+		},
+		"fps": {
+			"type": "number"
+		},
+		"kbits-per-sec": {
+			"type": "number"
+		},
+		"num-dropped-frames": {
+			"type": "number"
+		},
+		"num-total-frames": {
+			"type": "number"
+		},
+		"recording": {
+			"type": "boolean"
+		},
+		"render-skipped": {
+			"type": "number"
+		},
+		"render-total": {
+			"type": "number"
+		},
+		"strain": {
+			"type": "number"
+		},
+		"stream-timecode": {
+			"type": "string"
+		},
+		"streaming": {
+			"type": "boolean"
+		},
+		"total-stream-time": {
+			"type": "number"
+		}
+	},
+	"required": [
+		"bytes-per-sec",
+		"fps",
+		"kbits-per-sec",
+		"num-dropped-frames",
+		"num-total-frames",
+		"recording",
+		"strain",
+		"stream-timecode",
+		"streaming",
+		"total-stream-time"
+	]
+}

@@ -29,6 +29,30 @@ compositingOBS.replicants.programScene.on('change', (newVal) => {
         return false;
     });
 });
+// This should probably be in nodecg-utility-obs.
+// For now, leaving it here.
+// Come back and refactor this eventually.
+[compositingOBS, recordingOBS, encodingOBS].forEach(obs => {
+    const replicant = nodecg.Replicant(`${obs.namespace}:streamStatus`, { persistent: false });
+    obs.on('StreamStatus', data => {
+        replicant.value = {
+            'bytes-per-sec': data['bytes-per-sec'],
+            'encode-skipped': data['encode-skipped'],
+            'encode-total': data['encode-total'],
+            fps: data.fps,
+            'kbits-per-sec': data['kbits-per-sec'],
+            'num-dropped-frames': data['num-dropped-frames'],
+            'num-total-frames': data['num-total-frames'],
+            recording: data.recording,
+            'render-skipped': data['render-skipped'],
+            'render-total': data['render-total'],
+            strain: data.strain,
+            'stream-timecode': data['stream-timecode'],
+            streaming: data.streaming,
+            'total-stream-time': data['total-stream-time']
+        };
+    });
+});
 compositingOBS.replicants.previewScene.on('change', (newVal) => {
     if (!newVal || !newVal.name) {
         return;
