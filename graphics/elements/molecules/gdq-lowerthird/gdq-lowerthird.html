@@ -60,8 +60,9 @@
 			}
 
 			#hostName {
-				margin-top: 14px;
+				margin-top: 8px;
 				width: 540px;
+				--gdq-lowerthird-nameplate-height: 64px;
 			}
 
 			:host(:not[num-names="5"]) #hostName {
@@ -88,6 +89,7 @@
 			}
 
 			:host([num-names="5"]) #mainNames gdq-lowerthird-nameplate {
+				--gdq-lowerthird-nameplate-height: 64px;
 				margin: 0 5px;
 				width: 439px;
 			}
@@ -100,6 +102,7 @@
 			}
 
 			:host([num-names="4"]) #mainNames gdq-lowerthird-nameplate {
+				--gdq-lowerthird-nameplate-height: 64px;
 				margin: 0 5px;
 				width: 439px;
 			}
@@ -122,6 +125,10 @@
 			/* Begin 2-name styles. */
 			:host([num-names="2"]) {
 				height: 252px;
+			}
+
+			:host([num-names="2"]) #background {
+				height: 165px;
 			}
 
 			:host([num-names="1"]) #header {
