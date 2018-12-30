@@ -210,7 +210,8 @@
 			<ui-sortable-list
 				id="playlist"
 				items="[[_calcPrizesInPlaylist(allPrizes, prizePlaylist)]]"
-				replicant-name="interview_prizePlaylist">
+				replicant-name="interview_prizePlaylist"
+				show-remove-button>
 				<template slot="item-body">
 					<dash-interview-prize-playlist-item
 						prize="[[item]]">

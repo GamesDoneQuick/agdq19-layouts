@@ -36,6 +36,14 @@ nodecg.listenFor('sortable-list:moveItemToBottom', (data) => {
         log.error('Invalid data:', data);
     }
 });
+nodecg.listenFor('sortable-list:removeItem', (data) => {
+    if (isSortableListMoveArgs(data)) {
+        removeItem(data);
+    }
+    else {
+        log.error('Invalid data:', data);
+    }
+});
 function isSortableListMoveArgs(data) {
     if (typeof data !== 'object' || data === null) {
         return false;
@@ -47,13 +55,16 @@ function isSortableListMoveArgs(data) {
         data.hasOwnProperty('itemIdField') &&
         data.hasOwnProperty('useSortMap');
 }
-function moveItem(data, direction) {
+function findReplicant(data) {
     // Error if the replicant isn't an array, or doesn't have any items.
     const replicant = nodecg.Replicant(data.replicantName, data.replicantBundle);
     if (!replicant || !Array.isArray(replicant.value) || replicant.value.length <= 0) {
-        log.error('Replicant must be an array, and must have a length greater than zero.');
-        return;
+        throw new Error('Replicant must be an array, and must have a length greater than zero.');
     }
+    return replicant;
+}
+function assertItem(data) {
+    const replicant = findReplicant(data);
     // Error if the item is not found.
     if (data.itemIdField.length > 0) {
         const actualItemIndex = replicant.value.findIndex((item) => {
@@ -63,15 +74,17 @@ function moveItem(data, direction) {
             return item && item[data.itemIdField] === data.itemId;
         });
         if (actualItemIndex < 0 || isNaN(actualItemIndex)) {
-            log.error('Item not found with these args:', data);
-            return;
+            throw new Error(`Item not found with these args: ${data}`);
         }
         // Error if the provided index does not match the actual found index.
         if (actualItemIndex !== data.itemIndex) {
-            log.error('Expected item index %s, got %s. Full data:', data.itemIndex, actualItemIndex, data);
-            return;
+            throw new Error(`Expected item index ${data.itemIndex}, got ${actualItemIndex}. Full data: ${data}`);
         }
     }
+}
+function moveItem(data, direction) {
+    const replicant = findReplicant(data);
+    assertItem(data);
     // Abort if moving the item up, and it can't be moved up any further.
     if (data.itemIndex === 0 && direction === 'up') {
         return;
@@ -99,6 +112,13 @@ function moveItem(data, direction) {
     }
     const newArray = replicant.value.slice(0);
     newArray.splice(newIndex, 0, newArray.splice(data.itemIndex, 1)[0]);
+    replicant.value = newArray;
+}
+function removeItem(data) {
+    const replicant = findReplicant(data);
+    assertItem(data);
+    const newArray = replicant.value.slice(0);
+    newArray.splice(data.itemIndex, 1);
     replicant.value = newArray;
 }
 //# sourceMappingURL=sortable-list.js.map

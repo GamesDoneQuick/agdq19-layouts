@@ -182,19 +182,6 @@ nodecg.listenFor('interview:addPrizeToPlaylist', (prizeId: unknown) => {
 	});
 });
 
-nodecg.listenFor('interview:removePrizeFromPlaylist', (prizeId: unknown) => {
-	if (typeof prizeId !== 'number' || prizeId < 0) {
-		return;
-	}
-
-	const existingIndex = prizePlaylist.value.findIndex(({id}: {id: number}) => id === prizeId);
-	if (existingIndex < 0) {
-		return;
-	}
-
-	prizePlaylist.value.splice(existingIndex, 1);
-});
-
 nodecg.listenFor('interview:markPrizeAsDone', (prizeId: unknown) => {
 	if (typeof prizeId !== 'number' || prizeId < 0) {
 		return;

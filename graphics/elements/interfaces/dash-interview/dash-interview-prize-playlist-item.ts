@@ -59,13 +59,6 @@ export default class DashInterviewPrizePlaylistItemElement extends Polymer.Mutab
 		nodecg.sendMessage('interview:markPrizeAsNotDone', this.prize.id);
 	}
 
-	removeFromPlaylist() {
-		if (!this.prize) {
-			return;
-		}
-		nodecg.sendMessage('interview:removePrizeFromPlaylist', this.prize.id);
-	}
-
 	_computePrizeId(prizeId: string) {
 		return prizeId;
 	}

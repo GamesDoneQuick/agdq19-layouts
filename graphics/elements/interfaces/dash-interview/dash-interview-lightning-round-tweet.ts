@@ -41,27 +41,6 @@ export default class DashInterviewLightningRoundTweetElement extends Polymer.Mut
 		}
 	}
 
-	reject() {
-		if (!this.tweet) {
-			return;
-		}
-
-		const button = this.$.reject as PaperButtonElement;
-		button.disabled = true;
-		nodecg.sendMessage('interview:markQuestionAsDone', this.tweet.id_str, error => {
-			button.disabled = false;
-			if (error) {
-				this.dispatchEvent(new CustomEvent('error-toast', {
-					detail: {
-						text: 'Failed to reject interview question.'
-					},
-					bubbles: true,
-					composed: true
-				}));
-			}
-		});
-	}
-
 	_computeTweetId(prizeId: number) {
 		return prizeId;
 	}

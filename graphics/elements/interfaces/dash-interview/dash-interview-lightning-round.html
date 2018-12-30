@@ -76,7 +76,11 @@
 			items="[[replies]]"
 			item-id-field="id_str"
 			replicant-name="interview_questionSortMap"
-			use-sort-map>
+			use-sort-map
+			show-remove-button
+			remove-button-icon="delete-forever"
+			prevent-remove-item-behavior
+			on-remove-item="_handleItemRemoval">
 			<template slot="item-body">
 				<dash-interview-lightning-round-tweet
 					tweet="[[item]]">

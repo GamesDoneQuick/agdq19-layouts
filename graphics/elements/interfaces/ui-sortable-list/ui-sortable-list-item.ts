@@ -26,6 +26,12 @@ export default class UiSortableListItemElement extends Polymer.MutableData(Polym
 	@property({type: Array})
 	items: (string | object)[];
 
+	@property({type: Boolean, reflectToAttribute: true})
+	showRemoveButton = false;
+
+	@property({type: String})
+	removeButtonIcon = 'remove';
+
 	/**
 	 * The template instance corresponding to the item
 	 */
@@ -83,5 +89,9 @@ export default class UiSortableListItemElement extends Polymer.MutableData(Polym
 
 	_moveItemToBottomPressed() {
 		this.dispatchEvent(new CustomEvent('move-item-to-bottom'));
+	}
+
+	_removeItemPressed() {
+		this.dispatchEvent(new CustomEvent('remove-item'));
 	}
 }
