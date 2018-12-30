@@ -1,8 +1,6 @@
 <link rel="import" href="../../../../bower_components/iron-icons/image-icons.html">
 <link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
-<link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
 <link rel="import" href="../../../../shared/style/gdq-input-style.html">
 <link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
@@ -44,6 +42,7 @@
 
 			#lowerthirdRefillDialog {
 				--paper-dialog-scrollable: {
+					@apply --layout-flex-none;
 					@apply --layout-horizontal;
 				}
 			}
