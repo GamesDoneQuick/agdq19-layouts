@@ -80,7 +80,7 @@ export default class DashInterviewPrizePlaylistItemElement extends Polymer.Mutab
 	}
 
 	_completeChanged(newVal: boolean) {
-		(this as any).parentNode.parentNode.host.style.backgroundColor = newVal ? '#C2C2C2' : '';
+		(this as any).parentNode.style.backgroundColor = newVal ? '#C2C2C2' : '';
 	}
 
 	_handleCheckboxChanged(e: any) {

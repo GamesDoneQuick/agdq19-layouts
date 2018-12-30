@@ -76,6 +76,6 @@ export default class DashInterviewLightningRoundTweetElement extends Polymer.Mut
 	}
 
 	_firstChanged(newVal: boolean) {
-		(this as any).parentNode.parentNode.host.style.backgroundColor = newVal ? '#BDE7C4' : '';
+		(this as any).parentNode.style.backgroundColor = newVal ? '#BDE7C4' : '';
 	}
 }
