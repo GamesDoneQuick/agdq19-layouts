@@ -85,12 +85,20 @@ export default class UiSortableListElement extends MapSortMixin(Polymer.MutableD
 		}
 	}
 
+	_moveItemToTopPressed(event: MouseEvent) {
+		this._sendItemAction('moveItemToTop', event);
+	}
+
 	_moveItemUpPressed(event: MouseEvent) {
 		this._sendItemAction('moveItemUp', event);
 	}
 
 	_moveItemDownPressed(event: MouseEvent) {
 		this._sendItemAction('moveItemDown', event);
+	}
+
+	_moveItemToBottomPressed(event: MouseEvent) {
+		this._sendItemAction('moveItemToBottom', event);
 	}
 
 	_sendItemAction(actionName: string, event: MouseEvent) {
