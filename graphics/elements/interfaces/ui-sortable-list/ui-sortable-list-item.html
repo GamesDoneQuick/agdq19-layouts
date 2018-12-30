@@ -6,8 +6,7 @@
 			:host {
 				--buttons-border-color: #eaeaea;
 				@apply --layout-horizontal;
-				border-bottom-left-radius: 5px;
-				border-top-left-radius: 5px;
+				border-radius: 5px;
 				box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 				box-sizing: border-box;
 				flex-shrink: 0;
@@ -23,20 +22,27 @@
 				margin-bottom: 0;
 			}
 
-			#sortButtons {
-				@apply --layout-vertical;
+			paper-button {
+				margin: 0;
+				min-width: 0;
+				padding: 0;
+				border-radius: 0;
+			}
+
+			.buttonGroup {
 				@apply --layout-center-justified;
+				@apply --layout-flex-none;
+				@apply --layout-vertical;
+				width: 34px;
+			}
+
+			#sortButtons {
 				background-color: var(--buttons-border-color);
 				border-right: 2px solid var(--buttons-border-color);
 			}
 
 			#sortButtons paper-button {
 				height: 23px;
-				margin: 0;
-				min-width: 0;
-				padding: 0;
-				width: 34px;
-				border-radius: 0;
 				border-top: 1px solid var(--buttons-border-color);
 				border-bottom: 1px solid var(--buttons-border-color);
 			}
@@ -65,9 +71,17 @@
 				padding-left: 0;
 				padding: 8px;
 			}
+
+			#removeButton {
+				height: 100%;
+			}
+
+			[hidden] {
+				display: none;
+			}
 		</style>
 
-		<div id="sortButtons">
+		<div id="sortButtons" class="buttonGroup">
 			<paper-button
 				id="topButton"
 				class="indigo--light"
@@ -115,6 +129,18 @@
 
 		<div id="body">
 
+		</div>
+
+		<div id="rightButtons" class="buttonGroup" hidden$="[[!showRemoveButton]]">
+			<paper-button
+				id="removeButton"
+				class="red"
+				on-tap="_removeItemPressed"
+				tabindex="-1"
+				title="Remove"
+				raised>
+				<iron-icon icon$="[[removeButtonIcon]]"></iron-icon>
+			</paper-button>
 		</div>
 	</template>
 

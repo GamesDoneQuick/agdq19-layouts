@@ -145,16 +145,6 @@ nodecg.listenFor('interview:addPrizeToPlaylist', (prizeId) => {
         complete: false
     });
 });
-nodecg.listenFor('interview:removePrizeFromPlaylist', (prizeId) => {
-    if (typeof prizeId !== 'number' || prizeId < 0) {
-        return;
-    }
-    const existingIndex = prizePlaylist.value.findIndex(({ id }) => id === prizeId);
-    if (existingIndex < 0) {
-        return;
-    }
-    prizePlaylist.value.splice(existingIndex, 1);
-});
 nodecg.listenFor('interview:markPrizeAsDone', (prizeId) => {
     if (typeof prizeId !== 'number' || prizeId < 0) {
         return;

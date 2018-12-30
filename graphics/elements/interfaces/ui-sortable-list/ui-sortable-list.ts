@@ -26,6 +26,15 @@ export default class UiSortableListElement extends MapSortMixin(Polymer.MutableD
 	@property({type: Boolean, reflectToAttribute: true})
 	useSortMap = false;
 
+	@property({type: Boolean, reflectToAttribute: true})
+	showRemoveButton: boolean;
+
+	@property({type: String})
+	removeButtonIcon: string;
+
+	@property({type: Boolean})
+	preventRemoveItemBehavior: boolean;
+
 	sort: Function;
 	_itemTemplateClass: (new() => TemplateInstanceBase);
 
@@ -82,6 +91,20 @@ export default class UiSortableListElement extends MapSortMixin(Polymer.MutableD
 					parentModel: true
 				});
 			}
+		}
+	}
+
+	_removeItemPressed(event: MouseEvent) {
+		const forwardedEvent = new CustomEvent('remove-item', {
+			detail: {
+				model: (event as any).model,
+				listItemElement: event.target
+			},
+			cancelable: true
+		});
+		const cancelled = !this.dispatchEvent(forwardedEvent);
+		if (!cancelled) {
+			this._sendItemAction('removeItem', event);
 		}
 	}
 

@@ -39,4 +39,29 @@ export default class DashInterviewLightningRoundElement extends Polymer.MutableD
 	endInterview() {
 		nodecg.sendMessage('interview:end');
 	}
+
+	_handleItemRemoval(event: Event) {
+		event.preventDefault();
+		console.log(event);
+
+		const tweet = (event as any).detail.model.item;
+		if (!tweet) {
+			return;
+		}
+
+		const button = (event as any).detail.listItemElement.$.removeButton as PaperButtonElement;
+		button.disabled = true;
+		nodecg.sendMessage('interview:markQuestionAsDone', tweet.id_str, error => {
+			button.disabled = false;
+			if (error) {
+				this.dispatchEvent(new CustomEvent('error-toast', {
+					detail: {
+						text: 'Failed to reject interview question.'
+					},
+					bubbles: true,
+					composed: true
+				}));
+			}
+		});
+	}
 }

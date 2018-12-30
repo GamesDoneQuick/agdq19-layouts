@@ -1,5 +1,3 @@
-<link rel="import" href="../../../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
 
@@ -28,23 +26,6 @@
 				font-weight: 500;
 			}
 
-			#remove {
-				@apply --layout-center-center;
-				@apply --layout-horizontal;
-				height: 40px;
-				margin-left: 10px;
-				margin-right: 4px;
-				min-width: 0;
-				padding: 0;
-				width: 40px;
-			}
-
-			#remove-icon {
-				color: white;
-				height: 32px;
-				width: 32px;
-			}
-
 			/* Start [complete] styles. */
 			:host([complete]) #name {
 				color: #7D7D7D;
@@ -62,15 +43,6 @@
 		<div id="name" title="[[prize.description]]">
 			[[prize.description]]
 		</div>
-
-		<paper-button
-			id="remove"
-			class="red"
-			on-tap="removeFromPlaylist"
-			alt="Remove from playlist"
-			raised>
-			<iron-icon icon="remove" id="remove-icon"></iron-icon>
-		</paper-button>
 	</template>
 
 	<script src="dash-interview-prize-playlist-item.js" type="module"></script>
