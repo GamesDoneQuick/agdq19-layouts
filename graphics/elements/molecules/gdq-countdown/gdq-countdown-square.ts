@@ -50,16 +50,15 @@ export default class GDQCountdownSquare extends Polymer.Element {
 		if (active === this.index) {
 			return 'frame frame_blink';
 		}
-		else {
-			return 'frame';
-		}
+
+		return 'frame';
 	}
 
 	centerFlash() {
 		const tl = new TimelineLite();
 		tl.addLabel('start', 0.03);
 
-		tl.to(this.$.white, 0.75, {opacity:1}, 'start');
+		tl.to(this.$.white, 0.75, {opacity: 1}, 'start');
 		tl.to(this.$['main-face'], 0.03, {opacity: 0}, 'start+=0.75');
 		tl.to(this.$.white, 0.75, {opacity: 0}, 'start+=0.8');
 		return tl;

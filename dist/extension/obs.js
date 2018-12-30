@@ -138,7 +138,7 @@ async function cycleRecording(obs) {
                 reject(error);
             }
         });
-    }).then(() => {
+    }).then(async () => {
         return obs.send('StartRecording');
     });
 }

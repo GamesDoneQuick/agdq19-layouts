@@ -163,7 +163,7 @@ async function cycleRecording(obs: OBSUtility) {
 				reject(error);
 			}
 		});
-	}).then(() => {
+	}).then(async () => {
 		return obs.send('StartRecording');
 	});
 }
