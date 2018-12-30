@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const nodecgApiContext = require("./util/nodecg-api-context");
 const nodecg = nodecgApiContext.get();
 const log = new nodecg.Logger(`${nodecg.bundleName}:sortable-list`);
+nodecg.listenFor('sortable-list:moveItemToTop', (data) => {
+    if (isSortableListMoveArgs(data)) {
+        moveItem(data, 'top');
+    }
+    else {
+        log.error('Invalid data:', data);
+    }
+});
 nodecg.listenFor('sortable-list:moveItemUp', (data) => {
     if (isSortableListMoveArgs(data)) {
         moveItem(data, 'up');
@@ -15,6 +23,14 @@ nodecg.listenFor('sortable-list:moveItemUp', (data) => {
 nodecg.listenFor('sortable-list:moveItemDown', (data) => {
     if (isSortableListMoveArgs(data)) {
         moveItem(data, 'down');
+    }
+    else {
+        log.error('Invalid data:', data);
+    }
+});
+nodecg.listenFor('sortable-list:moveItemToBottom', (data) => {
+    if (isSortableListMoveArgs(data)) {
+        moveItem(data, 'bottom');
     }
     else {
         log.error('Invalid data:', data);
@@ -64,7 +80,23 @@ function moveItem(data, direction) {
     if (data.itemIndex === (replicant.value.length - 1) && direction === 'down') {
         return;
     }
-    const newIndex = direction === 'up' ? (data.itemIndex - 1) : (data.itemIndex + 1);
+    let newIndex;
+    switch (direction) {
+        case 'top':
+            newIndex = 0;
+            break;
+        case 'up':
+            newIndex = data.itemIndex - 1;
+            break;
+        case 'down':
+            newIndex = data.itemIndex + 1;
+            break;
+        case 'bottom':
+            newIndex = replicant.value.length - 1;
+            break;
+        default:
+            return;
+    }
     const newArray = replicant.value.slice(0);
     newArray.splice(newIndex, 0, newArray.splice(data.itemIndex, 1)[0]);
     replicant.value = newArray;

@@ -162,37 +162,6 @@ nodecg.listenFor('interview:updateQuestionSortMap', updateQuestionSortMap);
 
 nodecg.listenFor('interview:markQuestionAsDone', markQuestionAsDone);
 
-nodecg.listenFor('interview:promoteQuestionToTop', (id, cb) => {
-	if (!_repliesRef) {
-		if (cb && !cb.handled) {
-			cb(new Error('_repliesRef not ready!'));
-		}
-		return;
-	}
-
-	if (!id) {
-		if (cb && !cb.handled) {
-			cb();
-		}
-		return;
-	}
-
-	const itemIndex = questionSortMap.value.findIndex((sortId: string) => sortId === id);
-	if (itemIndex < 0) {
-		if (cb && !cb.handled) {
-			cb(new Error('Tweet ID not found in sort map!'));
-		}
-		return;
-	}
-
-	const newArray = questionSortMap.value.slice(0);
-	newArray.splice(0, 0, newArray.splice(itemIndex, 1)[0]);
-	questionSortMap.value = newArray;
-	if (cb && !cb.handled) {
-		cb();
-	}
-});
-
 nodecg.listenFor('interview:end', () => {
 	database.ref('/active_tweet_id').set(0);
 });

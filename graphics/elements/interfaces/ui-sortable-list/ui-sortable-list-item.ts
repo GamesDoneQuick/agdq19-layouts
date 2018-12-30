@@ -45,7 +45,7 @@ export default class UiSortableListItemElement extends Polymer.MutableData(Polym
 			sortableList._ensureTemplatized();
 			if (sortableList._itemTemplateClass) {
 				this._itemTemplateInstance = new sortableList._itemTemplateClass();
-				this.shadowRoot!.appendChild((this._itemTemplateInstance as any).root);
+				this.$.body.appendChild((this._itemTemplateInstance as any).root);
 			}
 		}
 	}
@@ -69,11 +69,19 @@ export default class UiSortableListItemElement extends Polymer.MutableData(Polym
 		return index === (items.length - 1);
 	}
 
+	_moveItemToTopPressed() {
+		this.dispatchEvent(new CustomEvent('move-item-to-top'));
+	}
+
 	_moveItemUpPressed() {
 		this.dispatchEvent(new CustomEvent('move-item-up'));
 	}
 
 	_moveItemDownPressed() {
 		this.dispatchEvent(new CustomEvent('move-item-down'));
+	}
+
+	_moveItemToBottomPressed() {
+		this.dispatchEvent(new CustomEvent('move-item-to-bottom'));
 	}
 }

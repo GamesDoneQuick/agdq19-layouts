@@ -1,18 +1,18 @@
-<link rel="import" href="../../../../bower_components/iron-icons/hardware-icons.html">
 <link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="ui-sortable-list-item">
 	<template>
 		<style include="gdq-ui-theme">
 			:host {
-				@apply --layout-center;
+				--buttons-border-color: #eaeaea;
 				@apply --layout-horizontal;
-				background: white;
+				border-bottom-left-radius: 5px;
+				border-top-left-radius: 5px;
 				box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 				box-sizing: border-box;
 				flex-shrink: 0;
 				margin: 3px 0;
-				padding: 8px;
+				overflow: hidden;
 			}
 
 			:host:first-child {
@@ -25,6 +25,9 @@
 
 			#sortButtons {
 				@apply --layout-vertical;
+				@apply --layout-center-justified;
+				background-color: var(--buttons-border-color);
+				border-right: 2px solid var(--buttons-border-color);
 			}
 
 			#sortButtons paper-button {
@@ -33,20 +36,56 @@
 				min-width: 0;
 				padding: 0;
 				width: 34px;
+				border-radius: 0;
+				border-top: 1px solid var(--buttons-border-color);
+				border-bottom: 1px solid var(--buttons-border-color);
 			}
 
-			#upButton {
-				margin-bottom: 3px !important;
+			#sortButtons paper-button:first-child {
+				border-top: 0;
+			}
+
+			#sortButtons paper-button:last-child {
+				border-bottom: 0;
+			}
+
+			#topButton iron-icon {
+				transform: rotate(-90deg);
+			}
+
+			#bottomButton iron-icon {
+				transform: rotate(90deg);
+			}
+
+			#body {
+				@apply --layout-center-justified;
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				background: white;
+				padding-left: 0;
+				padding: 8px;
 			}
 		</style>
 
 		<div id="sortButtons">
+			<paper-button
+				id="topButton"
+				class="indigo--light"
+				disabled="[[_calcUpDisabled(index)]]"
+				on-tap="_moveItemToTopPressed"
+				tabindex="-1"
+				title="Promote to top"
+				raised>
+				<iron-icon icon="last-page"></iron-icon>
+			</paper-button>
+
 			<paper-button
 				id="upButton"
 				class="indigo"
 				disabled="[[_calcUpDisabled(index)]]"
 				on-tap="_moveItemUpPressed"
 				tabindex="-1"
+				title="Move up"
 				raised>
 				<iron-icon icon="hardware:keyboard-arrow-up"></iron-icon>
 			</paper-button>
@@ -57,9 +96,25 @@
 				disabled="[[_calcDownDisabled(index, items)]]"
 				on-tap="_moveItemDownPressed"
 				tabindex="-1"
+				title="Move down"
 				raised>
 				<iron-icon icon="hardware:keyboard-arrow-down"></iron-icon>
 			</paper-button>
+
+			<paper-button
+				id="bottomButton"
+				class="indigo--light"
+				disabled="[[_calcDownDisabled(index, items)]]"
+				on-tap="_moveItemToBottomPressed"
+				tabindex="-1"
+				title="Demote to bottom"
+				raised>
+				<iron-icon icon="last-page"></iron-icon>
+			</paper-button>
+		</div>
+
+		<div id="body">
+
 		</div>
 	</template>
 

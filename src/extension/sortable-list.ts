@@ -15,6 +15,14 @@ interface SortableListMoveArgs {
 	useSortMap: boolean;
 }
 
+nodecg.listenFor('sortable-list:moveItemToTop', (data: unknown) => {
+	if (isSortableListMoveArgs(data)) {
+		moveItem(data, 'top');
+	} else {
+		log.error('Invalid data:', data);
+	}
+});
+
 nodecg.listenFor('sortable-list:moveItemUp', (data: unknown) => {
 	if (isSortableListMoveArgs(data)) {
 		moveItem(data, 'up');
@@ -26,6 +34,14 @@ nodecg.listenFor('sortable-list:moveItemUp', (data: unknown) => {
 nodecg.listenFor('sortable-list:moveItemDown', (data: unknown) => {
 	if (isSortableListMoveArgs(data)) {
 		moveItem(data, 'down');
+	} else {
+		log.error('Invalid data:', data);
+	}
+});
+
+nodecg.listenFor('sortable-list:moveItemToBottom', (data: unknown) => {
+	if (isSortableListMoveArgs(data)) {
+		moveItem(data, 'bottom');
 	} else {
 		log.error('Invalid data:', data);
 	}
@@ -44,7 +60,7 @@ function isSortableListMoveArgs(data: unknown): data is SortableListMoveArgs {
 		data.hasOwnProperty('useSortMap');
 }
 
-function moveItem(data: SortableListMoveArgs, direction: 'up' | 'down') {
+function moveItem(data: SortableListMoveArgs, direction: 'top' | 'up' | 'down' | 'bottom') {
 	// Error if the replicant isn't an array, or doesn't have any items.
 	const replicant = nodecg.Replicant(data.replicantName, data.replicantBundle);
 	if (!replicant || !Array.isArray(replicant.value) || replicant.value.length <= 0) {
@@ -84,7 +100,23 @@ function moveItem(data: SortableListMoveArgs, direction: 'up' | 'down') {
 		return;
 	}
 
-	const newIndex = direction === 'up' ? (data.itemIndex - 1) : (data.itemIndex + 1);
+	let newIndex;
+	switch (direction) {
+		case 'top':
+			newIndex = 0;
+			break;
+		case 'up':
+			newIndex = data.itemIndex - 1;
+			break;
+		case 'down':
+			newIndex = data.itemIndex + 1;
+			break;
+		case 'bottom':
+			newIndex = replicant.value.length - 1;
+			break;
+		default:
+			return;
+	}
 	const newArray = replicant.value.slice(0);
 	newArray.splice(newIndex, 0, newArray.splice(data.itemIndex, 1)[0]);
 	replicant.value = newArray;

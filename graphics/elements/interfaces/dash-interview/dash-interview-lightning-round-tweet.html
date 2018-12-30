@@ -18,18 +18,6 @@
 				@apply --layout-flex;
 			}
 
-			#promote {
-				@apply --layout-self-center;
-				height: 49px;
-				min-width: 0;
-				padding: 0;
-				width: 31px;
-			}
-
-			:host([first]) #promote {
-				display: none;
-			}
-
 			#reject {
 				@apply --layout-center-center;
 				@apply --layout-flex-none;
@@ -51,15 +39,6 @@
 				padding-bottom: 3px;
 			}
 		</style>
-
-		<paper-button
-			id="promote"
-			class="green"
-			on-tap="promote"
-			alt="Promote"
-			raised>
-			<iron-icon icon="editor:vertical-align-top"></iron-icon>
-		</paper-button>
 
 		<ui-tweet id="content" tweet="[[tweet]]"></ui-tweet>
 
