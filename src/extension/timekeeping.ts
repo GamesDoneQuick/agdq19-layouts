@@ -52,7 +52,7 @@ nodecg.listenFor('completeRunner', (data: {index: number; forfeit: boolean}) => 
 
 	if (currentRun.value.coop) {
 		// Finish all runners.
-		currentRun.value.runners.forEach((runner: GDQTypes.Runner, index: number) => {
+		currentRun.value.runners.forEach((runner: GDQTypes.Runner, index) => {
 			if (!runner) {
 				return;
 			}
@@ -70,7 +70,7 @@ nodecg.listenFor('resumeRunner', (index: number) => {
 
 	if (currentRun.value.coop) {
 		// Resume all runners.
-		currentRun.value.runners.forEach((runner: GDQTypes.Runner, runnerIndex: number) => {
+		currentRun.value.runners.forEach((runner: GDQTypes.Runner, runnerIndex) => {
 			if (!runner) {
 				return;
 			}
@@ -116,7 +116,7 @@ if (nodecg.bundleConfig.footpedal.enabled) {
 			nodecg.log.info('Footpedal hit, finishing timer.');
 
 			// Finish all runners.
-			currentRun.value.runners.forEach((runner: GDQTypes.Runner, index: number) => {
+			currentRun.value.runners.forEach((runner: GDQTypes.Runner, index) => {
 				if (!runner) {
 					return;
 				}
@@ -133,7 +133,7 @@ if (nodecg.bundleConfig.footpedal.enabled) {
 			start();
 
 			// Resume all runners.
-			currentRun.value.runners.forEach((runner: GDQTypes.Runner, index: number) => {
+			currentRun.value.runners.forEach((runner: GDQTypes.Runner, index) => {
 				if (!runner) {
 					return;
 				}
@@ -302,7 +302,7 @@ function recalcPlaces() {
 	// If every runner is finished, stop ticking and set timer state to "finished".
 	let allRunnersFinished = true;
 	if (currentRun.value) {
-		currentRun.value.runners.forEach((runner: GDQTypes.Runner, index: number) => {
+		currentRun.value.runners.forEach((runner: GDQTypes.Runner, index) => {
 			if (!runner) {
 				return;
 			}

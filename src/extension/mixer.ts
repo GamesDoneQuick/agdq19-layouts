@@ -37,7 +37,7 @@ export const replicants = {
 
 const channelToReplicantMap: {[key: number]: ChannelObject} = {};
 const mixerConfig = (nodecg.bundleConfig as Configschema).mixer!;
-mixerConfig.gameAudioChannels.forEach((item: GameAudioChannelConfig, index: number) => {
+mixerConfig.gameAudioChannels.forEach((item: GameAudioChannelConfig, index) => {
 	if (!gameAudioChannelsRep.value[index]) {
 		return;
 	}
