@@ -2,7 +2,6 @@
 <link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
-<link rel="import" href="../../../../shared/style/gdq-input-style.html">
 <link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
 <link rel="import" href="../../molecules/gdq-lowerthird/gdq-lowerthird.html">
 <link rel="import" href="../ui-sortable-list/ui-sortable-list.html">
@@ -11,33 +10,22 @@
 
 <dom-module id="dash-interview-lowerthird">
 	<template>
-		<style include="gdq-input-style gdq-ui-theme">
+		<style include="gdq-ui-theme">
 			:host {
 				@apply --layout-vertical;
+				@apply --layout-flex;
 				box-sizing: border-box;
 			}
 
-			#specialButtons {
-				@apply --layout-horizontal;
-				@apply --layout-flex-none;
-				padding-bottom: 22px;
-			}
-
-			#specialButtons > :first-child {
-				margin-left: 0;
-			}
-
-			#specialButtons > :last-child {
+			#autoFillNames {
+				@apply --layout-self-end;
+				margin-bottom: 6px;
 				margin-right: 0;
-			}
-
-			#specialButtons paper-button {
-				@apply --layout-flex;
+				width: 204px;
 			}
 
 			#nameInputs {
 				@apply --layout-vertical;
-				@apply --layout-flex;
 			}
 
 			#lowerthirdRefillDialog {
@@ -57,13 +45,23 @@
 				height: 52px;
 			}
 
-			#lowerthirdPreviewDialog {
-				background: transparent;
-				box-shadow: none;
+			#previewContainer {
+				@apply --layout-flex;
+				background: black;
+				cursor: pointer;
+				margin-top: 20px;
+				min-height: 120px;
+				overflow: hidden;
+				position: relative;
 			}
 
 			#lowerthirdPreview {
-				position: relative;
+				bottom: 0;
+				height: 400px;
+				left: 0;
+				position: absolute;
+				transform-origin: bottom left;
+				width: 1920px;
 			}
 
 			paper-button {
@@ -76,28 +74,27 @@
 			}
 		</style>
 
-		<div id="specialButtons">
-			<paper-button id="openPreview" class="purple" on-tap="openPreview" raised>
-				<iron-icon icon="image:remove-red-eye" style="margin-right: 8px"></iron-icon>
-				Preview
-			</paper-button>
-
-			<paper-button id="autoFillNames" class="purple" on-tap="openRefillDialog" raised>
-				<iron-icon icon="refresh" style="margin-right: 8px"></iron-icon>
-				Refill
-			</paper-button>
-		</div>
+		<paper-button id="autoFillNames" class="purple" on-tap="openRefillDialog" raised>
+			<iron-icon icon="refresh" style="margin-right: 8px"></iron-icon>
+			Refill
+		</paper-button>
 
 		<ui-sortable-list id="nameInputs" replicant-name="interview_names">
 			<template slot="item-body">
 				<dash-lowerthird-name-input
 					items="[[_typeaheadCandidates]]"
 					on-change="_handleNameInputChange"
+					on-name-changed="updatePreview"
+					on-title-changed="updatePreview"
 					name="[[item.name]]"
 					title="[[item.title]]">
 				</dash-lowerthird-name-input>
 			</template>
 		</ui-sortable-list>
+
+		<a id="previewContainer" target="_blank" href="/bundles/agdq19-layouts/graphics/interview.html">
+			<gdq-lowerthird id="lowerthirdPreview" preview></gdq-lowerthird>
+		</a>
 
 		<paper-dialog id="lowerthirdRefillDialog" with-backdrop>
 			<h2 style="text-align: center; margin-bottom: 36px; font-size: 24px; font-weight: bold;">
@@ -122,10 +119,6 @@
 					type="next">
 				</dash-interview-lowerthird-refill-option>
 			</paper-dialog-scrollable>
-		</paper-dialog>
-
-		<paper-dialog id="lowerthirdPreviewDialog" with-backdrop>
-			<gdq-lowerthird id="lowerthirdPreview" preview></gdq-lowerthird>
 		</paper-dialog>
 	</template>
 

@@ -1,3 +1,6 @@
+// Packages
+import {TweenLite} from 'gsap';
+
 import {CurrentIntermission} from '../../../../src/types/schemas/currentIntermission';
 import {Interview, Run, Runner, ScheduleItem} from '../../../../src/types';
 import {InterviewNames} from '../../../../src/types/schemas/interview_names';
@@ -28,6 +31,8 @@ export default class DashInterviewLowerthirdElement extends Polymer.Element {
 	@property({type: Array})
 	_typeaheadCandidates: string[] = [];
 
+	private _updatePreviewDebouncer: Polymer.Debouncer;
+
 	connectedCallback() {
 		super.connectedCallback();
 		Polymer.RenderStatus.beforeNextRender(this, () => {
@@ -46,12 +51,24 @@ export default class DashInterviewLowerthirdElement extends Polymer.Element {
 			lowerthirdShowingRep.on('change', newVal => {
 				this.lowerthirdShowing = newVal;
 			});
+
+			const ro = new (window as any).ResizeObserver((entries: any) => {
+				const entry = entries[0];
+				const cr = entry.contentRect;
+				TweenLite.set(this.$.lowerthirdPreview, {
+					scale: cr.width / 1920
+				});
+			});
+			ro.observe(this.$.previewContainer);
 		});
 	}
 
-	openPreview() {
-		(this.$.lowerthirdPreview as GDQLowerthirdElement).updatePreview(this.getNames());
-		(this.$.lowerthirdPreviewDialog as PaperDialogElement).open();
+	updatePreview() {
+		this._updatePreviewDebouncer = Polymer.Debouncer.debounce(
+			this._updatePreviewDebouncer,
+			Polymer.Async.timeOut.after(16),
+			this._updatePreview.bind(this)
+		);
 	}
 
 	calcStartDisabled(lowerthirdShowing: boolean, questionShowing: boolean) {
@@ -83,7 +100,8 @@ export default class DashInterviewLowerthirdElement extends Polymer.Element {
 	 * Returns an array of the names currently entered into the inputs.
 	 */
 	getNames() {
-		return this.getInputs().map(input => {
+		const inputs = this.getInputs();
+		return inputs.map(input => {
 			return {
 				name: input.name,
 				title: input.title
@@ -103,8 +121,8 @@ export default class DashInterviewLowerthirdElement extends Polymer.Element {
 		}
 
 		typeaheads.forEach((input, index) => {
-			input.name = String(names[index] ? names[index].name : '');
-			input.title = String(names[index] ? names[index].title : '');
+			input.name = String((names[index] && names[index].name) || '');
+			input.title = String((names[index] && names[index].title) || '');
 		});
 	}
 
@@ -191,5 +209,9 @@ export default class DashInterviewLowerthirdElement extends Polymer.Element {
 			name: event.target.name,
 			title: event.target.title
 		};
+	}
+
+	private _updatePreview() {
+		(this.$.lowerthirdPreview as GDQLowerthirdElement).updatePreview(this.getNames());
 	}
 }

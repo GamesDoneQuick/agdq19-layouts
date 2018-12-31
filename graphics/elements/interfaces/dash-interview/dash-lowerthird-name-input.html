@@ -2,11 +2,10 @@
 <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
-<link rel="import" href="../../../../shared/style/gdq-input-style.html">
 
 <dom-module id="dash-lowerthird-name-input">
 	<template>
-		<style include="gdq-input-style">
+		<style>
 			:host {
 				@apply --layout-flex;
 				@apply --layout-vertical;
@@ -17,18 +16,17 @@
 			#name {
 				font-family: Roboto, sans-serif;
 				font-weight: 600;
-				height: 53px;
+				padding-top: 2px;
+				font-size: 24px;
 			}
 
 			#title {
-				height: 40px;
-				margin-bottom: 0;
+				margin-bottom: -2px;
 			}
 		</style>
 
 		<vaadin-combo-box
 			id="name"
-			class="gdq-input-style"
 			placeholder="NAME"
 			no-label-float
 			value="{{name}}"
@@ -43,7 +41,6 @@
 
 		<paper-input
 			id="title"
-			class="gdq-input-style"
 			placeholder="TITLE"
 			no-label-float
 			value="{{title}}"
