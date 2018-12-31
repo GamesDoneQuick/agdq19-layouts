@@ -3,10 +3,14 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/iron-icons/editor-icons.html">
 <link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../../../../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../../../../bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="../../../../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
@@ -15,6 +19,7 @@
 <link rel="import" href="../../../../shared/elements/interfaces/ui-toast/ui-toast.html">
 <link rel="import" href="../../../../shared/style/gdq-text-styles.html">
 <link rel="import" href="../../../../shared/style/gdq-ui-theme.html">
+<link rel="import" href="../../molecules/gdq-interview/gdq-interview.html">
 <link rel="import" href="dash-interview-lightning-round.html">
 <link rel="import" href="dash-interview-lowerthird.html">
 <link rel="import" href="dash-interview-prizes.html">
@@ -25,23 +30,89 @@
 			:host {
 				display: grid;
 				font-family: Roboto, sans-serif;
-				grid-gap: 12px;
-				grid-template-columns: 435px minmax(400px, 786px) minmax(400px, 649px);
-				grid-template-rows: 69px 57px 109px auto;
-				padding: 22px 12px;
+				grid-gap: 24px;
+				grid-template-columns: 6fr 4fr;
+				grid-template-rows: 1fr 1fr;
+				padding: 12px;
+			}
+
+			#tabbedControls {
+				@apply --layout-horizontal;
+				grid-column: 1;
+				grid-row: 1 / 3;
+			}
+
+			#tabs {
+				@apply --layout-vertical;
+			}
+
+			.tab {
+				@apply --layout-end-justified;
+				background-color: #63C9E5;
+				border-bottom-right-radius: 0;
+				border-top-right-radius: 0;
+				font-size: 24px;
+				font-weight: 900;
+				height: 108px;
+				margin: 10px 0;
+				text-align: right;
+				width: 175px;
+			}
+
+			.tab:nth-of-type(1),
+			:host([selected-tab="0"]) #colorBar {
+				background-color: #63C9E5;
+			}
+
+			.tab:nth-of-type(2),
+			:host([selected-tab="1"]) #colorBar {
+				background-color: #BFF2D4;
+			}
+
+			.tab:nth-of-type(3),
+			:host([selected-tab="2"]) #colorBar {
+				background-color: #F1C7A3;
+			}
+
+			.tab:nth-of-type(4),
+			:host([selected-tab="3"]) #colorBar {
+				background-color: #F69C9C;
+			}
+
+			#colorBar {
+				width: 11px;
+			}
+
+			#controls {
+				@apply --layout-flex;
+				@apply --layout-vertical;
+				background-color: #C4C4C4;
+			}
+
+			#controls > div {
+				@apply --layout-flex;
+				@apply --layout-vertical;
+				padding: 24px;
 			}
 
 			#transitionsAndTimer {
-				@apply --layout-horizontal;
-				grid-column: 1 / 3;
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+				background-color: #C4C4C4;
+				grid-column: 2;
 				grid-row: 1;
+				padding: 24px;
 			}
 
 			#transitionsAndTimer paper-button {
 				@apply --layout-flex;
 				font-size: 24px;
 				font-weight: 900;
+				margin: 6px 0;
+				max-height: 89px;
+				max-width: 545px;
 				text-align: center;
+				width: 100%;
 			}
 
 			#timeElapsed {
@@ -51,95 +122,63 @@
 				border: 1px solid black;
 				box-sizing: border-box;
 				color: black;
-				font-size: 48px;
+				font-size: 72px;
 				font-weight: 900;
 				margin-left: 32px;
+				max-width: 420px;
 				text-align: center;
-				width: 319px;
-			}
-
-			#modeToggle {
-				@apply --layout-center-center;
-				@apply --layout-horizontal;
-			}
-
-			#modeToggle paper-toggle-button {
-				--paper-toggle-button-checked-bar-color: rgba(255, 255, 255, 0.5);
-				--paper-toggle-button-checked-button-color: white;
-				--paper-toggle-button-checked-ink-color: white;
-				margin: 0 32px;
-				transform: scale(1.5);
-			}
-
-			.modeToggle-label {
-				@apply --layout-flex;
-				color: #8F8F8F;
-				font-size: 36px;
-				font-style: normal;
-				font-weight: 900;
-				line-height: normal;
-				text-transform: uppercase;
-			}
-
-			.modeToggle-label[data-selected] {
-				color: white;
+				width: 100%;
+				margin-bottom: 24px;
 			}
 
 			#lowerthirdToggle paper-button,
-			#questionToggle paper-button {
+			#questionToggle paper-button,
+			#liveView__hideCurrent {
 				font-size: 24px;
 				font-weight: 900;
-				height: 100%;
+				height: 63px;
 				margin: 0;
+				margin-top: 20px;
 				width: 100%;
 			}
 
-			#lowerthirdToggle {
-				grid-column: 1;
-				grid-row: 3;
-			}
-
-			#questionToggle {
-				grid-column: 3;
-				grid-row: 3;
-			}
-
-			#lowerthirdControls {
-				grid-column: 1;
-				grid-row: 4;
-			}
-
-			#prizes {
+			#liveView {
+				background: #4F4F4F;
+				border: 1px solid #000000;
 				grid-column: 2;
-				grid-row: 3 / 5;
-			}
-
-			#lightningRound {
-				grid-column: 3;
-				grid-row: 4;
-			}
-
-			.columnTitle {
-				@apply --layout-center-center;
-				@apply --layout-horizontal;
-				color: white;
-				font-size: 24px;
-				font-weight: 900;
 				grid-row: 2;
+				padding: 12px;
+				@apply --layout-vertical;
+			}
+
+			#liveView__label {
+				font-weight: 900;
+				font-size: 36px;
 				text-align: center;
 				text-transform: uppercase;
+				color: white;
+				margin-bottom: 9px;
 			}
 
-			.columnTitle[data-selected] {
-				background-color: white;
-				color: black;
+			#liveView__wrapper {
+				@apply --layout-flex;
+				background: black;
+				overflow: hidden;
+				position: relative;
 			}
 
-			.panel {
-				background: #808080;
-				border: 1px solid #000000;
-				box-sizing: border-box;
-				padding: 22px 12px;
+			#liveView__actual {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				z-index: 1;
+				transform-origin: bottom center;
+			}
+
+			#liveView__hideCurrent {
+				margin-left: 0;
+				margin-right: 0;
+				margin-top: 12px;
 			}
 
 			[hidden] {
@@ -147,7 +186,87 @@
 			}
 		</style>
 
+		<div id="tabbedControls">
+			<iron-selector id="tabs" selected="{{selectedTab}}">
+				<paper-button class="tab">L3</paper-button>
+				<paper-button class="tab">TEXT</paper-button>
+				<paper-button class="tab">PRIZE</paper-button>
+				<paper-button class="tab">Q&A</paper-button>
+			</iron-selector>
+
+			<div id="colorBar"></div>
+
+			<iron-pages id="controls" selected="[[selectedTab]]">
+				<div id="controls__l3">
+					<dash-interview-lowerthird
+						id="lowerthirdControls"
+						lowerthird-showing="{{lowerthirdShowing}}"
+						question-showing="[[questionShowing]]">
+					</dash-interview-lowerthird>
+
+					<div id="lowerthirdToggle">
+						<paper-button
+							id="showLowerthird"
+							class="green"
+							on-tap="showLowerthird"
+							hidden="[[lowerthirdShowing]]"
+							disabled="[[questionShowing]]"
+							raised>
+							Show Lower Third
+						</paper-button>
+
+						<paper-button
+							id="hideLowerthird"
+							class="red"
+							on-tap="hideLowerthird"
+							hidden="[[!lowerthirdShowing]]"
+							raised>
+							Hide Lower Third ([[lowerthirdTimeRemaining]])
+						</paper-button>
+					</div>
+				</div>
+
+				<div id="controls__text">
+					Not implemented yet.
+				</div>
+
+				<div id="controls__prizes">
+					<dash-interview-prizes id="prizes"></dash-interview-prizes>
+				</div>
+
+				<div id="controls__qna">
+					<dash-interview-lightning-round
+						id="lightningRound"
+						question-showing="{{questionShowing}}">
+					</dash-interview-lightning-round>
+
+					<div id="questionToggle">
+						<paper-button
+							id="showQuestion"
+							class="green"
+							on-tap="showQuestion"
+							hidden="[[questionShowing]]"
+							disabled="[[_any(_markingTopQuestionAsDone, lowerthirdShowing)]]"
+							raised>
+							Show Question
+						</paper-button>
+
+						<paper-button
+							id="hideQuestion"
+							class="red"
+							on-tap="hideQuestion"
+							hidden="[[!questionShowing]]"
+							raised>
+							Hide Question ([[questionTimeRemaining]])
+						</paper-button>
+					</div>
+				</div>
+			</iron-pages>
+		</div>
+
 		<div id="transitionsAndTimer">
+			<div id="timeElapsed" class="tabular-nums">[[_timeElapsed]]</div>
+
 			<paper-button
 				class="green"
 				on-tap="transitionToInterview"
@@ -173,91 +292,21 @@
 				raised>
 				BACK TO BREAK SCENE
 			</paper-button>
-
-			<div id="timeElapsed" class="tabular-nums">[[_timeElapsed]]</div>
 		</div>
 
-		<div id="modeToggle">
-			<span
-				style="text-align: right;"
-				class="modeToggle-label"
-				data-selected$="[[!_modeToggleChecked]]">
-				Prize Mode
-			</span>
-
-			<paper-toggle-button
-				checked="{{_modeToggleChecked}}"
-				on-change="_handleModeToggleChange">
-			</paper-toggle-button>
-
-			<span
-				style="text-align: left;"
-				class="modeToggle-label"
-				data-selected$="[[_modeToggleChecked]]">
-				Q&A Mode
-			</span>
-		</div>
-
-		<div class="columnTitle" style="grid-column: 1;">Lowerthird</div>
-		<div class="columnTitle" style="grid-column: 2;" data-selected$="[[!_modeToggleChecked]]">Prizes List</div>
-		<div class="columnTitle" style="grid-column: 3;" data-selected$="[[_modeToggleChecked]]">Twitter Questions</div>
-
-		<div id="lowerthirdToggle">
+		<div id="liveView">
+			<div id="liveView__label">LIVE VIEW</div>
+			<div id="liveView__wrapper">
+				<gdq-interview id="liveView__actual"></gdq-interview>
+			</div>
 			<paper-button
-				id="showLowerthird"
-				class="green"
-				on-tap="showLowerthird"
-				hidden="[[lowerthirdShowing]]"
-				disabled="[[questionShowing]]"
-				raised>
-				Show Lowerthird
-			</paper-button>
-
-			<paper-button
-				id="hideLowerthird"
+				id="liveView__hideCurrent"
 				class="red"
-				on-tap="hideLowerthird"
-				hidden="[[!lowerthirdShowing]]"
-				raised>
-				Hide Lowerthird ([[lowerthirdTimeRemaining]])
+				disabled="[[!_any(questionShowing, lowerthirdShowing)]]"
+				on-tap="hideCurrent">
+				Hide Current Graphic
 			</paper-button>
 		</div>
-
-		<dash-interview-lowerthird
-			id="lowerthirdControls"
-			class="panel"
-			lowerthird-showing="{{lowerthirdShowing}}"
-			question-showing="[[questionShowing]]">
-		</dash-interview-lowerthird>
-
-		<dash-interview-prizes id="prizes" class="panel"></dash-interview-prizes>
-
-		<div id="questionToggle">
-			<paper-button
-				id="showQuestion"
-				class="green"
-				on-tap="showQuestion"
-				hidden="[[questionShowing]]"
-				disabled="[[_any(_markingTopQuestionAsDone, lowerthirdShowing)]]"
-				raised>
-				Show Question
-			</paper-button>
-
-			<paper-button
-				id="hideQuestion"
-				class="red"
-				on-tap="hideQuestion"
-				hidden="[[!questionShowing]]"
-				raised>
-				Hide Question ([[questionTimeRemaining]])
-			</paper-button>
-		</div>
-
-		<dash-interview-lightning-round
-			id="lightningRound"
-			class="panel"
-			question-showing="{{questionShowing}}">
-		</dash-interview-lightning-round>
 
 		<paper-dialog id="interviewTransitionConfirmation" with-backdrop>
 			<h2>Confirm Transition</h2>

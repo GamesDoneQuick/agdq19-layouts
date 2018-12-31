@@ -21,7 +21,6 @@ export default class DashLowerthirdNameInputElement extends Polymer.Element {
 		super.ready();
 		const nameElem = this.$.name as any;
 		nameElem.$.input.style.fontSize = '24px';
-		nameElem.$.input.style.height = '45px';
 		nameElem.$.toggleIcon.style.height = '100%';
 		nameElem.$.toggleIcon.style.padding = '0';
 		nameElem.$.clearIcon.style.height = '100%';

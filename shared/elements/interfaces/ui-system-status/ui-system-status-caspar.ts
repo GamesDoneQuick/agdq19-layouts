@@ -11,7 +11,7 @@ const enum STATUS {
  * @polymer
  */
 @customElement('ui-system-status-caspar')
-class UiSystemStatusCasparElement extends Polymer.MutableData(Polymer.Element) {
+export default class UiSystemStatusCasparElement extends Polymer.MutableData(Polymer.Element) {
 	@property({type: String, computed: '_computeStatus(_connected, _missingFiles.*)', reflectToAttribute: true})
 	status: STATUS = STATUS.DISCONNECTED;
 

@@ -4,6 +4,7 @@ import {Websocket as WebsocketStatus} from 'nodecg-utility-obs/types/schemas/web
 import UiToastElement from '../../../../shared/elements/interfaces/ui-toast/ui-toast';
 import DashInterviewLowerthirdElement from './dash-interview-lowerthird';
 import * as OBSWebSocket from 'obs-websocket-js'; // tslint:disable-line:no-implicit-dependencies
+import {TweenLite} from 'gsap';
 
 const {customElement, property} = Polymer.decorators;
 const compositingOBSStatus = nodecg.Replicant<WebsocketStatus>('compositingOBS:websocket');
@@ -36,6 +37,9 @@ export default class DashInterviewElement extends baseClass {
 
 	@property({type: Number})
 	questionTimeRemaining: number;
+
+	@property({type: Number, reflectToAttribute: true})
+	selectedTab = 0;
 
 	@property({type: String})
 	_programSceneName = '';
@@ -106,6 +110,19 @@ export default class DashInterviewElement extends baseClass {
 		});
 	}
 
+	connectedCallback() {
+		super.connectedCallback();
+		const ro = new (window as any).ResizeObserver((entries: any) => {
+			const entry = entries[0];
+			const cr = entry.contentRect;
+			TweenLite.set(this.$.liveView__actual, {
+				scale: cr.width / 1920,
+				x: '-50%'
+			});
+		});
+		ro.observe(this.$.liveView__wrapper);
+	}
+
 	showLowerthird() {
 		(this.$.lowerthirdControls as DashInterviewLowerthirdElement).autoLowerthird();
 	}
@@ -132,6 +149,11 @@ export default class DashInterviewElement extends baseClass {
 	hideQuestion() {
 		questionShowing.value = false;
 		this._markingTopQuestionAsDone = false;
+	}
+
+	hideCurrent() {
+		this.hideLowerthird();
+		this.hideQuestion();
 	}
 
 	openInterviewTransitionConfirmation() {
