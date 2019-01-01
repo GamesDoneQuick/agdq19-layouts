@@ -33,7 +33,7 @@ function start(startTime) {
         countdownTimer.stop();
         countdownTimer.removeAllListeners();
     }
-    countdownTimer = new TimeUtils.CountdownTimer(Date.now() + durationMs);
+    countdownTimer = new TimeUtils.CountdownTimer(Date.now() + durationMs, { tickRate: 10 });
     countdownTimer.on('tick', remainingTimeStruct => {
         time.value = remainingTimeStruct;
     });

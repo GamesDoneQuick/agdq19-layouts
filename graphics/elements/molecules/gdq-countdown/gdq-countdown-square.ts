@@ -35,6 +35,7 @@ export default class GDQCountdownSquare extends Polymer.Element {
 		const tl = this.squareTimeline;
 		countdownTime.on('change', newVal => {
 			if (newVal.raw <= 61000 && this.revealed === false && this.index === 5) {
+				nodecg.playSound('wily');
 				tl.add(this.centerFlash());
 				this.caption = 'Mike Uyama';
 				this.revealed = true;
