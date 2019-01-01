@@ -25,6 +25,8 @@ export default class GDQCountdownElement extends Polymer.Element {
 	private _didTweenTeal: boolean;
 	private _fooTimeout?: number;
 	private _fooDebouncer: Polymer.Debouncer | null = null;
+	private _coldOpenStarted = false;
+	private _soundTick: number;
 
 	ready() {
 		super.ready();
@@ -33,6 +35,7 @@ export default class GDQCountdownElement extends Polymer.Element {
 		countdownRunning.on('change', newVal => {
 			if (newVal) {
 				this.showTimer();
+				this._coldOpenStarted = false;
 			} else {
 				this._debounceFoo();
 			}
@@ -62,6 +65,19 @@ export default class GDQCountdownElement extends Polymer.Element {
 				});
 			}
 
+			if (newVal.raw <= 60000 && newVal.raw > 0) {
+				const currentSecond = Math.floor(newVal.raw / 1000);
+				if (currentSecond !== this._soundTick) {
+					nodecg.playSound('tally');
+					this._soundTick = currentSecond;
+				}
+			}
+
+			if (newVal.raw === 0 && this._coldOpenStarted === false) {
+				this._coldOpenStarted = true;
+				this.playOpen();
+			}
+
 			if (newVal.raw <= 0) {
 				this.$.countdown.classList.add('blink');
 				this._debounceFoo();
@@ -74,6 +90,21 @@ export default class GDQCountdownElement extends Polymer.Element {
 			this.$.nowPlaying.textContent = `${newVal.game || '?'} - ${newVal.title || '?'}`;
 			typeAnim(this.$.nowPlaying as HTMLDivElement);
 		});
+
+		(this.$.coldopen as HTMLVideoElement).addEventListener('ended', () => {
+			TweenLite.to(this.$.coldopen, 1, {
+				delay: 2,
+				opacity: 0,
+				onComplete: () => {
+					(this.$.coldopen as HTMLVideoElement).currentTime = 0;
+					TweenLite.set(this.$.coldopen, {opacity: 1});
+				}
+			});
+		});
+	}
+
+	playOpen() {
+		(this.$.coldopen as HTMLVideoElement).play();
 	}
 
 	showTimer() {

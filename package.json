@@ -397,6 +397,16 @@
         "name": "transition-hero-exit",
         "assignable": false,
         "defaultFile": "sounds/transition_hero_exit.ogg"
+      },
+      {
+        "name": "tally",
+        "assignable": false,
+        "defaultFile": "sounds/tally.ogg"
+      },
+      {
+        "name": "wily",
+        "assignable": false,
+        "defaultFile": "sounds/wily.ogg"
       }
     ]
   },
