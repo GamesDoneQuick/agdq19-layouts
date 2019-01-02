@@ -2,6 +2,7 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../../../../bower_components/iron-icons/image-icons.html">
 <link rel="import" href="../../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../../../bower_components/iron-selector/iron-selector.html">
@@ -42,13 +43,14 @@
 				grid-row: 1 / 3;
 			}
 
-			#tabs {
+			#tabs,
+			#teletabs {
 				@apply --layout-vertical;
 			}
 
 			.tab {
 				@apply --layout-end-justified;
-				background-color: #63C9E5;
+				@apply --layout-horizontal;
 				border-bottom-right-radius: 0;
 				border-top-right-radius: 0;
 				font-size: 24px;
@@ -59,27 +61,55 @@
 				width: 175px;
 			}
 
-			.tab:nth-of-type(1),
+			#teletabs .tab {
+				--iron-icon-height: 36px;
+				--iron-icon-width: 36px;
+				@apply --layout-center-center;
+				background-color: #5BA664;
+				color: white;
+				min-width: 0;
+				padding: 0;
+				width: 65px;
+				z-index: 2;
+			}
+
+			#teletabs .tab.iron-selected {
+				background-color: white;
+				color: #5BA664;
+			}
+
+			.tab.iron-selected {
+				z-index: 2;
+			}
+
+			.tab:nth-child(1),
 			:host([selected-tab="0"]) #colorBar {
 				background-color: #63C9E5;
 			}
 
-			.tab:nth-of-type(2),
+			.tab:nth-child(2),
 			:host([selected-tab="1"]) #colorBar {
 				background-color: #BFF2D4;
 			}
 
-			.tab:nth-of-type(3),
+			.tab:nth-child(3),
 			:host([selected-tab="2"]) #colorBar {
 				background-color: #F1C7A3;
 			}
 
-			.tab:nth-of-type(4),
+			.tab:nth-child(4),
 			:host([selected-tab="3"]) #colorBar {
 				background-color: #F69C9C;
 			}
 
+			#teletabs {
+				position: absolute;
+				top: 268px;
+				left: 12px;
+			}
+
 			#colorBar {
+				@apply --layout-flex-none;
 				width: 11px;
 			}
 
@@ -93,6 +123,13 @@
 				@apply --layout-flex;
 				@apply --layout-vertical;
 				padding: 24px;
+			}
+
+			#shadow {
+				@apply --layout-flex;
+				@apply --layout-horizontal;
+				box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+				z-index: 1;
 			}
 
 			#transitionsAndTimer {
@@ -194,74 +231,88 @@
 				<paper-button class="tab">Q&A</paper-button>
 			</iron-selector>
 
-			<div id="colorBar"></div>
+			<iron-selector
+				id="teletabs"
+				selected="[[_selectedTeleprompterTab]]"
+				on-selected-changed="_handleSelectedTeleprompterTabChange">
+				<paper-button class="tab">
+					<iron-icon icon="image:remove-red-eye"></iron-icon>
+				</paper-button>
+				<paper-button class="tab">
+					<iron-icon icon="editor:vertical-align-top"></iron-icon>
+				</paper-button>
+			</iron-selector>
 
-			<iron-pages id="controls" selected="[[selectedTab]]">
-				<div id="controls__l3">
-					<dash-interview-lowerthird
-						id="lowerthirdControls"
-						lowerthird-showing="{{lowerthirdShowing}}"
-						question-showing="[[questionShowing]]">
-					</dash-interview-lowerthird>
+			<div id="shadow">
+				<div id="colorBar"></div>
 
-					<div id="lowerthirdToggle">
-						<paper-button
-							id="showLowerthird"
-							class="green"
-							on-tap="showLowerthird"
-							hidden="[[lowerthirdShowing]]"
-							disabled="[[questionShowing]]"
-							raised>
-							Show Lower Third
-						</paper-button>
+				<iron-pages id="controls" selected="[[selectedTab]]">
+					<div id="controls__l3">
+						<dash-interview-lowerthird
+							id="lowerthirdControls"
+							lowerthird-showing="{{lowerthirdShowing}}"
+							question-showing="[[questionShowing]]">
+						</dash-interview-lowerthird>
 
-						<paper-button
-							id="hideLowerthird"
-							class="red"
-							on-tap="hideLowerthird"
-							hidden="[[!lowerthirdShowing]]"
-							raised>
-							Hide Lower Third ([[lowerthirdTimeRemaining]])
-						</paper-button>
+						<div id="lowerthirdToggle">
+							<paper-button
+								id="showLowerthird"
+								class="green"
+								on-tap="showLowerthird"
+								hidden="[[lowerthirdShowing]]"
+								disabled="[[questionShowing]]"
+								raised>
+								Show Lower Third
+							</paper-button>
+
+							<paper-button
+								id="hideLowerthird"
+								class="red"
+								on-tap="hideLowerthird"
+								hidden="[[!lowerthirdShowing]]"
+								raised>
+								Hide Lower Third ([[lowerthirdTimeRemaining]])
+							</paper-button>
+						</div>
 					</div>
-				</div>
 
-				<div id="controls__text">
-					Not implemented yet.
-				</div>
-
-				<div id="controls__prizes">
-					<dash-interview-prizes id="prizes"></dash-interview-prizes>
-				</div>
-
-				<div id="controls__qna">
-					<dash-interview-lightning-round
-						id="lightningRound"
-						question-showing="{{questionShowing}}">
-					</dash-interview-lightning-round>
-
-					<div id="questionToggle">
-						<paper-button
-							id="showQuestion"
-							class="green"
-							on-tap="showQuestion"
-							hidden="[[questionShowing]]"
-							disabled="[[_any(_markingTopQuestionAsDone, lowerthirdShowing)]]"
-							raised>
-							Show Question
-						</paper-button>
-
-						<paper-button
-							id="hideQuestion"
-							class="red"
-							on-tap="hideQuestion"
-							hidden="[[!questionShowing]]"
-							raised>
-							Hide Question ([[questionTimeRemaining]])
-						</paper-button>
+					<div id="controls__text">
+						Not implemented yet.
 					</div>
-				</div>
-			</iron-pages>
+
+					<div id="controls__prizes">
+						<dash-interview-prizes id="prizes"></dash-interview-prizes>
+					</div>
+
+					<div id="controls__qna">
+						<dash-interview-lightning-round
+							id="lightningRound"
+							question-showing="{{questionShowing}}">
+						</dash-interview-lightning-round>
+
+						<div id="questionToggle">
+							<paper-button
+								id="showQuestion"
+								class="green"
+								on-tap="showQuestion"
+								hidden="[[questionShowing]]"
+								disabled="[[_any(_markingTopQuestionAsDone, lowerthirdShowing)]]"
+								raised>
+								Show Question
+							</paper-button>
+
+							<paper-button
+								id="hideQuestion"
+								class="red"
+								on-tap="hideQuestion"
+								hidden="[[!questionShowing]]"
+								raised>
+								Hide Question ([[questionTimeRemaining]])
+							</paper-button>
+						</div>
+					</div>
+				</iron-pages>
+			</div>
 		</div>
 
 		<div id="transitionsAndTimer">
