@@ -71,8 +71,8 @@ export default class DashInterviewElement extends baseClass {
 	@property({type: String})
 	_timeElapsed: string;
 
-	@property({type: Boolean})
-	_modeToggleChecked: boolean;
+	@property({type: Number})
+	_selectedTeleprompterTab: number;
 
 	ready() {
 		super.ready();
@@ -102,7 +102,7 @@ export default class DashInterviewElement extends baseClass {
 		});
 
 		showPrizesOnMonitorRep.on('change', newVal => {
-			this._modeToggleChecked = !newVal;
+			this._selectedTeleprompterTab = Number(newVal);
 		});
 
 		this.addEventListener('error-toast', (event: any) => {
@@ -207,7 +207,7 @@ export default class DashInterviewElement extends baseClass {
 		return args.find(arg => Boolean(arg));
 	}
 
-	_handleModeToggleChange(e: any) {
-		showPrizesOnMonitorRep.value = !e.target.checked;
+	_handleSelectedTeleprompterTabChange(e: any) {
+		showPrizesOnMonitorRep.value = Boolean(e.detail.value);
 	}
 }
