@@ -28,6 +28,8 @@ export default class GDQTwitterControlsElement extends Polymer.MutableData(Polym
 				case 'widescreen_4':
 				case 'gameboy_4':
 				case 'ds':
+				case 'standard_4_ff4fe':
+				case 'widescreen_3':
 					cover.style.display = 'flex';
 					break;
 				default:
