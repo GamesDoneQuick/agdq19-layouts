@@ -130,11 +130,28 @@
 				top: 61px;
 				width: 506px;
 			}
+
+			atom-gridlines {
+				position: absolute;
+				width: 100%;
+			}
+
+			atom-gridlines:nth-of-type(1) {
+				top: 0;
+				height: 60px;
+			}
+
+			atom-gridlines:nth-of-type(2) {
+				top: 580px;
+				height: 139px;
+			}
 		</style>
 	</custom-style>
 </head>
 <body>
 	<div id="container">
+		<atom-gridlines></atom-gridlines>
+		<atom-gridlines></atom-gridlines>
 		<div class="port portleft"></div>
 		<div class="port portright"></div>
 		<div class="bingo"></div>
