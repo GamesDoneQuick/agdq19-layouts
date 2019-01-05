@@ -371,9 +371,10 @@ function _updateCurrentIntermissionContent() {
 	// If the timer hasn't started yet, use the intermission between the previous run and currentRun.
 	// Else, use the intermission between currentRun and nextRun.
 	currentIntermission.value = {
-		preOrPost: hasRunStarted() ? 'post' : 'pre',
+		preOrPost: calcPreOrPost(),
 		content: calcIntermissionContent()
 	};
+	console.log(currentIntermission.value);
 
 	_updateCurrentIntermissionState();
 	checkCanSeek();
@@ -470,7 +471,7 @@ function _updateCurrentIntermissionState() {
  * @returns - The intermission content.
  */
 function calcIntermissionContent() {
-	const preOrPost = hasRunStarted() ? 'post' : 'pre';
+	const preOrPost = calcPreOrPost();
 	const intermissionContent: GDQTypes.IntermissionContentItem[] = [];
 	const scheduleContent = preOrPost === 'pre' ?
 		schedule.value.slice(0).reverse() :
@@ -604,4 +605,29 @@ async function sleep(milliseconds: number) {
 			resolve();
 		}, milliseconds);
 	});
+}
+
+function isFinalRun() {
+	const lastRun = schedule.value.slice(0).reverse().find(item => {
+		return item.type === 'run';
+	});
+	if (!lastRun) {
+		return false;
+	}
+	return currentRun.value.id === lastRun.id;
+}
+
+function calcPreOrPost() {
+	let preOrPost: 'post' | 'pre';
+	if (isFinalRun()) {
+		console.log('is final run!');
+		preOrPost = 'post';
+	} else if (hasRunStarted()) {
+		console.log('run has started!');
+		preOrPost = 'post';
+	} else {
+		console.log('else!');
+		preOrPost = 'pre';
+	}
+	return preOrPost;
 }
