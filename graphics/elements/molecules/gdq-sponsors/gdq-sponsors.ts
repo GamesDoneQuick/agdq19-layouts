@@ -22,6 +22,10 @@ export default class GDQSponsorsElement extends GDQBreakLoopMixin(Polymer.Elemen
 		this.itemIdField = 'sum';
 		this.noAutoLoop = true;
 		super.ready();
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
 
 		let sponsors = nodecg.Replicant<Asset[]>('assets:sponsors-standard_1');
 		const layoutName = window.location.pathname.split('/').pop();
@@ -34,7 +38,7 @@ export default class GDQSponsorsElement extends GDQBreakLoopMixin(Polymer.Elemen
 				// Do nothing.
 		}
 
-		Polymer.RenderStatus.beforeNextRender(this, () => {
+		Polymer.RenderStatus.afterNextRender(this, () => {
 			sponsors.on('change', newVal => {
 				this.availableItems = newVal;
 
