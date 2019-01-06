@@ -115,7 +115,7 @@ function addTweet(tweet: GDQTypes.Tweet) {
 	tweet.text = tweet.text.replace(/\n/ig, ' ');
 
 	// Highlight the #AGDQ2018 hashtag.
-	tweet.text = tweet.text.replace(/#agdq2019/ig, '<span class="hashtag">#AGDQ2018</span>');
+	tweet.text = tweet.text.replace(/#agdq2019/ig, '<span class="hashtag">#AGDQ2019</span>');
 
 	if (tweet.extended_tweet &&
 		tweet.extended_tweet.extended_entities &&
