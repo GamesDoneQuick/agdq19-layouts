@@ -88,6 +88,10 @@ export default class DashInterviewMonitorElement extends Polymer.MutableData(Pol
 			concatenatedRunners = upNextRun.runners[0].name;
 		} else {
 			concatenatedRunners = upNextRun.runners.slice(1).reduce((prev, curr, index, array) => {
+				if (!curr) {
+					return prev || '';
+				}
+
 				if (index === array.length - 1) {
 					return `${prev} &<br/>${curr.name}`;
 				}
