@@ -9,6 +9,7 @@ export interface Alert {
 }
 
 const {customElement} = Polymer.decorators;
+const DISABLED = true;
 
 /**
  * @customElement
@@ -17,6 +18,11 @@ const {customElement} = Polymer.decorators;
 @customElement('atom-tiny-alerts')
 export default class AtomTinyAlertsElement extends Polymer.Element {
 	addAlert({text, textColor = 'black', backgroundColor = 'white', holdDuration = 0.067}: Alert) {
+		if (DISABLED) {
+			const tl = new TimelineLite();
+			return tl;
+		}
+
 		const div = document.createElement('div');
 		div.classList.add('alert');
 		div.innerText = text;
