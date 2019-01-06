@@ -20,18 +20,16 @@ export default class GDQCountdownSquare extends Polymer.Element {
 	@property({type: Number})
 	index: number;
 
-	@property({type: Boolean})
-	revealed: Boolean;
-
 	@property({type: Number})
 	active: number;
 
 	@property({type: Object})
 	private readonly squareTimeline: TimelineLite = new TimelineLite({autoRemoveChildren: true});
 
+	private revealed = true;
+
 	ready() {
 		super.ready();
-		this.revealed = false;
 		const tl = this.squareTimeline;
 		countdownTime.on('change', newVal => {
 			if (newVal.raw <= 61000 && this.revealed === false && this.index === 5) {
@@ -64,12 +62,4 @@ export default class GDQCountdownSquare extends Polymer.Element {
 		tl.to(this.$.white, 0.75, {opacity: 0}, 'start+=0.8');
 		return tl;
 	}
-
-	// am I active? if so, blink the frame on and off
-	// if not, don't blink
-
-	// am I Uyama?
-	// if so, how much time is left?
-	// if less than five minutes, animate a flash and turn into Uyama
-	// animate Uyama face
 }

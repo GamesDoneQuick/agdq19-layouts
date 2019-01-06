@@ -25,7 +25,7 @@ export default class GDQCountdownElement extends Polymer.Element {
 	private _didTweenTeal: boolean;
 	private _fooTimeout?: number;
 	private _fooDebouncer: Polymer.Debouncer | null = null;
-	private _coldOpenStarted = false;
+	private _coldOpenStarted = true;
 	private _soundTick: number;
 
 	ready() {
@@ -35,7 +35,6 @@ export default class GDQCountdownElement extends Polymer.Element {
 		countdownRunning.on('change', newVal => {
 			if (newVal) {
 				this.showTimer();
-				this._coldOpenStarted = false;
 			} else {
 				this._debounceFoo();
 			}
@@ -76,6 +75,10 @@ export default class GDQCountdownElement extends Polymer.Element {
 			if (newVal.raw === 0 && this._coldOpenStarted === false) {
 				this._coldOpenStarted = true;
 				this.playOpen();
+			}
+
+			if (newVal.raw > 0 && this._coldOpenStarted === true) {
+				this._coldOpenStarted = false;
 			}
 
 			if (newVal.raw <= 0) {
