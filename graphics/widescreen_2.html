@@ -18,6 +18,14 @@
 				border-right: 1px solid #051113;
 			}
 
+			#linetwo {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				height: 251px;
+				border-top: 1px solid #00ffff;
+			}
+
 			.tronleft {
 				left: 0;
 				border-right: 1px solid #00ffff;
@@ -29,7 +37,7 @@
 			}
 
 			gdq-runner-nameplate {
-				top: 720px;
+				top: 690px;
 				width: 425px;
 			}
 
@@ -51,7 +59,7 @@
 
 			gdq-timer {
 				left: 682px;
-				bottom: 251px;
+				bottom: 281px;
 				height: 65px;
 				width: 556px;
 				font-size: 56px;
@@ -88,16 +96,28 @@
 				border-top: 1px solid #00ffff;
 			}
 
-			#plate {
+			.plate1 {
 				position: absolute;
 				width: 1920px;
-				height: 71px;
-				top: 0;
 				left: 0;
 				background-color: #051113;
 				background-image: url('images/circuit-board.svg');
-				border-bottom: 1px solid #00ffff;
 				box-sizing: border-box;
+				height: 125px;
+				top: 0;
+				border-bottom: 1px solid #00ffff;
+			}
+
+			.plate2 {
+				position: absolute;
+				width: 1920px;
+				left: 0;
+				background-color: #051113;
+				background-image: url('images/circuit-board.svg');
+				box-sizing: border-box;
+				height: 125px;
+				bottom: 251px;
+				border-top: 1px solid #00ffff;
 			}
 		</style>
 	</custom-style>
@@ -105,15 +125,17 @@
 <body>
 	<div id="container">
 		<div id="lineone"></div>
-		<div id="plate"></div>
-		<atom-tronlines height="304" width="650" class="tronleft"></atom-tronlines>
-		<atom-tronlines height="304" width="650" class="tronright"></atom-tronlines>
+		<div class="plate1"></div>
+		<div class="plate2"></div>
+		<atom-tronlines height="251" width="650" class="tronleft"></atom-tronlines>
+		<atom-tronlines height="251" width="650" class="tronright"></atom-tronlines>
 		<gdq-runinfo max-name-size="45"></gdq-runinfo>
 		<gdq-sponsors></gdq-sponsors>
 		<gdq-tweet></gdq-tweet>
 		<gdq-runner-nameplate index="0" audio-vert-pos="bottom" audio-horiz-pos="right" no-right-cap result-side="left"></gdq-runner-nameplate>
 		<gdq-runner-nameplate index="1" audio-vert-pos="bottom" audio-horiz-pos="left" no-left-cap result-side="right"></gdq-runner-nameplate>
 		<gdq-timer></gdq-timer>
+		<div id="linetwo"></div>
 
 	</div>
 
