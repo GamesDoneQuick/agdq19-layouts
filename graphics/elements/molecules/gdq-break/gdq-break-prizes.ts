@@ -147,7 +147,7 @@ export default class GDQBreakPrizesElement extends GDQBreakLoopMixin(Polymer.Ele
 	}
 
 	_showItem(prize: Prize) {
-		let useFallbackImage = !prize.image.trim();
+		let useFallbackImage = !prize.image || !prize.image.trim();
 		let changingProvider = true;
 		let changingMinimumBid = true;
 		const tl = new TimelineLite();
