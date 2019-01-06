@@ -77,6 +77,10 @@ export default class DashAudioElement extends Polymer.MutableData(Polymer.Elemen
 		let concatenatedRunners = runners[0].name;
 		if (runners.length >= 1) {
 			concatenatedRunners = runners.slice(1).reduce((prev, curr, index, array) => {
+				if (!curr) {
+					return prev || '';
+				}
+
 				if (index === array.length - 1) {
 					return `${prev} & ${curr.name}`;
 				}
