@@ -374,7 +374,6 @@ function _updateCurrentIntermissionContent() {
 		preOrPost: calcPreOrPost(),
 		content: calcIntermissionContent()
 	};
-	console.log(currentIntermission.value);
 
 	_updateCurrentIntermissionState();
 	checkCanSeek();
@@ -620,13 +619,10 @@ function isFinalRun() {
 function calcPreOrPost() {
 	let preOrPost: 'post' | 'pre';
 	if (isFinalRun()) {
-		console.log('is final run!');
 		preOrPost = 'post';
 	} else if (hasRunStarted()) {
-		console.log('run has started!');
 		preOrPost = 'post';
 	} else {
-		console.log('else!');
 		preOrPost = 'pre';
 	}
 	return preOrPost;
