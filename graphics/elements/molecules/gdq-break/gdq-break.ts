@@ -13,24 +13,26 @@ export default class GDQBreakElement extends Polymer.Element {
 	@property({type: Object})
 	_queue: PQueue = new PQueue({concurrency: 1});
 
-	ready() {
-		super.ready();
-		const tweetElem = this.$.tweet as IInterruptMixin;
-		const fanartElem = this.$.fanart as IInterruptMixin;
-		tweetElem.companionElement = this.$.prizes as ICompanionElement;
-		fanartElem.companionElement = [
-			this.$.bids,
-			this.$.prizes
-		] as ICompanionElement[];
+	connectedCallback() {
+		super.connectedCallback();
+		Polymer.RenderStatus.afterNextRender(this, () => {
+			const tweetElem = this.$.tweet as IInterruptMixin;
+			const fanartElem = this.$.fanart as IInterruptMixin;
+			tweetElem.companionElement = this.$.prizes as ICompanionElement;
+			fanartElem.companionElement = [
+				this.$.bids,
+				this.$.prizes
+			] as ICompanionElement[];
 
-		this._setupInterrupt({
-			messageName: 'showTweet',
-			interruptElement: tweetElem
-		});
+			this._setupInterrupt({
+				messageName: 'showTweet',
+				interruptElement: tweetElem
+			});
 
-		this._setupInterrupt({
-			messageName: 'showFanart',
-			interruptElement: fanartElem
+			this._setupInterrupt({
+				messageName: 'showFanart',
+				interruptElement: fanartElem
+			});
 		});
 	}
 
