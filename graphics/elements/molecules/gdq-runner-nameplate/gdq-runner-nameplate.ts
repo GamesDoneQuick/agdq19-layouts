@@ -7,7 +7,7 @@ import AtomNameplateElement from '../../atoms/atom-nameplate/atom-nameplate';
 const {customElement, property} = Polymer.decorators;
 const currentRun = nodecg.Replicant<Run>('currentRun');
 const stopwatch = nodecg.Replicant<Stopwatch>('stopwatch');
-const gameAudioChannels = nodecg.Replicant<MixerGameAudioChannels>('mixer:gameAudioChannels');
+const gameAudioChannels = nodecg.Replicant<MixerGameAudioChannels>('mixer_gameAudioChannels');
 
 /**
  * @customElement
@@ -30,7 +30,7 @@ export default class GDQRunnerNameplateElement extends Polymer.Element {
 	@property({type: String})
 	audioHorizPos: string;
 
-	@property({type: Boolean, reflectToAttribute: true})
+	@property({type: Boolean, reflectToAttribute: true, notify: true})
 	audio = false;
 
 	@property({type: Boolean, reflectToAttribute: true})
