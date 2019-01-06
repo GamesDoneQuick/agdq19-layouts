@@ -44,7 +44,7 @@ const connection = new CasparCG.CasparCG({
     },
     onLog(str) {
         if (nodecg.bundleConfig.casparcg.debug) {
-            log.debug(str);
+            log.info(str);
         }
     },
     onError(error) {
