@@ -95,7 +95,7 @@ export default Polymer.dedupingMixin((base: (new () => Polymer.Element)) => { //
 				companionElementsArray = [this.companionElement as ICompanionElement];
 			}
 
-			companionElementsArray.filter(companionElement => {
+			companionElementsArray = companionElementsArray.filter(companionElement => {
 				return companionElement && typeof (companionElement as any).hide === 'function';
 			});
 
