@@ -373,8 +373,8 @@ for (let i = 1; i <= MAX_LOWERTHIRD_NAMES; i++) {
 	module.exports.TEST_CASES.push({
 		route: `bundles/${BUNDLE_NAME}/graphics/interview.html`,
 		nameAppendix: `lowerthird-${i}`,
-		selector: 'gdq-lowerthird',
-		entranceMethodName: 'show',
+		selector: 'gdq-interview',
+		entranceMethodName: 'showLowerthird',
 		entranceMethodArgs: [[
 			{name: 'one wwwwwWWWWWwwwwwWWWWWwwwwwWWWWW', title: 'one title WWWWWwwwwwWWWWWwwwww'},
 			{name: 'two', title: 'two title'},
