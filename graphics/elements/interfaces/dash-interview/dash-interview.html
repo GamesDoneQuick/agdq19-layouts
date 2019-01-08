@@ -65,17 +65,17 @@
 				--iron-icon-height: 36px;
 				--iron-icon-width: 36px;
 				@apply --layout-center-center;
-				background-color: #5BA664;
-				color: white;
+				background-color: white;
+				color: #C4C4C4;
 				min-width: 0;
 				padding: 0;
 				width: 65px;
 				z-index: 2;
 			}
 
-			#teletabs .tab.iron-selected {
-				background-color: white;
-				color: #5BA664;
+			#teletabs .tab[selected] {
+				background-color: #5BA664;
+				color: white;
 			}
 
 			.tab.iron-selected {
@@ -231,17 +231,20 @@
 				<paper-button class="tab">Q&A</paper-button>
 			</iron-selector>
 
-			<iron-selector
-				id="teletabs"
-				selected="[[_selectedTeleprompterTab]]"
-				on-selected-changed="_handleSelectedTeleprompterTabChange">
-				<paper-button class="tab">
+			<div id="teletabs">
+				<paper-button
+					class="tab"
+					on-tap="_toggleSelectedTeleprompterTab"
+					selected$="[[_equal(_selectedTeleprompterTab, 0)]]">
 					<iron-icon icon="image:remove-red-eye"></iron-icon>
 				</paper-button>
-				<paper-button class="tab">
-					<iron-icon icon="editor:vertical-align-top"></iron-icon>
+				<paper-button
+					class="tab"
+					on-tap="_toggleSelectedTeleprompterTab"
+					selected$="[[_equal(_selectedTeleprompterTab, 1)]]">
+					<iron-icon icon="image:remove-red-eye"></iron-icon>
 				</paper-button>
-			</iron-selector>
+			</div>
 
 			<div id="shadow">
 				<div id="colorBar"></div>

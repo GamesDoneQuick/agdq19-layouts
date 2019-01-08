@@ -16,7 +16,13 @@ const questionShowing = nodecg.Replicant<boolean>('interview_questionShowing');
 const questionSortMap = nodecg.Replicant<InterviewQuestionSortMap>('interview_questionSortMap');
 const questionTimeRemaining = nodecg.Replicant<number>('interview:questionTimeRemaining');
 const showPrizesOnMonitorRep = nodecg.Replicant<boolean>('interview_showPrizesOnMonitor');
-const baseClass = (Polymer as any).SCDataBindingHelpers(Polymer.MutableData(Polymer.Element)) as (new() => Polymer.Element);
+const baseClass = (Polymer as any).SCDataBindingHelpers(
+	Polymer.MutableData(
+		Polymer.GestureEventListeners(
+			Polymer.Element
+		)
+	)
+) as (new() => Polymer.Element);
 
 /**
  * @customElement
@@ -209,5 +215,9 @@ export default class DashInterviewElement extends baseClass {
 
 	_handleSelectedTeleprompterTabChange(e: any) {
 		showPrizesOnMonitorRep.value = Boolean(e.detail.value);
+	}
+
+	_toggleSelectedTeleprompterTab() {
+		this._selectedTeleprompterTab = this._selectedTeleprompterTab === 1 ? 0 : 1;
 	}
 }
