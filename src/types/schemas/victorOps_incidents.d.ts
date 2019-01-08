@@ -27,17 +27,18 @@ export interface PagedPolicy {
 		name: string;
 		slug: string;
 	};
-	team?: {
+	team: {
 		name: string;
 		slug: string;
 	};
+	[k: string]: any;
 }
 export interface Transition {
 	name: string;
 	at: string;
-	by: string;
-	message: string;
-	manually: boolean;
-	alertId: string;
-	alertUrl: string;
+	by?: string;
+	message?: string;
+	manually?: boolean;
+	alertId?: string;
+	alertUrl?: string;
 }

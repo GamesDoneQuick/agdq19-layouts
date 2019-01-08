@@ -4,7 +4,7 @@
 	"definitions": {
 		"pagedPolicy": {
 			"type": "object",
-			"additionalProperties": false,
+			"additionalProperties": true,
 			"properties": {
 				"policy": {
 					"type": "object",
@@ -33,7 +33,7 @@
 					"required": ["name", "slug"]
 				}
 			},
-			"required": ["policy", "teams"]
+			"required": ["policy", "team"]
 		},
 
 		"transition": {
@@ -62,7 +62,7 @@
 					"type": "string"
 				}
 			},
-			"required": ["name", "at", "by", "message", "manually", "alertId", "alertUrl"]
+			"required": ["name", "at"]
 		},
 
 		"incident": {
