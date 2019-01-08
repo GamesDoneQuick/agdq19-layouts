@@ -26,14 +26,20 @@
 			}
 		}
 	</script>
-	<style>
-		body {
-			background-color: #e5e5e5;
-			margin: 0;
-		}
-	</style>
+	<custom-style>
+		<style include="iron-flex iron-positioning">
+			body {
+				background-color: #e5e5e5;
+				margin: 0;
+			}
+
+			dash-host {
+				@apply --layout-flex;
+			}
+		</style>
+	</custom-style>
 </head>
-<body>
+<body class="fullbleed vertical layout">
 	<dash-audio></dash-audio>
 </body>
 </html>

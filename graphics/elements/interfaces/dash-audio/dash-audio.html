@@ -1,22 +1,25 @@
 <link rel="import" href="../../../../bower_components/font-roboto/roboto.html">
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../../bower_components/paper-styles/element-styles/paper-material-styles.html">
 <link rel="import" href="../../../../bower_components/polymer/lib/mixins/mutable-data.html">
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../shared/elements/interfaces/ui-panel-label/ui-panel-label.html">
 <link rel="import" href="../../../../shared/elements/interfaces/ui-rundown/ui-rundown.html">
+<link rel="import" href="../../../../shared/elements/interfaces/ui-system-status/ui-system-status.html">
 <link rel="import" href="../../../../shared/style/gdq-checkbox-style.html">
 
 <dom-module id="dash-audio">
 	<template>
-		<style include="paper-material-styles gdq-checkbox-style">
+		<style include="paper-material-styles gdq-checkbox-style iron-flex iron-flex-alignment">
 			:host {
-				display: block;
-				max-width: 448px;
-				font-family: Roboto, sans-serif;
+				@apply --layout-flex;
+				@apply --layout-vertical;
 				background-color: #dedede;
-				padding: 16px;
+				font-family: Roboto, sans-serif;
+				max-width: 500px;
+				padding: 8px;
 			}
 
 			#checklistStatus {
@@ -27,6 +30,12 @@
 				text-transform: uppercase;
 				@apply --layout-vertical;
 				@apply --layout-center-center;
+			}
+
+			#checklistItems {
+				@apply --layout-vertical;
+				@apply --layout-around-justified;
+				@apply --layout-flex;
 			}
 
 			#stopwatch {
@@ -52,27 +61,46 @@
 				font-weight: 500;
 				line-height: 43px;
 				margin-bottom: 12px;
-				padding: 0 16px;
-			}
-
-			#checklistLabel {
-				margin-bottom: 21px;
+				padding: 0 8px;
 			}
 
 			.card {
-				background-color: white;
-				@apply --paper-material;
+				@apply --layout-vertical;
 				@apply --paper-material-elevation-1;
+				background-color: white;
 			}
 
 			paper-checkbox {
-				margin-left: 16px;
-				margin-right: 16px;
 				font-weight: bold;
+				margin: 0 16px;
+			}
+
+			.two-up {
+				@apply --layout-horizontal;
+				@apply --layout-flex-none;
+				min-height: 150px; /* shitty hack because I can't code */
+			}
+
+			.two-up > * {
+				@apply --layout-flex;
+				min-width: 1px;
+			}
+
+			.two-up > *:nth-child(1) {
+				margin-right: 4px;
+			}
+
+			.two-up > *:nth-child(2) {
+				margin-left: 4px;
+			}
+
+			#rundown {
+				@apply --layout-flex;
+				min-height: 250px;
 			}
 		</style>
 
-		<div class="card" style="padding-top: 8px; margin-bottom: 16px;">
+		<div class="card" style="padding-top: 8px; margin-bottom: 8px;">
 			<div id="checklistStatus"></div>
 
 			<div id="stopwatch">
@@ -85,19 +113,25 @@
 			</div>
 		</div>
 
-		<div class="card" style="padding-top: 16px; padding-bottom: 26px; margin-bottom: 16px;">
-			<ui-panel-label id="checklistLabel">Audio Checklist</ui-panel-label>
+		<div class="two-up" style="margin-bottom: 8px;">
+			<div class="card">
+				<ui-panel-label>Audio Checklist</ui-panel-label>
 
-			<template is="dom-repeat" items="[[audioEngineerDuties]]" mutable-data>
-				<paper-checkbox
-					category="audioEngineerDuties"
-					checked="[[item.complete]]">
-					[[item.name]]
-				</paper-checkbox>
-			</template>
+				<div id="checklistItems">
+					<template is="dom-repeat" items="[[audioEngineerDuties]]" mutable-data>
+						<paper-checkbox
+							category="audioEngineerDuties"
+							checked="[[item.complete]]">
+							[[item.name]]
+						</paper-checkbox>
+					</template>
+				</div>
+			</div>
+
+			<ui-system-status class="card"></ui-system-status>
 		</div>
 
-		<ui-rundown class="card" style="padding-top: 16px; padding-bottom: 6px;"></ui-rundown>
+		<ui-rundown id="rundown" class="card" style="padding-bottom: 6px;"></ui-rundown>
 	</template>
 
 	<script src="dash-audio.js" type="module"></script>
