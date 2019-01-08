@@ -212,12 +212,9 @@ export default class DashInterviewElement extends baseClass {
 	_any(...args: any[]) {
 		return args.find(arg => Boolean(arg));
 	}
-
-	_handleSelectedTeleprompterTabChange(e: any) {
-		showPrizesOnMonitorRep.value = Boolean(e.detail.value);
-	}
-
+	
 	_toggleSelectedTeleprompterTab() {
 		this._selectedTeleprompterTab = this._selectedTeleprompterTab === 1 ? 0 : 1;
+		showPrizesOnMonitorRep.value = Boolean(this._selectedTeleprompterTab);
 	}
 }
