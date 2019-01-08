@@ -67,7 +67,7 @@
 
 		"incident": {
 			"type": "object",
-			"additionalProperties": false,
+			"additionalProperties": true,
 			"properties": {
 				"incidentNumber": {
 					"type": "string"

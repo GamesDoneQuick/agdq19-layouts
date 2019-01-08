@@ -21,6 +21,7 @@ export interface Incident {
 	pagedTeams: string[];
 	pagedPolicies: PagedPolicy[];
 	transitions: Transition[];
+	[k: string]: any;
 }
 export interface PagedPolicy {
 	policy: {
