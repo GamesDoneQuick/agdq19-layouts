@@ -214,7 +214,6 @@ export default class DashInterviewElement extends baseClass {
 	}
 
 	_toggleSelectedTeleprompterTab() {
-		this._selectedTeleprompterTab = this._selectedTeleprompterTab === 1 ? 0 : 1;
 		showPrizesOnMonitorRep.value = !Boolean(this._selectedTeleprompterTab);
 	}
 }
