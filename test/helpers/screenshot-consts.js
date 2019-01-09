@@ -51,14 +51,6 @@ module.exports = {
 		}
 	}, {
 		route: `bundles/${BUNDLE_NAME}/graphics/transition.html`,
-		nameAppendix: 'initial',
-		selector: 'gdq-transition',
-		entranceMethodName: null,
-		additionalDelay: STANDARD_DELAY,
-		replicantPrefills: STANDARD_REPLICANT_PREFILLS,
-		before: transitionBefore
-	}, {
-		route: `bundles/${BUNDLE_NAME}/graphics/transition.html`,
 		nameAppendix: 'fromOpenToClosed',
 		selector: 'gdq-transition',
 		entranceMethodName: 'fromOpenToClosed',
