@@ -33,8 +33,8 @@ export default class GDQTransitionElement extends Polymer.Element {
 	private _initialized = false;
 	private _$videos: HTMLVideoElement[];
 
-	ready() {
-		super.ready();
+	connectedCallback() {
+		super.connectedCallback();
 
 		const videos = Array.from(this.shadowRoot!.querySelectorAll('video'));
 		const videoLoadPromises = videos.map(this.waitForVideoToLoad);
