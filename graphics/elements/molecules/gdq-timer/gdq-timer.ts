@@ -32,7 +32,6 @@ export default class GDQTimerElement extends Polymer.Element {
 		super.ready();
 
 		const timerTL = new TimelineLite({autoRemoveChildren: true});
-
 		stopwatch.on('change', (newVal, oldVal) => {
 			this.hours = newVal.time.hours;
 			this.minutes = newVal.time.minutes;
@@ -41,20 +40,14 @@ export default class GDQTimerElement extends Polymer.Element {
 
 			if (oldVal) {
 				if (newVal.state === 'running' && oldVal.state !== 'running') {
-					timerTL.from(this.$.startFlash, 1, {
-						opacity: 0.5,
-						ease: Power2.easeIn
-					});
+					this._flash(timerTL);
 				} else if (newVal.state !== 'running' && newVal.state !== oldVal.state) {
 					timerTL.clear();
 					(this.$.startFlash as HTMLDivElement).style.opacity = '0';
 				}
 
 				if (newVal.state === 'finished' && oldVal.state !== 'finished') {
-					timerTL.from(this.$.startFlash, 1, {
-						opacity: 0.5,
-						ease: Power2.easeIn
-					});
+					this._flash(timerTL);
 				}
 			}
 
@@ -86,5 +79,14 @@ export default class GDQTimerElement extends Polymer.Element {
 
 	_formatMilliseconds(milliseconds: number) {
 		return Math.floor(milliseconds / 100);
+	}
+
+	_flash(timeline: TimelineLite) {
+		return timeline.fromTo(this.$.startFlash, 1, {
+			opacity: 0.5
+		}, {
+			opacity: 0,
+			ease: Power2.easeIn
+		});
 	}
 }
