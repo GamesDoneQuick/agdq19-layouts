@@ -17,6 +17,9 @@ export default class DashProducerElement extends Polymer.MutableData(Polymer.Ele
 	@property({type: String})
 	volunteerEvaluationsURL = nodecg.bundleConfig.volunteerEvaluationsURL;
 
+	@property({type: String})
+	techNotesURL = nodecg.bundleConfig.techNotesURL;
+
 	connectedCallback() {
 		super.connectedCallback();
 		this.updateCurrentTime = this.updateCurrentTime.bind(this);
