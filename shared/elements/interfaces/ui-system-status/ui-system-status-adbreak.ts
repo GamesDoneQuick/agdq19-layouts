@@ -23,13 +23,22 @@ export default class UiSystemStatusCasparElement extends Polymer.MutableData(Pol
 			this._currentIntermission.content &&
 			this._currentIntermission.content[0] &&
 			this._currentIntermission.content[0].type === 'adBreak') {
-			const cantStartReason = (this._currentIntermission.content[0] as AdBreak).state.cantStartReason;
+			const state = (this._currentIntermission.content[0] as AdBreak).state;
+			const cantStartReason = state.cantStartReason;
 			if (cantStartReason) {
 				statusSpan.style.color = 'var(--obs-system-status-error-color)';
 				return cantStartReason;
 			}
 
 			statusSpan.style.color = 'var(--obs-system-status-nominal-color)';
+			if (state.completed) {
+				return 'COMPLETED';
+			}
+
+			if (state.started) {
+				return 'PLAYING';
+			}
+
 			return 'READY';
 		}
 
