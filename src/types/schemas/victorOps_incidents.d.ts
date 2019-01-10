@@ -28,7 +28,7 @@ export interface PagedPolicy {
 		name: string;
 		slug: string;
 	};
-	team: {
+	team?: {
 		name: string;
 		slug: string;
 	};

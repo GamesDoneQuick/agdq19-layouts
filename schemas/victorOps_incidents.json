@@ -33,7 +33,7 @@
 					"required": ["name", "slug"]
 				}
 			},
-			"required": ["policy", "team"]
+			"required": ["policy"]
 		},
 
 		"transition": {
