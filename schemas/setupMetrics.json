@@ -1,0 +1,21 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"timerFinishToTransition": {
+			"$ref": "types/timeStruct.json"
+		},
+		"transitionToTransition": {
+			"$ref": "types/timeStruct.json"
+		},
+		"transitionToTimerStart": {
+			"$ref": "types/timeStruct.json"
+		}
+	},
+	"required": [
+		"timerFinishToTransition",
+		"transitionToTransition",
+		"transitionToTimerStart"
+	]
+}

@@ -1,0 +1,27 @@
+<dom-module id="dash-setup-metrics-timer">
+    <template>
+        <style include="gdq-text-styles">
+            :host {
+                @apply --layout-vertical;
+				@apply --layout-center-center;
+				margin: 32px;
+            }
+
+			#label {
+				color: #bababa;
+				font-size: 50px;
+			}
+
+			#time {
+				color: white;
+				font-size: 168px;
+				font-family: "Source Code Pro", sans-serif;
+			}
+        </style>
+
+		<div id="label">[[label]]</div>
+		<div id="time" class="tabular-nums">[[time]]</div>
+    </template>
+
+    <script src="dash-setup-metrics-timer.js" type="module"></script>
+</dom-module>

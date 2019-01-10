@@ -17,9 +17,9 @@ const nodecg = nodecgApiContext.get();
 // A given layout can be on multiple scenes.
 const currentLayout = nodecg.Replicant<CurrentLayout>('currentLayout');
 const cyclingRecordingsRep = nodecg.Replicant<ObsCyclingRecordings>('obs_cyclingRecordings', {persistent: false});
-const compositingOBS = new OBSUtility(nodecg, {namespace: 'compositingOBS'});
-const recordingOBS = new OBSUtility(nodecg, {namespace: 'recordingOBS'});
-const encodingOBS = new OBSUtility(nodecg, {namespace: 'encodingOBS'});
+export const compositingOBS = new OBSUtility(nodecg, {namespace: 'compositingOBS'});
+export const recordingOBS = new OBSUtility(nodecg, {namespace: 'recordingOBS'});
+export const encodingOBS = new OBSUtility(nodecg, {namespace: 'encodingOBS'});
 
 compositingOBS.replicants.programScene.on('change', (newVal: ObsWebsocketJs.Scene) => {
 	if (!newVal) {

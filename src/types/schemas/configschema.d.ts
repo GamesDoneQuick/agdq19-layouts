@@ -82,6 +82,10 @@ export interface Configschema {
 	 * The URL to the volunteer evaluations form. Is embedded as an IFrame on the Producer Dashboard.
 	 */
 	volunteerEvaluationsURL?: string;
+	/**
+	 * The URL to the tech notes spreadsheet. Is embedded as n IFrame on the Producer Dashboard.
+	 */
+	techNotesURL?: string;
 	zabbix?: {
 		enabled: boolean;
 	};

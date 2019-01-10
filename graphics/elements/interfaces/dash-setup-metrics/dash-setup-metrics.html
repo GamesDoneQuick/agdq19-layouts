@@ -1,0 +1,35 @@
+<link rel="import" href="../../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="dash-setup-metrics-timer.html">
+
+<dom-module id="dash-setup-metrics">
+	<template>
+		<style>
+			:host {
+				@apply --layout-vertical;
+				@apply --layout-center-center;
+				background: black;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+
+		<nodecg-replicant replicant-name="setupMetrics" value="{{setupMetrics}}"></nodecg-replicant>
+
+		<dash-setup-metrics-timer
+			label="Timer Finish to Transition"
+			time="[[setupMetrics.timerFinishToTransition.formatted]]">
+		</dash-setup-metrics-timer>
+
+		<dash-setup-metrics-timer
+			label="Transition to Transition"
+			time="[[setupMetrics.transitionToTransition.formatted]]">
+		</dash-setup-metrics-timer>
+
+		<dash-setup-metrics-timer
+			label="Transition to Timer Start"
+			time="[[setupMetrics.transitionToTimerStart.formatted]]">
+		</dash-setup-metrics-timer>
+	</template>
+
+	<script src="dash-setup-metrics.js" type="module"></script>
+</dom-module>

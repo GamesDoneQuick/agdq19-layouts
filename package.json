@@ -302,6 +302,11 @@
         "height": 1080
       },
       {
+        "file": "setup_metrics.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "test_break.html",
         "width": 1280,
         "height": 720
