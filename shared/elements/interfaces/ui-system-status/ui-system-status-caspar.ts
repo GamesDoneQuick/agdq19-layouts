@@ -26,6 +26,6 @@ export default class UiSystemStatusCasparElement extends Polymer.MutableData(Pol
 			return STATUS.MISSING_FILES;
 		}
 
-		return this._connected ? STATUS.CONNECTED : STATUS.CONNECTED;
+		return this._connected ? STATUS.CONNECTED : STATUS.DISCONNECTED;
 	}
 }
