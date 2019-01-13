@@ -174,10 +174,12 @@
 			"type": "object",
 			"properties": {
 				"username": {
-					"type": "string"
+					"type": "string",
+					"default": "username"
 				},
 				"password": {
-					"type": "string"
+					"type": "string",
+					"default": "password"
 				},
 				"eventId": {
 					"type": "number",
