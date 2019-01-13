@@ -8,6 +8,7 @@ export interface IGDQUrls {
     readonly runners: string;
     readonly runs: string;
     readonly total: string;
+    readonly login: string;
 }
 export declare const GDQUrls: IGDQUrls;
 //# sourceMappingURL=urls.d.ts.map

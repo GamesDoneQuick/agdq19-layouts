@@ -57,6 +57,7 @@ export interface Configschema {
 		username: string;
 		password: string;
 		eventId: number;
+		baseUrl: string;
 		[k: string]: any;
 	};
 	donationSocketUrl?: string;

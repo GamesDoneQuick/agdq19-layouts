@@ -182,10 +182,14 @@
 				"eventId": {
 					"type": "number",
 					"default": 25
+				},
+				"baseUrl": {
+					"type": "string",
+					"default": "https://gamesdonequick.com/tracker"
 				}
 			},
 			"description": "Login information for the private areas of the tracker API.",
-			"required": ["username", "password", "eventId"]
+			"required": ["username", "password", "eventId", "baseUrl"]
 		},
 		"donationSocketUrl": {
 			"type": "string"
