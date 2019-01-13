@@ -67,7 +67,7 @@ after_build:
 
   # Download our demo config.
   - if not exist cfg mkdir cfg
-  - ps: Start-FileDownload 'https://www.dropbox.com/s/redacted/agdq19-layouts.json?dl=1' -FileName 'cfg/agdq19-layouts.json'
+  - ps: Start-FileDownload 'https://www.dropbox.com/s/ek96b2gd502qnl2/agdq19-layouts-redacted.json?dl=1' -FileName 'cfg/agdq19-layouts.json'
 
   # Create a URL shortcut to the repo's page on GitHub
   - 'echo [InternetShortcut] > "GitHub Repo.URL"'
