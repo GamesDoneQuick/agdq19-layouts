@@ -26,9 +26,9 @@ We unfortunately do not have time to make a video breakdown for this event's bun
 ## Automated Builds
 If you are using an automated build (which includes everything in one zip file with a single exe), skip to [configuration](#configuration).
 
-Automated builds are made on AppVeyor CI. You can view the list of builds [here](https://ci.appveyor.com/project/supportclass/agdq19-layouts/history). To download a build, click the "Artifacts" link in the top right, above that build's log output. Then, download the `sdgq18-layouts-${HASH}.zip` for that build.
+Automated builds are made on AppVeyor CI. You can view the list of builds [here](https://ci.appveyor.com/project/supportclass/agdq19-layouts/history). To download a build, click the "Artifacts" link in the top right, above that build's log output. Then, download the `adgq19-layouts-${HASH}.zip` for that build.
 
-If you just want a direct link to a build that works and don't mind it maybe being slightly out-of-date, [here you go](https://ci.appveyor.com/api/buildjobs/og2qald1coyvuvxm/artifacts/agdq19-layouts-329275fa.zip).
+If you just want a direct link to a build that works and don't mind it maybe being slightly out-of-date, [here you go](https://ci.appveyor.com/api/buildjobs/inj53lpsjxswrc40/artifacts/agdq19-layouts-42e7af4a.zip).
 
 ## Requirements
 - [Node.js 8 or greater (8 recommended, newer versions not tested)](https://nodejs.org/)
@@ -69,7 +69,7 @@ If you have [nodecg-cli](https://github.com/nodecg/nodecg-cli) installed, you ca
 6. Click the gear icon to the right of the center "Transition" button.
 7. Ensure that "Duplicate Scene" is unchecked.
 
-You may notice that we use a custom plugin called GDQ Crop. This plugin's source can be viewed [here](https://github.com/TestRunnerSRL/gdqcrop).
+You may notice that we use a custom plugin called GDQ Crop. This plugin's source can be viewed [here](https://github.com/GamesDoneQuick/gdqcrop).
 
 ### Tweets and Fan art
 > ❗ This does not cover the system for interview question tweets, which is a separate system called [_Lightning Round_](#lightning-round). This only covers the system for showing Tweets and Fan art on the break and gameplay scenes.
