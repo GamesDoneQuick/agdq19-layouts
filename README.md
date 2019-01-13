@@ -1,4 +1,4 @@
-# agdq19-layouts [![Build status](https://ci.appveyor.com/api/projects/status/bugqpw073m9278tf/branch/master?svg=true)](https://ci.appveyor.com/project/supportclass/agdq19-layouts/branch/master)
+# agdq19-layouts [![Build status](https://ci.appveyor.com/api/projects/status/hbvvtm7vnqwil964/branch/master?svg=true)](https://ci.appveyor.com/project/supportclass/agdq19-layouts/branch/master)
 
 > The on-stream graphics used during Awesome Games Done Quick 2019.
 
