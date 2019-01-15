@@ -59,7 +59,7 @@ If you have [nodecg-cli](https://github.com/nodecg/nodecg-cli) installed, you ca
 ### Setting up OBS
 `agdq19-layouts` has a deep, complex integration with OBS Studio. As such, it expects your OBS to be fairly precisely configured.
 
-1. Download and extract [this custom build of OBS](https://www.dropbox.com/s/l6cfzjgdytvdfx7/AGDQ-2019-OBS-1.zip?dl=1), which includes all the plugins we use.  
+1. Download and extract [this custom build of OBS](https://www.dropbox.com/s/43ulpwe38t16u3u/AGDQ-2019-OBS-2.zip?dl=1), which includes all the plugins we use.  
    	- Once extracted, OBS can be launched via `bin/64bit/obs64.exe`.
 	- The source code for this build can be viewed [here](https://github.com/GamesDoneQuick/obs-studio/tree/agdq2019).
 2. Go to "Profile > Import", and import the `obs-assets/obs-profile` directory from this repository. Then, ensure that the "AGDQ 2019" profile is selected in OBS.  
