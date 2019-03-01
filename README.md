@@ -4,6 +4,11 @@
 
 This is a [NodeCG](http://github.com/nodecg/nodecg) v1 bundle. You will need to have NodeCG v1 installed to run it.
 
+## Before using
+This bundle is not intended to be used verbatim. Some of the assets have been replaced with placeholders, and most of the data sources are hardcoded. We are open-sourcing this bundle in hopes that people will use it as a learning tool and base to build from, rather than just taking and using it wholesale in their own productions.
+
+To reiterate, **please don't just download and use this bundle as-is**. Build something new from it.
+
 ## Table of Contents
 - [Video Breakdown](#video-breakdown)
 - [Automated Builds](#automated-builds)
